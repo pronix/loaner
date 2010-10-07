@@ -45,3 +45,49 @@ Feature: Menu
       | Backup          |
       | Restore         |
 
+  Scenario: Check "Settings" menu
+    Given Application ready to work
+    And I logged in
+    And I am at main menu
+    When I click link "Settings" menu
+    Then I should see the following menu entries:
+      | Menu item                                     |
+      | Company Profile                               |
+      | User Rights                                   |
+      | Company Configuration                         |
+      | Client Details Modification (Borrowe/Surety)  |
+
+  Scenario: Check "Reports" menu
+    Given Application ready to work
+    And I logged in
+    And I am at main menu
+    When I click link "Reports"
+    Then I should see the following menu entries:
+      | Menu item               |
+      | For Submission          |
+      | For Records             |
+      | Borrower Reports        |
+      | Book Statements         |
+      | Payment Due Report      |
+      | Loan Status             |
+
+  Scenario: Check "Loan Calculator" submenu
+    Given Application ready to work
+    And I logged in
+    And I am at main menu
+    When I click link "Reports"
+    Then I should see the following menu entries:
+      | Menu item               |
+      | For Submission          |
+      | For Records             |
+      | Borrower Reports        |
+      | Book Statements         |
+      | Payment Due Report      |
+      | Loan Status             |
+
+  Scenario: Check "Loans/Loan Calculator" submenu
+
+  Scenario: Check "Loans/Loan Disbursement" submenu
+
+  Scenario: Check "Loans/Collection" submenu
+

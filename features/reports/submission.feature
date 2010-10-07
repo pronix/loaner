@@ -1,4 +1,4 @@
-Feature: For Submission Reports
+Feature: Submission Reports
   In order to ensure submission reports
 
   Background:

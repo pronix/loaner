@@ -1,5 +1,5 @@
 Feature: Collection
-  In order to Loan Repayment table
+  In order to ensure Loan Collection feature
 
   Background:
     Given Loans table
@@ -28,20 +28,17 @@ Feature: Collection
     Given I logged in
     When I go to the "Loans/Collection" menu
     Then I should see the "Collection" table
-    And column 1 of table header should contain "Payment Details"
-    And column 2 of table header should contain "Receipt" header
-    And column 3 of table header should contain "Loan status" header
-    And column 4 of table header should contain "Remarks" header
+    And headers of table should be
+        | Payment Details | Receipt | Loan Status | Remarks |
     And table should contain 2 rows
 
   Scenario: "Collection" table content
     Given I logged in
     When I go to the "Loans/Collection" menu
     Then I should see the "Collection" table
-    And 1 column of 1st row should contain link "John Doe"
-    And 2 column of 1st row should contain "Name of lender"             ???
-    And 3 column of 1st row should contain "STATUS"                     ???
-    And 4 column of 1st row should contain "Good!"
+    And table content should be
+        | John Doe  | Name of Lender  | STATUS | Good! |                 ???
+        | Alex Nine | Name of Lender  | STATUS | Fast  |                 ???
 
   Scenario: Link to Payment Details
     Given I logged in

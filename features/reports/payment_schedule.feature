@@ -11,17 +11,17 @@ Feature: Payment Schedule
       | John Doe      | Baker street      |        5          |       |  +155544444  | +155533333       | +155522222  | 1       |
       | Alex Nine     | Google street     |        7          |       |  +333333224  | +124352345       | +134455542  | 2       |
     Given Payment table
-      | Payment Date  | Amount        |
-      | 01/05/2009    | 582.50        |
-      | 01/06/2009    | 582.50        |
-      | 01/07/2009    | 582.50        |
-      | 01/08/2009    | 582.50        |
-      | 01/09/2009    | 582.50        |
-      | 01/10/2009    | 582.50        |
-      | 01/11/2009    | 582.50        |
-      | 01/12/2009    | 582.50        |
-      | 01/01/2010    | 582.50        |
-      | 01/02/2010    | 582.50        |
+      | Borrower      | Payment Date  | Amount        |
+      | John Doe      | 01/05/2009    | 582.50        |
+      | John Doe      | 01/06/2009    | 582.50        |
+      | John Doe      | 01/07/2009    | 582.50        |
+      | John Doe      | 01/08/2009    | 582.50        |
+      | John Doe      | 01/09/2009    | 582.50        |
+      | John Doe      | 01/10/2009    | 582.50        |
+      | John Doe      | 01/11/2009    | 582.50        |
+      | John Doe      | 01/12/2009    | 582.50        |
+      | John Doe      | 01/01/2010    | 582.50        |
+      | John Doe      | 01/02/2010    | 582.50        |
 
   Scenario: View "Payment Schedule" Report
     Given I logged in

@@ -91,18 +91,24 @@ Feature: Client Details Modifications
     When I go to the "Settings / Client Details"
     And Press "Delete" on "John Doe" row
     Then I should see "Are you sure?" alert dialog
-Cannot delete if person as existing records in Loan Disbursement and Collection
 
-  Scenario: Delete Person
+  Scenario: I cant delete persont if it have Loan Disbursement and Collection records
     Given I logged in as "admin@gmail.com"
     When I go to the "Settings / Client Details"
     And Press "Delete" on "John Doe" row
     And confirm alert dialog
+    Then I should see "You cant delete this Person" message
+
+  Scenario: Delete Person
+    Given I logged in as "admin@gmail.com"
+    When I go to the "Settings / Client Details"
+    And Press "Delete" on "Elton John" row
+    And confirm alert dialog
     Then I should see "Persons" form
     And form should contain table
       |    Name         |   Type        |     Actions       |
+      |  John Doe       |   Borrower    |     Edit, Delete  |
       |  Alex Nine      |   Borrower    |     Edit, Delete  |
       |  Jim Morrison   |   Surrety     |     Edit, Delete  |
-      |  Elton John     |   Surrety     |     Edit, Delete  |
     And Form should contain "New Person" link
 

@@ -94,4 +94,21 @@ Feature: Client Details Modifications
       |  Account No           |   ""              |  text         |
 
 
+  Scenario: Delete Person confirmation
+    Given I logged in as "admin@gmail.com"
+    When I go to the "Settings / Client Details"
+    And Press "Delete" on "John Doe" row
+    Then I should see "Are you sure?" alert dialog
 
+  Scenario: Delete Person
+    Given I logged in as "admin@gmail.com"
+    When I go to the "Settings / Client Details"
+    And Press "Delete" on "John Doe" row
+    And confirm alert dialog
+    Then I should see "Persons" form
+    And form should contain table
+      |    Name         |   Type        |     Actions       |
+      |  Alex Nine      |   Borrower    |     Edit, Delete  |
+      |  Jim Morrison   |   Surrety     |     Edit, Delete  |
+      |  Elton John     |   Surrety     |     Edit, Delete  |
+    And Form should contain "New Person" link

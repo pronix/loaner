@@ -1,5 +1,5 @@
 Feature: Company Profile Settings
-  In order to ensure view and modifications of Company Profile settings
+  In order to ensure view and modify of Company Profile settings
 
   Background:
     Given Company Profile Settings

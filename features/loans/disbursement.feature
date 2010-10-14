@@ -8,8 +8,8 @@ Feature: Loan Disbursement
     And form should contain "Application Date" date field
     And "Application Date" date field should contain current date
     And form should contain "Loan Account No" text input field
-    And form should contain "Two Borrower Details" text field
-    And form should contain "Two Surety Details" text field
+    And form should contain "Borrower Details" text field (two)
+    And form should contain "Surety Details" text field (two)
     And form should contain "Type of Loan" select field
     And form should contain "Loan Amount" text field
     And form should contain "Bankruptcy Declaration" text area                      ???
@@ -39,8 +39,7 @@ Feature: Loan Disbursement
     And tab "Payment Schedule" should contain "Loan Maturity Date" date field
     And tab "Payment Schedule" should contain "Grace Period (in days)" text field
     And tab "Misc" should contain "Terms & Conditions" text field                                       ???
-    And tab "Misc" should contain "Language Entry" text field                                           ???
-    And tab "Misc" should contain "Book Type" text field                                                ???
-    And tab "Misc" should contain "Loan Date" date field                                                ???
+    And tab "Misc" should contain "Language Entry" text field                                           
+
 
 

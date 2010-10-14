@@ -58,3 +58,6 @@ Feature: Company Transactions
     Then I should see "New Transaction Created" message
     And I should see "New Transaction" form
 
+One More: "Account Transfer"
+
+

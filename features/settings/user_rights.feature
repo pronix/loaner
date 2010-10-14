@@ -35,3 +35,8 @@ Feature: User Rigths
       | tom@gmail.com                   |  Lender         |
 
 
+Should also have three roles.
+
+Administrator - can access anything, create, modify and delete
+User - can access anything, create and modify but CANNOT delete
+Restricted User - can create and modify but access to different modules restricted by administrator.

@@ -1,3 +1,5 @@
+What is good! & Fast?
+
 Feature: Collection
   In order to ensure Loan Collection feature
 
@@ -57,5 +59,6 @@ Feature: Collection
     And "Payment By" value should contain  XXX                          ???
     And form should contain "Payment Type" label
     And "Payment Type" value should contain  XXX                        ???
+
 
 

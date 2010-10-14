@@ -55,7 +55,7 @@ Feature: Menu
       | Company Profile                               |
       | User Rights                                   |
       | Company Configuration                         |
-      | Client Details Modification (Borrowe/Surety)  |
+      | Client Details Modification (Borrower/Surety)  |
 
   Scenario: Check "Reports" menu
     Given Application ready to work
@@ -90,4 +90,5 @@ Feature: Menu
   Scenario: Check "Loans/Loan Disbursement" submenu
 
   Scenario: Check "Loans/Collection" submenu
+
 

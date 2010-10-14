@@ -45,16 +45,9 @@ Feature: Client Details Modifications
       |  Home Phone           |   +155522222      |  text         |
       |  Hand Phone           |   +155544444      |  text         |
       |  Email                |   ""              |  text         |
-      |  Alternate Email      |   ""              |  text         |
+      
       |  Photo                |   ""              |  image        |
-      |  Credit Score         |   ""              |  text         |
-      |  Credit Card No       |   ""              |  text         |
-      |  Expiry Date          |   ""              |  date         |
-      |  CVV No               |   ""              |  text         |
-      |  Name on Card         |   ""              |  text         |
       |  Annual Income        |   ""              |  text         |
-      |  Name of the Bank     |   ""              |  text         |
-      |  Account No           |   ""              |  text         |
     And form should contain "Save" button
 
   Scenario: Modify Person
@@ -99,6 +92,7 @@ Feature: Client Details Modifications
     When I go to the "Settings / Client Details"
     And Press "Delete" on "John Doe" row
     Then I should see "Are you sure?" alert dialog
+Cannot delete if person as existing records in Loan Disbursement and Collection
 
   Scenario: Delete Person
     Given I logged in as "admin@gmail.com"
@@ -112,3 +106,4 @@ Feature: Client Details Modifications
       |  Jim Morrison   |   Surrety     |     Edit, Delete  |
       |  Elton John     |   Surrety     |     Edit, Delete  |
     And Form should contain "New Person" link
+

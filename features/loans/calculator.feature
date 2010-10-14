@@ -23,7 +23,7 @@ Feature: Loan Calculator
     And select "Monthly" in "Terms Units" select field
     And press "Calculate" button
     Then I should see the "Total Interest Payable" and $2000
-    And should see "Monthly Installment" and "$1200 per month for 10 months"
+    And should see "Monthly Installment" and "$1200 per Monthly for 10 monthly"
 
   Scenario: Check Simple Interest for Weekly
     Given I logged in
@@ -35,7 +35,7 @@ Feature: Loan Calculator
     And select "Monthly" in "Terms Units" select field
     And press "Calculate" button
     Then I should see the "Total Interest Payable" and $2000
-    And should see "Monthly Installment" and "$1200 per month for 10 months"
+    And should see "Weekly Installment" and "$1200 per Weekly for 10 weeks"
 
   Scenario: Check Simple Interest for Fortnightly
     Given I logged in
@@ -44,10 +44,10 @@ Feature: Loan Calculator
     And type 24 into "Rate of interest" text field
     And select "Simple Interest" radio button
     And type 10 into "No of Terms" text field
-    And select "Monthly" in "Terms Units" select field
+    And select "Fortnightly" in "Terms Units" select field
     And press "Calculate" button
     Then I should see the "Total Interest Payable" and $2000
-    And should see "Monthly Installment" and "$1200 per month for 10 months"
+    And should see "Fornightly Installment" and "$1200 per month for 10 fortnights"
 
   Scenario: Check Simple Interest for Annually
     Given I logged in
@@ -56,10 +56,10 @@ Feature: Loan Calculator
     And type 24 into "Rate of interest" text field
     And select "Simple Interest" radio button
     And type 10 into "No of Terms" text field
-    And select "Monthly" in "Terms Units" select field
+    And select "Annually" in "Terms Units" select field
     And press "Calculate" button
     Then I should see the "Total Interest Payable" and $2000
-    And should see "Monthly Installment" and "$1200 per month for 10 months"
+    And should see "Annual Installment" and "$1200 per month for 10 years"
 
   Scenario: Check Monthly Rest (Monthly)
     Given I logged in
@@ -77,12 +77,14 @@ Feature: Loan Calculator
     And type 48 into "Rate of interest" text field
     And select "Daily Rest" radio button
     And press "Calculate" button
-    Then I should see the "Interest for Monthly Rest: $X"
+    And select the due date
+	Then I should see the "Interest for Monthly Rest: $X"
 
   Scenario: Check Monthly cum Daily Rest
     When I go to the "Loans/Loan Calculator" menu
     And type 10000 into "Loan Amount" text field
-    And type 10 into "Rate of interest" text field
+    And type 48 into "Rate of interest" text field
     And select "Monthly cum Daily Rest" radio button
     And press "Calculate" button
-    Then I should see the XXX
+    Then I should see the "Interest for Monthly Rest: $360"
+

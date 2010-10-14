@@ -45,7 +45,6 @@ Feature: Client Details Modifications
       |  Home Phone           |   +155522222      |  text         |
       |  Hand Phone           |   +155544444      |  text         |
       |  Email                |   ""              |  text         |
-      
       |  Photo                |   ""              |  image        |
       |  Annual Income        |   ""              |  text         |
     And form should contain "Save" button

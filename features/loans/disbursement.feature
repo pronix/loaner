@@ -39,7 +39,7 @@ Feature: Loan Disbursement
     And tab "Payment Schedule" should contain "Loan Maturity Date" date field
     And tab "Payment Schedule" should contain "Grace Period (in days)" text field
     And tab "Misc" should contain "Terms & Conditions" text field                                       ???
-    And tab "Misc" should contain "Language Entry" text field                                           
+    And tab "Misc" should contain "Language Entry" text field
 
 
 

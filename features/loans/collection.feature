@@ -1,5 +1,3 @@
-What is good! & Fast?
-
 Feature: Collection
   In order to ensure Loan Collection feature
 
@@ -14,7 +12,7 @@ Feature: Collection
       | Alex Nine     | Google street     |        7          |       |  +333333224  | +124352345       | +134455542  | 2       |
     Given Payment table
       | Borrower      | Payment Date  | Amount        |     Remarks   |
-      | John Doe      | 01/05/2009    | 582.50        |  Good!        |
+      | John Doe      | 01/05/2009    | 582.50        |  Remark1      |
       | John Doe      | 01/06/2009    | 582.50        |               |
       | John Doe      | 01/07/2009    | 582.50        |               |
       | John Doe      | 01/08/2009    | 582.50        |               |
@@ -24,7 +22,7 @@ Feature: Collection
       | John Doe      | 01/12/2009    | 582.50        |               |
       | John Doe      | 01/01/2010    | 582.50        |               |
       | John Doe      | 01/02/2010    | 582.50        |               |
-      | Alex Nine     | 01/02/2009    | 100.00        |  Fast         |
+      | Alex Nine     | 01/02/2009    | 100.00        |  Remark2      |
 
   Scenario: Show "Collection" page
     Given I logged in
@@ -39,8 +37,8 @@ Feature: Collection
     When I go to the "Loans/Collection" menu
     Then I should see the "Collection" table
     And table content should be
-        | John Doe  | Name of Lender  | STATUS | Good! |                 ???
-        | Alex Nine | Name of Lender  | STATUS | Fast  |                 ???
+        | John Doe  | Name of Lender  | STATUS | Remark1    |                 ???
+        | Alex Nine | Name of Lender  | STATUS | Remark2    |                 ???
 
   Scenario: Link to Payment Details
     Given I logged in
@@ -59,6 +57,4 @@ Feature: Collection
     And "Payment By" value should contain  XXX                          ???
     And form should contain "Payment Type" label
     And "Payment Type" value should contain  XXX                        ???
-
-
 

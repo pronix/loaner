@@ -55,7 +55,7 @@ Feature: Menu
       | Company Profile                               |
       | User Rights                                   |
       | Company Configuration                         |
-      | Client Details Modification (Borrower/Surety)  |
+      | Client Details Modification (Borrower/Surety) |
 
   Scenario: Check "Reports" menu
     Given Application ready to work

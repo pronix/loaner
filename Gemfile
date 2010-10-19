@@ -1,18 +1,39 @@
 source 'http://rubygems.org'
+source "http://gems.github.com"
 
 gem 'rails', '3.0.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+
 gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'pg',                    '~> 0.9.0'
+gem 'haml'
+gem 'state_machine'
 
 # Use unicorn as the web server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
+group :test do
+  gem 'capybara'
+  gem 'cucumber'
+  gem 'cucumber-rails'
+  gem 'rspec'
+  gem 'rspec-rails'
+end
+
+group :development do
+  gem "rdoc"
+  gem 'awesome_print'
+  gem 'wirble'
+  gem 'hirb'
+  gem 'duration'
+  gem 'annotate'
+end
 # To use debugger
 # gem 'ruby-debug'
 

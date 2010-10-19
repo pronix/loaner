@@ -38,7 +38,6 @@ Feature: Client Details Modifications
       |  Name of the Company  |   ""              |  text         |
       |  Designation          |   ""              |  text area    |
       |  Mailing Address      |   ""              |  text         |
-      |  Business Phone       |   ""              |  text         |
       |  Business Address     |   ""              |  text         |
       |  Country              |   ""              |  select       |
       |  Business Phone       |   +155533333      |  text         |

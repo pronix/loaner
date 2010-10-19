@@ -1,0 +1,11 @@
+- title "Payments"
+%table
+  %tr
+    %th Name
+  - for payment in @payments
+    %tr
+      %td= payment.name
+      %td= link_to "Show", payment
+      %td= link_to "Edit", edit_payment_path(payment)
+      %td= link_to "Destroy", payment, :confirm => 'Are you sure?', :method => :delete
+%p= link_to "New Payment", new_payment_path

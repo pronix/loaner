@@ -1,0 +1,9 @@
+- title "Disbursement"
+%p
+  %strong Name:
+  = @disbursement.name
+%p
+  = link_to "Edit", edit_disbursement_path(@disbursement)
+  |
+  \#{link_to "Destroy", @disbursement, :confirm => 'Are you sure?', :method => :delete} |
+  \#{link_to "View All", disbursements_path}

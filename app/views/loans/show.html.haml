@@ -1,0 +1,9 @@
+- title "Loan"
+%p
+  %strong Name:
+  = @loan.name
+%p
+  = link_to "Edit", edit_loan_path(@loan)
+  |
+  \#{link_to "Destroy", @loan, :confirm => 'Are you sure?', :method => :delete} |
+  \#{link_to "View All", loans_path}

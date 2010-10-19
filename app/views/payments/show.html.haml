@@ -1,0 +1,9 @@
+- title "Payment"
+%p
+  %strong Name:
+  = @payment.name
+%p
+  = link_to "Edit", edit_payment_path(@payment)
+  |
+  \#{link_to "Destroy", @payment, :confirm => 'Are you sure?', :method => :delete} |
+  \#{link_to "View All", payments_path}

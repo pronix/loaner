@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20101019151714) do
     t.integer  "lender_id",                       :null => false
     t.integer  "account_no"
     t.date     "application"
-    t.string   "type",                            :null => false
+    t.string   "loan_type",                       :null => false
     t.string   "state",                           :null => false
     t.float    "amount"
     t.text     "remarks"
@@ -46,6 +46,10 @@ ActiveRecord::Schema.define(:version => 20101019151714) do
     t.string   "hand_phone"
     t.string   "email"
     t.integer  "annual_income"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

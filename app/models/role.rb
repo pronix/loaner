@@ -1,7 +1,3 @@
-class Role < ActiveRecord::Base
-  acts_as_authorization_role
-end
-
 # == Schema Information
 #
 # Table name: roles
@@ -14,3 +10,6 @@ end
 #  updated_at        :datetime
 #
 
+class Role < ActiveRecord::Base
+  acts_as_authorization_role
+end

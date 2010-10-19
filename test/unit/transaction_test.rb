@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: transactions
+#
+#  id          :integer         not null, primary key
+#  loan_id     :integer         not null
+#  type        :integer         default(0), not null
+#  amount      :float           not null
+#  description :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 require 'test_helper'
 
 class TransactionTest < ActiveSupport::TestCase
@@ -6,13 +19,4 @@ class TransactionTest < ActiveSupport::TestCase
     assert true
   end
 end
-
-# == Schema Information
-#
-# Table name: transactions
-#
-#  id         :integer         not null, primary key
-#  created_at :datetime
-#  updated_at :datetime
-#
 

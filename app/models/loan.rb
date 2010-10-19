@@ -1,24 +1,3 @@
-class Loan < ActiveRecord::Base
-  belongs_to :lender,    :class_name => 'Person'
-
-  has_many :surety_loans
-  has_many :sureties, :through => :surety_loans
-
-  has_many :borrower_loans
-  has_many :borrowers, :through => :borrower_loans
-
-  state_machine :state, :initial => :new do
-    event :grant do
-      transition :new => :granted
-    end
-
-    event :repay do
-      transition :granted => :repaid
-    end
-  end
-  
-end
-
 # == Schema Information
 #
 # Table name: loans
@@ -40,3 +19,23 @@ end
 #  updated_at       :datetime
 #
 
+class Loan < ActiveRecord::Base
+  belongs_to :lender,    :class_name => 'Person'
+
+  has_many :surety_loans
+  has_many :sureties, :through => :surety_loans
+
+  has_many :borrower_loans
+  has_many :borrowers, :through => :borrower_loans
+
+  state_machine :state, :initial => :new do
+    event :grant do
+      transition :new => :granted
+    end
+
+    event :repay do
+      transition :granted => :repaid
+    end
+  end
+  
+end

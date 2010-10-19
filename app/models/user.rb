@@ -1,8 +1,3 @@
-class User < ActiveRecord::Base
-  acts_as_authentic
-  acts_as_authorization_subject  :association_name => :roles
-end
-
 # == Schema Information
 #
 # Table name: users
@@ -17,3 +12,7 @@ end
 #  updated_at        :datetime
 #
 
+class User < ActiveRecord::Base
+  acts_as_authentic
+  acts_as_authorization_subject  :association_name => :roles
+end

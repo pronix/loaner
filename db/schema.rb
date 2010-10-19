@@ -80,6 +80,10 @@ ActiveRecord::Schema.define(:version => 20101019185206) do
   end
 
   create_table "transactions", :force => true do |t|
+    t.integer  "loan_id",                    :null => false
+    t.integer  "type",        :default => 0, :null => false
+    t.float    "amount",                     :null => false
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

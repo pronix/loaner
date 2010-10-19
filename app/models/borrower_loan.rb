@@ -1,8 +1,3 @@
-class BorrowerLoan < ActiveRecord::Base
-  belongs_to :borrower, :class_name => "Person"
-  belongs_to :loan
-end
-
 # == Schema Information
 #
 # Table name: borrower_loans
@@ -14,3 +9,7 @@ end
 #  updated_at  :datetime
 #
 
+class BorrowerLoan < ActiveRecord::Base
+  belongs_to :borrower, :class_name => "Person"
+  belongs_to :loan
+end

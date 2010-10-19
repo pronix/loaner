@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: transactions
+#
+#  id          :integer         not null, primary key
+#  loan_id     :integer         not null
+#  type        :integer         default(0), not null
+#  amount      :float           not null
+#  description :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 # This model initially had no columns defined.  If you add columns to the
@@ -9,13 +22,4 @@ one: {}
 #
 two: {}
 #  column: value
-
-# == Schema Information
-#
-# Table name: transactions
-#
-#  id         :integer         not null, primary key
-#  created_at :datetime
-#  updated_at :datetime
-#
 

@@ -1,8 +1,3 @@
-class SuretyLoan < ActiveRecord::Base
-  belongs_to :surety, :class_name => "Person"
-  belongs_to :loan
-end
-
 # == Schema Information
 #
 # Table name: surety_loans
@@ -14,3 +9,7 @@ end
 #  updated_at :datetime
 #
 
+class SuretyLoan < ActiveRecord::Base
+  belongs_to :surety, :class_name => "Person"
+  belongs_to :loan
+end

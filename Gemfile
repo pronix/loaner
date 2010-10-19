@@ -8,12 +8,14 @@ gem 'rails', '3.0.1'
 
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
-gem 'pg',                    '~> 0.9.0'
+gem 'pg',                       '~> 0.9.0'
 gem 'haml'
 gem 'state_machine'
 gem 'authlogic'
 gem 'acl9'
 gem 'nifty-generators'
+gem 'inherited_resources',      '1.1.2'
+gem 'formtastic',               '~> 1.1.0'
 
 # Use unicorn as the web server
 gem 'unicorn'

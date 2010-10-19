@@ -11,6 +11,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'pg',                    '~> 0.9.0'
 gem 'haml'
 gem 'state_machine'
+gem 'authlogic'
 
 # Use unicorn as the web server
 gem 'unicorn'

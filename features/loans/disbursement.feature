@@ -5,7 +5,7 @@ Feature: Loan Disbursement
     Given I logged in
     When I go to the "Loans/Loan Disbursement" menu
     Then I should see the "Loan Disbursement" form
-    And form should contain "Application Date" date field
+    And form should contain "Applicatiumberon Date" date field
     And "Application Date" date field should contain current date
     And form should contain "Loan Account No" text input field
     And form should contain "Borrower Details" text field (two)

@@ -18,6 +18,7 @@ gem 'inherited_resources',      '1.1.2'
 gem 'formtastic',               '~> 1.1.0'
 gem 'has_scope'
 gem 'responders'
+gem 'paperclip'
 
 # Use unicorn as the web server
 gem 'unicorn'

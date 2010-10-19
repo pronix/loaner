@@ -5,9 +5,10 @@ class CreateLoans < ActiveRecord::Migration
       t.integer :account_no
 
       t.date    :application
-      t.string  :loan_type,           :null => false
+      t.string  :loan_type,           :null => false, :default => ""
       t.string  :state,               :null => false
-      t.float   :amount 
+      t.float   :amount,              :null => false, :default => 0.0
+      t.float   :interest,            :null => false, :default => 0.0
       t.text    :remarks
 
       # payments

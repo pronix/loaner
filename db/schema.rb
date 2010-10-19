@@ -13,19 +13,20 @@
 ActiveRecord::Schema.define(:version => 20101019185206) do
 
   create_table "borrower_loans", :force => true do |t|
-    t.integer  "person_id",  :null => false
-    t.integer  "loan_id",    :null => false
+    t.integer  "borrower_id", :null => false
+    t.integer  "loan_id",     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "loans", :force => true do |t|
-    t.integer  "lender_id",                       :null => false
+    t.integer  "lender_id",                         :null => false
     t.integer  "account_no"
     t.date     "application"
-    t.string   "loan_type",                       :null => false
-    t.string   "state",                           :null => false
-    t.float    "amount"
+    t.string   "loan_type",        :default => "",  :null => false
+    t.string   "state",                             :null => false
+    t.float    "amount",           :default => 0.0, :null => false
+    t.float    "interest",         :default => 0.0, :null => false
     t.text     "remarks"
     t.integer  "schedule_type",    :default => 0
     t.integer  "grace_period",     :default => 0
@@ -72,7 +73,7 @@ ActiveRecord::Schema.define(:version => 20101019185206) do
   end
 
   create_table "surety_loans", :force => true do |t|
-    t.integer  "person_id",  :null => false
+    t.integer  "surety_id",  :null => false
     t.integer  "loan_id",    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"

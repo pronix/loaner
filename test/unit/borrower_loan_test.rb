@@ -6,3 +6,15 @@ class BorrowerLoanTest < ActiveSupport::TestCase
     assert true
   end
 end
+
+# == Schema Information
+#
+# Table name: borrower_loans
+#
+#  id          :integer         not null, primary key
+#  borrower_id :integer         not null
+#  loan_id     :integer         not null
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+

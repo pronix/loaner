@@ -10,11 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101019151714) do
+ActiveRecord::Schema.define(:version => 20101019185206) do
 
   create_table "borrower_loans", :force => true do |t|
-    t.integer "person_id", :null => false
-    t.integer "loan_id",   :null => false
+    t.integer  "person_id",  :null => false
+    t.integer  "loan_id",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "loans", :force => true do |t|
@@ -70,8 +72,10 @@ ActiveRecord::Schema.define(:version => 20101019151714) do
   end
 
   create_table "surety_loans", :force => true do |t|
-    t.integer "person_id", :null => false
-    t.integer "loan_id",   :null => false
+    t.integer  "person_id",  :null => false
+    t.integer  "loan_id",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "transactions", :force => true do |t|

@@ -1,0 +1,17 @@
+<% title "Disbursements" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% for disbursement in @disbursements %>
+    <tr>
+      <td><%= disbursement.name %></td>
+      <td><%= link_to "Show", disbursement %></td>
+      <td><%= link_to "Edit", edit_disbursement_path(disbursement) %></td>
+      <td><%= link_to "Destroy", disbursement, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Disbursement", new_disbursement_path %></p>

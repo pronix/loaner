@@ -1,0 +1,17 @@
+<% title "Loans" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% for loan in @loans %>
+    <tr>
+      <td><%= loan.name %></td>
+      <td><%= link_to "Show", loan %></td>
+      <td><%= link_to "Edit", edit_loan_path(loan) %></td>
+      <td><%= link_to "Destroy", loan, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Loan", new_loan_path %></p>

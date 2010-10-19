@@ -12,6 +12,8 @@ gem 'pg',                    '~> 0.9.0'
 gem 'haml'
 gem 'state_machine'
 gem 'authlogic'
+gem 'acl9'
+gem 'nifty-generators'
 
 # Use unicorn as the web server
 gem 'unicorn'
@@ -50,3 +52,4 @@ end
 # group :development, :test do
 #   gem 'webrat'
 # end
+gem "mocha", :group => :test

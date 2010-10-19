@@ -1,4 +1,10 @@
 Loaner::Application.routes.draw do
+  resources :disbursements
+
+  resources :payments
+
+  resources :loans
+
   resources :users
 
   # The priority is based upon order of creation:

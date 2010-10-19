@@ -28,6 +28,11 @@ class Loan < ActiveRecord::Base
   has_many :borrower_loans
   has_many :borrowers, :through => :borrower_loans
 
+  validates_presence_of :lender
+  validates_presence_of :borrowers
+  validates_presence_of :amount
+  validates_presence_of :interest
+
   state_machine :state, :initial => :new do
     event :grant do
       transition :new => :granted

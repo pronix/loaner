@@ -1,11 +1,23 @@
 - title "Loans"
 %table
   %tr
-    %th Name
-  - for loan in @resources
+    %th Lender
+    %th Account No
+    %th Loan Type
+    %th State
+    %th Amount
+    %th Interest
+    %th Actions
+  - for loan in collection
     %tr
-      %td= loan.name
-      %td= link_to "Show", loan
-      %td= link_to "Edit", edit_loan_path(loan)
-      %td= link_to "Destroy", loan, :confirm => 'Are you sure?', :method => :delete
+      %td= loan.lender.name
+      %td= loan.account_no
+      %td= loan.loan_type
+      %td= loan.state
+      %td= loan.amount
+      %td= loan.interest
+      %td
+        = link_to "Show", loan
+        = link_to "Edit", edit_loan_path(loan)
+        = link_to "Destroy", loan, :confirm => 'Are you sure?', :method => :delete
 %p= link_to "New Loan", new_loan_path

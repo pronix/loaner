@@ -1,7 +1,14 @@
-= form_for @person do |f|
-  = f.error_messages
-  %p
-    = f.label :name
-    %br/
-    = f.text_field :name
-  %p= f.submit
+= semantic_form_for @person do |form|
+  = form.error_messages
+  = form.input :name
+  = form.input :birth_at, :as => :string
+  = form.input :citizenship
+  = form.input :designation
+  = form.input :mail_address
+  = form.input :business_address
+  = form.input :business_phone
+  = form.input :home_phone
+  = form.input :hand_phone
+  = form.input :email
+  = form.input :annual_income
+  = form.input :photo

@@ -1,4 +1,6 @@
 Loaner::Application.routes.draw do
+  resources :people
+
   resources :disbursements
 
   resources :payments

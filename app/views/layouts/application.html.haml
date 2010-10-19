@@ -8,7 +8,9 @@
     = yield(:head)
   %body
     #container
+      #menu
+        = link_to "Register", new_user_path
       - flash.each do |name, msg|
-      = content_tag :div, msg, :id => "flash_#{name}"
+        = content_tag :div, msg, :id => "flash_#{name}"
       = content_tag :h1, yield(:title) if show_title?
       = yield

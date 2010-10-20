@@ -1,10 +1,13 @@
 Loaner::Application.routes.draw do
   resources :people
-  resources :disbursements
-  resources :payments
-  resources :loans
+  #resources :disbursements
+  #resources :payments
   resources :users
   resources :user_sessions
+
+  resources :loans do
+    resources :payments
+  end
 
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout

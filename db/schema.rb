@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101019185206) do
+ActiveRecord::Schema.define(:version => 20101020105329) do
 
   create_table "borrower_loans", :force => true do |t|
     t.integer  "borrower_id", :null => false
@@ -44,6 +44,15 @@ ActiveRecord::Schema.define(:version => 20101019185206) do
     t.string   "legal_fees"
     t.text     "terms"
     t.string   "language"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payments", :force => true do |t|
+    t.integer  "loan_id",                     :null => false
+    t.float    "amount",     :default => 0.0, :null => false
+    t.date     "paid_on"
+    t.string   "remarks"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

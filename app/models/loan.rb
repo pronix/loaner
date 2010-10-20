@@ -28,6 +28,8 @@ class Loan < ActiveRecord::Base
   has_many :borrower_loans
   has_many :borrowers, :through => :borrower_loans
 
+  has_many :payments
+
   validates_presence_of :lender
   validates_presence_of :borrowers
   validates_presence_of :amount

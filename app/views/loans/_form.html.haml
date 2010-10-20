@@ -1,19 +1,21 @@
-- semantic_form_for resource do |form|
+= semantic_form_for resource do |form|
   = form.input :lender
   = link_to "New Person", new_person_path
-  = form.input :sureties
-  = link_to "New Person", new_person_path
-  = form.input :borrowers
-  = link_to "New Person", new_person_path
+  = form.inputs :name => "Borrowers", :id => "borrowers" do
+    = form.input :borrowers
+    = link_to "New Person", new_person_path
+  = form.inputs :name => "Sureties", :id => "sureties" do
+    = form.input :sureties
+    = link_to "New Person", new_person_path
   = form.input :account_no
   = form.input :application, :as => :string
   = form.input :loan_type,  :as => :select,  :collection => ["Daily", "Monthly"]
   = form.input :amount
 
-  - form.inputs :name => "Interest", :id => "interest" do
+  = form.inputs :name => "Interest", :id => "interest" do
     = form.input :interest
     
-  - form.inputs :name => "Permitted Fees", :id => "permitted_fees" do
+  = form.inputs :name => "Permitted Fees", :id => "permitted_fees" do
     = form.input :acceptance_fees
     = form.input :revolving_credit_approval
     = form.input :late_repayment
@@ -22,13 +24,31 @@
     = form.input :preclousure_termination_fees
     = form.input :legal_fees
 
-  - form.inputs :name => "Payment Schedule", :id => "payments_schedule" do
+  = form.inputs :name => "Payment Schedule", :id => "payments_schedule" do
     = form.input :schedule_type
     = form.input :grace_period
     = form.input :first_payment_at, :as => :string
     = form.input :maturity_at, :as => :string
 
-  - form.inputs :name => "Misc", :id => "misc" do
+    - if resource.id
+      %h2 Payments
+      = link_to "New Payment", new_loan_payment_path(resource)
+      %table
+        %tr
+          %th Date
+          %th Amount
+          %th Remarks
+          %th Actions
+        - resource.payments.each do |payment|
+          %tr
+            %td= payment.paid_on
+            %td= payment.amount
+            %td= payment.remarks
+            %td
+              = link_to "Edit", edit_loan_payment_path(resource, payment)
+              = link_to "Destroy", loan_payment_path(resource, payment), :confirm => 'Are you sure?', :method => :delete
+
+  = form.inputs :name => "Misc", :id => "misc" do
     = form.input :remarks
     = form.input :terms
     = form.input :language

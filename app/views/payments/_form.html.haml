@@ -1,7 +1,6 @@
-= form_for @payment do |f|
-  = f.error_messages
-  %p
-    = f.label :name
-    %br/
-    = f.text_field :name
-  %p= f.submit
+= semantic_form_for [@loan, @payment] do |form|
+  = form.error_messages
+  = form.input :paid_on
+  = form.input :amount
+  = form.input :remarks
+  = form.commit_button

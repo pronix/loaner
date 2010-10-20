@@ -22,7 +22,7 @@ Feature: Loan Disbursement
     And "Simple Interest Method" select field should contain items "Monthly, Weekly, Fornightly, Annually"
     And tab "Interest Calculation (%)" should contain "Monthly cum Daily Interest (Monthly)" radio button
     And tab "Interest Calculation (%)" should contain "Daily Interest (Monthly)" radio button
-    And tab "Interest Calculation (%)" should contain "Late Interest (Monthly)" radion button
+    And tab "Interest Calculation (%)" should contain "Late Interest (Monthly)" radio button
     And tab "Permitted Fees" should contain "Acceptance Fees" text field                                ???
     And tab "Permitted Fees" should contain "Revolving Credit Approval/Renewal Fees" text field         ???
     And tab "Permitted Fees" should contain "Late Repayment" text field                                 ???

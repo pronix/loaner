@@ -103,3 +103,9 @@ Income
 Annual Income
     Годовой доход
 
+Renewal fees
+    Пошлины
+
+Late repayment 
+    несвоевременное погашение
+

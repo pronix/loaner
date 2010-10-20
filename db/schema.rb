@@ -20,18 +20,30 @@ ActiveRecord::Schema.define(:version => 20101019185206) do
   end
 
   create_table "loans", :force => true do |t|
-    t.integer  "lender_id",                         :null => false
+    t.integer  "lender_id",                                          :null => false
     t.integer  "account_no"
     t.date     "application"
-    t.string   "loan_type",        :default => "",  :null => false
-    t.string   "state",                             :null => false
-    t.float    "amount",           :default => 0.0, :null => false
-    t.float    "interest",         :default => 0.0, :null => false
+    t.string   "loan_type",                    :default => "",       :null => false
+    t.string   "state",                                              :null => false
+    t.float    "amount",                       :default => 0.0,      :null => false
+    t.float    "interest",                     :default => 0.0,      :null => false
+    t.string   "interest_type",                :default => "simple", :null => false
+    t.integer  "simple_interest_method",       :default => 0
     t.text     "remarks"
-    t.integer  "schedule_type",    :default => 0
-    t.integer  "grace_period",     :default => 0
+    t.integer  "payment_schedule",             :default => 0
+    t.integer  "schedule_type",                :default => 0
+    t.integer  "grace_period",                 :default => 0
     t.date     "first_payment_at"
     t.date     "maturity_at"
+    t.string   "acceptance_fees"
+    t.string   "revolving_credit_approval"
+    t.string   "late_repayment"
+    t.string   "terms_of_contract_variation"
+    t.string   "cheque_dishonour"
+    t.string   "preclousure_termination_fees"
+    t.string   "legal_fees"
+    t.text     "terms"
+    t.string   "language"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

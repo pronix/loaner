@@ -34,12 +34,12 @@ class Loan < ActiveRecord::Base
   validates_presence_of :interest
 
   state_machine :state, :initial => :new do
-    event :grant do
-      transition :new => :granted
+    event :disburse do
+      transition :new => :disbursed
     end
 
     event :repay do
-      transition :granted => :repaid
+      transition :disbursed => :repaid
     end
   end
   

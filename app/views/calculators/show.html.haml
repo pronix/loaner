@@ -1,0 +1,28 @@
+- title "Calculator"
+- if @result
+  %h2 Result:
+  %p
+    = @result
+= form_tag calculators_path, :method => :put do |form|
+  %h3 Loan type
+  %p
+    = radio_button_tag :loan_type, :simple
+    = label_tag :loan_type_simple, "Simple"
+  %p
+    = radio_button_tag :loan_type, :monthly_cum_daily
+    = label_tag :loan_type_monthly_cum_daily, "Monthly cum Daily Interest (Monthly)"
+  %p
+    = radio_button_tag :loan_type, :daily
+    = label_tag :loan_type_daily, "Daily (Monthly)"
+
+  %p
+    = label_tag :amount, "Loan Amount"
+    = text_field_tag :amount, 0.0
+
+  %p
+    = label_tag :rate_interest, "Rate of Interest"
+    = text_field_tag :rate_interest, 0
+    = label_tag :percent_per, "% Per"
+    = select_tag :percent_per, options_for_select(["Monthly", "Weekly", "Fortnightly", "Annually"])
+  %p
+    = submit_tag "Calculate"

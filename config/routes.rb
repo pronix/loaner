@@ -1,7 +1,6 @@
 Loaner::Application.routes.draw do
   resources :people
-  #resources :disbursements
-  #resources :payments
+  resource  :calculators
   resources :users
   resources :user_sessions
 

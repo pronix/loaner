@@ -27,11 +27,15 @@ gem 'unicorn'
 gem 'capistrano'
 
 group :test do
-  gem 'capybara'
   gem 'cucumber'
   gem 'cucumber-rails'
+  gem 'capybara'
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'database_cleaner'
+  gem 'timecop'
+  gem 'factory_girl'
+  gem 'faker'
 end
 
 group :development do
@@ -41,6 +45,7 @@ group :development do
   gem 'hirb'
   gem 'duration'
   gem 'annotate'
+  gem 'faker'
 end
 # To use debugger
 # gem 'ruby-debug'

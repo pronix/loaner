@@ -37,8 +37,8 @@ Feature: Collection
     When I go to the "Loans/Collection" menu
     Then I should see the "Collection" table
     And table content should be
-        | John Doe  | Name of Lender  | STATUS | Remark1    |                 ???
-        | Alex Nine | Name of Lender  | STATUS | Remark2    |                 ???
+    | John Doe  | Name of Lender  | STATUS | Remark1    |
+    | Alex Nine | Name of Lender  | STATUS | Remark2    |
 
   Scenario: Link to Payment Details
     Given I logged in

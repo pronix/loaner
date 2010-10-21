@@ -16,6 +16,9 @@ require 'cucumber/web/tableish'
 require 'capybara/rails'
 require 'capybara/cucumber'
 require 'capybara/session'
+#require 'ruby-debug'
+require 'cucumber_rails_debug/steps'
+
 
 
 # Lets you click links with onclick javascript handlers without using @culerity or @javascript

@@ -36,6 +36,8 @@ group :test do
   gem 'timecop'
   gem 'factory_girl'
   gem 'faker'
+  gem 'spork'
+  gem 'launchy'
 end
 
 group :development do

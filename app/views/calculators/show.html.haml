@@ -1,12 +1,20 @@
-- title "Calculator"
+- title "Loan Calculator"
 - if @result
   %h2 Result:
   %p
-    = @result
-= form_tag calculators_path, :method => :put do |form|
+    %p
+      Total Interest Payable:
+      = number_to_currency @result[:total_payable_interest], :precision => 2 
+    %p
+      Monthly Installment:
+      = number_to_currency @result[:installment], :precision => 2
+      per Monthly for
+      = @result[:no_of_terms]
+      monthly
+= form_tag calculate_calculators_path, :method => :put do
   %h3 Loan type
   %p
-    = radio_button_tag :loan_type, :simple
+    = radio_button_tag :loan_type, :simple, (@calculator.loan_type == "simple" || @calculator.loan_type.blank?)
     = label_tag :loan_type_simple, "Simple"
   %p
     = radio_button_tag :loan_type, :monthly_cum_daily
@@ -17,12 +25,20 @@
 
   %p
     = label_tag :amount, "Loan Amount"
-    = text_field_tag :amount, 0.0
+    = text_field_tag :amount, @calculator.amount.to_f
 
   %p
     = label_tag :rate_interest, "Rate of Interest"
-    = text_field_tag :rate_interest, 0
+    = text_field_tag :rate_interest, (@calculator.rate_interest || 10)
     = label_tag :percent_per, "% Per"
-    = select_tag :percent_per, options_for_select(["Monthly", "Weekly", "Fortnightly", "Annually"])
+    = select_tag :percent_per, options_for_select(["Annually"])
+
+  %p
+    = label_tag :no_of_terms, "No of Terms"
+    = text_field_tag :no_of_terms, @calculator.no_of_terms.to_i
+
+    = label_tag :terms_units, "Terms Units"
+    = select_tag :terms_units, options_for_select(["Months"])
+
   %p
     = submit_tag "Calculate"

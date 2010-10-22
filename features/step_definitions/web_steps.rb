@@ -36,7 +36,7 @@ When /^(?:|I )follow "([^"]*)"(?: within "([^"]*)")?$/ do |link, selector|
   end
 end
 
-When /^(?:|I )fill in "([^"]*)" with "([^"]*)"(?: within "([^"]*)")?$/ do |field, value, selector|
+When /^(?:|I )fill in "([^\"]*)" with "([^\"]*)"(?: within "([^\"]*)")?$/ do |field, value, selector|
   with_scope(selector) do
     fill_in(field, :with => value)
   end
@@ -146,7 +146,7 @@ Then /^(?:|I )should not see \/([^\/]*)\/(?: within "([^"]*)")?$/ do |regexp, se
   end
 end
 
-Then /^the "([^"]*)" field(?: within "([^"]*)")? should contain "([^"]*)"$/ do |field, selector, value|
+Then /^the "([^"]*)" field(?: within "([^\"]*)")? should contain "([^"]*)"$/ do |field, selector, value|
   with_scope(selector) do
     field = find_field(field)
     field_value = (field.tag_name == 'textarea') ? field.text : field.value
@@ -211,6 +211,24 @@ Then /^(?:|I )should have the following query string:$/ do |expected_pairs|
     actual_params.should == expected_params
   else
     assert_equal expected_params, actual_params
+  end
+end
+
+Then /^(?:|page )should contain "([^\"]*)" (text input field|select field|radio button|submit (?:|button|field))$/  do |field, field_type|
+  field = field.strip.downcase.gsub ' ', '_'
+  xpath = case field_type
+          when "text input field" then "//input[@id='#{field}']"
+          when "radio button"     then "//input[@id='#{field}']"
+          when "select field"     then "//select[@id='#{field}']"
+          when /submit/           then "//input[@type='submit']"
+          end
+  page.should have_xpath xpath
+end
+
+Then /^(?:|page )should contain "([^\"]*)" (radio buttons|input fields|select fields)$/  do |fields, field_type|
+  fields = fields.split(",")
+  fields.each do |field|
+    Then %(page should contain "#{field}" #{field_type.chop})
   end
 end
 

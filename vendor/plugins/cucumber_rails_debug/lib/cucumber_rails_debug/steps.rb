@@ -1,6 +1,6 @@
 module CucumberRailsDebug
   def where
-    puts "#{@request.env["SERVER_NAME"]}#{@request.env["REQUEST_URI"]}" 
+    puts "#{@request.env["SERVER_NAME"]}#{@request.env["REQUEST_URI"]}" if @request
   end
 
   def how

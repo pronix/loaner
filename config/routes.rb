@@ -1,6 +1,10 @@
 Loaner::Application.routes.draw do
   resources :people
-  resource  :calculators
+  resource  :calculators do
+    member do
+      put 'calculate'
+    end
+  end
   resources :users
   resources :user_sessions
 

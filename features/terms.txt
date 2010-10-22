@@ -109,3 +109,5 @@ Renewal fees
 Late repayment 
     несвоевременное погашение
 
+Installment
+    Взнос

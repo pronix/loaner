@@ -6,7 +6,7 @@ module NavigationHelpers
   # step definition in web_steps.rb
   #
   def path_to(page_name)
-    case page_name
+    path = case page_name
 
     when /the home\s?page/
       '/'
@@ -18,6 +18,8 @@ module NavigationHelpers
       login_path
     when /logout/
       logout_path
+    when /Calculator/
+      calculators_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
@@ -25,16 +27,17 @@ module NavigationHelpers
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
 
-    else
-      begin
-        page_name =~ /the (.*) page/
-        path_components = $1.split(/\s+/)
-        self.send(path_components.push('path').join('_').to_sym)
-      rescue Object => e
-        raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
-          "Now, go and add a mapping in #{__FILE__}"
-      end
+    #else
+    #  begin
+    #    page_name =~ /the (.*) page/
+    #    path_components = $1.split(/\s+/)
+    #    self.send(path_components.push('path').join('_').to_sym)
+    #  rescue Object => e
+    #    raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
+    #      "Now, go and add a mapping in #{__FILE__}"
+    #  end
     end
+    path
   end
 end
 

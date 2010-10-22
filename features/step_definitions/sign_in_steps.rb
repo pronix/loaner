@@ -26,9 +26,9 @@ end
 
 Given /^I logged in as "(.*)\/(.*)"$/ do |username, password|
   Given %{I go to page "login"}
-         И %{fill field "user_session[username]" значением "#{username}" }
-         И %{заполнил поле "user_session[password]" значением "#{password}" }
-         И %{нажал кнопку "user_session_submit"}
+         And %{fill in "user_session[username]" with "#{username}"}
+         And %{fill in "user_session[password]" with "#{password}"}
+         And %{press "user_session_submit"}
   $current_user = User.find_by_email(username)
 end
 

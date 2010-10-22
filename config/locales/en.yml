@@ -3,3 +3,19 @@
 
 en:
   hello: "Hello world"
+  formtastic:
+    labels:
+      loan:
+        account_no: Account No
+        acceptance_fees: Acceptance Fees
+        revolving_credit_approval: Revolving Credit Approval/Renewal Fees
+        late_repayment: Late Repayment
+        terms_of_contract_variation: Terms of Contract Variation
+        cheque_dishonour: Cheque Dishonour/Unseccessful GIRO
+        preclousure_termination_fees: Preclousure/Termination Fees
+        legal_fees: Legal Fees
+        first_payment_at: Date of First Payment
+        maturity_at: Loan Maturity Date
+        grace_period: Grace Period (in days)
+        terms: Terms & Conditions
+

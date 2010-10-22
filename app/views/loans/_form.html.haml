@@ -1,19 +1,22 @@
 = semantic_form_for resource do |form|
-  = form.input :lender
-  = link_to "New Person", new_person_path
-  = form.inputs :name => "Borrowers", :id => "borrowers" do
-    = form.input :borrowers
+  = form.inputs :name => "Common" do
+    = form.input :lender
     = link_to "New Person", new_person_path
-  = form.inputs :name => "Sureties", :id => "sureties" do
-    = form.input :sureties
-    = link_to "New Person", new_person_path
-  = form.input :account_no
-  = form.input :application, :as => :string
-  = form.input :loan_type,  :as => :select,  :collection => ["Daily", "Monthly"]
-  = form.input :amount
+    = form.inputs :name => "Borrowers", :id => "borrowers" do
+      = form.input :borrowers
+      = link_to "New Person", new_person_path
+    = form.inputs :name => "Sureties", :id => "sureties" do
+      = form.input :sureties
+      = link_to "New Person", new_person_path
+    = form.input :account_no
+    = form.input :application, :as => :string
+    = form.input :loan_type,  :as => :select,  :collection => ["Type1", "Type2"], :include_blank => false
+    = form.input :amount
 
   = form.inputs :name => "Interest Calculation (%)", :id => "interest" do
     = form.input :interest
+    = form.input :interest_type, :as => :radio, :collection => [["Simple", "simple"], ["Monthly cum Daily Interest (Monthly)", "monthly_cum_daily"], ["Daily Interest (Monthly)", "daily"], ["Late Interest (Monthly)", "late"]]
+    = form.input :simple_interest_method, :as => :select, :collection => Loan::SIMPLE_INTEREST_METHODS, :include_blank => false
     
   = form.inputs :name => "Permitted Fees", :id => "permitted_fees" do
     = form.input :acceptance_fees
@@ -25,7 +28,7 @@
     = form.input :legal_fees
 
   = form.inputs :name => "Payment Schedule", :id => "payments_schedule" do
-    = form.input :schedule_type
+    = form.input :schedule_type, :as => :radio, :collection => Loan::SCHEDULE_TYPE, :include_blank => false
     = form.input :grace_period
     = form.input :first_payment_at, :as => :string
     = form.input :maturity_at, :as => :string
@@ -53,5 +56,6 @@
     = form.input :remarks
     = form.input :terms
     = form.input :language
-  = form.commit_button
+  = form.buttons do
+    = form.commit_button
 

@@ -23,6 +23,7 @@ class Calculator
 
   def calculate
     if loan_type
+      @result[:no_of_terms] = no_of_terms
       self.send loan_type if self.respond_to? loan_type
       Rails.logger.debug "result: #{result.inspect}"
       @result
@@ -32,19 +33,23 @@ class Calculator
   def simple
     @result[:total_payable_interest] = (amount.to_f * rate_interest.to_f / 100.0) * (no_of_terms.to_f / 12)
     @result[:installment] = (@result[:total_payable_interest] + amount.to_f) / no_of_terms.to_f
-    @result[:no_of_terms] = no_of_terms
   end
 
   def monthly_cum_daily
-
+    not_implemented
   end
 
   def daily
-
+    not_implemented
   end
 
   def late
+    not_implemented
+  end
 
+  def not_implemented
+    @result[:total_payable_interest] = "Not Implemented"
+    @result[:installment] = "Not Implemented"
   end
 
   

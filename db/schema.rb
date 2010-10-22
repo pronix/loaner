@@ -28,9 +28,8 @@ ActiveRecord::Schema.define(:version => 20101020105329) do
     t.float    "amount",                       :default => 0.0,      :null => false
     t.float    "interest",                     :default => 0.0,      :null => false
     t.string   "interest_type",                :default => "simple", :null => false
-    t.integer  "simple_interest_method",       :default => 0
-    t.integer  "payment_schedule",             :default => 0
-    t.integer  "schedule_type",                :default => 0
+    t.string   "simple_interest_method"
+    t.string   "schedule_type"
     t.integer  "grace_period",                 :default => 0
     t.date     "first_payment_at"
     t.date     "maturity_at"

@@ -12,11 +12,10 @@ class CreateLoans < ActiveRecord::Migration
       t.float   :interest,                :null => false, :default => 0.0
 
       t.string  :interest_type,           :null => false, :default => "simple"
-      t.integer :simple_interest_method,  :default => 0
+      t.string  :simple_interest_method
 
       # payments
-      t.integer :payment_schedule,        :default => 0
-      t.integer :schedule_type,           :default => 0
+      t.string  :schedule_type
       t.integer :grace_period,            :default => 0
       t.date    :first_payment_at
       t.date    :maturity_at

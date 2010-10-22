@@ -214,11 +214,14 @@ Then /^(?:|I )should have the following query string:$/ do |expected_pairs|
   end
 end
 
-Then /^(?:|page )should contain "([^\"]*)" (text input field|select field|radio button|submit (?:|button|field))$/  do |field, field_type|
+Then /^(?:|page )should contain "([^\"]*)" (text input field|text area|select field|radio button|submit (?:|button|field)|div|tab)$/  do |field, field_type|
   xpath = case field_type
-          when "text input field", "radio button", "select field"
-            then "//label[text()='#{field}']"
-          when /submit/           then "//input[@type='submit']"
+          when "text input field", "radio button", "select field", "text area"
+            "//label[text()='#{field}']"
+          when /submit/
+            "//input[@type='submit']"
+          when "tab","div"
+            "//legend/span[text()='#{field}']"
           end
   page.should have_xpath xpath
 end
@@ -233,3 +236,4 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
+

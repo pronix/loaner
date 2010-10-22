@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(:version => 20101020105329) do
     t.float    "interest",                     :default => 0.0,      :null => false
     t.string   "interest_type",                :default => "simple", :null => false
     t.integer  "simple_interest_method",       :default => 0
-    t.text     "remarks"
     t.integer  "payment_schedule",             :default => 0
     t.integer  "schedule_type",                :default => 0
     t.integer  "grace_period",                 :default => 0
@@ -44,6 +43,8 @@ ActiveRecord::Schema.define(:version => 20101020105329) do
     t.string   "legal_fees"
     t.text     "terms"
     t.string   "language"
+    t.text     "remarks"
+    t.string   "bankruptcy_declaration"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

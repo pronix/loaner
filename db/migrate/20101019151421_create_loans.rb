@@ -13,7 +13,6 @@ class CreateLoans < ActiveRecord::Migration
 
       t.string  :interest_type,           :null => false, :default => "simple"
       t.integer :simple_interest_method,  :default => 0
-      t.text    :remarks
 
       # payments
       t.integer :payment_schedule,        :default => 0
@@ -34,6 +33,8 @@ class CreateLoans < ActiveRecord::Migration
       # misc
       t.text  :terms
       t.string  :language
+      t.text    :remarks
+      t.string  :bankruptcy_declaration
 
       t.timestamps
     end

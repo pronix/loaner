@@ -12,7 +12,7 @@
   = form.input :loan_type,  :as => :select,  :collection => ["Daily", "Monthly"]
   = form.input :amount
 
-  = form.inputs :name => "Interest", :id => "interest" do
+  = form.inputs :name => "Interest Calculation (%)", :id => "interest" do
     = form.input :interest
     
   = form.inputs :name => "Permitted Fees", :id => "permitted_fees" do
@@ -49,6 +49,7 @@
               = link_to "Destroy", loan_payment_path(resource, payment), :confirm => 'Are you sure?', :method => :delete
 
   = form.inputs :name => "Misc", :id => "misc" do
+    = form.input :bankruptcy_declaration
     = form.input :remarks
     = form.input :terms
     = form.input :language

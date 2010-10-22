@@ -5,7 +5,7 @@ class CalculatorsController < ApplicationController
   end
 
   def calculate
-    @calculator = Calculator.new params
+    @calculator = Calculator.new params[:calculator]
     @result = @calculator.calculate
     render :show
   end

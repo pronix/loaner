@@ -11,34 +11,34 @@
       per Monthly for
       = @result[:no_of_terms]
       monthly
-= form_tag calculate_calculators_path, :method => :put do
+= form_for @calculator, :url => calculate_calculators_path, :html => {:method => :put} do |form|
   %h3 Loan type
   %p
-    = radio_button_tag :loan_type, :simple, (@calculator.loan_type == "simple" || @calculator.loan_type.blank?)
-    = label_tag :loan_type_simple, "Simple"
+    = form.radio_button :loan_type, :simple
+    = form.label :loan_type_simple, "Simple"
   %p
-    = radio_button_tag :loan_type, :monthly_cum_daily
-    = label_tag :loan_type_monthly_cum_daily, "Monthly cum Daily Interest (Monthly)"
+    = form.radio_button :loan_type, :monthly_cum_daily
+    = form.label :loan_type_monthly_cum_daily, "Monthly cum Daily Interest (Monthly)"
   %p
-    = radio_button_tag :loan_type, :daily
-    = label_tag :loan_type_daily, "Daily (Monthly)"
+    = form.radio_button :loan_type, :daily
+    = form.label :loan_type_daily, "Daily (Monthly)"
 
   %p
-    = label_tag :amount, "Loan Amount"
-    = text_field_tag :amount, @calculator.amount.to_f
+    = form.label :amount, "Loan Amount"
+    = form.text_field :amount
 
   %p
-    = label_tag :rate_interest, "Rate of Interest"
-    = text_field_tag :rate_interest, (@calculator.rate_interest || 10)
-    = label_tag :percent_per, "% Per"
-    = select_tag :percent_per, options_for_select(["Annually"])
+    = form.label :rate_interest, "Rate of Interest"
+    = form.text_field :rate_interest
+    = form.label :percent_per, "% Per"
+    = form.select :percent_per, options_for_select(["Annually"])
 
   %p
-    = label_tag :no_of_terms, "No of Terms"
-    = text_field_tag :no_of_terms, @calculator.no_of_terms.to_i
+    = form.label :no_of_terms, "No of Terms"
+    = form.text_field :no_of_terms
 
-    = label_tag :terms_units, "Terms Units"
-    = select_tag :terms_units, options_for_select(["Months"])
+    = form.label :terms_units, "Terms Units"
+    = form.select :terms_units, options_for_select(["Months"])
 
   %p
     = submit_tag "Calculate"

@@ -215,18 +215,16 @@ Then /^(?:|I )should have the following query string:$/ do |expected_pairs|
 end
 
 Then /^(?:|page )should contain "([^\"]*)" (text input field|select field|radio button|submit (?:|button|field))$/  do |field, field_type|
-  field = field.strip.downcase.gsub ' ', '_'
   xpath = case field_type
-          when "text input field" then "//input[@id='#{field}']"
-          when "radio button"     then "//input[@id='#{field}']"
-          when "select field"     then "//select[@id='#{field}']"
+          when "text input field", "radio button", "select field"
+            then "//label[text()='#{field}']"
           when /submit/           then "//input[@type='submit']"
           end
   page.should have_xpath xpath
 end
 
 Then /^(?:|page )should contain "([^\"]*)" (radio buttons|input fields|select fields)$/  do |fields, field_type|
-  fields = fields.split(",")
+  fields = fields.split(",").map(&:strip)
   fields.each do |field|
     Then %(page should contain "#{field}" #{field_type.chop})
   end

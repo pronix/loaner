@@ -10,10 +10,10 @@ Feature: Loan Calculator
     Given I logged in as "admin/secret"
     When I go to the "Loan Calculator"
     Then I should see "Loan Calculator"
-    And page should contain "Amount" text input field
-    And page should contain "Rate Interest" text input field
-    And page should contain "Percent Per" select field
-    And page should contain "Loan Type Simple, Loan Type Monthly cum Daily, Loan Type Daily" radio buttons
+    And page should contain "Loan Amount" text input field
+    And page should contain "Rate of Interest" text input field
+    And page should contain "% Per" select field
+    And page should contain "Simple, Monthly cum Daily Interest (Monthly), Daily (Monthly)" radio buttons
     And page should contain "No of Terms" text input field
     And page should contain "Terms Units" select field
     And page should contain "Calculate" submit field
@@ -22,9 +22,9 @@ Feature: Loan Calculator
     Given I logged in as "admin/secret"
     When I go to the "Loan Calculator"
     And I choose "Simple"
-    And I fill in "Loan Amount" with "10000"
+    And I fill in "Amount" with "10000"
     And I fill in "Rate of Interest" with "24"
-    And I select "Annually" from "percent_per"
+    And I select "Annually" from "% Per"
     And I fill in "No of Terms" with "10"
     And I select "Months" from "Terms Units"
     And I press "Calculate"

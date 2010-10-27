@@ -239,6 +239,13 @@ Then /^(?:|page )should contain "([^\"]*)" (radio buttons|input fields|select fi
   end
 end
 
+Then /^(?:|I )should see YAML$/ do
+  require 'yaml'
+  #YAML.pretty_generate(JSON.parse(response.body))
+  true
+end
+
+
 Then /^show me the page$/ do
   save_and_open_page
 end

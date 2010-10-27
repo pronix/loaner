@@ -8,9 +8,14 @@ Loaner::Application.routes.draw do
   resources :users
   resources :user_sessions
   resources :transactions
-  resources :backups
   resources :settings
   resources :reports
+  resources :backups do
+    collection do
+      get 'backup'
+      post 'restore'
+    end
+  end
 
   resources :loans do
     resources :payments

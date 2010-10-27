@@ -1,1 +1,9 @@
-%h1 Backup & Restore 
+%h1 Backup &amp; Restore 
+= link_to "Download Dump File", backup_backups_path
+= form_tag restore_backups_path, :multipart => true do
+  %p
+    = label_tag :file, "Upload Dump File"
+    = file_field_tag :file
+  %p
+    = submit_tag "Restore"
+

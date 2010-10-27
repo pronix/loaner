@@ -1,0 +1,257 @@
+
+--- 
+people: 
+  columns: 
+  - id
+  - user_id
+  - name
+  - birth_at
+  - citizenship
+  - designation
+  - mail_address
+  - business_address
+  - business_phone
+  - home_phone
+  - hand_phone
+  - email
+  - annual_income
+  - photo_file_name
+  - photo_content_type
+  - photo_file_size
+  - photo_updated_at
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 
+    - Dr. Shania Nader
+    - 2008-09-12 15:22:03.132344
+    - 
+    - |
+      --- 
+      - sit
+      - porro
+      - facere
+      - tempora
+      - qui
+      - commodi
+      - consequatur
+      - hic
+      - beatae
+      - aliquid
+
+    - 1167 Terry Cape
+    - 3062 Ratke Road
+    - 230-298-2859 x203
+    - 863-861-9735 x30621
+    - 1-255-409-6618
+    - vivienne.king@pouros.ca
+    - 61000
+    - 
+    - 
+    - 
+    - 
+    - 2010-10-27 15:22:03.144876
+    - 2010-10-27 15:22:03.144876
+  - - 2
+    - 
+    - Rashad Jakubowski
+    - 2006-04-25 15:22:03.211622
+    - 
+    - |
+      --- 
+      - et
+      - ratione
+      - a
+      - consectetur
+      - quia
+      - sit
+      - ut
+      - perspiciatis
+      - inventore
+      - sequi
+
+    - 958 Nyasia Gardens
+    - 40880 Jennifer Hill
+    - (673)502-9725
+    - 568.844.8795 x20293
+    - (092)667-4999
+    - ova@gutmann.uk
+    - 95000
+    - 
+    - 
+    - 
+    - 
+    - 2010-10-27 15:22:03.213863
+    - 2010-10-27 15:22:03.213863
+  - - 3
+    - 
+    - Jamel Schinner
+    - 2006-09-01 15:22:03.221688
+    - 
+    - |
+      --- 
+      - laudantium
+      - velit
+      - consequatur
+      - expedita
+      - non
+      - omnis
+      - optio
+      - quam
+      - vitae
+      - ad
+
+    - 91876 Zemlak Keys
+    - 2287 Holden Spur
+    - (084)716-6018
+    - 848-244-8389
+    - 1-985-212-6645 x2694
+    - georgiana.haley@hermannthompson.biz
+    - 24000
+    - 
+    - 
+    - 
+    - 
+    - 2010-10-27 15:22:03.223915
+    - 2010-10-27 15:22:03.223915
+  - - 4
+    - 
+    - Elinor Hagenes
+    - 2010-04-11 15:22:03.232802
+    - 
+    - |
+      --- 
+      - aut
+      - magni
+      - asperiores
+      - molestias
+      - deleniti
+      - consequatur
+      - voluptatum
+      - dolorem
+      - quidem
+      - voluptate
+
+    - 9467 Georgianna Street
+    - 094 Lubowitz Shores
+    - 483.412.0262
+    - 1-638-822-7066 x1832
+    - 428.412.3448 x2135
+    - verda@considinerogahn.ca
+    - 74000
+    - 
+    - 
+    - 
+    - 
+    - 2010-10-27 15:22:03.234956
+    - 2010-10-27 15:22:03.234956
+  - - 5
+    - 
+    - Mustafa Hilll
+    - 2007-01-16 15:22:03.242907
+    - 
+    - |
+      --- 
+      - maxime
+      - vel
+      - alias
+      - voluptate
+      - quidem
+      - omnis
+      - incidunt
+      - placeat
+      - ut
+      - ullam
+
+    - 9967 Jamey Knolls
+    - 9118 Will Creek
+    - (194)716-7446 x8199
+    - 162-221-6075
+    - (647)624-4679
+    - scarlett@corkerykovacek.name
+    - 39000
+    - 
+    - 
+    - 
+    - 
+    - 2010-10-27 15:22:03.244946
+    - 2010-10-27 15:22:03.244946
+  - - 6
+    - 
+    - Mr. Zelda D'Amore
+    - 2005-08-05 15:22:03.253221
+    - 
+    - |
+      --- 
+      - sint
+      - ut
+      - quibusdam
+      - voluptate
+      - placeat
+      - temporibus
+      - harum
+      - ipsam
+      - omnis
+      - reiciendis
+
+    - 75215 McKenzie Park
+    - 8772 Williamson Fields
+    - 1-829-410-7693
+    - (521)737-5583 x38861
+    - 279-821-8834
+    - roselyn@goodwin.ca
+    - 95000
+    - 
+    - 
+    - 
+    - 
+    - 2010-10-27 15:22:03.255264
+    - 2010-10-27 15:22:03.255
+
+--- 
+roles: 
+  columns: 
+  - id
+  - name
+  - authorizable_type
+  - authorizable_id
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - admin
+    - 
+    - 
+    - 2010-10-27 15:21:53.071105
+    - 2010-10-27 15:21:53.071105
+  - - 2
+    - user
+    - 
+    - 
+    - 2010-10-27 15:21:53.100237
+    - 2010-10-27 15:21:53.100237
+  - - 3
+    - restricted_user
+    - 
+    - 
+    - 2010-10-27 15:21:53.101329
+    - 2010-10-27 15:21:53.101329
+  - - 4
+    - lender
+    - 
+    - 
+    - 2010-10-27 15:21:53.102380
+    - 2010-10-27 15:21:53.102380
+  - - 5
+    - borrower
+    - 
+    - 
+    - 2010-10-27 15:21:53.103435
+    - 2010-10-27 15:21:53.103435
+  - - 6
+    - surety
+    - 
+    - 
+    - 2010-10-27 15:21:53.104522
+    - 2010-10-27 15:21:53.104522

@@ -5,14 +5,19 @@
     - else
       %li= link_to "Login", login_path
       %li= link_to "Register", new_user_path
+
     %li= link_to "People", people_path
+    - if request[:controller] == "people"
+      %ul
+        %li= link_to "New Person", new_person_path
+
     %li= link_to "Loans", loans_path
     - if request[:controller] == "loans"
       %ul
         %li= link_to "Loan Calculator", calculators_path
         %li= link_to "Loan Disbursement", new_loan_path
         %li= link_to "Collection", new_loan_path
-    %li= link_to "Calculator", calculators_path
+
     %li= link_to "Company Transactions", transactions_path
     - if request[:controller] == "transactions"
       %ul
@@ -21,6 +26,26 @@
         %li= link_to "Book Transfer", ""
         %li= link_to "Accounts", ""
 
-    %li= link_to "Reports", ""
-    %li= link_to "Settings", ""
-    %li= link_to "Backup & Restore", ""
+    %li= link_to "Reports", reports_path
+    - if request[:controller] == "reports"
+      %ul
+        %li= link_to "For Submission", ""
+        %li= link_to "For Records", ""
+        %li= link_to "Borrower Reports", ""
+        %li= link_to "Book Statements", ""
+        %li= link_to "Payment Due Report", ""
+        %li= link_to "Loan Status", ""
+
+    %li= link_to "Settings", settings_path
+    - if request[:controller] == "settings"
+      %ul
+        %li= link_to "Company Profile", ""
+        %li= link_to "User Rights", ""
+        %li= link_to "Company Configuration", ""
+        %li= link_to "Client Details Modification", ""
+
+    %li= link_to "Backup & Restore", backups_path
+    - if request[:controller] == "backups"
+      %ul
+        %li= link_to "Backup", ""
+        %li= link_to "Restore", ""

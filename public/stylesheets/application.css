@@ -40,7 +40,8 @@ a {
 .menu {
   padding: 10px;
   margin: 10px;
-  border: 1px dashed gray; }
+  border: 1px dashed gray;
+  margin-bottom: 300px; }
 
 .fieldWithErrors {
   display: inline; }

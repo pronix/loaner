@@ -19,7 +19,8 @@ a {
   background-color: white;
   padding: 20px 40px;
   border: solid 1px black;
-  margin-top: 20px; }
+  margin-top: 20px;
+  min-height: 500px; }
 
 #flash_notice, #flash_error, #flash_alert {
   padding: 5px 8px;
@@ -32,6 +33,14 @@ a {
 #flash_error, #flash_alert {
   background-color: #ffcccc;
   border: solid 1px #cc6666; }
+
+.left {
+  float: left; }
+
+.menu {
+  padding: 10px;
+  margin: 10px;
+  border: 1px dashed gray; }
 
 .fieldWithErrors {
   display: inline; }

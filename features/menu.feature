@@ -1,22 +1,24 @@
 Feature: Menu
   In order to ensure menu navigations
 
+  Background:
+    Given Application has basic configuration
+
   Scenario: Check main menu
-    Given Application ready to work
-    And I logged in
-    When I go to the main screen
+    Given I logged in as "admin/secret"
+    When I go to the "/"
     Then I should see the following menu entries:
       | Menu item               |
       | Loans                   |
       | Company Transactions    |
       | Reports                 |
       | Settings                |
+      | Backup & Restore        |
 
   Scenario: Check "Loans" menu
-    Given Application ready to work
-    And I logged in
-    And I am at main menu
-    When I click link "Loans"
+    Given I logged in as "admin/secret"
+    And I go to the "/"
+    When I follow "Loans"
     Then I should see the following menu entries:
       | Menu item               |
       | Loan Calculator         |
@@ -24,10 +26,9 @@ Feature: Menu
       | Collection              |
 
   Scenario: Check "Company Transactions" menu
-    Given Application ready to work
-    And I logged in
-    And I am at main menu
-    When I click link "Company Transactions"
+    Given I logged in as "admin/secret"
+    And I go to the "/"
+    When I follow "Company Transactions"
     Then I should see the following menu entries:
       | Menu item           |
       | Receipts            |
@@ -36,20 +37,18 @@ Feature: Menu
       | Accounts            |
 
   Scenario: Check "Backup & Restore" menu
-    Given Application ready to work
-    And I logged in
-    And I am at main menu
-    When I click link "Backup & Restore"
+    Given I logged in as "admin/secret"
+    And I go to the "/"
+    When I follow "Backup & Restore"
     Then I should see the following menu entries:
       | Menu item       |
       | Backup          |
       | Restore         |
 
   Scenario: Check "Settings" menu
-    Given Application ready to work
-    And I logged in
-    And I am at main menu
-    When I click link "Settings" menu
+    Given I logged in as "admin/secret"
+    And I go to the "/"
+    When I follow "Settings" menu
     Then I should see the following menu entries:
       | Menu item                                     |
       | Company Profile                               |
@@ -58,10 +57,9 @@ Feature: Menu
       | Client Details Modification (Borrower/Surety) |
 
   Scenario: Check "Reports" menu
-    Given Application ready to work
-    And I logged in
-    And I am at main menu
-    When I click link "Reports"
+    Given I logged in as "admin/secret"
+    And I go to the "/"
+    When I follow "Reports" menu
     Then I should see the following menu entries:
       | Menu item               |
       | For Submission          |

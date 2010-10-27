@@ -7,6 +7,7 @@ Loaner::Application.routes.draw do
   end
   resources :users
   resources :user_sessions
+  resources :transactions
 
   resources :loans do
     resources :payments

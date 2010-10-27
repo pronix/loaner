@@ -2,14 +2,17 @@ Feature: Collection
   In order to ensure Loan Collection feature
 
   Background:
-    Given Loans table
-      | Account No |  Date      | Amount  | Lone type   | Percent |
-      | 1          | 04/02/2010 | 10000   |             | 24      |
-      | 2          | 01/05/2010 | 20000   |             | 18      |
-    Given Borrowers table
-      | Borrower Name | Address           | Registration No   | Type  |  Phone       | Business Phone   | Home Phone  | Loan No |
-      | John Doe      | Baker street      |        5          |       |  +155544444  | +155533333       | +155522222  | 1       |
-      | Alex Nine     | Google street     |        7          |       |  +333333224  | +124352345       | +134455542  | 2       |
+    Given Persons table
+      |    Name       | Mail Address      |  Hand Phone  | Business Phone   | Home Phone  | Annual Income |
+      | John Doe      | Baker street      |  +155544444  | +155533333       | +155522222  | 93000         |
+      | Alex Nine     | Google street     |  +333333224  | +124352345       | +134963542  | 67000         |
+      | Mr.James Bond | Killers street    |  +549875007  | +1007007007      | +139347242  | 99000         |
+      | Bill Gates    | Washington D.C.   |  +645656707  | +365745645       | +333435942  | 120000        |
+      | Joe Satriani  | Toronto, Canada   |  +993939347  | +444455645       | +536664432  | 970000        |
+    And Loans table
+      | Account No | Application  | Amount  | Loan type   | Interest  | Interest Type | Lender   |  Borrowers             | Sureties                  |
+      | 1          | 04/02/2010   | 10000   |             | 24        | simple        | John Doe |  Alex Nine             | Bill Gates, Joe Satriani  |
+      | 2          | 01/05/2010   | 20000   |             | 18        | simple        | John Doe |  Bill Gates, Alex Nine | Joe Satriani              |
     Given Payment table
       | Borrower      | Payment Date  | Amount        |     Remarks   |
       | John Doe      | 01/05/2009    | 582.50        |  Remark1      |

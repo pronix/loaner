@@ -1,3 +1,10 @@
+class String 
+  # Make attribute_name from Human Readable Column Name
+  def attrize
+    self.gsub(" ", "").underscore
+  end
+end
+
 Given /^Application has basic configuration$/ do
   And %{Application have test users} 
   And %{Application have test persons} 
@@ -8,6 +15,36 @@ And /Application ha(?:s|ve) test users/ do
   Factory.create :admin_user
 end
 
-Given /^Application have test persons$/ do
-  5.times { Factory.create :person }
+Given /^Persons table$/ do |table|
+  table.hashes.each do |borrower|
+    attrs = {}
+    borrower.to_a.each { |a| attrs[a.first.attrize] = a.last }
+    Person.create attrs
+  end
+end
+
+Given /^Loans table$/ do |table|
+  table.hashes.each do |loan|
+    l = Loan.new    :account_no     => loan["Account No"],
+                    :application    => Time.parse(loan["Application"]),
+                    :amount         => loan["Amount"],
+                    :type           => loan["Loan type"],
+                    :interest       => loan["Interest"],
+                    :interest_type  => loan["Interest Type"],
+                    :lender         => Person.find_by_name(loan["Lender"])
+                    
+    loan["Borrowers"].split(",").each do |borrower|
+      l.borrowers << Person.find_by_name(borrower.strip)
+    end
+    loan["Sureties"].split(",").each do |surety|
+      l.sureties << Person.find_by_name(surety.strip)
+    end
+    unless l.save
+      p l.errors.full_messages
+    end
+  end
+end
+
+Given /^Payment table$/ do |table|
+
 end

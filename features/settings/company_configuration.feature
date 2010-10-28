@@ -2,9 +2,14 @@ Feature: Company Configuration
   In order to ensure view and modify of Company Configuration
 
   Background:
-    Given Standard application configuration
+    Given Application has basic configuration
 
   Scenario: View "Standard Terms & Conditions of Loan"
+    Given I logged in as "admin/secret"
+    When I go to the "Settings"
+    When I go to the "Company Configuration"
+    Then I should see "Company Configuration"
+
     Given I logged in as "admin@gmail.com"
     When I go to the "Settings/Company Configuration/Standard Terms & Conditions" menu
     Then I should see "Standard Terms & Conditions" header

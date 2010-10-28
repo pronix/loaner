@@ -18,4 +18,11 @@ en:
         maturity_at: Loan Maturity Date
         grace_period: Grace Period (in days)
         terms: Terms & Conditions
+      person:
+        mail_address: Mail Address
+        business_address: Business Address
+        business_phone: Business Phone
+        home_phone: Home Phone
+        hand_phone: Hand Phone
+        annual_income: Annual Income
 

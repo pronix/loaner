@@ -42,7 +42,7 @@
         %li= link_to "Company Profile", ""
         %li= link_to "User Rights", ""
         %li= link_to "Company Configuration", ""
-        %li= link_to "Client Details Modification", ""
+        %li= link_to "Client Details Modification", people_path
 
     %li= link_to "Backup & Restore", backups_path
     - if request[:controller] == "backups"

@@ -259,6 +259,32 @@ Then /^I should see table within "([^"]*)"$/ do |selector, table|
   end
 end
 
+Then /^(input|textarea) field should have value "([^\"]*)"$/ do |field, value|
+  param = case field
+          when "input"
+            "[@value='#{value}']"
+          when "textarea"
+            "[text()='#{value}']"
+          end
+  page.should have_xpath "//#{field}#{param}"
+end
+
+Then /^page should contain labels and fields$/ do |table|
+  table.hashes.each do |row|
+    page.should have_xpath "//label[text()='#{row["Label"]}']"
+    unless row["Field Value"].blank?
+      And %(#{row['Field Type']} field should have value "#{row["Field Value"]}")
+    end
+  end
+  
+end
+
+
+Then /^"([^\"]*)" link should have confirm$/ do |link|
+  page.should have_xpath "//a[@data-confirm='Are you sure?'][text()='#{link}']"
+end
+
+
 Then /^show me the page$/ do
   save_and_open_page
 end

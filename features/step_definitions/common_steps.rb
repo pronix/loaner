@@ -46,5 +46,10 @@ Given /^Loans table$/ do |table|
 end
 
 Given /^Payment table$/ do |table|
-
+  table.hashes.each do |payment|
+    loan = Loan.find_by_account_no payment["Loan Account No"]
+    loan.payments.create  :amount   => payment["Amount"].to_f,
+                          :paid_on  => Time.parse(payment["Payment Date"]),
+                          :remarks  => payment["Remarks"]
+  end
 end

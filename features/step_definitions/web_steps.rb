@@ -245,6 +245,19 @@ Then /^(?:|I )should see YAML$/ do
   true
 end
 
+Then /^I should see table within "([^"]*)"$/ do |selector, table|
+#Then /^(?:|I )should see table (?: within "([^\"]*)")?$/ do |selector, table|
+  with_scope(selector) do
+    table.hashes.first.keys.each do |title|
+      page.should have_xpath('/tr/th', :text => title)
+    end
+    table.hashes.each do |hash|
+      hash.each do |key, value|
+        page.should have_xpath("/tr/td[text()='#{value}']")
+      end
+    end
+  end
+end
 
 Then /^show me the page$/ do
   save_and_open_page

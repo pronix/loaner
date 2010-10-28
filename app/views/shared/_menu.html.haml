@@ -16,7 +16,7 @@
       %ul
         %li= link_to "Loan Calculator", calculators_path
         %li= link_to "Loan Disbursement", new_loan_path
-        %li= link_to "Collection", new_loan_path
+        %li= link_to "Collection", loans_path
 
     %li= link_to "Company Transactions", transactions_path
     - if request[:controller] == "transactions"

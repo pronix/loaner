@@ -1,0 +1,9 @@
+- title "Edit '#{@document.name}'"
+
+= semantic_form_for @document, :url => company_configuration_path(@document) do |form|
+  = form.inputs do
+    = form.input :name
+    = form.input :content
+  = form.buttons do
+    = form.commit_button
+

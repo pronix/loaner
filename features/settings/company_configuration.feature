@@ -1,3 +1,5 @@
+@green
+
 Feature: Company Configuration
   In order to ensure view and modify of Company Configuration
 
@@ -6,53 +8,54 @@ Feature: Company Configuration
 
   Scenario: View "Standard Terms & Conditions of Loan"
     Given I logged in as "admin/secret"
-    When I go to the "Settings"
-    When I go to the "Company Configuration"
+    When I follow "Settings"
+    And I follow "Company Configuration"
     Then I should see "Company Configuration"
-
-    Given I logged in as "admin@gmail.com"
-    When I go to the "Settings/Company Configuration/Standard Terms & Conditions" menu
-    Then I should see "Standard Terms & Conditions" header
-    And I should see "Edit" link
+    And I should see "Standard Terms & Conditions of Loan"
+    And I should see "Demand Letter Format"
 
   Scenario: Edit "Standard Terms & Conditions of Loan"
-    Given I logged in as "admin@gmail.com"
-    When I go to the "Settings/Company Configuration/Standard Terms & Conditions" menu
-    And I click "Edit"
-    Then I should see "Edit Standard Terms & Conditions" header
-    And I should see "terms" text area
-    And I should see "Save" button
+    Given I logged in as "admin/secret"
+    When I follow "Settings"
+    And I follow "Company Configuration"
+    And I follow "Standard Terms & Conditions of Loan"
+    And I follow "Edit"
+    Then I should see "Edit 'Standard Terms & Conditions of Loan'"
 
   Scenario: Change "Standard Terms & Conditions of Loan"
-    Given I logged in as "admin@gmail.com"
-    When I go to the "Settings/Company Configuration/Standard Terms & Conditions" menu
-    And I click "Edit"
-    And Type "New Terms And Conditions" in "terms" text area
-    And click "Save"
-    Then I should see "Edit Standard Terms & Conditions" header
-    And I should see "New Terms And Conditions" text
-
+    Given I logged in as "admin/secret"
+    When I follow "Settings"
+    And I follow "Company Configuration"
+    And I follow "Standard Terms & Conditions of Loan"
+    And I follow "Edit"
+    And I fill in "Content" with "Some text"
+    And I press "Update Document"
+    Then I should see "Some text"
+    And I should see "Edit"
 
   Scenario: View "Demand Letter Format"
-    Given I logged in as "admin@gmail.com"
-    When I go to the "Settings/Company Configuration/Demand Letter Format" menu
-    Then I should see "Demand Letter Format" header
-    And I should see "Edit" link
+    Given I logged in as "admin/secret"
+    When I follow "Settings"
+    And I follow "Company Configuration"
+    Then I should see "Company Configuration"
+    And I should see "Demand Letter Format"
+    And I should see "Demand Letter Format"
 
   Scenario: Edit "Demand Letter Format"
-    Given I logged in as "admin@gmail.com"
-    When I go to the "Settings/Company Configuration/Demand Letter Format" menu
-    And I click "Edit"
-    Then I should see "Edit Demand Letter Format" header
-    And I should see "terms" text area
-    And I should see "Save" button
+    Given I logged in as "admin/secret"
+    When I follow "Settings"
+    And I follow "Company Configuration"
+    And I follow "Demand Letter Format"
+    And I follow "Edit"
+    Then I should see "Edit 'Demand Letter Format'"
 
   Scenario: Change "Demand Letter Format"
-    Given I logged in as "admin@gmail.com"
-    When I go to the "Settings/Company Configuration/Demand Letter Format" menu
-    And I click "Edit"
-    And Type "New Letter Format" in "terms" text area
-    And click "Save"
-    Then I should see "Edit Demand Letter Format" header
-    And I should see "New Letter Format" text
-
+    Given I logged in as "admin/secret"
+    When I follow "Settings"
+    And I follow "Company Configuration"
+    And I follow "Demand Letter Format"
+    And I follow "Edit"
+    And I fill in "Content" with "Some text"
+    And I press "Update Document"
+    Then I should see "Some text"
+    And I should see "Edit"

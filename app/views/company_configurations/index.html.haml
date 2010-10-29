@@ -1,0 +1,5 @@
+- title "Company Configuration"
+
+- collection.each do |document|
+  %p
+    = link_to document.name, company_configuration_path(document)

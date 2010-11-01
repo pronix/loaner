@@ -18,6 +18,7 @@ Loaner::Application.routes.draw do
   end
 
   resources :company_configurations
+  resources :company_profiles
 
   resources :loans do
     resources :payments

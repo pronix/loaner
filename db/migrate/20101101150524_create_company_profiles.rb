@@ -19,6 +19,8 @@ class CreateCompanyProfiles < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    CompanyProfile.create :name => "Unknown"
   end
 
   def self.down

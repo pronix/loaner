@@ -1,0 +1,16 @@
+- title "Company Profile"
+= semantic_form_for @company_profile, :method => :put do |form|
+  = form.inputs do
+    = form.input :name
+    = form.input :logo
+    = form.input :rom_reference
+    = form.input :license_number
+    = form.input :address
+    = form.input :contact_person
+    = form.input :contact_person_office_phone
+    = form.input :contact_person_mobile_phone
+    = form.input :contact_person_fax_number
+    = form.input :contact_person_email
+  = form.buttons do
+    = form.commit_button
+

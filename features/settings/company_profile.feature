@@ -15,7 +15,7 @@ Feature: Company Profile Settings
       | Contact Person Email                  |  anderson@gmail.com           |
 
   Scenario: View Company Profile info
-    Given I logged in
+    Given I logged in as "admin/secret"
     When I go to the "Settings/Company Profile" menu
     Then I should see Company Logo image "morgan.jpg"
     And I should see "Company Name" as "Morgan Inc"

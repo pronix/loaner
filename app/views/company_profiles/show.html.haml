@@ -1,0 +1,48 @@
+- title "Company Profile"
+
+%p
+  %b Company Name:
+  = @company_profile.name
+
+%p
+  %b Company Logo:
+  = image_tag @company_profile.logo.url
+
+%p
+  %b ROM Reference Number:
+  = @company_profile.rom_reference
+
+%p
+  %b License Number:
+  = @company_profile.license_number
+
+%p
+  %b Address:
+  = @company_profile.address
+
+%p
+  %b Contact Person:
+  = @company_profile.contact_person
+
+%p
+  %b Contact Person Office Phone Number:
+  = @company_profile.rom_reference
+
+%p
+  %b Contact Person Mobile Number:
+  = @company_profile.rom_reference
+
+%p
+  %b Contact Person Fax Number:
+  = @company_profile.rom_reference
+
+%p
+  %b Contact Person Email:
+  = @company_profile.rom_reference
+
+%p
+  %b 
+  = @company_profile.rom_reference
+
+%p
+  = link_to "Edit", edit_company_profile_path(@company_profile)

@@ -10,11 +10,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101029104619) do
+ActiveRecord::Schema.define(:version => 20101101150524) do
 
   create_table "borrower_loans", :force => true do |t|
     t.integer  "borrower_id", :null => false
     t.integer  "loan_id",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "company_profiles", :force => true do |t|
+    t.string   "name"
+    t.string   "rom_reference"
+    t.string   "license_number"
+    t.text     "address"
+    t.string   "contact_person"
+    t.string   "contact_person_office_phone"
+    t.string   "contact_person_mobile_phone"
+    t.string   "contact_person_fax_number"
+    t.string   "contact_person_email"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

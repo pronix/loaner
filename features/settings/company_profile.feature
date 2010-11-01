@@ -16,9 +16,11 @@ Feature: Company Profile Settings
 
   Scenario: View Company Profile info
     Given I logged in as "admin/secret"
-    When I go to the "Settings/Company Profile" menu
-    Then I should see Company Logo image "morgan.jpg"
-    And I should see "Company Name" as "Morgan Inc"
+    When I follow "Settings"
+    And I follow "Company Profile"
+    And show me the page
+    Then I should see "Company Name: Morgan Inc"
+    And I should see image "morgan.jpg" within ".logo"
     And I should see "ROM Reference Nubmer" as "1234566789"
     And I should see "License Number" as "1234566789"
     And I should see "Address" as "221, Baker Street, London"

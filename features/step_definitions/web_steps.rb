@@ -279,6 +279,12 @@ Then /^page should contain labels and fields$/ do |table|
   
 end
 
+Then /^(?:|I )should see image "([^"]*)"(?: within "([^"]*)")?$/ do |text, selector|
+  with_scope(selector) do
+    page.should have_xpath "//img[contains(@src, '#{text}')]"
+  end
+end
+
 
 Then /^"([^\"]*)" link should have confirm$/ do |link|
   page.should have_xpath "//a[@data-confirm='Are you sure?'][text()='#{link}']"

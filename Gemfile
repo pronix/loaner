@@ -18,7 +18,8 @@ gem 'inherited_resources',      '1.1.2'
 gem 'formtastic',               '~> 1.1.0'
 gem 'has_scope'
 gem 'responders'
-gem 'paperclip'
+gem 'paperclip',                '~> 2.3.5'
+#gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git', :branch => 'rails3'
 
 # Use unicorn as the web server
 gem 'unicorn'
@@ -38,6 +39,7 @@ group :test do
   gem 'faker'
   gem 'spork'
   gem 'launchy'
+  gem 'awesome_print'
 end
 
 group :development do

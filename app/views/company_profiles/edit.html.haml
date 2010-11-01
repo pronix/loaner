@@ -1,5 +1,5 @@
 - title "Company Profile"
-= semantic_form_for @company_profile, :method => :put do |form|
+= semantic_form_for @company_profile, :method => :put, :html => { :multipart => true } do |form|
   = form.inputs do
     = form.input :name
     = form.input :logo

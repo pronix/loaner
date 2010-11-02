@@ -1,0 +1,6 @@
+features/settings/user_rights.feature
+features/company_transactions.feature
+features/reports/payment_schedule.feature
+features/reports/borrower.feature
+features/reports/submission.feature
+

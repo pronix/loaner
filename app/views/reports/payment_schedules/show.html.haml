@@ -1,3 +1,60 @@
 - title "Payment Schedule"
 
-%table
+.report
+
+  %dl
+    %dt Loan Account No:
+    %dd= @loan.account_no
+  %dl
+    %dt Loan Date:
+    %dd= l @loan.created_at
+  %h3 Borrowers
+  - @loan.borrowers.each do |borrower|
+    %dl
+      %dt Name:
+      %dd= borrower.name
+    %dl
+      %dt Address:
+      %dd= borrower.mail_address
+    %dl
+      %dt Home Phone:
+      %dd= borrower.home_phone
+    %dl
+      %dt Hand Phone:
+      %dd= borrower.hand_phone
+    %dl
+      %dt Business Phone:
+      %dd= borrower.business_phone
+  %h3 Sureties
+  - @loan.sureties.each do |surety|
+    %dl
+      %dt Name:
+      %dd= surety.name
+    %dl
+      %dt Address:
+      %dd= surety.mail_address
+    %dl
+      %dt Home Phone:
+      %dd= surety.home_phone
+    %dl
+      %dt Hand Phone:
+      %dd= surety.hand_phone
+    %dl
+      %dt Business Phone:
+      %dd= surety.business_phone
+
+  %table
+    %tr
+      %th Payment No
+      %th Date of Payment
+      %th Amount
+      %th Principal
+      %th Interest
+    -@loan.payments.each_with_index do |payment, num|
+      %tr
+        %td= num+1
+        %td= l payment.paid_on
+        %td= number_to_currency(payment.amount) 
+        %td= number_to_currency(payment.loan.principal_fee) 
+        %td= number_to_currency(payment.loan.interest_fee) 
+      %tr

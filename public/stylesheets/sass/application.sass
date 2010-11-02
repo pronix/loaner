@@ -19,8 +19,9 @@ a
   background-color: #FFF
   padding: 20px 40px
   border: solid 1px black
-  margin-top: 20px
-  min-height: 500px
+  margin: 0 auto
+  height: 100%
+  min-height: 100%
 
 #flash_notice, #flash_error, #flash_alert
   padding: 5px 8px
@@ -36,6 +37,18 @@ a
 
 #menu
 
+.menu_left
+  ul.menu_list
+    width: 200px
+    overflow: hidden
+
+    li
+      list-style: none outside none
+
+#content
+  height: 100%
+  min-height: 100%
+
 .left
   float: left
 
@@ -43,8 +56,8 @@ a
   padding: 10px
   margin: 10px
   border: 1px dashed gray
-  //#height: 400px
-  margin-bottom: 300px
+  height: 100%
+  min-height: 100%
 
 .fieldWithErrors
   display: inline
@@ -69,3 +82,21 @@ a
     margin: 8px 10px
   ul
     margin: 0
+
+.report
+  h3
+    border-bottom: 1px solid #CCC
+
+  dl
+    margin: 2px 2px 2px 2px
+    dt
+      font-weight: bold
+      display: inline
+    dd
+      display: inline
+  table
+    th
+      background: #CCC
+      border: 1px solid black
+    th,td
+      padding: 2px 8px 2px 8px

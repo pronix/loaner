@@ -60,5 +60,12 @@ class Loan < ActiveRecord::Base
       transition :disbursed => :repaid
     end
   end
-  
+
+  def interest_fee
+    (amount * interest / 100) / no_of_terms
+  end
+
+  def principal_fee
+    amount / no_of_terms
+  end
 end

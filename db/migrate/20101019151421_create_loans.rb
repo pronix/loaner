@@ -10,6 +10,7 @@ class CreateLoans < ActiveRecord::Migration
 
       t.float   :amount,                  :null => false, :default => 0.0
       t.float   :interest,                :null => false, :default => 0.0
+      t.integer :no_of_terms,                             :default => 1
 
       t.string  :interest_type,           :null => false, :default => "simple"
       t.string  :simple_interest_method

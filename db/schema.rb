@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20101101150524) do
     t.string   "state",                                              :null => false
     t.float    "amount",                       :default => 0.0,      :null => false
     t.float    "interest",                     :default => 0.0,      :null => false
+    t.integer  "no_of_terms",                  :default => 1
     t.string   "interest_type",                :default => "simple", :null => false
     t.string   "simple_interest_method"
     t.string   "schedule_type"

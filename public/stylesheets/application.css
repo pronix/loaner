@@ -19,8 +19,9 @@ a {
   background-color: white;
   padding: 20px 40px;
   border: solid 1px black;
-  margin-top: 20px;
-  min-height: 500px; }
+  margin: 0 auto;
+  height: 100%;
+  min-height: 100%; }
 
 #flash_notice, #flash_error, #flash_alert {
   padding: 5px 8px;
@@ -34,6 +35,16 @@ a {
   background-color: #ffcccc;
   border: solid 1px #cc6666; }
 
+.menu_left ul.menu_list {
+  width: 200px;
+  overflow: hidden; }
+  .menu_left ul.menu_list li {
+    list-style: none outside none; }
+
+#content {
+  height: 100%;
+  min-height: 100%; }
+
 .left {
   float: left; }
 
@@ -41,7 +52,8 @@ a {
   padding: 10px;
   margin: 10px;
   border: 1px dashed gray;
-  margin-bottom: 300px; }
+  height: 100%;
+  min-height: 100%; }
 
 .fieldWithErrors {
   display: inline; }
@@ -66,3 +78,18 @@ a {
     margin: 8px 10px; }
   .error_messages ul {
     margin: 0; }
+
+.report h3 {
+  border-bottom: 1px solid #cccccc; }
+.report dl {
+  margin: 2px 2px 2px 2px; }
+  .report dl dt {
+    font-weight: bold;
+    display: inline; }
+  .report dl dd {
+    display: inline; }
+.report table th {
+  background: #cccccc;
+  border: 1px solid black; }
+.report table th, .report table td {
+  padding: 2px 8px 2px 8px; }

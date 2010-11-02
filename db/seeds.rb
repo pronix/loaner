@@ -18,4 +18,28 @@ require "faker"
                 :business_address => Faker::Address.street_address,
                 :mail_address => Faker::Address.street_address,
                 :designation => Faker::Lorem.words(10)
+
+end
+
+def random_persons
+  (1..(rand(3)+1)).map { Person.all.rand }
+end
+
+5.times do
+  application = ((rand(30)+12).months.ago - rand(30).days)
+  loan = Loan.create :account_no => rand(1000),
+    :application => application,
+    :lender => Person.all.rand,
+    :borrowers => random_persons,
+    :sureties => random_persons,
+    :amount => ((rand(20)+1) * 1000),
+    :interest => rand(30)+1,
+    :no_of_terms => rand(36)+1,
+    :first_payment_at => (application + 1.month)
+
+  rand(loan.no_of_terms).times do |i|
+    loan.payments.create :paid_on => (loan.first_payment_at + i.months),
+      :amount => loan.principal_fee + loan.interest_fee
+  end
+
 end

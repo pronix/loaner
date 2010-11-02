@@ -1,0 +1,9 @@
+features/settings/company_configuration.feature
+features/settings/client_modifications.feature
+features/settings/company_profile.feature
+features/backup_restore.feature
+features/menu.feature
+features/loans/calculator.feature
+features/loans/collection.feature
+features/loans/disbursement.feature
+

@@ -81,9 +81,10 @@ Feature: Client Details Modifications
   Scenario: I cant delete person if it have Loan Disbursement and Collection records
     Given I logged in as "admin/secret"
     When I follow "Settings"
-    And I follow "Client Details"
+    And I follow "Client Details Modification"
     And I follow "Destroy"
-    Then I should see "Person could not be destroyed"
+    And I should see "People"
+    Then I should see "Person have related loans"
 
 #  Scenario: Delete Person
 #    Given I logged in as "admin@gmail.com"

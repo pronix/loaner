@@ -1,3 +1,5 @@
+@green
+
 Feature: Company Profile Settings
   In order to ensure view and modify of Company Profile settings
 

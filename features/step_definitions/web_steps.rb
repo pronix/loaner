@@ -290,6 +290,9 @@ Then /^"([^\"]*)" link should have confirm$/ do |link|
   page.should have_xpath "//a[@data-confirm='Are you sure?'][text()='#{link}']"
 end
 
+Then /^(?:|I )should see "([^"]*)"(?: within "([^"]*)")?$/ do |text, selector|
+  And %(should see "text")
+end
 
 Then /^show me the page$/ do
   save_and_open_page

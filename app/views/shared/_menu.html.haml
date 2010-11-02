@@ -26,9 +26,10 @@
         %li= link_to "Book Transfer", ""
         %li= link_to "Accounts", ""
 
-    %li= link_to "Reports", reports_path
-    - if request[:controller] == "reports"
+    %li= link_to "Reports", ""
+    - if true # request[:controller] == "reports"
       %ul
+        %li= link_to "Payment Schedule", reports_payment_schedules_path
         %li= link_to "For Submission", ""
         %li= link_to "For Records", ""
         %li= link_to "Borrower Reports", ""

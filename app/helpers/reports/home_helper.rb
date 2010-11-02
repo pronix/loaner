@@ -1,0 +1,2 @@
+module Reports::HomeHelper
+end

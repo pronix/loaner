@@ -31,9 +31,9 @@ class Person < ActiveRecord::Base
 
   has_attached_file :photo, :styles => { :icon => "32x32#", :thumb => "100x100>" }
 
-  def before_destroy
-    if BorrowerLoan.find_by_borrower_id(self) || SuretyLoan.find_by_surety_id(self) || Loan.find_by_lender_id(self)
-      errors.add :base, "Cant delete this Person"
+  before_destroy do |record|
+    if BorrowerLoan.find_by_borrower_id(record) || SuretyLoan.find_by_surety_id(record) || Loan.find_by_lender_id(record)
+      record.errors.add :base, "Cant delete this Person"
       logger.debug "person has relations"
       false
     end

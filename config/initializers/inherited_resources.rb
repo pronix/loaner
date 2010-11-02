@@ -1,2 +1,2 @@
-InheritedResources.flash_keys = [ :notice, :error ]
+#InheritedResources.flash_keys = [ :notice, :error ]
 

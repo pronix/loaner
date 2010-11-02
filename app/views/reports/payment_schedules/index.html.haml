@@ -1,0 +1,13 @@
+- title "Payment Schedule"
+
+
+%table
+  %tr
+    %th Lender Name
+    %th Borrowers Names
+  - @loans.each do |loan|
+    %tr
+      %td= link_to loan.lender.name, reports_payment_schedule_path(loan)
+      - borrowers = loan.borrowers.map{|b| b.name}.join(",")
+      %td= link_to borrowers, reports_payment_schedule_path(loan)
+

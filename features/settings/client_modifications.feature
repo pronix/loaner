@@ -84,7 +84,7 @@ Feature: Client Details Modifications
     And I follow "Client Details Modification"
     And I follow "Destroy"
     And I should see "People"
-    Then I should see "Person have related loans"
+    Then I should see "Person could not be destroyed"
 
 #  Scenario: Delete Person
 #    Given I logged in as "admin@gmail.com"

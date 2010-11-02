@@ -9,7 +9,6 @@ Loaner::Application.routes.draw do
   resources :user_sessions
   resources :transactions
   resources :settings
-  resources :reports
   resources :backups do
     collection do
       get 'backup'
@@ -73,6 +72,11 @@ Loaner::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  namespace :reports do
+    resources :payment_schedules
+    root :to => "home#index"
+  end
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.

@@ -1,11 +1,11 @@
 - title "Company Profile"
 
 %p
-  %b Company Name:
+  %label Company Name:
   = @company_profile.name
 
 %p.logo
-  %b Company Logo:
+  %label Company Logo:
   = image_tag @company_profile.logo.url
 
 %p
@@ -26,23 +26,19 @@
 
 %p
   %b Contact Person Office Phone Number:
-  = @company_profile.rom_reference
+  = @company_profile.contact_person_office_phone
 
 %p
   %b Contact Person Mobile Number:
-  = @company_profile.rom_reference
+  = @company_profile.contact_person_mobile_phone
 
 %p
   %b Contact Person Fax Number:
-  = @company_profile.rom_reference
+  = @company_profile.contact_person_fax_number
 
 %p
   %b Contact Person Email:
-  = @company_profile.rom_reference
-
-%p
-  %b 
-  = @company_profile.rom_reference
+  = @company_profile.contact_person_email
 
 %p
   = link_to "Edit", edit_company_profile_path(@company_profile)

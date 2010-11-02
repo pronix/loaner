@@ -7,8 +7,8 @@ Given /^Company Profile Settings$/ do |table|
                             :license_number                 => a["License Number"],
                             :address                        => a["Address"],
                             :contact_person                 => a["Contact Person"],
-                            :contact_person_office_phone    => a["Contact Person Office Phone Nubmer"],
-                            :contact_person_mobile_phone    => a["Contact Person Mobile Nubmer"],
-                            :contact_person_fax_number      => a["Contact Person Fax Nubmer"],
+                            :contact_person_office_phone    => a["Contact Person Office Phone Number"],
+                            :contact_person_mobile_phone    => a["Contact Person Mobile Number"],
+                            :contact_person_fax_number      => a["Contact Person Fax Number"],
                             :contact_person_email           => a["Contact Person Email"]
 end

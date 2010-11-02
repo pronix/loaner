@@ -19,7 +19,6 @@ gem 'formtastic',               '~> 1.1.0'
 gem 'has_scope'
 gem 'responders'
 gem 'paperclip',                '~> 2.3.5'
-#gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git', :branch => 'rails3'
 
 # Use unicorn as the web server
 gem 'unicorn'

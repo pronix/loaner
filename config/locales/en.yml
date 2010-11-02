@@ -25,4 +25,16 @@ en:
         home_phone: Home Phone
         hand_phone: Hand Phone
         annual_income: Annual Income
+      company_profile:
+        name: Company Name
+        logo: Company Logo
+        rom_reference: ROM Reference Number
+        license_number: License Number
+        address: Address
+        contact_person: Contact Person
+        contact_person_office_phone: Contact Person Office Phone Number
+        contact_person_mobile_phone: Contact Person Mobile Number
+        contact_person_fax_number: Contact Person Fax Number
+        contact_person_email: Contact Person Email
+
 

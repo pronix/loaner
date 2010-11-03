@@ -290,11 +290,41 @@ Then /^"([^\"]*)" link should have confirm$/ do |link|
   page.should have_xpath "//a[@data-confirm='Are you sure?'][text()='#{link}']"
 end
 
-Then /^(?:|I )should see "([^"]*)"(?: within "([^"]*)")?$/ do |text, selector|
-  And %(should see "text")
+#Then /^(?:|I )should see "([^"]*)"(?: within "([^"]*)")?$/ do |text, selector|
+#  And %(should see "text")
+#end
+
+Then /^I should see headers$/ do |table|
+  table.rows.each do |row|
+    And %(should see "#{row.join(' ')}")
+  end
 end
 
 Then /^show me the page$/ do
   save_and_open_page
 end
 
+Then /^I should see the table "([^\"]*)"$/ do |selector, expected_table|
+  #require 'ap'
+  node = page.find(selector)
+  table_on_page = []
+  node.node.children.each do |tr|
+    row = []
+    tr.children.each do |td|
+      row << td.text.strip if td.name =~ /(td|th)/
+    end
+    table_on_page << row
+  end
+
+  #expected_table.raw.each_with_index do |row, i|
+  #  row.each_with_index do |col, j|
+  #    ap col
+  #    ap table_on_page[i][j] 
+  #    col.should == table_on_page[i][j]
+  #  end
+  #end
+
+  #ap table_on_page
+  #ap expected_table.raw
+  expected_table.raw.should == table_on_page
+end

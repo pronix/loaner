@@ -46,7 +46,7 @@
         - resource.payments.each do |payment|
           %tr
             %td= payment.paid_on
-            %td= payment.amount
+            %td= number_to_currency payment.amount
             %td= payment.remarks
             %td
               = link_to "Edit", edit_loan_payment_path(resource, payment)

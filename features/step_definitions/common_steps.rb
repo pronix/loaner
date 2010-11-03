@@ -25,13 +25,15 @@ end
 
 Given /^Loans table$/ do |table|
   table.hashes.each do |loan|
-    l = Loan.new    :account_no     => loan["Account No"],
-                    :application    => Time.parse(loan["Application"]),
-                    :amount         => loan["Amount"],
-                    :type           => loan["Loan type"],
-                    :interest       => loan["Interest"],
-                    :interest_type  => loan["Interest Type"],
-                    :lender         => Person.find_by_name(loan["Lender"])
+    l = Loan.new    :account_no               => loan["Account No"],
+                    :application              => Date.parse(loan["Application"]),
+                    :amount                   => loan["Amount"],
+                    :type                     => loan["Loan type"],
+                    :interest                 => loan["Interest"],
+                    :interest_type            => loan["Interest Type"],
+                    :no_of_terms              => loan["No of Terms"].to_i,
+                    :simple_interest_method   => loan["Simple Interest Method"],
+                    :lender                   => Person.find_by_name(loan["Lender"])
                     
     loan["Borrowers"].split(",").each do |borrower|
       l.borrowers << Person.find_by_name(borrower.strip)
@@ -48,8 +50,10 @@ end
 Given /^Payment table$/ do |table|
   table.hashes.each do |payment|
     loan = Loan.find_by_account_no payment["Loan Account No"]
-    loan.payments.create  :amount   => payment["Amount"].to_f,
-                          :paid_on  => Time.parse(payment["Payment Date"]),
+    amount = payment["Amount"]
+    amount = amount[1..-1] if amount =~ /^\$/
+    loan.payments.create  :amount   => amount.to_f,
+                          :paid_on  => Date.parse(payment["Payment Date"]),
                           :remarks  => payment["Remarks"]
   end
 end

@@ -7,7 +7,7 @@
     %dd= @loan.account_no
   %dl
     %dt Loan Date:
-    %dd= l @loan.created_at
+    %dd= l @loan.application
   %h3 Borrowers
   - @loan.borrowers.each do |borrower|
     %dl
@@ -25,6 +25,7 @@
     %dl
       %dt Business Phone:
       %dd= borrower.business_phone
+    %hr
   %h3 Sureties
   - @loan.sureties.each do |surety|
     %dl
@@ -42,14 +43,18 @@
     %dl
       %dt Business Phone:
       %dd= surety.business_phone
+    %hr
 
-  %table
+  %table.payment_schedule
     %tr
       %th Payment No
       %th Date of Payment
       %th Amount
       %th Principal
       %th Interest
+    - total_amount    = 0.0
+    - total_principal = 0.0
+    - total_interest  = 0.0
     -@loan.payments.each_with_index do |payment, num|
       %tr
         %td= num+1
@@ -57,4 +62,12 @@
         %td= number_to_currency(payment.amount) 
         %td= number_to_currency(payment.loan.principal_fee) 
         %td= number_to_currency(payment.loan.interest_fee) 
-      %tr
+        - total_amount    += payment.amount
+        - total_principal += payment.loan.principal_fee
+        - total_interest  += payment.loan.interest_fee
+    %tr
+      %td Total
+      %td
+      %td= number_to_currency total_amount
+      %td= number_to_currency total_principal
+      %td= number_to_currency total_interest

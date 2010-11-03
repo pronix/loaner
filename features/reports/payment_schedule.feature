@@ -1,4 +1,4 @@
-#@wip
+@green
 
 Feature: Payment Schedule
   In order to ensure Payment Schedule Report
@@ -13,50 +13,56 @@ Feature: Payment Schedule
       | Joe Satriani  | Toronto, Canada   |  +993939347  | +444455645       | +536664432  | 970000        |
       | Steve Jobs    | New Zeland        |  23412344734 | +233232323       | +534343441  | 10000         |
     And Loans table
-      | Account No | Application  | Amount  | Loan type   | Interest  | Interest Type | Lender     |  Borrowers             | Sureties                  |
-      | 1          | 04/02/2010   | 10000   |             | 16.5      | simple        | John Doe   |  Alex Nine             | Bill Gates, Joe Satriani  |
-      | 2          | 01/05/2010   | 20000   |             | 18        | simple        | Steve Jobs |  Bill Gates, Alex Nine | Joe Satriani              |
+      | Account No | Application  | Amount  | Loan type   | Interest  | No of Terms | Interest Type | Simple Interest Method  | Lender     |  Borrowers             | Sureties                  |
+      | 1          | 2008-06-21   | 11000   |             | 20        | 35          | simple        | monthly                 | John Doe   |  Alex Nine             | Bill Gates, Joe Satriani  |
+      | 2          | 2008-05-03   | 20000   |             | 18        | 12          | simple        | monthly                 | Steve Jobs |  Bill Gates, Alex Nine | Joe Satriani              |
     Given Payment table
-      | Loan Account No | Payment Date  | Amount        |     Remarks   |
-      |  1              | 01/05/2009    | 582.50        |  Remark1      |
-      |  1              | 01/06/2009    | 582.50        |               |
-      |  1              | 01/07/2009    | 582.50        |               |
-      |  1              | 01/08/2009    | 582.50        |               |
-      |  1              | 01/09/2009    | 582.50        |               |
-      |  1              | 01/10/2009    | 582.50        |               |
-      |  1              | 01/11/2009    | 582.50        |               |
-      |  1              | 01/12/2009    | 582.50        |               |
-      |  1              | 01/01/2010    | 582.50        |               |
-      |  1              | 01/02/2010    | 582.50        |               |
+      | Loan Account No | Payment Date  |    Amount     |   Remarks     |
+      |  1              |   2008-07-21  |    $377.14    |               |
+      |  1              |   2008-08-21  |    $377.14    |               |
+      |  1              |   2008-09-21  |    $377.14    |               |
+      |  1              |   2008-10-21  |    $377.14    |               |
+      |  1              |   2008-11-21  |    $377.14    |               |
+      |  1              |   2008-12-21  |    $377.14    |               |
+      |  1              |   2009-01-21  |    $377.14    |               |
+      |  1              |   2009-02-21  |    $377.14    |               |
+      |  1              |   2009-03-21  |    $377.14    |               |
+      |  1              |   2009-04-21  |    $377.14    |               |
+      |  1              |   2009-05-21  |    $377.14    |               |
+      |  1              |   2009-06-21  |    $377.14    |               |
+      |  1              |   2009-07-21  |    $377.14    |               |
 
   Scenario: View "Payment Schedule" Report
     Given I logged in as "admin/secret"
     When I follow "Reports"
     And I follow "Payment Schedule"
     And I follow "Alex Nine"
-    Then I should see the "Borrowers List"
-    And I should see headers of page
-      | Header name       |   Value               |
-      | Loan Account No   | 1                     |
-      | Borrower Name     | Alex Nine             |
-      | Borrower Address  | Baker street          |
-      | Loan Date         | 04/02/2010            |
-      | Home Phone        | +155522222            |
-      | Business Phone    | +155533333            |
-      | Hand Phone        | +155544444            |
-    And I should see table
-      | Payment No        |   Date of Payment     |  Amount    |   Principal    |    Interest   |
-      |  1                |   01/05/2009          |  582.50    |   500.00       |    82.50      |
-      |  2                |   01/06/2009          |  582.50    |   500.00       |    82.50      |
-      |  3                |   01/07/2009          |  582.50    |   500.00       |    82.50      |
-      |  4                |   01/08/2009          |  582.50    |   500.00       |    82.50      |
-      |  5                |   01/09/2009          |  582.50    |   500.00       |    82.50      |
-      |  6                |   01/10/2009          |  582.50    |   500.00       |    82.50      |
-      |  7                |   01/11/2009          |  582.50    |   500.00       |    82.50      |
-      |  8                |   01/12/2009          |  582.50    |   500.00       |    82.50      |
-      |  9                |   01/01/2010          |  582.50    |   500.00       |    82.50      |
-      |  10               |   01/02/2010          |  582.50    |   500.00       |    82.50      |
-      |  Total            |                       | 5825.00    |  5000.00       |   825.00      |
+    Then I should see "Payment Schedule"
+    And I should see headers
+      | Loan Account No     | 1                     |
+      | Name:               | Alex Nine             |
+      | Address:            | Google street         |
+      | Loan Date:          | 2008-06-21            |
+      | Home Phone:         | +134963542            |
+      | Business Phone:     | +124352345            |
+      | Hand Phone:         | +333333224            |
+    And I should see the table ".payment_schedule"
+      | Payment No        |   Date of Payment     |   Amount    |   Principal    |    Interest   |
+      |  1                |    2008-07-21         |   $377.14   |   $314.29      |   $62.86      |
+      |  2                |    2008-08-21         |   $377.14   |   $314.29      |   $62.86      |
+      |  3                |    2008-09-21         |   $377.14   |   $314.29      |   $62.86      |
+      |  4                |    2008-10-21         |   $377.14   |   $314.29      |   $62.86      |
+      |  5                |    2008-11-21         |   $377.14   |   $314.29      |   $62.86      |
+      |  6                |    2008-12-21         |   $377.14   |   $314.29      |   $62.86      |
+      |  7                |    2009-01-21         |   $377.14   |   $314.29      |   $62.86      |
+      |  8                |    2009-02-21         |   $377.14   |   $314.29      |   $62.86      |
+      |  9                |    2009-03-21         |   $377.14   |   $314.29      |   $62.86      |
+      |  10               |    2009-04-21         |   $377.14   |   $314.29      |   $62.86      |
+      |  11               |    2009-05-21         |   $377.14   |   $314.29      |   $62.86      |
+      |  12               |    2009-06-21         |   $377.14   |   $314.29      |   $62.86      |
+      |  13               |    2009-07-21         |   $377.14   |   $314.29      |   $62.86      |
+      | Total             |                       | $4,902.82   | $4,085.71      |  $817.14      |
+        
 
 
 

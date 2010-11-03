@@ -93,3 +93,6 @@ a {
   border: 1px solid black; }
 .report table th, .report table td {
   padding: 2px 8px 2px 8px; }
+.report hr {
+  border: 1px dashed #dddddd;
+  height: 1px; }

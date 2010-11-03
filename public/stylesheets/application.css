@@ -92,7 +92,10 @@ a {
   background: #cccccc;
   border: 1px solid black; }
 .report table th, .report table td {
-  padding: 2px 8px 2px 8px; }
+  padding: 2px 8px 2px 8px;
+  border-bottom: 1px solid black; }
 .report hr {
   border: 1px dashed #dddddd;
   height: 1px; }
+.report p.small {
+  font-size: 10px; }

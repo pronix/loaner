@@ -1,22 +1,30 @@
+@green
+
 Feature: Borrower Reports
   In order to ensure Borrower Reports
 
   Background:
-    Given Loans table
-      | Account No |  Date      | Amount  | Lone type   | Percent |
-      | 1          | 04/02/2010 | 10000   |             | 24      |
-      | 2          | 01/05/2010 | 20000   |             | 18      |
-    Given Borrowers table
-      | Borrower Name | Registration No   | Type  |  Phone       | Business Phone   | Home Phone  | Loan No |
-      | John Doe      |        5          |       |  +155544444  | +155533333       | +155522222  | 1       |
-      | Alex Nine     |        7          |       |  +333333224  | +124352345       | +134455542  | 2       |
+    Given Persons table
+      |    Name       | Mail Address      |  Hand Phone  | Business Phone   | Home Phone  | Annual Income |
+      | John Doe      | Baker street      |  +155544444  | +155533333       | +155522222  | 93000         |
+      | Alex Nine     | Google street     |  +333333224  | +124352345       | +134963542  | 67000         |
+      | Mr.James Bond | Killers street    |  +549875007  | +1007007007      | +139347242  | 99000         |
+      | Bill Gates    | Washington D.C.   |  +645656707  | +365745645       | +333435942  | 120000        |
+      | Joe Satriani  | Toronto, Canada   |  +993939347  | +444455645       | +536664432  | 970000        |
+      | Steve Jobs    | New Zeland        |  23412344734 | +233232323       | +534343441  | 10000         |
+    And Loans table
+      | Account No | Application  | Amount  | Loan type   | Interest  | No of Terms | Interest Type | Simple Interest Method  | Lender     |  Borrowers             | Sureties                  |
+      | 1          | 2008-06-21   | 11000   |             | 20        | 35          | simple        | monthly                 | John Doe   |  Alex Nine             | Bill Gates, Joe Satriani  |
+      | 2          | 2008-05-03   | 20000   |             | 18        | 12          | simple        | monthly                 | Steve Jobs |  Bill Gates, Alex Nine | Joe Satriani              |
 
   Scenario: View "Borrowers List" Report
-    Given I logged in
-    When I go to the "Reports/Borrowers List" menu
-    Then I should see the "Borrowers List" Report
-    And I should see table
-      | Borrower Name   | Borrower Type | Registration No | Loan Account No | Date of Loan    | Loan Amount   |
-      | John Doe        |               |       5         |  1              | 04/02/2010      | 10000         |
-      | Alex Nine       |               |       7         |  2              | 01/05/2010      | 20000         |
+    Given I logged in as "admin/secret"
+    When I follow "Reports"
+    And I follow "Borrowers List"
+    Then I should see "Borrowers List"
+    And I should see the table ".borrowers_list"
+      | Borrower Name                                                                       | Borrower Type | Personal Identification, incorporation or registration number: | Loan Account No.  | Date of Loan    | Loan Amount   |
+      | Alex Nine Hand Phone: +333333224 Business Phone: +124352345 Home Phone: +134963542  |   67000       | Google street                                                  |  1                | 2008-06-21      | $11,000.00    |
+      | Bill Gates Hand Phone: +645656707 Business Phone: +365745645 Home Phone: +333435942 |  120000       | Washington D.C.                                                |  2                | 2008-05-03      | $20,000.00    |
+      | Alex Nine Hand Phone: +333333224 Business Phone: +124352345 Home Phone: +134963542  |   67000       | Google street                                                  |  2                | 2008-05-03      | $20,000.00    |
 

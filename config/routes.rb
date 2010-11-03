@@ -75,6 +75,7 @@ Loaner::Application.routes.draw do
 
   namespace :reports do
     resources :payment_schedules
+    resources :borrowers_lists, :only => [:index]
     root :to => "home#index"
   end
 

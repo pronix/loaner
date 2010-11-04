@@ -3,6 +3,25 @@
     = form.error_messages
     = form.input :date
     = form.input :amount
+    = form.input :transaction_type, :as => :select, :collection => Transaction::TYPES, :include_blank => false
+    = form.inputs  :name => "Book Transfer", :id => "book_transfer" do
+      = form.input :src_book, :as => :select, :collection => current_user.books, :include_blank => false
+      = form.input :dst_book, :as => :select, :collection => current_user.books, :include_blank => false
+    = form.inputs  :name => "Account Transfer", :id => "account_transfer" do
+      = form.input :src_account, :as => :select, :collection => User.all, :include_blank => false
+      = form.input :dst_account, :as => :select, :collection => User.all, :include_blank => false
     = form.input :description, :as => :text
   = form.buttons do
     = form.commit_button
+
+:javascript
+  $('#book_transfer').hide();
+  $('#account_transfer').hide();
+  $('#transaction_transaction_type').change(function () {
+    $('#book_transfer').hide();
+    $('#account_transfer').hide();
+    if ($('#transaction_transaction_type').val() == 'book_transfer')
+      $('#book_transfer').show();
+    else if ($('#transaction_transaction_type').val() == 'account_transfer')
+      $('#account_transfer').show();
+  })

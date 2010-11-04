@@ -259,7 +259,7 @@ Then /^I should see table within "([^"]*)"$/ do |selector, table|
   end
 end
 
-Then /^(input|textarea|date) field should have value "([^\"]*)"$/ do |field, value|
+Then /^(input|textarea|date|select) field should have value "([^\"]*)"$/ do |field, value|
   case field
   when "input"
     param = "[@value='#{value}']"

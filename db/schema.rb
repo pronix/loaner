@@ -13,8 +13,9 @@
 ActiveRecord::Schema.define(:version => 20101104092356) do
 
   create_table "books", :force => true do |t|
-    t.integer  "lender_id",  :null => false
+    t.integer  "lender_id",                   :null => false
     t.string   "name"
+    t.float    "balance",    :default => 0.0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

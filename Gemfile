@@ -19,6 +19,8 @@ gem 'formtastic',               '~> 1.1.0'
 gem 'has_scope'
 gem 'responders'
 gem 'paperclip',                '~> 2.3.5'
+gem 'jquery-rails'
+
 
 # Use unicorn as the web server
 gem 'unicorn'

@@ -42,12 +42,10 @@ Feature: Collection
     When I follow "Loans"
     And I follow "Collection"
     Then I should see "Collection"
-    And show me the page
     And I should see table within ".loans"
     | Lender            |   Account No  | Amount   | Interest  |
     | John Doe          | 1             | 11000.0  | 20.0      |
     | Steve Jobs        | 2             | 20000.0  | 18.0      |
-#And show me the page
 
 #  Scenario: Link to Payment Details
 #    Given I logged in as "admin/secret"

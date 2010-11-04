@@ -9,7 +9,7 @@
     %th Interest
     %th Actions
   - for loan in collection
-    %tr
+    %tr{:class => cycle("c", "n")}
       %td= loan.lender.name
       %td= loan.account_no
       %td= loan.loan_type

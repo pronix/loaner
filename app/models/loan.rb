@@ -46,11 +46,15 @@ class Loan < ActiveRecord::Base
     def disbursement!(amount, date = Date.today, description = nil )
       Transaction.transaction do
         Transaction.create! :loan => proxy_owner, :transaction_type => "disbursement", :amount => amount, :date => date, :description => description
+        proxy_owner.book.balance -= amount
+        proxy_owner.book.save!
       end
     end
     def payment!(amount, date = Date.today, description = nil )
       Transaction.transaction do
         Transaction.create! :loan => proxy_owner, :transaction_type => "payment", :amount => amount, :date => date, :description => description
+        proxy_owner.book.balance += amount
+        proxy_owner.book.save!
       end
     end
   end

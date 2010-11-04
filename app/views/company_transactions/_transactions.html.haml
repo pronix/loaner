@@ -6,7 +6,7 @@
     %th Book
     %th Loan
   - @transactions.each do |transaction|
-    %tr
+    %tr{:class => cycle("c", "n")}
       %td= transaction.date
       %td= transaction.transaction_type
       %td= transaction.amount

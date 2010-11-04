@@ -1,6 +1,6 @@
 body
   background-color: #4B7399
-  font-family: Verdana, Helvetica, Arial
+  font-family: Arial, Verdana, Helvetica
   font-size: 14px
 
 a
@@ -8,18 +8,22 @@ a
     border: none
   color: #0000FF
 
+h1
+  text-shadow: #666 1px 1px 0.2em
+  border-bottom: 1px solid gray
+  width: 100%
+  display: block
+
 .clear
   clear: both
   height: 0
   overflow: hidden
 
 #container
-  width: 75%
-  margin: 0 auto
+  margin: 0px
   background-color: #FFF
   padding: 20px 40px
   border: solid 1px black
-  margin: 0 auto
   height: 100%
   min-height: 100%
 
@@ -38,12 +42,34 @@ a
 #menu
 
 .menu_left
+  .button
   ul.menu_list
     width: 200px
     overflow: hidden
+    padding: 0px 20px 0px 10px
+
+    ul
+      padding: 0px 0px 0px 10px
+      font-size: 12px
 
     li
       list-style: none outside none
+      a, span
+        display: block
+        width: 150px
+        margin: 10px
+        background: #999
+        border: 1px solid #555
+        color: #FFFFFF
+        font-weight: bold
+        padding: 6px 12px
+        text-decoration: none
+      span
+        background: #CCC
+        text-decoration: line-through
+      a:hover
+        background-color: #FF9900
+
 
 #content
   height: 100%
@@ -84,10 +110,16 @@ a
     margin: 0
 
 table
+  td, td
+    padding: 2px 5px 2px 5px
+    a
+      font-size: 12px
   th
     background: #CCC
-    border: 1px solid black
-    padding: 2px 5px 2px 5px
+    padding: 4px 5px 4px 5px
+  tr.n
+    background: #DDD
+  tr.c
 
 .report
   h3

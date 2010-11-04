@@ -1,0 +1,13 @@
+- title "Transaction"
+
+%p
+  %strong Date:
+  = @transaction.date
+%p
+  %strong Amount:
+  = @transaction.amount
+%p
+  %strong Transaction Type:
+  = @transaction.transaction_type
+%p
+  = link_to "Loan", loan_path(@transaction.loan)

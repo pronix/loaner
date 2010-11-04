@@ -4,10 +4,13 @@
   %tr
     %th Owner
     %th Name
+    %th Balance
+    %th Actions
   - @books.each do |book|
-    %tr
+    %tr{:class => cycle("c", "n")}
       %td= book.lender.name
       %td= book.name
+      %td= number_to_currency book.balance
 
 %p
   = link_to "New Book", new_book_path

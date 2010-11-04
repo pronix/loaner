@@ -37,5 +37,10 @@ en:
         contact_person_mobile_phone: Contact Person Mobile Number
         contact_person_fax_number: Contact Person Fax Number
         contact_person_email: Contact Person Email
+      transaction:
+        src_book: Source Book
+        dst_book: Destination Book
+        src_account: Source Account
+        dst_account: Destination Account
 
 

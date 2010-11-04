@@ -1,6 +1,6 @@
 body {
   background-color: #4b7399;
-  font-family: Verdana, Helvetica, Arial;
+  font-family: Arial, Verdana, Helvetica;
   font-size: 14px; }
 
 a {
@@ -8,18 +8,22 @@ a {
   a img {
     border: none; }
 
+h1 {
+  text-shadow: #666666 1px 1px 0.2em;
+  border-bottom: 1px solid gray;
+  width: 100%;
+  display: block; }
+
 .clear {
   clear: both;
   height: 0;
   overflow: hidden; }
 
 #container {
-  width: 75%;
-  margin: 0 auto;
+  margin: 0px;
   background-color: white;
   padding: 20px 40px;
   border: solid 1px black;
-  margin: 0 auto;
   height: 100%;
   min-height: 100%; }
 
@@ -37,9 +41,28 @@ a {
 
 .menu_left ul.menu_list {
   width: 200px;
-  overflow: hidden; }
+  overflow: hidden;
+  padding: 0px 20px 0px 10px; }
+  .menu_left ul.menu_list ul {
+    padding: 0px 0px 0px 10px;
+    font-size: 12px; }
   .menu_left ul.menu_list li {
     list-style: none outside none; }
+    .menu_left ul.menu_list li a, .menu_left ul.menu_list li span {
+      display: block;
+      width: 150px;
+      margin: 10px;
+      background: #999999;
+      border: 1px solid #555555;
+      color: white;
+      font-weight: bold;
+      padding: 6px 12px;
+      text-decoration: none; }
+    .menu_left ul.menu_list li span {
+      background: #cccccc;
+      text-decoration: line-through; }
+    .menu_left ul.menu_list li a:hover {
+      background-color: #ff9900; }
 
 #content {
   height: 100%;
@@ -79,10 +102,15 @@ a {
   .error_messages ul {
     margin: 0; }
 
+table td, table td {
+  padding: 2px 5px 2px 5px; }
+  table td a, table td a {
+    font-size: 12px; }
 table th {
   background: #cccccc;
-  border: 1px solid black;
-  padding: 2px 5px 2px 5px; }
+  padding: 4px 5px 4px 5px; }
+table tr.n {
+  background: #dddddd; }
 
 .report h3 {
   border-bottom: 1px solid #cccccc; }

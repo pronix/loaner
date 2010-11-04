@@ -1,0 +1,14 @@
+%table.company_transactions
+  %tr
+    %th Date
+    %th Type
+    %th Amount
+    %th Book
+    %th Loan
+  - @transactions.each do |transaction|
+    %tr
+      %td= transaction.date
+      %td= transaction.transaction_type
+      %td= transaction.amount
+      %td= link_to transaction.loan.book.name, edit_book_path(transaction.loan.book)
+      %td= link_to "Show Loan", edit_loan_path(transaction.loan)

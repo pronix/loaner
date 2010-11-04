@@ -1,5 +1,8 @@
 Loaner::Application.routes.draw do
   resources :people
+  resources :books
+  resources :lenders
+
   resource  :calculators do
     member do
       put 'calculate'
@@ -7,7 +10,7 @@ Loaner::Application.routes.draw do
   end
   resources :users
   resources :user_sessions
-  resources :transactions do
+  resources :company_transactions do
     collection do
       get 'receipts'
       get 'payments'
@@ -25,7 +28,7 @@ Loaner::Application.routes.draw do
   resources :company_profiles
 
   resources :loans do
-    resources :payments
+    resources :transactions
   end
 
   match 'login' => 'user_sessions#new', :as => :login

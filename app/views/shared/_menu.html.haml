@@ -2,6 +2,16 @@
   %ul.menu_list
     - if current_user
 
+      -#%li= link_to "Lenders", lenders_path
+      -# if request[:controller] == "lender"
+        %ul
+          %li= link_to "New Lender", new_lender_path
+
+      %li= link_to "Books", books_path
+      - if request[:controller] == "Book"
+        %ul
+          %li= link_to "New Book", new_book_path
+
       %li= link_to "People", people_path
       - if request[:controller] == "people"
         %ul
@@ -14,11 +24,11 @@
           %li= link_to "Loan Disbursement", new_loan_path
           %li= link_to "Collection", loans_path
 
-      %li= link_to "Company Transactions", transactions_path
-      - if request[:controller] == "transactions"
+      %li= link_to "Company Transactions", company_transactions_path
+      - if request[:controller] == "company_transactions"
         %ul
-          %li= "Receipts"
-          %li= link_to "Payments", payments_transactions_path
+          %li= link_to "Receipts", receipts_company_transactions_path
+          %li= link_to "Payments", payments_company_transactions_path
           %li= "Book Transfer"
           %li= "Accounts"
 

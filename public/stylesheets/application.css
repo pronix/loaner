@@ -79,6 +79,11 @@ a {
   .error_messages ul {
     margin: 0; }
 
+table th {
+  background: #cccccc;
+  border: 1px solid black;
+  padding: 2px 5px 2px 5px; }
+
 .report h3 {
   border-bottom: 1px solid #cccccc; }
 .report dl {

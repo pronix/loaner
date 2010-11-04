@@ -1,0 +1,13 @@
+- title "Lenders"
+
+%table.lenders
+  %tr
+    %th Name
+    %th Actions
+  - @lenders.each do |lender|
+    %tr
+      %td= lender.name
+      %td= link_to "Edit", edit_lender_path(lender)
+%p
+  = link_to "New Lender", new_lender_path
+

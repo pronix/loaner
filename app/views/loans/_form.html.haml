@@ -1,7 +1,6 @@
 = semantic_form_for resource do |form|
   = form.inputs :name => "Common" do
-    = form.input :lender
-    = link_to "New Person", new_person_path
+    = form.input :book, :include_blank => false
     = form.inputs :name => "Borrowers", :id => "borrowers" do
       = form.input :borrowers
       = link_to "New Person", new_person_path
@@ -9,7 +8,7 @@
       = form.input :sureties
       = link_to "New Person", new_person_path
     = form.input :account_no
-    = form.input :application, :as => :string
+    = form.input :application
     = form.input :loan_type,  :as => :select,  :collection => ["Type1", "Type2"], :include_blank => false
     = form.input :amount
 
@@ -35,22 +34,24 @@
     = form.input :maturity_at, :as => :string
 
     - if resource.id
-      %h2 Payment Details
-      = link_to "New Payment", new_loan_payment_path(resource)
+      %h2 Loan Transactions
+      = link_to "New Payment", new_loan_transaction_path(resource)
       %table
         %tr
           %th Date
+          %th Type
           %th Amount
           %th Remarks
           %th Actions
-        - resource.payments.each do |payment|
+        - resource.transactions.each do |transaction|
           %tr
-            %td= payment.paid_on
-            %td= number_to_currency payment.amount
-            %td= payment.remarks
+            %td= transaction.date
+            %td= transaction.transaction_type
+            %td= number_to_currency transaction.amount
+            %td= transaction.description
             %td
-              = link_to "Edit", edit_loan_payment_path(resource, payment)
-              = link_to "Destroy", loan_payment_path(resource, payment), :confirm => 'Are you sure?', :method => :delete
+              = link_to "Edit", edit_loan_transaction_path(resource, transaction)
+              = link_to "Destroy", loan_transaction_path(resource, transaction), :confirm => 'Are you sure?', :method => :delete
 
   = form.inputs :name => "Misc", :id => "misc" do
     = form.input :bankruptcy_declaration

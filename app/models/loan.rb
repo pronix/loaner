@@ -33,7 +33,7 @@
 #
 
 class Loan < ActiveRecord::Base
-  belongs_to :lender,    :class_name => 'Person'
+  belongs_to :book
 
   has_many :surety_loans
   has_many :sureties, :through => :surety_loans
@@ -41,12 +41,29 @@ class Loan < ActiveRecord::Base
   has_many :borrower_loans
   has_many :borrowers, :through => :borrower_loans
 
-  has_many :payments
+  #has_many :payments
+  has_many :transactions, :order => "created_at" do
+    def disbursement!(amount, date = Date.today, description = nil )
+      Transaction.transaction do
+        Transaction.create! :loan => proxy_owner, :transaction_type => "disbursement", :amount => amount, :date => date, :description => description
+      end
+    end
+    def payment!(amount, date = Date.today, description = nil )
+      Transaction.transaction do
+        Transaction.create! :loan => proxy_owner, :transaction_type => "payment", :amount => amount, :date => date, :description => description
+      end
+    end
+  end
 
-  validates_presence_of :lender
+  after_create {|loan| loan.transactions.disbursement! loan.amount, loan.application}
+  after_initialize {|loan| loan.application ||= Date.today }
+
   validates_presence_of :borrowers
   validates_presence_of :amount
+  validates_presence_of :account_no
   validates_presence_of :interest
+  validates_presence_of :application
+  validates_presence_of :interest_type
 
   SIMPLE_INTEREST_METHODS = ["Monthly", "Weekly", "Fornightly", "Annually"]
   SCHEDULE_TYPE = ["Monthly", "Weekly", "Annually", "Fornightly", "Custom Configuration"]
@@ -61,11 +78,15 @@ class Loan < ActiveRecord::Base
     end
   end
 
+
+  delegate :lender, :to => :book
+  delegate :payments, :to => :transactions
+
   def interest_fee
-    (amount * interest / 100) / no_of_terms
+    ("%.2f" % ((amount * interest / 100) / no_of_terms)).to_f
   end
 
   def principal_fee
-    amount / no_of_terms
+    ("%.2f" % (amount / no_of_terms)).to_f
   end
 end

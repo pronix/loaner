@@ -1,7 +1,8 @@
 class CreateLoans < ActiveRecord::Migration
   def self.up
     create_table :loans do |t|
-      t.integer :lender_id,               :null => false
+      #t.integer :lender_id,               :null => false
+      t.integer :book_id,                 :null => false
       t.integer :account_no
 
       t.date    :application

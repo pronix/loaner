@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101101150524) do
+ActiveRecord::Schema.define(:version => 20101104092356) do
+
+  create_table "books", :force => true do |t|
+    t.integer  "lender_id",  :null => false
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "borrower_loans", :force => true do |t|
     t.integer  "borrower_id", :null => false
@@ -45,7 +52,7 @@ ActiveRecord::Schema.define(:version => 20101101150524) do
   end
 
   create_table "loans", :force => true do |t|
-    t.integer  "lender_id",                                          :null => false
+    t.integer  "book_id",                                            :null => false
     t.integer  "account_no"
     t.date     "application"
     t.string   "loan_type",                    :default => "",       :null => false
@@ -127,9 +134,10 @@ ActiveRecord::Schema.define(:version => 20101101150524) do
   end
 
   create_table "transactions", :force => true do |t|
-    t.integer  "loan_id",                    :null => false
-    t.integer  "type",        :default => 0, :null => false
-    t.float    "amount",                     :null => false
+    t.integer  "loan_id"
+    t.string   "transaction_type", :null => false
+    t.float    "amount",           :null => false
+    t.date     "date",             :null => false
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -141,6 +149,7 @@ ActiveRecord::Schema.define(:version => 20101101150524) do
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "persistence_token"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

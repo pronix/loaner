@@ -4,7 +4,7 @@ Feature: Loan Calculator
   In order to ensure loan calculations
 
   Background:
-    Given Application has basic configuration
+    Given Basic configuration
 
   Scenario: View "Loan Calculator" form
     Given I logged in as "admin/secret"

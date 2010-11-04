@@ -4,14 +4,13 @@ Feature: Loan Disbursement
   In order to ensure loan disbursement form
 
   Background:
-    Given Application has basic configuration
+    Given Basic configuration
 
   Scenario: Show "Loan Disbursement" form
     Given I logged in as "admin/secret"
     When I go to the "New Loan Disbursement"
     Then I should see "Loan Disbursement"
     And page should contain "Application" text input field
-    #And "Application Date" date field should contain current date
     And page should contain "Account No" text input field
     And page should contain "Borrowers" select field
     And page should contain "Sureties" select field

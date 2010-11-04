@@ -4,7 +4,7 @@ Feature: Company Transactions
   In order to ensure Company Transactions
 
   Background:
-    Given Application has basic configuration
+    Given Basic configuration
 
   Scenario: Show Backup & Restore form
     Given I logged in as "admin/secret"

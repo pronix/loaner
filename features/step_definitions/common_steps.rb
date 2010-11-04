@@ -5,9 +5,12 @@ class String
   end
 end
 
-Given /^Application has basic configuration$/ do
-  And %{Application have test users} 
-  And %{Application have test persons} 
+Given /^Basic configuration$/ do
+  And %(Application have admin)
+end
+
+And /^Application have admin$/ do
+ User.create :username => "admin", :password => "secret", :email => "admin@gmail.com", :password_confirmation => "secret"
 end
 
 And /Application ha(?:s|ve) test users/ do

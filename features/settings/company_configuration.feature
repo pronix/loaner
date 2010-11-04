@@ -4,7 +4,7 @@ Feature: Company Configuration
   In order to ensure view and modify of Company Configuration
 
   Background:
-    Given Application has basic configuration
+    Given Basic configuration
 
   Scenario: View "Standard Terms & Conditions of Loan"
     Given I logged in as "admin/secret"

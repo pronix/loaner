@@ -4,7 +4,8 @@ Feature: Client Details Modifications
   In order to ensure Client Modifications
 
   Background:
-    Given Persons table
+    Given Basic configuration
+    And Persons table
       |    Name       | Mail Address   | Business Address   |  Hand Phone  | Business Phone   | Home Phone  | Annual Income |
       | John Doe      | Baker Street   | New York           |  +155544444  | +155533333       | +155522222  | 93000         |
       | Alex Nine     | Google street  |  www               | +333333224   | +124352345       | +134963542  | 67000         |
@@ -14,6 +15,7 @@ Feature: Client Details Modifications
 
   Scenario: View "Persons" Table
     Given I logged in as "admin/secret"
+    And show me the page
     When I follow "Settings"
     When I follow "Client Details"
     Then I should see table within ".people"

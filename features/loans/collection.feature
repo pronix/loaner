@@ -4,7 +4,8 @@ Feature: Collection
   In order to ensure Loan Collection feature
 
   Background:
-    Given Persons table
+    Given Basic configuration
+    And Persons table
       |    Name       | Mail Address      |  Hand Phone  | Business Phone   | Home Phone  | Annual Income |
       | John Doe      | Baker street      |  +155544444  | +155533333       | +155522222  | 93000         |
       | Alex Nine     | Google street     |  +333333224  | +124352345       | +134963542  | 67000         |

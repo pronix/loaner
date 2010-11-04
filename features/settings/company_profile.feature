@@ -4,7 +4,8 @@ Feature: Company Profile Settings
   In order to ensure view and modify of Company Profile settings
 
   Background:
-    Given Company Profile Settings
+    Given Basic configuration
+    And Company Profile Settings
       | Company Name                          |  Morgan Inc                   |
       | Company Logo                          |  morgan.jpg                   |
       | ROM Reference Number                  |  1234566789                   |

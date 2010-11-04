@@ -4,7 +4,7 @@ Feature: Menu
   In order to ensure menu navigations
 
   Background:
-    Given Application has basic configuration
+    Given Basic configuration
 
   Scenario: Check main menu
     Given I logged in as "admin/secret"

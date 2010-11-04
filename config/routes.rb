@@ -7,7 +7,12 @@ Loaner::Application.routes.draw do
   end
   resources :users
   resources :user_sessions
-  resources :transactions
+  resources :transactions do
+    collection do
+      get 'receipts'
+      get 'payments'
+    end
+  end
   resources :settings
   resources :backups do
     collection do

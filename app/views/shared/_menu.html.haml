@@ -22,7 +22,7 @@
     - if request[:controller] == "transactions"
       %ul
         %li= "Receipts"
-        %li= "Payments"
+        %li= link_to "Payments", payments_transactions_path
         %li= "Book Transfer"
         %li= "Accounts"
 

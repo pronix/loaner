@@ -12,5 +12,7 @@
 #
 
 class Payment < ActiveRecord::Base
+  default_scope :order => :paid_on
   belongs_to :loan
+  validates_associated :loan
 end

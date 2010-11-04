@@ -1,0 +1,12 @@
+- title "Payments"
+
+%table.payments
+  %tr
+    %th Date
+    %th Amount
+    %th Loan
+  - @payments.each do |payment|
+    %tr
+      %td= payment.paid_on
+      %td= number_to_currency payment.amount
+      %td= link_to "Show Loan", edit_loan_path(payment.loan)

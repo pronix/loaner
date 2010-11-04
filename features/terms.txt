@@ -106,8 +106,18 @@ Annual Income
 Renewal fees
     Пошлины
 
-Late repayment 
+Late repayment
     несвоевременное погашение
+
+Late Payment Charges
+Late Payment Interest
+    Пеня
 
 Installment
     Взнос
+
+Charges
+    Расходы, Издержки
+
+Revolving Loan
+    Возобновляемый кредит

@@ -13,4 +13,6 @@
 
 class Transaction < ActiveRecord::Base
   belongs_to :loan
+  scope :payments, :conditions => {:transaction_type => "payment"}
+  scope :disbursements, :conditions => {:transaction_type => "disbursement"}
 end

@@ -1,9 +1,11 @@
 class CreateTransactions < ActiveRecord::Migration
   def self.up
     create_table :transactions do |t|
-      t.integer :loan_id,       :null => false
-      t.integer :type,          :null => false, :default => 0
-      t.float   :amount,        :null => false
+      #t.integer :book_id,       :null => false
+      t.integer :loan_id
+      t.string  :transaction_type,  :null => false
+      t.float   :amount,            :null => false
+      t.date    :date,              :null => false
       t.string  :description
 
       t.timestamps

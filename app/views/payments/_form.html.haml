@@ -1,8 +1,0 @@
-= semantic_form_for [@loan, @payment] do |form|
-  = form.inputs do
-    = form.error_messages
-    = form.input :paid_on
-    = form.input :amount
-    = form.input :remarks, :as => :text
-  = form.buttons do
-    = form.commit_button

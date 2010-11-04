@@ -5,33 +5,40 @@ Feature: Payment Schedule
 
   Background:
     Given Basic configuration
+    And Users table
+      | Name       | Username    |         Email        |  Password |
+      | John Doe   | john_doe    |  john_doe@gmail.com  |  secret   |
+      | Steve Jobs | stevej      |  steve@gmail.com     |  secret   |
+    And Books table
+      |  Name       |  Lender     |
+      |  MainBook   | John Doe    |
+      |  StevesBook | Steve Jobs  |
     And Persons table
       |    Name       | Mail Address      |  Hand Phone  | Business Phone   | Home Phone  | Annual Income |
-      | John Doe      | Baker street      |  +155544444  | +155533333       | +155522222  | 93000         |
       | Alex Nine     | Google street     |  +333333224  | +124352345       | +134963542  | 67000         |
       | Mr.James Bond | Killers street    |  +549875007  | +1007007007      | +139347242  | 99000         |
       | Bill Gates    | Washington D.C.   |  +645656707  | +365745645       | +333435942  | 120000        |
       | Joe Satriani  | Toronto, Canada   |  +993939347  | +444455645       | +536664432  | 970000        |
       | Steve Jobs    | New Zeland        |  23412344734 | +233232323       | +534343441  | 10000         |
     And Loans table
-      | Account No | Application  | Amount  | Loan type   | Interest  | No of Terms | Interest Type | Simple Interest Method  | Lender     |  Borrowers             | Sureties                  |
-      | 1          | 2008-06-21   | 11000   |             | 20        | 35          | simple        | monthly                 | John Doe   |  Alex Nine             | Bill Gates, Joe Satriani  |
-      | 2          | 2008-05-03   | 20000   |             | 18        | 12          | simple        | monthly                 | Steve Jobs |  Bill Gates, Alex Nine | Joe Satriani              |
-    Given Payment table
-      | Loan Account No | Payment Date  |    Amount     |   Remarks     |
-      |  1              |   2008-07-21  |    $377.14    |               |
-      |  1              |   2008-08-21  |    $377.14    |               |
-      |  1              |   2008-09-21  |    $377.14    |               |
-      |  1              |   2008-10-21  |    $377.14    |               |
-      |  1              |   2008-11-21  |    $377.14    |               |
-      |  1              |   2008-12-21  |    $377.14    |               |
-      |  1              |   2009-01-21  |    $377.14    |               |
-      |  1              |   2009-02-21  |    $377.14    |               |
-      |  1              |   2009-03-21  |    $377.14    |               |
-      |  1              |   2009-04-21  |    $377.14    |               |
-      |  1              |   2009-05-21  |    $377.14    |               |
-      |  1              |   2009-06-21  |    $377.14    |               |
-      |  1              |   2009-07-21  |    $377.14    |               |
+      | Account No | Application  | Amount  | Loan type   | Interest  | No of Terms | Interest Type | Simple Interest Method  | Book       |  Borrowers             | Sureties                  |
+      | 1          | 2008-06-21   | 11000   |             | 20        | 35          | simple        | monthly                 | MainBook   |  Alex Nine             | Bill Gates, Joe Satriani  |
+      | 2          | 2008-05-03   | 20000   |             | 18        | 12          | simple        | monthly                 | StevesBook |  Bill Gates, Alex Nine | Joe Satriani              |
+    Given Transactions table
+      | Loan Account No |  Type      |    Date       |    Amount     |   Remarks     |
+      |  1              | payment    |   2008-07-21  |    $377.14    |               |
+      |  1              | payment    |   2008-08-21  |    $377.14    |               |
+      |  1              | payment    |   2008-09-21  |    $377.14    |               |
+      |  1              | payment    |   2008-10-21  |    $377.14    |               |
+      |  1              | payment    |   2008-11-21  |    $377.14    |               |
+      |  1              | payment    |   2008-12-21  |    $377.14    |               |
+      |  1              | payment    |   2009-01-21  |    $377.14    |               |
+      |  1              | payment    |   2009-02-21  |    $377.14    |               |
+      |  1              | payment    |   2009-03-21  |    $377.14    |               |
+      |  1              | payment    |   2009-04-21  |    $377.14    |               |
+      |  1              | payment    |   2009-05-21  |    $377.14    |               |
+      |  1              | payment    |   2009-06-21  |    $377.14    |               |
+      |  1              | payment    |   2009-07-21  |    $377.14    |               |
 
   Scenario: View "Payment Schedule" Report
     Given I logged in as "admin/secret"
@@ -62,7 +69,7 @@ Feature: Payment Schedule
       |  11               |    2009-05-21         |   $377.14   |   $314.29      |   $62.86      |
       |  12               |    2009-06-21         |   $377.14   |   $314.29      |   $62.86      |
       |  13               |    2009-07-21         |   $377.14   |   $314.29      |   $62.86      |
-      | Total             |                       | $4,902.82   | $4,085.71      |  $817.14      |
+      | Total             |                       | $4,902.82   | $4,085.77      |  $817.18      |
         
 
 

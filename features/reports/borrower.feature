@@ -14,9 +14,6 @@ Feature: Borrower Reports
       |  MainBook   | John Doe    |
       |  StevesBook | Steve Jobs  |
     And Persons table
-      |    Name       | Mail Address   | Business Address   |  Hand Phone  | Business Phone   | Home Phone  | Annual Income |
-      | Alex Nine     | Google street  |  www               | +333333224   | +124352345       | +134963542  | 67000         |
-    And Persons table
       |    Name       | Mail Address      |  Hand Phone  | Business Phone   | Home Phone  | Annual Income |
       | Alex Nine     | Google street     |  +333333224  | +124352345       | +134963542  | 67000         |
       | Mr.James Bond | Killers street    |  +549875007  | +1007007007      | +139347242  | 99000         |

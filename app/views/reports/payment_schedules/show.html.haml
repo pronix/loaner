@@ -58,7 +58,7 @@
     -@loan.payments.each_with_index do |payment, num|
       %tr
         %td= num+1
-        %td= l payment.paid_on
+        %td= l payment.date
         %td= number_to_currency(payment.amount) 
         %td= number_to_currency(payment.loan.principal_fee) 
         %td= number_to_currency(payment.loan.interest_fee) 

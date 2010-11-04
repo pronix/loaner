@@ -67,13 +67,14 @@ Given /^Books table$/ do |table|
   end
 end
 
-Given /^Payment table$/ do |table|
-  table.hashes.each do |payment|
-    loan = Loan.find_by_account_no payment["Loan Account No"]
-    amount = payment["Amount"]
+Given /^Transactions table$/ do |table|
+  table.hashes.each do |transaction|
+    loan = Loan.find_by_account_no transaction["Loan Account No"]
+    amount = transaction["Amount"]
     amount = amount[1..-1] if amount =~ /^\$/
     loan.payments.create  :amount   => amount.to_f,
-                          :paid_on  => Date.parse(payment["Payment Date"]),
-                          :remarks  => payment["Remarks"]
+                          :transaction_type => transaction["Type"],
+                          :date  => Date.parse(transaction["Date"]),
+                          :description  => transaction["Remarks"]
   end
 end

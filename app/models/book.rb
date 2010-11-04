@@ -1,4 +1,4 @@
 class Book < ActiveRecord::Base
-  belongs_to :lender
-  has_many  :transactions
+  belongs_to :lender, :class_name => "User"
+  has_many  :loans
 end

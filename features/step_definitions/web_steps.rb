@@ -259,14 +259,20 @@ Then /^I should see table within "([^"]*)"$/ do |selector, table|
   end
 end
 
-Then /^(input|textarea) field should have value "([^\"]*)"$/ do |field, value|
-  param = case field
-          when "input"
-            "[@value='#{value}']"
-          when "textarea"
-            "[text()='#{value}']"
-          end
-  page.should have_xpath "//#{field}#{param}"
+Then /^(input|textarea|date) field should have value "([^\"]*)"$/ do |field, value|
+  case field
+  when "input"
+    param = "[@value='#{value}']"
+    page.should have_xpath "//#{field}#{param}"
+  when "textarea"
+    param = "[text()='#{value}']"
+    page.should have_xpath "//#{field}#{param}"
+  when "date"
+    date = Date.parse(value)
+    page.should have_xpath "//select/option[text()='#{date.year}' and @selected = 'selected']"
+    page.should have_xpath "//select/option[text()='#{date.strftime('%B')}' and @selected = 'selected']"
+    page.should have_xpath "//select/option[text()='#{date.day}' and @selected = 'selected']"
+  end
 end
 
 Then /^page should contain labels and fields$/ do |table|
@@ -297,6 +303,16 @@ end
 Then /^I should see headers$/ do |table|
   table.rows.each do |row|
     And %(should see "#{row.join(' ')}")
+  end
+end
+
+When /^(?:|I )fill in date field "([^\"]*)" with "([^\"]*)"(?: within "([^\"]*)")?$/ do |field, value, selector|
+  date = Date.parse(value)
+  
+  with_scope(selector) do
+    select(date.year.to_s,      :from => field + "_1i")
+    select(date.strftime("%B"), :from => field + "_2i")
+    select(date.day.to_s,       :from => field + "_3i")
   end
 end
 

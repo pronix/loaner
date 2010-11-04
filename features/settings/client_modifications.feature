@@ -5,22 +5,26 @@ Feature: Client Details Modifications
 
   Background:
     Given Basic configuration
+    And Users table
+      | Name       | Username    |         Email        |  Password |
+      | John Doe   | john_doe    |  john_doe@gmail.com  |  secret   |
+    And Books table
+      |  Name       |  Lender   |
+      |  MainBook   | John Doe  |
     And Persons table
       |    Name       | Mail Address   | Business Address   |  Hand Phone  | Business Phone   | Home Phone  | Annual Income |
-      | John Doe      | Baker Street   | New York           |  +155544444  | +155533333       | +155522222  | 93000         |
       | Alex Nine     | Google street  |  www               | +333333224   | +124352345       | +134963542  | 67000         |
     And Loans table
-      | Account No | Application  | Amount  | Loan type   | Interest  | Interest Type | Lender     |  Borrowers             | Sureties                  |
-      | 1          | 04/02/2010   | 10000   |             | 24        | simple        | John Doe   |  Alex Nine             |                           |
+      | Account No | Application  | Amount  | Loan type   | Interest  | Interest Type | Book      |  Borrowers             | Sureties                  |
+      | 1          | 04/02/2010   | 10000   |             | 24        | simple        | MainBook  |  Alex Nine             |                           |
 
   Scenario: View "Persons" Table
     Given I logged in as "admin/secret"
-    And show me the page
     When I follow "Settings"
     When I follow "Client Details"
     Then I should see table within ".people"
-      |    Name         |
-      |  John Doe       |
+      |    Name       |
+      |  Alex Nine    |
     And I should see "New Person"
 
 
@@ -32,16 +36,16 @@ Feature: Client Details Modifications
     Then I should see "Edit Person"
     And page should contain labels and fields
       |    Label              |  Field Type   |   Field Value     |
-      |  Name                 |  input        |   John Doe        |
+      |  Name                 |  input        |   Alex Nine       |
       |  Birth at             |  input        |                   |
       |  Citizenship          |  input        |                   |
       |  Designation          |  textarea     |                   |
-      |  Mail Address         |  textarea     |  Baker Street     |
-      |  Business Address     |  textarea     |  New York         |
-      |  Business Phone       |  input        |   +155533333      |
-      |  Home Phone           |  input        |   +155522222      |
-      |  Hand Phone           |  input        |   +155544444      |
-      |  Annual Income        |  input        |   93000           |
+      |  Mail Address         |  textarea     |  Google street    |
+      |  Business Address     |  textarea     |  www              |
+      |  Business Phone       |  input        |   +124352345      |
+      |  Home Phone           |  input        |   +134963542      |
+      |  Hand Phone           |  input        |   +333333224      |
+      |  Annual Income        |  input        |   67000           |
       |  Email                |  input        |                   |
 
   Scenario: Modify Person
@@ -51,7 +55,10 @@ Feature: Client Details Modifications
     And follow "Edit"
     Then I should see "Edit Person"
     And fill in "Name" with "Elen Farmer"
-    And fill in "Birth at" with "22.12.1980"
+    And fill in date field "person_birth_at" with "1980-12-22"
+    And fill in "Mail Address" with "Baker Street"
+    And fill in "Business Address" with "New York"
+    And fill in "Business Phone" with "+155533333"
     And fill in "Hand Phone" with "+155599999"
     And fill in "Home Phone" with "+155588888"
     And fill in "Annual Income" with "100000"
@@ -63,7 +70,7 @@ Feature: Client Details Modifications
     And page should contain labels and fields
       |    Label              |  Field Type   |   Field Value     |
       |  Name                 |  input        |   Elen Farmer     |
-      |  Birth at             |  input        |  1980-12-22       |
+      |  Birth at             |  date         |  1980-12-22       |
       |  Designation          |  textarea     |  Some text        |
       |  Mail Address         |  textarea     |  Baker Street     |
       |  Business Address     |  textarea     |  New York         |

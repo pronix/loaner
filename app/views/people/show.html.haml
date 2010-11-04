@@ -1,9 +1,14 @@
 - title "Person"
+- [:name, :birth_at, :citizenship, :home_phone, :business_phone, :hand_phone, :annual_income].each do |a|
+  %p
+    %strong #{a.to_s.humanize.titleize}:
+    = @person[a]
 %p
-  %strong Name:
-  = @person.name
+  %strong Photo:
+  = image_tag @person.photo.url(:thumb)
 %p
   = link_to "Edit", edit_person_path(@person)
   |
-  \#{link_to "Destroy", @person, :confirm => 'Are you sure?', :method => :delete} |
-  \#{link_to "View All", people_path}
+  =link_to "Destroy", @person, :confirm => 'Are you sure?', :method => :delete
+  |
+  =link_to "View All", people_path

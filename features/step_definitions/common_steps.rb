@@ -36,7 +36,7 @@ Given /^Loans table$/ do |table|
                     :interest_type            => loan["Interest Type"],
                     :no_of_terms              => loan["No of Terms"].to_i,
                     :simple_interest_method   => loan["Simple Interest Method"],
-                    :lender                   => Person.find_by_name(loan["Lender"])
+                    :book                     => Book.find_by_name(loan["Book"])
                     
     loan["Borrowers"].split(",").each do |borrower|
       l.borrowers << Person.find_by_name(borrower.strip)
@@ -47,6 +47,23 @@ Given /^Loans table$/ do |table|
     unless l.save
       p l.errors.full_messages
     end
+  end
+end
+
+Given /^Users table$/ do |table|
+  table.hashes.each do |row|
+    User.create!  :username => row["Username"], 
+                  :email => row["Email"],
+                  :name => row["Name"],
+                  :password => row["Password"],
+                  :password_confirmation => row["Password"]
+  end
+end
+
+Given /^Books table$/ do |table|
+  table.hashes.each do |row|
+    Book.create!  :name => row["Name"],
+                  :lender => User.find_by_name(row["Lender"])
   end
 end
 

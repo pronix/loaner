@@ -57,7 +57,7 @@
       - if request.env["PATH_INFO"] =~ /\/settings/
         %ul
           %li= link_to "Company Profile", company_profiles_path
-          %li= link_to "User Rights"
+          %li= link_to "User Rights", settings_user_rights_path
           %li= link_to "Company Configuration", company_configurations_path
           %li= link_to "Client Details Modification", people_path
 

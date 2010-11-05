@@ -80,7 +80,7 @@ Loaner::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  resources :settings do
+  namespace :settings do
     resources :user_rights
     root :to => "home#index"
   end

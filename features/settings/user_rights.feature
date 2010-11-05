@@ -1,3 +1,5 @@
+@green
+
 Feature: User Rigths
   In order to ensure view and modifications User Rigths
 
@@ -32,14 +34,15 @@ Feature: User Rigths
     Given I logged in as "john_doe/secret"
     When I follow "Settings"
     And I follow "User Rights"
-    Then I should see "User Rights table"
-    And Table should contain
-      | User                            |  Role           |
-      | admin@gmail.com                 |  Admin          |
-      | john@gmail.com                  |  Borrower       |
-      | alex@gmail.com                  |  AccountMaster  |
-      | kale@gmail.com                  |  Surety         |
-      | tom@gmail.com                   |  Lender         |
+    Then I should see "User Rights"
+    And I should see the table ".user_rights"
+      | Username  | Email                   |   Name        |  Roles          |
+      | admin     | admin@gmail.com         |  Admin        |  Admin          |
+      | john_doe  | john_doe@gmail.com      |  John Doe     |  Borrower       |
+      | stevej    | steve@gmail.com         |  Steve Jobs   |  AccountMaster  |
+      | joe       | joe@gmail.com           |  Joe Satriani |  Surety         |
+      | tom       | tom@gmail.com           |  Tom Cruise   |  Lender         |
+
 
 
       #Should also have three roles.

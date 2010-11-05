@@ -2,8 +2,14 @@ Feature: User Rigths
   In order to ensure view and modifications User Rigths
 
   Background:
+    Given Basic configuration
+    And Users table
+      | Name          | Username    |         Email       |  Password |
+      | John Doe      | john_doe    |  john_doe@gmail.com |  secret   |
+      | Steve Jobs    | stevej      |  steve@gmail.com    |  secret   |
+      | Joe Satriani  | joe         |  joe@gmail.com      |  secret   |
+      | Tom Cruise    | tom         |  tom@gmail.com      |  secret   |
     Given Roles table
-      | Role              |
       | Admin             |
       | AccountMaster     |
       | Lender            |
@@ -14,17 +20,18 @@ Feature: User Rigths
       | LoanDisbursement  |
       | LoanRepayment     |
       | Backup            |
-    Given Company Profile Settings
-      | User                            |  Role           |
+    Given Users to Roles association
+      | Email                           |  Role           |
       | admin@gmail.com                 |  Admin          |
-      | john@gmail.com                  |  Borrower       |
-      | alex@gmail.com                  |  AccountMaster  |
-      | kale@gmail.com                  |  Surety         |
+      | john_doe@gmail.com              |  Borrower       |
+      | steve@gmail.com                 |  AccountMaster  |
+      | joe@gmail.com                   |  Surety         |
       | tom@gmail.com                   |  Lender         |
 
   Scenario: View User Rights
-    Given I logged in as "admin@gmail.com"
-    When I go to the "Settings/User Rights" menu
+    Given I logged in as "john_doe/secret"
+    When I follow "Settings"
+    And I follow "User Rights"
     Then I should see "User Rights table"
     And Table should contain
       | User                            |  Role           |

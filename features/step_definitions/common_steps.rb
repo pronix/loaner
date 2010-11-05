@@ -22,7 +22,21 @@ Given /^Persons table$/ do |table|
   table.hashes.each do |borrower|
     attrs = {}
     borrower.to_a.each { |a| attrs[a.first.attrize] = a.last }
-    Person.create attrs
+    Person.create! attrs
+  end
+end
+
+Given /^Roles table$/ do |table|
+  table.rows.each do |role|
+    Role.create! :name => role.first
+  end
+end
+
+Given /^Users to Roles association$/ do |table|
+  table.hashes.each do |hash|
+    p hash
+    user = User.find_by_email hash["Email"]
+    user.has_role! hash["Role"]
   end
 end
 

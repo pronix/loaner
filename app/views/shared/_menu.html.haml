@@ -53,8 +53,8 @@
           %li
             %span= "Loan Status"
 
-      %li= link_to "Settings", settings_path
-      - if request[:controller] == "settings"
+      %li= link_to "Settings", settings_root_path
+      - if request.env["PATH_INFO"] =~ /\/settings/
         %ul
           %li= link_to "Company Profile", company_profiles_path
           %li= link_to "User Rights"

@@ -16,7 +16,6 @@ Loaner::Application.routes.draw do
       get 'payments'
     end
   end
-  resources :settings
   resources :backups do
     collection do
       get 'backup'
@@ -81,6 +80,10 @@ Loaner::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  resources :settings do
+    resources :user_rights
+    root :to => "home#index"
+  end
 
   namespace :reports do
     resources :payment_schedules

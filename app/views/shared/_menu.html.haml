@@ -25,8 +25,9 @@
           %li= link_to "Collection", loans_path
 
       %li= link_to "Company Transactions", company_transactions_path
-      - if request[:controller] == "company_transactions"
+      - if request.env["PATH_INFO"] =~ /transaction/
         %ul
+          %li= link_to "New Transaction", new_transaction_path
           %li= link_to "Receipts", receipts_company_transactions_path
           %li= link_to "Payments", payments_company_transactions_path
           %li

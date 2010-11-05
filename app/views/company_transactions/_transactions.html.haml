@@ -10,5 +10,5 @@
       %td= transaction.date
       %td= transaction.transaction_type
       %td= transaction.amount
-      %td= link_to transaction.loan.book.name, edit_book_path(transaction.loan.book)
-      %td= link_to "Show Loan", edit_loan_path(transaction.loan)
+      %td= link_to transaction.loan.book.name, edit_book_path(transaction.loan.book) if transaction.loan
+      %td= link_to "Show Loan", edit_loan_path(transaction.loan) if transaction.loan

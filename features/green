@@ -8,4 +8,5 @@ features/loans/collection.feature
 features/loans/disbursement.feature
 features/reports/payment_schedule.feature
 features/reports/borrower.feature
+features/company_transactions.feature
 

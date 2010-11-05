@@ -14,4 +14,16 @@
  *-------------------------------------------------------------------------------------------------- */
 form.formtastic fieldset {
   border: 1px solid #aaaaaa;
-  padding: 10px; }
+  padding: 10px;
+  background: #eeeeee; }
+  form.formtastic fieldset legend span {
+    font-size: 14px;
+    padding: 0px 3px 0px 3px; }
+  form.formtastic fieldset input, form.formtastic fieldset textarea, form.formtastic fieldset select {
+    border: 1px solid #999999;
+    padding: 3px;
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif; }
+  form.formtastic fieldset label {
+    font-weight: bold;
+    font-size: 12px;
+    padding: 3px 0px; }

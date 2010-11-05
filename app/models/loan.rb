@@ -86,6 +86,10 @@ class Loan < ActiveRecord::Base
   delegate :lender, :to => :book
   delegate :payments, :to => :transactions
 
+  def to_label
+    "Account No: #{account_no}"
+  end
+
   def interest_fee
     ("%.2f" % ((amount * interest / 100) / no_of_terms)).to_f
   end

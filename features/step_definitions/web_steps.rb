@@ -272,6 +272,8 @@ Then /^(input|textarea|date|select) field should have value "([^\"]*)"$/ do |fie
     page.should have_xpath "//select/option[text()='#{date.year}' and @selected = 'selected']"
     page.should have_xpath "//select/option[text()='#{date.strftime('%B')}' and @selected = 'selected']"
     page.should have_xpath "//select/option[text()='#{date.day}' and @selected = 'selected']"
+  when "select"
+
   end
 end
 

@@ -1,0 +1,32 @@
+table td, table td {
+  padding: 2px 5px 2px 5px; }
+  table td a, table td a {
+    font-size: 12px; }
+table th {
+  background: #cccccc;
+  padding: 4px 5px 4px 5px; }
+table tr.n {
+  background: #dddddd; }
+
+.report h3 {
+  border-bottom: 1px solid #cccccc; }
+.report dl {
+  margin: 2px 2px 2px 2px; }
+  .report dl dt {
+    font-weight: bold;
+    display: inline; }
+  .report dl dd {
+    display: inline; }
+.report table th {
+  background: #cccccc;
+  border: 1px solid black; }
+.report table th, .report table td {
+  padding: 2px 8px 2px 8px;
+  border-bottom: 1px solid black; }
+.report hr {
+  border: 1px dashed #dddddd;
+  height: 1px; }
+.report p.small {
+  font-size: 10px; }
+.report tr.n {
+  background: #dddddd; }

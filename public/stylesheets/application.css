@@ -110,16 +110,6 @@ h1 {
   .error_messages ul {
     margin: 0; }
 
-table td, table td {
-  padding: 2px 5px 2px 5px; }
-  table td a, table td a {
-    font-size: 12px; }
-table th {
-  background: #cccccc;
-  padding: 4px 5px 4px 5px; }
-table tr.n {
-  background: #dddddd; }
-
 .report h3 {
   border-bottom: 1px solid #cccccc; }
 .report dl {

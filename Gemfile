@@ -21,6 +21,7 @@ gem 'responders'
 gem 'paperclip',                '~> 2.3.5'
 gem 'jquery-rails'
 gem 'simple-navigation'
+gem 'pdfkit'
 
 
 # Use unicorn as the web server

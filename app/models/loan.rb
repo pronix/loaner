@@ -69,8 +69,8 @@ class Loan < ActiveRecord::Base
   validates_presence_of :application
   validates_presence_of :interest_type
 
-  SIMPLE_INTEREST_METHODS = ["Monthly", "Weekly", "Fornightly", "Annually"]
-  SCHEDULE_TYPE = ["Monthly", "Weekly", "Annually", "Fornightly", "Custom Configuration"]
+  SIMPLE_INTEREST_METHODS = ["Monthly", "Weekly", "Forntightly", "Annually"]
+  SCHEDULE_TYPE = ["Monthly", "Weekly", "Annually", "Fortnightly", "Custom Configuration"]
 
   state_machine :state, :initial => :new do
     event :disburse do

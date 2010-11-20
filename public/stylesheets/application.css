@@ -73,7 +73,8 @@ h1 {
 
 #content {
   height: 100%;
-  min-height: 100%; }
+  min-height: 100%;
+  min-width: 800px; }
 
 .left {
   float: left; }

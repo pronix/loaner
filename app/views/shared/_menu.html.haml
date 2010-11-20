@@ -61,11 +61,6 @@
           %li= link_to "Company Configuration", company_configurations_path
           %li= link_to "Client Details Modification", people_path
 
-      %li= link_to "Backup & Restore", backups_path
-      - if request[:controller] == "backups"
-        %ul
-          %li= link_to "Backup", backup_backups_path
-          %li= link_to "Restore", backups_path
 
       %li= link_to "Logout", logout_path
 

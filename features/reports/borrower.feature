@@ -28,6 +28,7 @@ Feature: Borrower Reports
   Scenario: View "Borrowers List" Report
     Given I logged in as "admin/secret"
     When I follow "Reports"
+    And I follow "Borrower Reports"
     And I follow "Borrowers List"
     Then I should see "Borrowers List"
     And I should see the table ".borrowers_list"

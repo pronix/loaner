@@ -10,7 +10,7 @@
   %body
     #container
       #menu.left
-        = render :partial => "shared/menu"
+        = render_navigation
       #content.left
         - flash.each do |name, msg|
           = content_tag :div, msg, :id => "flash_#{name}"

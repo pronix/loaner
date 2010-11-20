@@ -20,6 +20,7 @@ gem 'has_scope'
 gem 'responders'
 gem 'paperclip',                '~> 2.3.5'
 gem 'jquery-rails'
+gem 'simple-navigation'
 
 
 # Use unicorn as the web server

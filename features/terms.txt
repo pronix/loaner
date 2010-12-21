@@ -121,3 +121,6 @@ Charges
 
 Revolving Loan
     Возобновляемый кредит
+
+Overdue
+    просроченный

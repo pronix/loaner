@@ -11,7 +11,7 @@
       %th Date of Loan
       %th Loan Amount
     - @borrower_loans.each do |borrower_loan|
-      %tr
+      %tr{:class => cycle("c", "n")}
         %td
           = borrower_loan.borrower.name
           %p.small

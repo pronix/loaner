@@ -39,34 +39,42 @@ h1 {
   background-color: #ffcccc;
   border: solid 1px #cc6666; }
 
-.menu_left ul.menu_list {
-  width: 200px;
-  overflow: hidden;
-  padding: 0px 20px 0px 10px; }
-  .menu_left ul.menu_list ul {
-    padding: 0px 0px 0px 10px;
-    font-size: 12px; }
-  .menu_left ul.menu_list li {
-    list-style: none outside none; }
-    .menu_left ul.menu_list li a, .menu_left ul.menu_list li span {
-      display: block;
-      width: 150px;
-      margin: 10px;
-      background: #999999;
-      border: 1px solid #555555;
-      color: white;
-      font-weight: bold;
-      padding: 6px 12px;
-      text-decoration: none; }
-    .menu_left ul.menu_list li span {
-      background: #cccccc;
-      text-decoration: line-through; }
-    .menu_left ul.menu_list li a:hover {
-      background-color: #ff9900; }
+#menu {
+  padding-right: 20px; }
+  #menu ul {
+    width: 200px;
+    overflow: hidden;
+    padding: 0px 20px 0px 10px; }
+    #menu ul ul {
+      padding: 0px 0px 0px 10px;
+      font-size: 12px; }
+    #menu ul li {
+      list-style: none outside none; }
+      #menu ul li a, #menu ul li span {
+        display: block;
+        width: 150px;
+        margin: 10px;
+        background: #999999;
+        border: 1px solid #555555;
+        color: white;
+        font-weight: bold;
+        padding: 6px 12px;
+        text-decoration: none; }
+        #menu ul li a.selected, #menu ul li span.selected {
+          background-color: #bbbbbb; }
+      #menu ul li a:hover {
+        background-color: #ff9900;
+        margin-left: 11px; }
+      #menu ul li span {
+        background: #cccccc;
+        text-decoration: line-through; }
+      #menu ul li a:hover {
+        background-color: #ff9900; }
 
 #content {
   height: 100%;
-  min-height: 100%; }
+  min-height: 100%;
+  min-width: 800px; }
 
 .left {
   float: left; }
@@ -101,16 +109,6 @@ h1 {
     margin: 8px 10px; }
   .error_messages ul {
     margin: 0; }
-
-table td, table td {
-  padding: 2px 5px 2px 5px; }
-  table td a, table td a {
-    font-size: 12px; }
-table th {
-  background: #cccccc;
-  padding: 4px 5px 4px 5px; }
-table tr.n {
-  background: #dddddd; }
 
 .report h3 {
   border-bottom: 1px solid #cccccc; }

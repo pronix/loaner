@@ -1,0 +1,2 @@
+module Settings::HomeHelper
+end

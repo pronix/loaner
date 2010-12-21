@@ -1,10 +1,31 @@
+@wip
+
 Feature: Submission Reports
   In order to ensure submission reports
 
   Background:
-    Given loan table
-      | Submission  |  Person   | Loan type |
-      |             |           |           |
+    Given Basic configuration
+    And Users table
+      | Name       | Username    |         Email        |  Password |
+      | John Doe   | john_doe    |  john_doe@gmail.com  |  secret   |
+      | Steve Jobs | stevej      |  steve@gmail.com     |  secret   |
+    And Books table
+      |  Name       |  Lender     |
+      |  MainBook   | John Doe    |
+      |  SlaveBook  | John Doe    |
+      |  StevesBook | Steve Jobs  |
+    And Persons table
+      |    Name       | Mail Address      |  Hand Phone  | Business Phone   | Home Phone  | Annual Income |
+      | Alex Nine     | Google street     |  +333333224  | +124352345       | +134963542  | 67000         |
+      | Mr.James Bond | Killers street    |  +549875007  | +1007007007      | +139347242  | 99000         |
+      | Bill Gates    | Washington D.C.   |  +645656707  | +365745645       | +333435942  | 120000        |
+      | Joe Satriani  | Toronto, Canada   |  +993939347  | +444455645       | +536664432  | 970000        |
+      | Steve Jobs    | New Zeland        |  23412344734 | +233232323       | +534343441  | 10000         |
+    And Loans table
+      | Account No | Application  | Amount  | Loan type   | Interest  | No of Terms | Interest Type | Simple Interest Method  | Book       |  Borrowers             | Sureties                  |
+      | 1          | 2008-06-21   | 11000   |             | 20        | 35          | simple        | monthly                 | MainBook   |  Alex Nine             | Bill Gates, Joe Satriani  |
+      | 2          | 2008-05-03   | 20000   |             | 18        | 12          | simple        | monthly                 | StevesBook |  Bill Gates, Alex Nine | Joe Satriani              |
+
 
   Scenario: View "Loan Position" Report
     Given I logged in

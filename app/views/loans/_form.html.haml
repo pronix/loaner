@@ -1,63 +1,80 @@
 = semantic_form_for resource do |form|
   = form.inputs :name => "Common" do
     = form.input :book, :include_blank => false
-    = form.inputs :name => "Borrowers", :id => "borrowers" do
+    = form.inputs :name => "Borrowers", :id => "borrowers", :class => "left" do
       = form.input :borrowers
       = link_to "New Person", new_person_path
-    = form.inputs :name => "Sureties", :id => "sureties" do
+    = form.inputs :name => "Sureties", :id => "sureties", :class => "left" do
       = form.input :sureties
       = link_to "New Person", new_person_path
-    = form.input :account_no
-    = form.input :application
-    = form.input :loan_type,  :as => :select,  :collection => ["Type1", "Type2"], :include_blank => false
-    = form.input :amount
+    = form.inputs do
+      = form.input :account_no
+      = form.input :application
+      = form.input :loan_type,  :as => :select,  :collection => ["Type1", "Type2"], :include_blank => false
+      = form.input :amount
 
-  = form.inputs :name => "Interest Calculation (%)", :id => "interest" do
-    = form.input :interest
-    = form.input :no_of_terms
-    = form.input :interest_type, :as => :radio, :collection => [["Simple", "simple"], ["Monthly cum Daily Interest (Monthly)", "monthly_cum_daily"], ["Daily Interest (Monthly)", "daily"], ["Late Interest (Monthly)", "late"]]
-    = form.input :simple_interest_method, :as => :select, :collection => Loan::SIMPLE_INTEREST_METHODS, :include_blank => false
-    
-  = form.inputs :name => "Permitted Fees", :id => "permitted_fees" do
-    = form.input :acceptance_fees
-    = form.input :revolving_credit_approval
-    = form.input :late_repayment
-    = form.input :terms_of_contract_variation
-    = form.input :cheque_dishonour
-    = form.input :preclousure_termination_fees
-    = form.input :legal_fees
+  #loan_tabs
+    %ul
+      %li
+        %a{:href => "#interest"} Interest Calculation (%)
+      %li
+        %a{:href => "#permitted_fees"} Permitted Fees
+      %li
+        %a{:href => "#payment_schedule"} Payment Schedule
+      %li
+        %a{:href => "#misc"} Misc
+              
+    = form.inputs  :id => "interest" do
+      = form.input :interest
+      = form.input :no_of_terms
+      = form.input :interest_type, :as => :radio, :collection => [["Simple", "simple"], ["Monthly cum Daily Interest (Monthly)", "monthly_cum_daily"], ["Daily Interest (Monthly)", "daily"], ["Late Interest (Monthly)", "late"]]
+      = form.input :simple_interest_method, :as => :select, :collection => Loan::SIMPLE_INTEREST_METHODS, :include_blank => false
+      
+    = form.inputs  :id => "permitted_fees" do
+      = form.input :acceptance_fees
+      = form.input :revolving_credit_approval
+      = form.input :late_repayment
+      = form.input :terms_of_contract_variation
+      = form.input :cheque_dishonour
+      = form.input :preclousure_termination_fees
+      = form.input :legal_fees
 
-  = form.inputs :name => "Payment Schedule", :id => "payments_schedule" do
-    = form.input :schedule_type, :as => :radio, :collection => Loan::SCHEDULE_TYPE, :include_blank => false
-    = form.input :grace_period
-    = form.input :first_payment_at, :as => :string
-    = form.input :maturity_at, :as => :string
+    = form.inputs  :id => "payment_schedule" do
+      = form.input :schedule_type, :as => :radio, :collection => Loan::SCHEDULE_TYPE, :include_blank => false
+      = form.input :grace_period
+      = form.input :first_payment_at, :as => :string
+      = form.input :maturity_at, :as => :string
 
-    - if resource.id
-      %h2 Loan Transactions
-      = link_to "New Payment", new_loan_transaction_path(resource)
-      %table
-        %tr
-          %th Date
-          %th Type
-          %th Amount
-          %th Remarks
-          %th Actions
-        - resource.transactions.each do |transaction|
+      - if resource.id
+        %h2 Loan Transactions
+        = link_to "New Payment", new_loan_transaction_path(resource)
+        %table
           %tr
-            %td= transaction.date
-            %td= transaction.transaction_type
-            %td= number_to_currency transaction.amount
-            %td= transaction.description
-            %td
-              = link_to "Edit", edit_loan_transaction_path(resource, transaction)
-              = link_to "Destroy", loan_transaction_path(resource, transaction), :confirm => 'Are you sure?', :method => :delete
+            %th Date
+            %th Type
+            %th Amount
+            %th Remarks
+            %th Actions
+          - resource.transactions.each do |transaction|
+            %tr
+              %td= transaction.date
+              %td= transaction.transaction_type
+              %td= number_to_currency transaction.amount
+              %td= transaction.description
+              %td
+                = link_to "Edit", edit_loan_transaction_path(resource, transaction)
+                = link_to "Destroy", loan_transaction_path(resource, transaction), :confirm => 'Are you sure?', :method => :delete
 
-  = form.inputs :name => "Misc", :id => "misc" do
-    = form.input :bankruptcy_declaration
-    = form.input :remarks
-    = form.input :terms
-    = form.input :language
+    = form.inputs  :id => "misc" do
+      = form.input :bankruptcy_declaration
+      = form.input :remarks
+      = form.input :terms
+      = form.input :language
+
   = form.buttons do
     = form.commit_button
+
+:javascript
+  $("#loan_tabs").tabs();
+    
 

@@ -40,10 +40,9 @@ h1
   border: solid 1px #C66
 
 #menu
-
-.menu_left
+  padding-right: 20px
   .button
-  ul.menu_list
+  ul
     width: 200px
     overflow: hidden
     padding: 0px 20px 0px 10px
@@ -64,6 +63,11 @@ h1
         font-weight: bold
         padding: 6px 12px
         text-decoration: none
+        &.selected
+          background-color: #BBB
+      a:hover
+        background-color: #FF9900
+        margin-left: 11px
       span
         background: #CCC
         text-decoration: line-through
@@ -74,6 +78,7 @@ h1
 #content
   height: 100%
   min-height: 100%
+  min-width: 800px
 
 .left
   float: left
@@ -108,18 +113,6 @@ h1
     margin: 8px 10px
   ul
     margin: 0
-
-table
-  td, td
-    padding: 2px 5px 2px 5px
-    a
-      font-size: 12px
-  th
-    background: #CCC
-    padding: 4px 5px 4px 5px
-  tr.n
-    background: #DDD
-  tr.c
 
 .report
   h3

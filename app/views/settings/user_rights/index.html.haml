@@ -1,0 +1,15 @@
+- title "User Rights"
+
+%table.user_rights
+  %tr
+    %th Username
+    %th Email
+    %th Name
+    %th Roles
+  - @users.each do |user|
+    %tr{:class => cycle("c", "n")}
+      %td= user.username
+      %td= user.email
+      %td= user.name
+      %td= user.roles.map(&:name).join(", ")
+

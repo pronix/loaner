@@ -1,16 +1,14 @@
 class CompanyTransactionsController < ApplicationController
   def index
-    #@loans = current_user.books.map(&:loans)
-    #@transactions = @loans.map(&:transactions)
-    @transactions = Transaction.all
+    @transactions = current_user.transactions
   end
 
   def payments
-    @transactions = Transaction.payments
+    @transactions = current_user.transactions.payments
   end
 
   def receipts
-    @transactions = Transaction.disbursements
+    @transactions = current_user.transactions.disbursements
   end
 
 end

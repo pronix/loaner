@@ -56,7 +56,7 @@
     - total_principal = 0.0
     - total_interest  = 0.0
     -@loan.payments.each_with_index do |payment, num|
-      %tr
+      %tr{:class => cycle("c", "n")}
         %td= num+1
         %td= l payment.date
         %td= number_to_currency(payment.amount) 

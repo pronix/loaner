@@ -25,8 +25,9 @@
           %li= link_to "Collection", loans_path
 
       %li= link_to "Company Transactions", company_transactions_path
-      - if request[:controller] == "company_transactions"
+      - if request.env["PATH_INFO"] =~ /transaction/
         %ul
+          %li= link_to "New Transaction", new_transaction_path
           %li= link_to "Receipts", receipts_company_transactions_path
           %li= link_to "Payments", payments_company_transactions_path
           %li
@@ -52,20 +53,14 @@
           %li
             %span= "Loan Status"
 
-      %li= link_to "Settings", settings_path
-      - if request[:controller] == "settings"
+      %li= link_to "Settings", settings_root_path
+      - if request.env["PATH_INFO"] =~ /\/settings/
         %ul
           %li= link_to "Company Profile", company_profiles_path
-          %li
-            %span= "User Rights"
+          %li= link_to "User Rights", settings_user_rights_path
           %li= link_to "Company Configuration", company_configurations_path
           %li= link_to "Client Details Modification", people_path
 
-      %li= link_to "Backup & Restore", backups_path
-      - if request[:controller] == "backups"
-        %ul
-          %li= link_to "Backup", backup_backups_path
-          %li= link_to "Restore", backups_path
 
       %li= link_to "Logout", logout_path
 

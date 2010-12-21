@@ -10,6 +10,7 @@ Feature: Company Transactions
     And Books table
       |  Name       |  Lender     |
       |  MainBook   | John Doe    |
+      |  SlaveBook  | John Doe    |
       |  StevesBook | Steve Jobs  |
     And Persons table
       |    Name       | Mail Address      |  Hand Phone  | Business Phone   | Home Phone  | Annual Income |
@@ -25,50 +26,69 @@ Feature: Company Transactions
 
 
   Scenario: View "New Transaction" form
-    Given I logged in as "admin/secret"
+    Given I logged in as "john_doe/secret"
     When I follow "Company Transactions"
     Then I should see "Company Transactions"
     And I follow "New Transaction"
-    And show me the page
+    #And show me the page
     And page should contain labels and fields
-      |    Label          |  Field Type   |   Field Value     |
-      | Date              | date          |                   |
-      | Amount            | text          |                   |
-      | Transaction Type  | select        |                   |
-      | Book              | select        |                   |
-      #| Account           | select        |                   |
+      |    Label            |  Field Type   |   Field Value     |
+      | Date                | date          |                   |
+      | Amount              | text          |                   |
+      | Transaction Type    | select        |                   |
+      | Source Book         | select        |                   |
+      | Destination Book    | select        |                   |
+      | Source Account      | select        |                   |
+      | Destination Account | select        |                   |
 
 
   Scenario: Add "New Receipt"
-    Given I logged in
-    When I go to the "Loans/Company Transactions" menu
-    And Click at "Receipt" radio button
-    And Type "582.50" in "Amount" text field
-    And I select "John Doe" in the "Borrower" select field
-    And Click "Save"
-    Then I should see "New Transaction Created" message
-    And I should see "New Transaction" form
+    Given I logged in as "john_doe/secret"
+    When I follow "Company Transactions"
+    Then I should see "Company Transactions"
+    And I follow "New Transaction"
+    And I fill in date field "transaction_date" with "2010-01-01"
+    And fill in "Amount" with "100.00"
+    And select "Disbursement" from "Transaction Type"
+    And select "Account No: 1" from "Target loan"
+    And I press "Create Transaction"
+    Then I should see "Transaction was successfully created"
 
   Scenario: Add "New Payment"
-    Given I logged in
-    When I go to the "Loans/Company Transactions" menu
-    And Click at "Payment" radio button
-    And Type "582.50" in "Amount" text field
-    And I select "John Doe" in the "Borrower" select field
-    And Click "Save"
-    Then I should see "New Transaction Created" message
-    And I should see "New Transaction" form
+    Given I logged in as "john_doe/secret"
+    When I follow "Company Transactions"
+    Then I should see "Company Transactions"
+    And I follow "New Transaction"
+    And I fill in date field "transaction_date" with "2010-01-01"
+    And fill in "Amount" with "100.00"
+    And select "Payment" from "Transaction Type"
+    And select "Account No: 1" from "Target loan"
+    And I press "Create Transaction"
+    Then I should see "Transaction was successfully created"
 
-  Scenario: Add "Book Transfer"
-    Given I logged in
-    When I go to the "Loans/Company Transactions" menu
-    And Click at "Book Transfer" radio button
-    And Type "582.50" in "Amount" text field
-    And I select "John Doe" in the "Borrower" select field
-    And Click "Save"
-    Then I should see "New Transaction Created" message
-    And I should see "New Transaction" form
+  Scenario: Add "New Book Transfer"
+    Given I logged in as "john_doe/secret"
+    When I follow "Company Transactions"
+    Then I should see "Company Transactions"
+    And I follow "New Transaction"
+    And I fill in date field "transaction_date" with "2010-01-01"
+    And fill in "Amount" with "100.00"
+    And select "Book Transfer" from "Transaction Type"
+    And select "MainBook" from "Source Book"
+    And select "SlaveBook" from "Destination Book"
+    And I press "Create Transaction"
+    Then I should see "Transaction was successfully created"
 
-    #One More: "Account Transfer"
-
+  Scenario: Add "New Account Transfer"
+    Given I logged in as "john_doe/secret"
+    When I follow "Company Transactions"
+    Then I should see "Company Transactions"
+    And I follow "New Transaction"
+    And I fill in date field "transaction_date" with "2010-01-01"
+    And fill in "Amount" with "100.00"
+    And select "Book Transfer" from "Transaction Type"
+    And select "John Doe" from "Source Account"
+    And select "Steve Jobs" from "Destination Account"
+    And I press "Create Transaction"
+    Then I should see "Transaction was successfully created"
 

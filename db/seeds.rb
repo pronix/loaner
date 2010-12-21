@@ -35,7 +35,8 @@ end
                 :email => Faker::Internet.email
 
   (rand(3)+1).times do |i|
-    user.books.create :name => "Book #{i+1} of #{user.name}"
+    user.books.create :name => "Cash Book"
+    user.books.create :name => "Bank Book"
   end
 end
 

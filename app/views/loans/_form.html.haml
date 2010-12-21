@@ -52,6 +52,7 @@
           %tr
             %th Date
             %th Type
+            %th Payment Type
             %th Amount
             %th Remarks
             %th Actions
@@ -59,6 +60,7 @@
             %tr
               %td= transaction.date
               %td= transaction.transaction_type
+              %td= transaction.payment_type
               %td= number_to_currency transaction.amount
               %td= transaction.description
               %td

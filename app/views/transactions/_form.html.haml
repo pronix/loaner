@@ -4,6 +4,7 @@
     = form.input :date
     = form.input :amount
     = form.input :transaction_type, :as => :select, :collection => Transaction::TYPES, :include_blank => false
+    = form.input :payment_type, :as => :select, :collection => Transaction::PAYMENT_TYPES.map{|s| [s.camelize,s]}, :include_blank => false
     = form.inputs  :name => "Loan", :id => "loan_group" do
       = form.input :target_loan, :as => :select, :collection => Loan.all, :include_blank => false
     = form.inputs  :name => "Book Transfer", :id => "book_transfer_group" do

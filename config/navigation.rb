@@ -69,9 +69,9 @@ SimpleNavigation::Configuration.run do |navigation|
         end
       end
 
-      primary.item :reports_menu,         "Reports",   reports_root_path do |menu|
+      primary.item :reports_menu,         "Reports",   reports_root_path, :highlights_on => %r(/reports) do |menu|
         menu.item :for_submission,        "For Submission",             ""
-        menu.item :for_records,           "For Records",                reports_for_records_root_path do |menu1|
+        menu.item :for_records,           "For Records",                reports_for_records_root_path,  :highlights_on => %r(/reports/for_records) do |menu1|
 
         end
         menu.item :borrower_reports,      "Borrower Reports",           reports_borrowers_lists_path do |menu1|

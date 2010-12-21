@@ -34,10 +34,8 @@ end
                 :password_confirmation => "secret",
                 :email => Faker::Internet.email
 
-  (rand(3)+1).times do |i|
-    user.books.create :name => "Cash Book"
-    user.books.create :name => "Bank Book"
-  end
+  user.books.create :name => "Cash Book"
+  user.books.create :name => "Bank Book"
 end
 
 

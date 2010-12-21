@@ -1,0 +1,63 @@
+- title "'#{@reports_params.book.name}' book from #{d @reports_params.date_start} - #{d @reports_params.date_end}"
+
+.report
+  
+  %table.cash_account_book
+    %tr
+      %th Date
+      %th Entry no
+      %th Loan Account no
+      %th Description of Transaction
+      %th Mode of Payment
+      %th Receipt ($)
+      %th Payment ($)
+      %th Balance ($)
+    %tr
+      %td
+      %td
+      %td
+      %td
+      %td Opening Balance
+      %td
+      %td
+      %td= m @reports_params.book.balance_at @reports_params.date_start
+
+    - no = 0
+    - payments_total = 0.0
+    - receipts_total = 0.0
+    - @transactions.each do |t|
+      %tr
+        %td= d t.date
+        %td= no += 1
+        %td= t.loan.try(:account_no)
+        %td= t.description
+        %td= t.payment_type
+        %td
+          -if t.receipt?
+            - receipts_total += t.amount
+            = m t.amount 
+        %td
+          - if t.payment?
+            - payments_total += t.amount
+            = m t.amount
+        %td= @reports_params.book.balance_at t.date
+
+    %tr
+      %td
+      %td
+      %td
+      %td
+      %td
+        %strong Total
+      %td= m receipts_total
+      %td= m payments_total
+      %td
+    %tr
+      %td
+      %td
+      %td
+      %td
+      %td Closing Balance
+      %td
+      %td
+      %td= m @reports_params.book.balance_at @reports_params.date_end

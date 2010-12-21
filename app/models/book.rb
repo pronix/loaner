@@ -14,4 +14,9 @@ class Book < ActiveRecord::Base
   belongs_to :lender, :class_name => "User"
   has_many  :loans
   has_many :transactions, :through => :loans
+
+  def balance_at date
+    # TODO
+    0.0
+  end
 end

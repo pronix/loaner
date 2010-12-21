@@ -30,4 +30,13 @@ class Transaction < ActiveRecord::Base
   scope :cash, :conditions => {:payment_type => "cash"}
   scope :bank, :conditions => {:payment_type => ["cheque", "interbank"]}
 
+  def payment?
+    transaction_type == "payment"
+  end
+
+  def receipt?
+    transaction_type == "disbursement"
+  end
+  def disbursement?; receipt?; end
+
 end

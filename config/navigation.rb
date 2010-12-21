@@ -71,7 +71,9 @@ SimpleNavigation::Configuration.run do |navigation|
 
       primary.item :reports_menu,         "Reports",   reports_root_path do |menu|
         menu.item :for_submission,        "For Submission",             ""
-        menu.item :for_records,           "For Records",                ""
+        menu.item :for_records,           "For Records",                reports_for_records_root_path do |menu1|
+
+        end
         menu.item :borrower_reports,      "Borrower Reports",           reports_borrowers_lists_path do |menu1|
           menu1.item :borrower_list,       "Borrowers List",             reports_borrowers_lists_path
         end

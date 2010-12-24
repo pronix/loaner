@@ -44,16 +44,24 @@ class Loan < ActiveRecord::Base
   has_many :transactions, :order => "created_at" do
     def disbursement!(amount, date = Date.today, payment_type = "cash", description = nil )
       Transaction.transaction do
-        Transaction.create! :loan => proxy_owner, :transaction_type => "disbursement", :amount => amount, :date => date, :payment_type => payment_type, :description => description
-        proxy_owner.book.balance -= amount
-        proxy_owner.book.save!
+        Transaction.create! :loan => proxy_owner,
+                            :book => proxy_owner.book,
+                            :transaction_type => "disbursement",
+                            :amount => -amount,
+                            :date => date,
+                            :payment_type => payment_type,
+                            :description => description
       end
     end
     def payment!(amount, date = Date.today, payment_type = "cash", description = nil )
       Transaction.transaction do
-        Transaction.create! :loan => proxy_owner, :transaction_type => "payment", :amount => amount, :date => date, :payment_type => payment_type, :description => description
-        proxy_owner.book.balance += amount
-        proxy_owner.book.save!
+        Transaction.create! :loan => proxy_owner,
+                            :book => proxy_owner.book,
+                            :transaction_type => "payment",
+                            :amount => amount,
+                            :date => date,
+                            :payment_type => payment_type,
+                            :description => description
       end
     end
   end

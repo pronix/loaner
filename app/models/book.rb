@@ -15,8 +15,12 @@ class Book < ActiveRecord::Base
   has_many  :loans
   has_many :transactions, :through => :loans
 
-  def balance_at date
-    # TODO
-    0.0
+  def balance
+    initial_balance + transactions.sum(:amount)
   end
+
+  def balance_at date
+    initial_balance + transactions.where(["date <= ?", date]).sum(:amount)
+  end
+
 end

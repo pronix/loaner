@@ -17,14 +17,16 @@ class Transaction < ActiveRecord::Base
   attr_accessor :src_book, :dst_book
   attr_accessor :src_account, :dst_account
   attr_accessor :target_loan
+  belongs_to :book
   belongs_to :loan
   validates_presence_of :date
   validates_presence_of :amount
   validates_presence_of :transaction_type
   validates_presence_of :payment_type
+  TRANSACTION_TYPES = ["payment", "disbursement", "book_transfer", "account_transfer"]
 
   TYPES = [["Payment", "payment"], ["Disbursement", "disbursement"], ["Book Transfer", "book_transfer"], ["Account Transfer", "account_transfer"]]
-  PAYMENT_TYPES = ["cash", "cheque", "interbank"]
+  PAYMENT_TYPES = ["cash", "cheque", "interbank", "postal_order"]
   scope :payments, :conditions => {:transaction_type => "payment"}
   scope :disbursements, :conditions => {:transaction_type => "disbursement"}
   scope :cash, :conditions => {:payment_type => "cash"}

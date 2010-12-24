@@ -13,9 +13,9 @@
 ActiveRecord::Schema.define(:version => 20101104092356) do
 
   create_table "books", :force => true do |t|
-    t.integer  "lender_id",                   :null => false
+    t.integer  "lender_id",                        :null => false
     t.string   "name"
-    t.float    "balance",    :default => 0.0, :null => false
+    t.float    "initial_balance", :default => 0.0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(:version => 20101104092356) do
   end
 
   create_table "transactions", :force => true do |t|
+    t.integer  "book_id",          :null => false
     t.integer  "loan_id"
     t.string   "transaction_type", :null => false
     t.string   "payment_type",     :null => false

@@ -10,7 +10,7 @@
     = form.inputs do
       = form.input :account_no
       = form.input :application
-      = form.input :loan_type,  :as => :select,  :collection => ["Type1", "Type2"], :include_blank => false
+      = form.input :loan_type,  :as => :select, :collection => humanize(Transaction::PAYMENT_TYPES), :include_blank => false
       = form.input :amount
 
   #loan_tabs

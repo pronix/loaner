@@ -1,4 +1,5 @@
-class LoansController < InheritedResources::Base
+class LoansController < ApplicationController
+  inherit_resources
   respond_to :html, :xml, :json
 
   def create

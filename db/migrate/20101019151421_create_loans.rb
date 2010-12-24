@@ -23,13 +23,13 @@ class CreateLoans < ActiveRecord::Migration
       t.date    :maturity_at
 
       # fees
-      t.string  :acceptance_fees
-      t.string  :revolving_credit_approval
-      t.string  :late_repayment
-      t.string  :terms_of_contract_variation
-      t.string  :cheque_dishonour
-      t.string  :preclousure_termination_fees
-      t.string  :legal_fees
+      t.float  :acceptance_fees
+      t.float  :revolving_credit_approval
+      t.float  :late_repayment
+      t.float  :terms_of_contract_variation
+      t.float  :cheque_dishonour
+      t.float  :preclousure_termination_fees
+      t.float  :legal_fees
 
       # misc
       t.text  :terms

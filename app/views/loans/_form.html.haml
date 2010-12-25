@@ -1,6 +1,6 @@
 = semantic_form_for resource do |form|
   = form.inputs :name => "Common" do
-    = form.input :book, :include_blank => false
+    = form.input :book, :collection => current_user.books, :include_blank => false
     = form.inputs :name => "Borrowers", :id => "borrowers", :class => "left" do
       = form.input :borrowers
       = link_to "New Person", new_person_path
@@ -9,7 +9,7 @@
       = link_to "New Person", new_person_path
     = form.inputs do
       = form.input :account_no
-      = form.input :application
+      = form.input :application, :as => :date_picker
       = form.input :loan_type,  :as => :select, :collection => humanize(Transaction::PAYMENT_TYPES), :include_blank => false
       = form.input :amount
 
@@ -42,8 +42,8 @@
     = form.inputs  :id => "payment_schedule" do
       = form.input :schedule_type, :as => :radio, :collection => Loan::SCHEDULE_TYPE, :include_blank => false
       = form.input :grace_period
-      = form.input :first_payment_at, :as => :string
-      = form.input :maturity_at, :as => :string
+      = form.input :first_payment_at, :as => :date_picker
+      = form.input :maturity_at, :as => :date_picker
 
       - if resource.id
         %h2 Loan Transactions

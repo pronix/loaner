@@ -6,7 +6,7 @@
 #  book_id                      :integer         not null
 #  account_no                   :integer
 #  application                  :date
-#  loan_type                    :string(255)     default(""), not null
+#  loan_type                    :string(255)
 #  state                        :string(255)     not null
 #  amount                       :float           default(0.0), not null
 #  interest                     :float           default(0.0), not null
@@ -17,13 +17,13 @@
 #  grace_period                 :integer         default(0)
 #  first_payment_at             :date
 #  maturity_at                  :date
-#  acceptance_fees              :string(255)
-#  revolving_credit_approval    :string(255)
-#  late_repayment               :string(255)
-#  terms_of_contract_variation  :string(255)
-#  cheque_dishonour             :string(255)
-#  preclousure_termination_fees :string(255)
-#  legal_fees                   :string(255)
+#  acceptance_fees              :float
+#  revolving_credit_approval    :float
+#  late_repayment               :float
+#  terms_of_contract_variation  :float
+#  cheque_dishonour             :float
+#  preclousure_termination_fees :float
+#  legal_fees                   :float
 #  terms                        :text
 #  language                     :string(255)
 #  remarks                      :text
@@ -42,33 +42,24 @@ class Loan < ActiveRecord::Base
   has_many :borrowers, :through => :borrower_loans
 
   has_many :transactions, :order => "created_at" do
-    def disbursement!(amount, date = Date.today, payment_type = "cash", description = nil )
-      Transaction.transaction do
-        Transaction.create! :loan => proxy_owner,
-                            :book => proxy_owner.book,
-                            :transaction_type => "disbursement",
-                            :amount => -amount,
-                            :date => date,
-                            :payment_type => payment_type,
-                            :description => description
-      end
+    def disbursement! options
+      Transaction.disbursement!(options.merge(:loan => proxy_owner,
+                                              :book => proxy_owner.book))
     end
-    def payment!(amount, date = Date.today, payment_type = "cash", description = nil )
-      Transaction.transaction do
-        Transaction.create! :loan => proxy_owner,
-                            :book => proxy_owner.book,
-                            :transaction_type => "payment",
-                            :amount => amount,
-                            :date => date,
-                            :payment_type => payment_type,
-                            :description => description
-      end
+    def payment! options
+      Transaction.payment!(options.merge(:loan => proxy_owner,
+                                         :book => proxy_owner.book))
     end
   end
 
-  after_create {|loan| loan.transactions.disbursement! loan.amount, loan.application}
+  after_create do |loan|
+    options = {:amount => loan.amount, :date => loan.application}
+    options[:payment_type] = loan.loan_type if loan.loan_type
+    loan.transactions.disbursement! options
+  end
   after_initialize {|loan| loan.application ||= Date.today }
 
+  validates_presence_of :book
   validates_presence_of :borrowers
   validates_presence_of :amount
   validates_presence_of :account_no
@@ -92,6 +83,7 @@ class Loan < ActiveRecord::Base
 
   delegate :lender, :to => :book
   delegate :payments, :to => :transactions
+  delegate :payment!, :to => :transactions
 
   def to_label
     "Account No: #{account_no}"

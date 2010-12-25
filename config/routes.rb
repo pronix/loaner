@@ -92,8 +92,8 @@ Loaner::Application.routes.draw do
       root :to => "home#index"
     end
     namespace :for_records do
-      resource :cash_account_books, :only => :create
-      resource :loan_account_books, :only => :create
+      resource :cash_account_books, :only => [:create,:show]
+      resource :loan_account_books, :only => [:create,:show]
       root :to => "home#index"
     end
     root :to => "home#index"

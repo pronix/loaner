@@ -12,6 +12,7 @@ class CreatePeople < ActiveRecord::Migration
       t.string          :home_phone
       t.string          :hand_phone
       t.string          :email
+      t.string          :identification_no
       t.integer         :annual_income
 
       # photo

@@ -1,2 +1,9 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+$(document).ready(function(){ 
+    $('input.ui-date-picker').datepicker()//.datepicker("option", "dateFormat", "yy-m-d" );
+    $.datepicker.setDefaults({
+      showOn: 'both',
+      buttonText: 'Calendar',
+      dateFormat: 'yy-mm-dd'
+    });
+});
+

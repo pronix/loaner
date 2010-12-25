@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(:version => 20101104092356) do
     t.integer  "book_id",                                            :null => false
     t.integer  "account_no"
     t.date     "application"
-    t.string   "loan_type",                    :default => "",       :null => false
+    t.string   "loan_type"
     t.string   "state",                                              :null => false
     t.float    "amount",                       :default => 0.0,      :null => false
     t.float    "interest",                     :default => 0.0,      :null => false
@@ -67,26 +67,17 @@ ActiveRecord::Schema.define(:version => 20101104092356) do
     t.integer  "grace_period",                 :default => 0
     t.date     "first_payment_at"
     t.date     "maturity_at"
-    t.string   "acceptance_fees"
-    t.string   "revolving_credit_approval"
-    t.string   "late_repayment"
-    t.string   "terms_of_contract_variation"
-    t.string   "cheque_dishonour"
-    t.string   "preclousure_termination_fees"
-    t.string   "legal_fees"
+    t.float    "acceptance_fees"
+    t.float    "revolving_credit_approval"
+    t.float    "late_repayment"
+    t.float    "terms_of_contract_variation"
+    t.float    "cheque_dishonour"
+    t.float    "preclousure_termination_fees"
+    t.float    "legal_fees"
     t.text     "terms"
     t.string   "language"
     t.text     "remarks"
     t.string   "bankruptcy_declaration"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "payments", :force => true do |t|
-    t.integer  "loan_id",                     :null => false
-    t.float    "amount",     :default => 0.0, :null => false
-    t.date     "paid_on"
-    t.string   "remarks"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -103,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20101104092356) do
     t.string   "home_phone"
     t.string   "hand_phone"
     t.string   "email"
+    t.string   "identification_no"
     t.integer  "annual_income"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
@@ -135,12 +127,17 @@ ActiveRecord::Schema.define(:version => 20101104092356) do
   end
 
   create_table "transactions", :force => true do |t|
-    t.integer  "book_id",          :null => false
+    t.integer  "book_id",                           :null => false
     t.integer  "loan_id"
-    t.string   "transaction_type", :null => false
-    t.string   "payment_type",     :null => false
-    t.float    "amount",           :null => false
-    t.date     "date",             :null => false
+    t.date     "date",                              :null => false
+    t.string   "transaction_type",                  :null => false
+    t.string   "payment_type",                      :null => false
+    t.float    "amount",           :default => 0.0, :null => false
+    t.float    "regular",          :default => 0.0, :null => false
+    t.float    "principal",        :default => 0.0, :null => false
+    t.float    "interest",         :default => 0.0, :null => false
+    t.float    "late_interest",    :default => 0.0, :null => false
+    t.float    "permitted_fee",    :default => 0.0, :null => false
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"

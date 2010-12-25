@@ -1,4 +1,6 @@
 .nonprint
   - path = request.env["PATH_INFO"] + ".pdf"
+  - unless request.env["QUERY_STRING"].blank?
+    - path << "?" + request.env["QUERY_STRING"]
   = link_to "Download as pdf", path
 

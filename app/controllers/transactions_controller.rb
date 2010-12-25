@@ -1,8 +1,9 @@
 class TransactionsController < InheritedResources::Base
   respond_to :html, :xml, :json
-  belongs_to :loan, :optional => true
+  belongs_to :loan#, :optional => true
 
   def create
+    @transaction = Transaction.new params[:transaction].merge(:book => parent.book, :loan => parent)
     create! { return_path }
   end
 

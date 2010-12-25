@@ -14,6 +14,7 @@
 #  home_phone         :string(255)
 #  hand_phone         :string(255)
 #  email              :string(255)
+#  identification_no  :string(255)
 #  annual_income      :integer
 #  photo_file_name    :string(255)
 #  photo_content_type :string(255)

@@ -18,6 +18,7 @@ change_log STDOUT
   Person.create :name => Faker::Name.name,
                 :birth_at => rand(2000).days.ago,
                 :annual_income => rand(100)*1000,
+                :identification_no => SecureRandom.hex(6),
                 :email => Faker::Internet.email,
                 :home_phone => Faker::PhoneNumber.phone_number,
                 :business_phone => Faker::PhoneNumber.phone_number,
@@ -53,12 +54,14 @@ end
     :sureties => random_persons,
     :amount => ((rand(20)+1) * 1000),
     :interest => rand(30)+1,
-    :no_of_terms => rand(36)+1,
+    :no_of_terms => rand(4)*6+6,
     :first_payment_at => (application + 1.month)
 
-  rand(loan.no_of_terms).times do |i|
-    loan.transactions.payment! loan.principal_fee + loan.interest_fee,
-                              (loan.first_payment_at + i.months)
+  (rand(loan.no_of_terms)+2).times do |i|
+    loan.payment! :amount => loan.principal_fee + loan.interest_fee,
+                  :principal => loan.principal_fee,
+                  :interest => loan.interest_fee,
+                  :date => (loan.first_payment_at + i.months)
   end
 
 end

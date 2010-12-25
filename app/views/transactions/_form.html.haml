@@ -1,9 +1,14 @@
 = semantic_form_for [@loan, @transaction] do |form|
   = form.inputs do
     = form.error_messages
-    = form.input :date
+    = form.input :date, :as => :date_picker
     = form.input :amount
-    = form.input :transaction_type, :as => :select, :collection => humanize(Transaction::TYPES), :include_blank => false
+    = form.input :regular
+    = form.input :principal
+    = form.input :interest
+    = form.input :late_interest
+    = form.input :permitted_fee
+    = form.input :transaction_type, :as => :select, :collection => humanize(Transaction::TRANSACTION_TYPES), :include_blank => false
     = form.input :payment_type, :as => :select, :collection => humanize(Transaction::PAYMENT_TYPES), :include_blank => false
     = form.inputs  :name => "Loan", :id => "loan_group" do
       = form.input :target_loan, :as => :select, :collection => Loan.all, :include_blank => false
@@ -18,18 +23,41 @@
     = form.commit_button
 
 :javascript
+  var amounts = ["regular", "principal", "interest", "late_interest", "permitted_fee"];
   function onTransactionTypeChange() {
+    for(i in amounts)
+      $('#transaction_'+amounts[i]).val("0.0");
     $('#loan_group').hide();
     $('#book_transfer_group').hide();
     $('#account_transfer_group').hide();
     $('#book_transfer_group').hide();
     $('#account_transfer_group').hide();
-    if ($('#transaction_transaction_type').val() == 'book_transfer')
-      $('#book_transfer_group').show();
-    else if ($('#transaction_transaction_type').val() == 'account_transfer')
-      $('#account_transfer_group').show();
-    else
-      $('#loan_group').show();
+    if ($('#transaction_transaction_type').val() == 'payment') {
+      for(i in amounts)
+        $('#transaction_' + amounts[i] + '_input').show();
+    } else {
+      // hide amounts
+      for(i in amounts)
+        $('#transaction_' + amounts[i] + '_input').hide();
+      //
+      if ($('#transaction_transaction_type').val() == 'book_transfer')
+        $('#book_transfer_group').show();
+      else if ($('#transaction_transaction_type').val() == 'account_transfer')
+        $('#account_transfer_group').show();
+      else
+        $('#loan_group').show();
+    }
+  }
+  function onAmountsChange() {
+    if ($('#transaction_transaction_type').val() == 'payment') {
+      var amount = 0.0;
+      for(i in amounts)
+        amount += parseFloat($('#transaction_'+amounts[i]).val());
+      console.debug("amount: ", amount);
+      $('#transaction_amount').val(amount);
+    }
   }
   $('#transaction_transaction_type').change(onTransactionTypeChange);
   onTransactionTypeChange();
+  for(i in amounts)
+    $('#transaction_'+amounts[i]).keyup(onAmountsChange);

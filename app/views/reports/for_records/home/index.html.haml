@@ -1,7 +1,7 @@
 - title "For Records"
 
 %h2 Cash Account Book Report
-= form_for @reports_params, :url => :reports_for_records_cash_account_books do |form|
+= form_for @reports_params, :url => :reports_for_records_cash_account_books, :html => { :method => :get } do |form|
   %p
     = form.label :date_start, "Start date"
     = form.date_select :date_start
@@ -15,16 +15,10 @@
     = submit_tag "Create Report"
 
 %h2 Loan Account Book Report
-= form_for @reports_params, :url => :reports_for_records_loan_account_books do |form|
+= form_for @reports_params, :url => :reports_for_records_loan_account_books, :html => { :method => :get } do |form|
   %p
-    = form.label :date_start, "Start date"
-    = form.date_select :date_start
-  %p
-    = form.label :date_end, "End date"
-    = form.date_select :date_end
-  %p
-    = form.label :book_id, "Book"
-    = form.select :book_id, options_for_select(current_user.books.map{|b| [b.name, b.id]})
+    = form.label  :loan_id, "Loan"
+    = form.select :loan_id, options_for_select(current_user.loans.map{|l| [l.account_no, l.id]})
   %p
     = submit_tag "Create Report"
 

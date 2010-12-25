@@ -1,0 +1,139 @@
+%h2 FORM 3
+- title "LOAN ACCOUNT BOOK"
+
+.report_header
+  %table
+    %tr
+      %td.strong{:colspan=>2} Particulars of loan
+      %td.strong{:colspan=>2} Particulars of borrower(s)
+      %td.strong{:colspan=>2} Particulars of surety(ies)
+    %tr
+      %td Loan account number:
+      %td.strong= @loan.account_no
+      %td Name of borrower(s): 
+      %td
+        - @loan.borrowers.each do |b|
+          %strong= b.name
+          %br
+      %td Name of surety:
+      %td
+        - @loan.sureties.each do |s|
+          %strong= s.name
+          %br
+    %tr
+      %td Previous loan account number (if any):
+      %td
+      %td Personal identification, incorporation or registration number:
+      %td
+        - @loan.borrowers.each do |b|
+          %strong= b.identification_no
+          %br
+      %td Personal identification, incorporation or registration number:
+      %td
+        - @loan.sureties.each do |s|
+          %strong= s.identification_no
+          %br
+    %tr
+      %td Date of Loan:
+      %td.strong= @loan.application
+      %td Business Phone
+      %td
+        - @loan.borrowers.each do |b|
+          %strong= b.business_phone
+          %br
+      %td Business Phone
+      %td
+        - @loan.sureties.each do |b|
+          %strong= b.business_phone
+          %br
+    %tr
+      %td Interest rate per annum:
+      %td.strong= @loan.interest
+      %td Home Phone
+      %td
+        - @loan.borrowers.each do |b|
+          %strong= b.home_phone
+          %br
+      %td Home Phone
+      %td
+        - @loan.sureties.each do |b|
+          %strong= b.home_phone
+          %br
+    %tr
+      %td Dates when repayments fall due:
+      %td.strong
+      %td Hand Phone
+      %td
+        - @loan.borrowers.each do |b|
+          %strong= b.hand_phone
+          %br
+      %td Hand Phone
+      %td
+        - @loan.sureties.each do |b|
+          %strong= b.hand_phone
+          %br
+    %tr
+      %td Tenure of Loan:
+      %td.strong= @loan.no_of_terms
+      %td Address
+      %td
+        - @loan.borrowers.each do |b|
+          %strong= b.mail_address
+          %br
+      %td Address
+      %td
+        - @loan.sureties.each do |b|
+          %strong= b.mail_address
+          %br
+    %tr
+      %td First payment at:
+      %td.strong= @loan.first_payment_at
+      %td Business Address
+      %td
+        - @loan.borrowers.each do |b|
+          %strong= b.business_address
+          %br
+      %td Business Address
+      %td
+        - @loan.sureties.each do |b|
+          %strong= b.business_address
+          %br
+
+%h3 Repayment history
+
+.report
+  %table
+    %tr
+      %th Date
+      %th Mode of payment, e.g. cash, cheque, interbank GIRO
+      %th Total amount paid ($) (D) = (A)+(B)+(C)
+      %th Amount paid towards principal ($) (A)
+      %th Amount paid towards interest (including late interest) ($) (B)
+      %th Amount paid towards permitted fees (including late fees) ($)
+      %th Overdue and Outstanding principal ($)
+      %th Cash Account Book Entry No.
+      %th Receipt No.
+    - @transactions.each do |t|
+      %tr
+        %td= t.date
+        %td= t.payment_type.titleize
+        %td= number_to_currency t.amount
+        %td= t.principal
+        %td
+        %td
+        %td
+        %td
+        %td
+    %tr
+      %td
+      %td Total
+      %td
+      %td
+      %td
+      %td
+      %td
+      %td
+      %td
+
+
+

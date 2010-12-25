@@ -114,6 +114,10 @@ h1
   ul
     margin: 0
 
+.report_header
+  .strong
+    font-weight: bold
+
 .report
   h3
     border-bottom: 1px solid #CCC
@@ -126,12 +130,15 @@ h1
     dd
       display: inline
   table
-    th
-      background: #CCC
-      border: 1px solid black
-    th,td
-      padding: 2px 8px 2px 8px
-      border-bottom: 1px solid black
+    tr
+      th
+        background: #CCC
+        border: 1px solid black
+      th,td
+        padding: 2px 8px 2px 8px
+        border-bottom: 1px solid black
+        .header
+          font-weight: bold
   hr
     border: 1px dashed #DDD
     height: 1px

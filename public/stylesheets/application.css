@@ -110,6 +110,9 @@ h1 {
   .error_messages ul {
     margin: 0; }
 
+.report_header .strong {
+  font-weight: bold; }
+
 .report h3 {
   border-bottom: 1px solid #cccccc; }
 .report dl {
@@ -119,12 +122,14 @@ h1 {
     display: inline; }
   .report dl dd {
     display: inline; }
-.report table th {
+.report table tr th {
   background: #cccccc;
   border: 1px solid black; }
-.report table th, .report table td {
+.report table tr th, .report table tr td {
   padding: 2px 8px 2px 8px;
   border-bottom: 1px solid black; }
+  .report table tr th .header, .report table tr td .header {
+    font-weight: bold; }
 .report hr {
   border: 1px dashed #dddddd;
   height: 1px; }

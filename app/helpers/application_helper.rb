@@ -6,4 +6,9 @@ module ApplicationHelper
       raise ArgumentError
     end
   end
+
+  # currency
+  def c number
+    number_to_currency number.abs
+  end
 end

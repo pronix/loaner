@@ -61,7 +61,7 @@
               %td= transaction.date
               %td= transaction.transaction_type
               %td= transaction.payment_type
-              %td= number_to_currency transaction.amount
+              %td= c transaction.amount
               %td= transaction.description
               %td
                 = link_to "Edit", edit_loan_transaction_path(resource, transaction)

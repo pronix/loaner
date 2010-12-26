@@ -59,15 +59,15 @@
       %tr{:class => cycle("c", "n")}
         %td= num+1
         %td= l payment.date
-        %td= number_to_currency(payment.amount) 
-        %td= number_to_currency(payment.loan.principal_fee) 
-        %td= number_to_currency(payment.loan.interest_fee) 
+        %td= c payment.amount
+        %td= c payment.loan.principal_fee
+        %td= c payment.loan.interest_fee
         - total_amount    += payment.amount
         - total_principal += payment.loan.principal_fee
         - total_interest  += payment.loan.interest_fee
-    %tr
+    %tr.total
       %td Total
       %td
-      %td= number_to_currency total_amount
-      %td= number_to_currency total_principal
-      %td= number_to_currency total_interest
+      %td= c total_amount
+      %td= c total_principal
+      %td= c total_interest

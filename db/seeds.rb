@@ -44,7 +44,7 @@ def random_persons
   (1..(rand(3)+1)).map { Person.all.rand }
 end
 
-5.times do
+30.times do
   application = ((rand(30)+12).months.ago - rand(30).days)
   loan = Loan.create :account_no => rand(1000),
     :book => Book.all.rand,
@@ -57,7 +57,7 @@ end
     :no_of_terms => rand(4)*6+6,
     :first_payment_at => (application + 1.month)
 
-  (rand(loan.no_of_terms)+2).times do |i|
+  (rand(loan.no_of_terms)+5).times do |i|
     loan.payment! :amount => loan.principal_fee + loan.interest_fee,
                   :principal => loan.principal_fee,
                   :interest => loan.interest_fee,

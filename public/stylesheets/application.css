@@ -122,6 +122,8 @@ h1 {
     display: inline; }
   .report dl dd {
     display: inline; }
+.report table tr.total {
+  font-weight: bold; }
 .report table tr th {
   background: #cccccc;
   border: 1px solid black; }
@@ -130,6 +132,8 @@ h1 {
   border-bottom: 1px solid black; }
   .report table tr th .header, .report table tr td .header {
     font-weight: bold; }
+.report table tr td.date {
+  white-space: nowrap; }
 .report hr {
   border: 1px dashed #dddddd;
   height: 1px; }

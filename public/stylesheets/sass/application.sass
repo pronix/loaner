@@ -131,6 +131,8 @@ h1
       display: inline
   table
     tr
+      &.total
+        font-weight: bold
       th
         background: #CCC
         border: 1px solid black
@@ -139,6 +141,9 @@ h1
         border-bottom: 1px solid black
         .header
           font-weight: bold
+      td
+        &.date
+          white-space: nowrap
   hr
     border: 1px dashed #DDD
     height: 1px

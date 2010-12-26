@@ -8,5 +8,5 @@
   - @payments.each do |payment|
     %tr
       %td= payment.paid_on
-      %td= number_to_currency payment.amount
+      %td= c payment.amount
       %td= link_to "Show Loan", edit_loan_path(payment.loan)

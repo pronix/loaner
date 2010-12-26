@@ -104,7 +104,7 @@
 .report
   %table
     %tr
-      %th Date
+      %th.date Date
       %th Mode of payment, e.g. cash, cheque, interbank GIRO
       %th Total amount paid ($) (D) = (A)+(B)+(C)
       %th Amount paid towards principal ($) (A)
@@ -113,25 +113,35 @@
       %th Overdue and Outstanding principal ($)
       %th Cash Account Book Entry No.
       %th Receipt No.
+    - total_amount = 0.0
+    - total_principal = 0.0
+    - total_total_interest = 0.0
+    - total_total_fees = 0.0
+    - total_outstanding_principal = 0.0
     - @transactions.each do |t|
       %tr
-        %td= t.date
+        %td.date= t.date
         %td= t.payment_type.titleize
-        %td= number_to_currency t.amount
-        %td= t.principal
-        %td
-        %td
-        %td
-        %td
-        %td
-    %tr
+        %td= c t.amount
+        %td= c t.principal
+        %td= c t.total_interest
+        %td= c t.total_fees
+        %td= c t.outstanding_principal
+        %td= t.id
+        %td= t.receipt_no
+      - total_amount += t.amount
+      - total_principal += t.principal
+      - total_total_interest += t.total_interest
+      - total_total_fees += t.total_fees
+      - total_outstanding_principal += t.outstanding_principal
+    %tr.total
       %td
       %td Total
-      %td
-      %td
-      %td
-      %td
-      %td
+      %td= c total_amount
+      %td= c total_principal
+      %td= c total_total_interest
+      %td= c total_total_fees
+      %td= c total_outstanding_principal
       %td
       %td
 

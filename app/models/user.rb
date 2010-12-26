@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   acts_as_authorization_subject  :association_name => :roles
   has_many :books, :foreign_key => :lender_id
   has_many :loans, :through => :books
+  has_many :transactions, :through => :books
   belongs_to :company_profile
 
   def transactions

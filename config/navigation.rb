@@ -72,14 +72,15 @@ SimpleNavigation::Configuration.run do |navigation|
       primary.item :reports_menu,         "Reports",   reports_root_path, :highlights_on => %r(/reports) do |menu|
         menu.item :for_submission,        "For Submission",             ""
         menu.item :for_records,           "For Records",                reports_for_records_root_path,  :highlights_on => %r(/reports/for_records) do |menu1|
-
         end
         menu.item :borrower_reports,      "Borrower Reports",           reports_borrowers_root_path do |menu1|
           menu1.item :borrower_list,       "Borrowers List",            reports_borrowers_lists_path
           menu1.item :borrower_statements, "Borrower Statements",       reports_borrowers_root_path
         end
+        menu.item :borrower_reports,      "Payment Due",                :reports_payment_due_root do |menu1|
+          menu1.item :borrower_list,       "Daily",                     :reports_payment_due_root
+        end
         menu.item :book_statements,       "Book Statements",            ""
-        menu.item :payment_due_reports,   "Payment Due Reports",        ""
         menu.item :loan_status,           "Loan Status",                ""
         menu.item :payment_schedule,      "Payment Schedule",           reports_payment_schedules_path
       end

@@ -1,6 +1,7 @@
 class Reports::ForRecords::CashAccountBooksController < Reports::BaseController
   def create
     show
+    render :show
   end
 
   def show

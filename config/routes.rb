@@ -100,6 +100,10 @@ Loaner::Application.routes.draw do
       resource :loan_account_books, :only => [:create,:show]
       root :to => "home#index"
     end
+    namespace :payment_due do
+      resource :daily, :controller => :daily, :only => [:create,:show]
+      root :to => "home#index"
+    end
     root :to => "home#index"
   end
 

@@ -1,0 +1,14 @@
+- title "Payment Due Reports"
+
+%h2 Daily
+= form_for @reports_params, :url => :reports_payment_due_daily, :html => { :method => :get } do |form|
+  %p
+    = form.label :date_start, "Start date"
+    = form.date_select :date_start
+  %p
+    = form.label :date_end, "End date"
+    = form.date_select :date_end
+  %p
+    = submit_tag "Create Report"
+
+

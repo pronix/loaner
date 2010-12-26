@@ -1,0 +1,32 @@
+- title "Payment Due from #{d @reports_params.date_start} - #{d @reports_params.date_end}"
+
+.report
+  %table.payment_due
+    %tr
+      %th Due Date
+      %th Loan Account no
+      %th Borrower Name
+      %th Loan amount
+      %th{:colspan => 2} Amount paid to Date
+      %th Due Amount
+      %th Contact No
+    %tr
+      %th
+      %th
+      %th
+      %th
+      %th Principal
+      %th Interest
+      %th
+      %th
+    - @transactions.each do |t|
+      %tr
+        %td= d t.date
+        %td= t.loan.try(:account_no)
+        %td= t.loan.borrowers.map(&:name).join(", ")
+        %td= t.loan.amount
+        %td= t.principal
+        %td= t.interest
+        %td= t.amount
+        %td= t.loan.borrowers.map(&:home_phone).join(", ")
+

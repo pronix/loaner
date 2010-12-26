@@ -5,6 +5,7 @@
 #  id               :integer         not null, primary key
 #  book_id          :integer         not null
 #  loan_id          :integer
+#  receipt_no       :integer
 #  date             :date            not null
 #  transaction_type :string(255)     not null
 #  payment_type     :string(255)     not null
@@ -46,6 +47,7 @@ class Transaction < ActiveRecord::Base
   validates_presence_of :transaction_type
   validates_presence_of :payment_type
   validate :validate_amount
+  validates_uniqueness_of :receipt_no
 
 
   # Scopes
@@ -64,6 +66,7 @@ class Transaction < ActiveRecord::Base
     record.principal      ||= 0.0
     record.late_interest  ||= 0.0
     record.permitted_fee  ||= 0.0
+    record.receipt_no     ||= Transaction.next_receipt_no
   end
 
   # principal = amount if all other amounts eq zero
@@ -90,6 +93,19 @@ class Transaction < ActiveRecord::Base
   end
   def disbursement?; receipt?; end
 
+  def total_interest
+    interest + late_interest
+  end
+
+  def total_fees
+    permitted_fee
+  end
+
+  # TODO
+  def outstanding_principal
+    0.0
+  end
+
   def self.custom_create! options
     self.create! options
   end
@@ -107,6 +123,10 @@ class Transaction < ActiveRecord::Base
   end
   def self.payment! options
     self.credit! options.merge(:transaction_type => TRANSACTION_PAYMENT)
+  end
+
+  def self.next_receipt_no
+    self.maximum(:receipt_no).to_i + 1
   end
 
 end

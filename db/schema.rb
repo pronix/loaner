@@ -129,6 +129,7 @@ ActiveRecord::Schema.define(:version => 20101104092356) do
   create_table "transactions", :force => true do |t|
     t.integer  "book_id",                           :null => false
     t.integer  "loan_id"
+    t.integer  "receipt_no"
     t.date     "date",                              :null => false
     t.string   "transaction_type",                  :null => false
     t.string   "payment_type",                      :null => false

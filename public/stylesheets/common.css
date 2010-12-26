@@ -8,6 +8,17 @@ table th {
 table tr.n {
   background: #dddddd; }
 
+.report_header table {
+  width: 100%; }
+  .report_header table th {
+    background: white; }
+.report_header .strong {
+  font-weight: bold; }
+.report_header .dt {
+  font-weight: normal; }
+.report_header .dl {
+  font-weight: bold; }
+
 .report h3 {
   border-bottom: 1px solid #cccccc; }
 .report dl {

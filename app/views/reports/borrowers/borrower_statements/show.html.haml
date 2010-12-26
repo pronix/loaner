@@ -1,0 +1,88 @@
+- title current_user.company_profile.try(:name)
+%h2= current_user.company_profile.try(:address)
+%h2= current_user.company_profile.try(:license_number)
+
+.report_header
+  %h3 Particulars of borrower(s)
+  %table
+    - @loan.borrowers.each do |b|
+      %tr
+        %th.dt Name of borrower(s):
+        %th.dd= b.name
+        %th.dt Contact no:
+        %th.dd= b.home_phone
+      %tr
+        %th.dt Per.Id, incorp.No or Reg.No 
+        %th.dd= b.identification_no
+        %th.dt Address:
+        %th.dd= b.mail_address
+
+  %table
+    %tr
+      %th.dt Loan Acc No:
+      %th.dd= @loan.account_no
+      %th.dt Date of loan:
+      %th.dd= @loan.application
+      %th.dt Principal:
+      %th.dd= @loan.amount
+      %th.dt Interest:
+      %th.dd= @loan.interest
+    %tr
+      %th.dt Opening as of:
+      %th.dd
+      %th.dt Principal
+      %th.dd
+      %th.dt Interest
+      %th.dd
+      %th.dt 
+      %th.dd
+
+.report
+  %table
+    %tr
+      %th{:rowspan => 2} Date
+      %th{:colspan => 2} PAYABLE
+      %th{:colspan => 4} PAID
+    %tr
+      %th Type
+      %th Amount
+      %th Total Amount Paid
+      %th Amount paid towards principal
+      %th Amount paid towards interest (including late interest)
+      %th Amount paid towards permitted fees (including late fees)
+    - total_amount = 0.0
+    - total_principal = 0.0
+    - total_total_interest = 0.0
+    - total_total_fees = 0.0
+    - @loan.payments.each do |p|
+      %tr
+        %td= p.date
+        %td= p.transaction_type
+        %td= p.amount
+        %td= p.amount
+        %td= p.principal
+        %td= p.total_interest
+        %td= p.total_fees
+      - total_amount += p.amount
+      - total_principal += p.principal
+      - total_total_interest += p.total_interest
+      - total_total_fees += p.total_fees
+    %tr.total
+      %td
+      %td
+      %td= total_amount
+      %td
+      %td
+      %td
+
+.report_footer
+  %table
+    %tr
+      %th.dt Closing as of:
+      %th.dd
+      %th.dt Principal
+      %th.dd
+      %th.dt Interest
+      %th.dd
+      %th.dt 
+      %th.dd

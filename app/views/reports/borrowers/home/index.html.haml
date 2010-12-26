@@ -1,0 +1,9 @@
+- title "Borrowers Reports"
+
+%h2 Borrower Statements
+= form_for @reports_params, :url => :reports_borrowers_borrower_statements, :html => { :method => :get } do |form|
+  %p
+    = form.label  :loan_id, "Loan"
+    = form.select :loan_id, options_for_select(current_user.loans.map{|l| [l.account_no, l.id]})
+  %p
+    = submit_tag "Create Report"

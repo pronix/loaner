@@ -110,9 +110,6 @@ h1 {
   .error_messages ul {
     margin: 0; }
 
-.report_header .strong {
-  font-weight: bold; }
-
 .report h3 {
   border-bottom: 1px solid #cccccc; }
 .report dl {

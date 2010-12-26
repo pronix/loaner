@@ -88,6 +88,10 @@ Loaner::Application.routes.draw do
   namespace :reports do
     resources :payment_schedules
     resources :borrowers_lists, :only => [:index]
+    namespace :borrowers do
+      resource :borrower_statements, :only => [:create,:show]
+      root :to => "home#index"
+    end
     namespace :for_submission do
       root :to => "home#index"
     end

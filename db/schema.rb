@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(:version => 20101104092356) do
   end
 
   create_table "users", :force => true do |t|
+    t.integer  "company_profile_id"
     t.string   "username"
     t.string   "email"
     t.string   "crypted_password"

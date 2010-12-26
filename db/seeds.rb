@@ -28,17 +28,38 @@ change_log STDOUT
                 :designation => Faker::Lorem.words(10)
 end
 
+company = CompanyProfile.first
+company.name = "PR VEERAPPA CHETTIAR"
+company.address = "77 High Street #09-15 High Street Plaza Singapore"
+company.license_number = "179433"
+company.rom_reference = "63380807"
+company.contact_person = Faker::Name.name
+company.contact_person_email = Faker::Internet.email
+company.contact_person_office_phone = Faker::PhoneNumber.phone_number
+company.contact_person_mobile_phone = Faker::PhoneNumber.phone_number
+company.contact_person_fax_number = Faker::PhoneNumber.phone_number
+company.save!
+
+
+admin = User.create!  :username => "admin",
+                      :name => "Admin",
+                      :password => "admin",
+                      :password_confirmation => "admin",
+                      :email => "admin@lenders.com"
+admin.has_role! "admin"
+
 3.times do |i|
   user = User.create! :username => "user#{i+1}",
                 :name => Faker::Name.name,
                 :password => "secret",
                 :password_confirmation => "secret",
-                :email => Faker::Internet.email
+                :email => Faker::Internet.email,
+                :company_profile => company
 
   user.books.create :name => "Cash Book"
   user.books.create :name => "Bank Book"
+  user.has_role! "lender"
 end
-
 
 def random_persons
   (1..(rand(3)+1)).map { Person.all.rand }
@@ -63,5 +84,6 @@ end
                   :interest => loan.interest_fee,
                   :date => (loan.first_payment_at + i.months)
   end
-
 end
+
+

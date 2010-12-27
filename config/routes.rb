@@ -90,6 +90,7 @@ Loaner::Application.routes.draw do
     resources :borrowers_lists, :only => [:index]
     namespace :borrowers do
       resource :borrower_statements, :only => [:create,:show]
+      resource :borrower_history, :controller => :borrower_history, :only => [:create,:show]
       root :to => "home#index"
     end
     namespace :for_submission do

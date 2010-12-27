@@ -7,3 +7,11 @@
     = form.select :loan_id, options_for_select(current_user.loans.map{|l| [l.account_no, l.id]})
   %p
     = submit_tag "Create Report"
+
+%h2 Borrower History
+= form_for @reports_params, :url => :reports_borrowers_borrower_history, :html => { :method => :get } do |form|
+  %p
+    = form.label  :borrower_id, "Borrower"
+    = form.select :borrower_id, options_for_select(current_user.borrowers.map{|l| [l.name, l.id]})
+  %p
+    = submit_tag "Create Report"

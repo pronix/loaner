@@ -1,0 +1,40 @@
+- title "Borrower History as on #{d Time.now}"
+
+.report_header
+  %p
+    %span.dt Borrower Name:
+    %span.dl= @borrower.name
+
+.report
+  %table
+    %tr
+      %th{:rowspan=>2} Loan Account No.
+      %th{:rowspan=>2} Date of Loan
+      %th{:rowspan=>2} Status
+      %th{:rowspan=>2} Loan Amount
+      %th{:rowspan=>2} Interest Rate
+      %th{:rowspan=>2} Date of Maturity
+      %th{:colspan=>4} Paid
+      %th{:rowspan=>2} No. of late payments 
+      %th{:rowspan=>2} Avg Days of Late payments
+      %th{:rowspan=>2} No of Cheque Dishonours
+    %tr
+      %th Principal
+      %th Interest
+      %th Permitted Fees
+      %th Late Interest
+    - @transactions.each do |t|
+      %tr
+        %td= t.loan.account_no
+        %td= t.loan.application
+        %td= t.loan.state.titleize
+        %td= t.loan.amount
+        %td= t.loan.interest
+        %td= d t.loan.maturity_at
+        %td= c t.principal
+        %td= c t.interest
+        %td= c t.permitted_fee
+        %td= c t.late_interest
+        %td
+        %td
+        %td

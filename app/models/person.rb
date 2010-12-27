@@ -28,7 +28,8 @@ class Person < ActiveRecord::Base
   belongs_to :users
   #has_many :lender_loans, :class_name => 'Loan', :foreign_key => :lender_id
   has_many :surety_loans
-  has_many :borrower_loans
+  has_many :borrower_loans, :foreign_key => :borrower_id
+  has_many :loans, :through => :borrower_loans
 
   validates_presence_of :name
 

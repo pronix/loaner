@@ -25,7 +25,17 @@ class User < ActiveRecord::Base
     Transaction.where :loan_id => loans
   end
 
-  def admin?
+  def borrowers
+    bl = BorrowerLoan.where(:loan_id => loans)
+    Person.where(:id => bl.map(&:borrower_id))
+  end
 
+  def sureties
+    sl = SuretyLoan.where(:loan_id => loans)
+    Person.where(:id => sl.map(&:surety_id))
+  end
+
+  def admin?
+    false
   end
 end

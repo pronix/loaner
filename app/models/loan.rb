@@ -55,7 +55,10 @@ class Loan < ActiveRecord::Base
   after_create do |loan|
     options = {:amount => loan.amount, :date => loan.application}
     options[:payment_type] = loan.loan_type if loan.loan_type
-    loan.transactions.disbursement! options
+    Loan.transaction do
+      loan.transactions.disbursement! options
+      loan.disburse!
+    end
   end
   after_initialize {|loan| loan.application ||= Date.today }
 
@@ -72,11 +75,15 @@ class Loan < ActiveRecord::Base
 
   state_machine :state, :initial => :new do
     event :disburse do
-      transition :new => :disbursed
+      transition :new => :active
     end
 
     event :repay do
       transition :disbursed => :repaid
+    end
+
+    event :close do
+      transition all => :closed
     end
   end
 

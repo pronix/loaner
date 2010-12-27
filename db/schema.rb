@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(:version => 20101104092356) do
     t.string   "email"
     t.string   "identification_no"
     t.integer  "annual_income"
+    t.boolean  "black_listed",       :default => false
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"

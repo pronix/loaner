@@ -14,6 +14,7 @@ class CreatePeople < ActiveRecord::Migration
       t.string          :email
       t.string          :identification_no
       t.integer         :annual_income
+      t.boolean         :black_listed,    :default => false
 
       # photo
       t.string          :photo_file_name

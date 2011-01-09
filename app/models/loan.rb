@@ -103,4 +103,9 @@ class Loan < ActiveRecord::Base
   def principal_fee
     ("%.2f" % (amount / no_of_terms)).to_f
   end
+
+  def outstanding_principal date = Date.today
+    paid = payments.where("date <= ?", date).sum(:principal)
+    amount - paid
+  end
 end

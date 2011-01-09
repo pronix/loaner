@@ -117,7 +117,6 @@
     - total_principal = 0.0
     - total_total_interest = 0.0
     - total_total_fees = 0.0
-    - total_outstanding_principal = 0.0
     - @transactions.each do |t|
       %tr
         %td.date= t.date
@@ -126,14 +125,13 @@
         %td= c t.principal
         %td= c t.total_interest
         %td= c t.total_fees
-        %td= c t.outstanding_principal
+        %td= c @loan.outstanding_principal t.date
         %td= t.id
         %td= t.receipt_no
       - total_amount += t.amount
       - total_principal += t.principal
       - total_total_interest += t.total_interest
       - total_total_fees += t.total_fees
-      - total_outstanding_principal += t.outstanding_principal
     %tr.total
       %td
       %td Total
@@ -141,7 +139,7 @@
       %td= c total_principal
       %td= c total_total_interest
       %td= c total_total_fees
-      %td= c total_outstanding_principal
+      %td
       %td
       %td
 

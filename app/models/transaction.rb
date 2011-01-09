@@ -101,11 +101,6 @@ class Transaction < ActiveRecord::Base
     permitted_fee
   end
 
-  # TODO
-  def outstanding_principal
-    0.0
-  end
-
   def self.custom_create! options
     self.create! options
   end

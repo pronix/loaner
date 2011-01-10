@@ -21,4 +21,10 @@ module ApplicationHelper
   def m amount
     amount
   end
+
+  #def quarter_select object_name, method
+  #  quarters = (Time.now.year-10..Time.now.year.map{|y| (1..4).map{|q| Quarter.new q, y}})
+  #  current = ""
+  #  select(object_name, method, options_for_select(.flatten))
+  #end
 end

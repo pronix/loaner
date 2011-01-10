@@ -1,0 +1,11 @@
+- title "For Submission / Monthly Statement"
+
+%h2 Loan Position
+= form_for @reports_params, :url => :reports_for_submission_quarterly_loan_position, :html => { :method => :get } do |form|
+  %p
+    = form.label :date_start, "Quarter"
+    = form.date_select :date_start, :discard_day => true
+  %p
+    = submit_tag "Create Report"
+
+

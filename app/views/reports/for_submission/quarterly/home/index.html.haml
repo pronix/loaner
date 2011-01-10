@@ -1,0 +1,21 @@
+- title "For Submission / Quarterly"
+
+%h2 Loan Position
+= form_for @reports_params, :url => :reports_for_submission_quarterly_loan_position, :html => { :method => :get } do |form|
+  %p
+    = form.label :date_start, "Quarter"
+    = form.date_select :date_start, :discard_day => true
+  %p
+    = submit_tag "Create Report"
+
+
+%h2 Cash Position
+= form_for @reports_params, :url => :reports_for_submission_quarterly_cash_position, :html => { :method => :get } do |form|
+  %p
+    = form.label  :loan_id, "Loan"
+    = form.select :loan_id, options_for_select(current_user.loans.map{|l| [l.account_no, l.id]})
+  %p
+    = submit_tag "Create Report"
+
+
+

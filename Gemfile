@@ -22,6 +22,7 @@ gem 'paperclip',                '~> 2.3.5'
 gem 'jquery-rails'
 gem 'simple-navigation'
 gem 'pdfkit'
+gem 'quarter_time'
 
 
 # Use unicorn as the web server

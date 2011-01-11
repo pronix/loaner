@@ -9,7 +9,9 @@ class Reports::ForSubmission::Quarterly::LoanPositionController < Reports::BaseC
   end
 
   def show
-    #@reports_params = Reports::Params.new params[:reports_params], current_user
-    #@transactions = @reports_params.book.transactions.where(["date >= ? AND date < ?", @reports_params.date_start, @reports_params.date_end])
+    @reports_params = Reports::Params.new params[:reports_params], current_user
+    @reports_params.date_start = Time.local(@reports_params.date_start.year)
+    logger.debug @reports_params.date_start += @reports_params.quarter2months
+    logger.debug @reports_params.date_end = @reports_params.date_start + 3.months
   end
 end

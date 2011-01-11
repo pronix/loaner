@@ -1,0 +1,102 @@
+%h2 Statement for #{@reports_params.quarter}th Quarter of #{@reports_params.date_start.year}
+
+.report_header
+  %table
+    %tr
+      %td.strong Part B: Loan Position 
+      %td.strong Date: #{d Time.now}
+    %tr
+      %td.strong Reference No.:
+      %td.strong Name of Contact person:
+    %tr
+      %td.strong Business Name:
+      %td.strong Designation:
+    %tr
+      %td.strong Business Address:
+      %td.strong Telephone No.:
+
+
+.report
+  %table
+    %tr
+      %th Particulars
+      %th.date{:colspan => 2}= l @reports_params.date_start, :format => "%B"
+      %th.date{:colspan => 2}= l @reports_params.date_start + 1.month, :format => "%B"
+      %th.date{:colspan => 2}= l @reports_params.date_start + 2.months, :format => "%B"
+      %th{:colspan => 2} Quarterly Total
+    %tr
+      %th
+        %u Opening loan balance
+      %th $
+      %th $
+
+      %th $
+      %th $
+
+      %th $
+      %th $
+
+      %th $
+      %th $
+    - start = @reports_params.date_start
+    %tr
+      %th Unsecured
+      %td= c current_user.balance_at start
+      %td= c current_user.balance_at start
+
+      %td= c current_user.balance_at start + 1.month
+      %td= c current_user.balance_at start + 1.month
+
+      %td= c current_user.balance_at start + 2.month
+      %td= c current_user.balance_at start + 2.month
+
+      %td= c current_user.balance_at start + 3.month
+      %td= c current_user.balance_at start + 3.month
+    %tr
+      %th
+        %u Add
+    %tr
+      %th Loans granted
+      %td= c current_user.disbursements_sum start, start + 1.month
+      %td= c current_user.disbursements_sum start, start + 1.month
+
+      %td= c current_user.disbursements_sum start + 1.month, start + 2.month
+      %td= c current_user.disbursements_sum start + 1.month, start + 2.month
+
+      %td= c current_user.disbursements_sum start + 2.month, start + 3.month
+      %td= c current_user.disbursements_sum start + 2.month, start + 3.month
+
+      %td= c current_user.disbursements_sum start, start + 3.month
+      %td= c current_user.disbursements_sum start, start + 3.month
+    %tr
+      %th
+        %u Deduct
+    %tr
+      %th Loans repayments
+      %td= c current_user.payments_sum start, start + 1.month
+      %td= c current_user.payments_sum start, start + 1.month
+
+      %td= c current_user.payments_sum start + 1.month, start + 2.month
+      %td= c current_user.payments_sum start + 1.month, start + 2.month
+
+      %td= c current_user.payments_sum start + 2.month, start + 3.month
+      %td= c current_user.payments_sum start + 2.month, start + 3.month
+
+      %td= c current_user.payments_sum start, start + 3.month
+      %td= c current_user.payments_sum start, start + 3.month
+    %tr
+      %th
+        %u Closing loan balance
+    %tr
+      %th Unsecured
+      %td= c current_user.balance_at start + 1.month
+      %td= c current_user.balance_at start + 1.month
+
+      %td= c current_user.balance_at start + 2.month
+      %td= c current_user.balance_at start + 2.month
+
+      %td= c current_user.balance_at start + 3.month
+      %td= c current_user.balance_at start + 3.month
+
+      %td= c current_user.balance_at start + 4.month
+      %td= c current_user.balance_at start + 4.month

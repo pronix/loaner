@@ -11,15 +11,15 @@ module ApplicationHelper
   def c number
     number_to_currency number.abs
   end
+  # Money default formatting
+  def m amount
+    c
+  end
+
 
   # Date default formatting
   def d date
     l date, :format => "%d-%m-%Y" if date
-  end
-
-  # Money default formatting
-  def m amount
-    amount
   end
 
   #def quarter_select object_name, method

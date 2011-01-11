@@ -3,8 +3,10 @@
 %h2 Loan Position
 = form_for @reports_params, :url => :reports_for_submission_quarterly_loan_position, :html => { :method => :get } do |form|
   %p
+    = form.label :date_start, "Year"
+    = form.date_select :date_start, :discard_day => true, :discard_month => true
     = form.label :date_start, "Quarter"
-    = form.date_select :date_start, :discard_day => true
+    = form.select :quarter, options_for_select([1,2,3,4])
   %p
     = submit_tag "Create Report"
 

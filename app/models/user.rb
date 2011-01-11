@@ -35,6 +35,18 @@ class User < ActiveRecord::Base
     Person.where(:id => sl.map(&:surety_id))
   end
 
+  def balance_at date = Date.today
+    books.map{|b| b.balance_at date}.sum
+  end
+
+  def payments_sum from = Date.parse("1970-01-01"), to = Time.now
+    books.map{|b| b.payments(from, to).sum(:amount)}.sum
+  end
+
+  def disbursements_sum from = Date.parse("1970-01-01"), to = Time.now
+    books.map{|b| b.disbursements(from, to).sum(:amount)}.sum
+  end
+
   def admin?
     false
   end

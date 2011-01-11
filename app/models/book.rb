@@ -23,4 +23,11 @@ class Book < ActiveRecord::Base
     initial_balance + transactions.where(["date <= ?", date]).sum(:amount)
   end
 
+  def payments from = Date.parse("1970-01-01"), to = Time.now
+    transactions.payments.where(["date >= ? AND date < ?", from, to])
+  end
+
+  def disbursements from = Date.parse("1970-01-01"), to = Time.now
+    transactions.disbursements.where(["date >= ? AND date < ?", from, to])
+  end
 end

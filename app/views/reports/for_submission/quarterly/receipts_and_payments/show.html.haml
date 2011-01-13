@@ -1,0 +1,57 @@
+%h2 Statement for #{@reports_params.quarter}th Quarter of #{@reports_params.date_start.year}
+
+%i Please check this report!
+
+.report_header
+  %table
+    %tr
+      %td.strong Other Receipts and Payments
+      %td
+      %td.strong Date:
+      %td= d Date.today
+    %tr
+      %td.strong Reference No.:
+      %td= current_user.company_profile.rom_reference
+      %td.strong Name of Contact person:
+      %td= current_user.name
+    %tr
+      %td.strong Business Name:
+      %td= current_user.company_profile.contact_person
+      %td.strong Designation:
+      %td
+    %tr
+      %td.strong Business Address:
+      %td
+      %td.strong Telephone No.:
+      %td= current_user.company_profile.contact_person_office_phone
+
+
+.report
+  %table
+    %tr
+      %th Particulars
+      %th.date= l @reports_params.date_start, :format => "%B"
+      %th.date= l @reports_params.date_start + 1.month, :format => "%B"
+      %th.date= l @reports_params.date_start + 2.months, :format => "%B"
+      %th.date Quarterly Total
+    %tr
+      %th
+      %th $
+
+      %th $
+
+      %th $
+
+      %th $
+    - start = @reports_params.date_start
+    %tr
+      %td
+      - quarter_periods(start, :total => true).each do |period|
+        %td= c current_user.payments_sum period
+    %tr
+      %td.center NIL
+      %td.center NIL
+      %td.center NIL
+      %td.center NIL
+      %td.center NIL
+

@@ -22,4 +22,15 @@
     = submit_tag "Create Report"
 
 
+%h2 Receipts and Payments
+= form_for @reports_params, :url => :reports_for_submission_quarterly_receipts_and_payments, :html => { :method => :get } do |form|
+  %p
+    = form.label :date_start, "Year"
+    = form.date_select :date_start, :discard_day => true, :discard_month => true
+    = form.label :date_start, "Quarter"
+    = form.select :quarter, options_for_select([1,2,3,4])
+  %p
+    = submit_tag "Create Report"
+
+
 

@@ -71,13 +71,8 @@ SimpleNavigation::Configuration.run do |navigation|
 
       primary.item :reports_menu,         "Reports",   reports_root_path, :highlights_on => %r(/reports) do |menu|
         menu.item :for_submission,        "For Submission",             :reports_for_submission_root do |menu1|
-          menu1.item :quarterly,          "Quarterly",                  :reports_for_submission_quarterly_root, :highlights_on => %r(/reports/for_submission/quarterly) do |menu2|
-            #menu2.item :loan_position,    "Loan position",              :reports_for_submission_quarterly_loan_position
-            #menu2.item :cash_position,    "Cash position",              :reports_for_submission_quarterly_cash_position
-          end
-          menu1.item :mounthly,           "Monthly",                    :main_reports_for_submission_monthly do |menu2|
-
-          end
+          menu1.item :quarterly,          "Quarterly",                  :reports_for_submission_quarterly_root, :highlights_on => %r(/reports/for_submission/quarterly)
+          menu1.item :mounthly,           "Monthly",                    :main_reports_for_submission_monthly
         end
         menu.item :for_records,           "For Records",                reports_for_records_root_path,  :highlights_on => %r(/reports/for_records) do |menu1|
         end

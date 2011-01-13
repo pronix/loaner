@@ -82,12 +82,14 @@ SimpleNavigation::Configuration.run do |navigation|
             menu2.item :blacklisted_borrower_list,  "Blacklisted Borrowers List", :blacklisted_reports_borrowers_lists
           end
           menu1.item :borrower_statements, "Borrower Statements",       :reports_borrowers_root
-          menu1.item :borrower_history,   "Borrower History",           :reports_borrowers_borrower_history
+          #menu1.item :borrower_history,   "Borrower History",           :reports_borrowers_borrower_history
         end
-        menu.item :borrower_reports,      "Payment Due",                :reports_payment_due_root do |menu1|
-          menu1.item :borrower_list,       "Daily",                     :reports_payment_due_root
+        menu.item :borrower_reports,      "Payments Due",               :reports_payment_due_root do |menu1|
+          #menu1.item :due,                "Payments Due",               :reports_payment_due_root
+          #menu1.item :daily,              "Daily",                      :reports_payment_due_daily
+          #menu1.item :calendar_view,      "Calendar View",              :reports_payment_due_calendar_view
         end
-        menu.item :book_statements,       "Book Statements",            ""
+        menu.item :book_statements,       "Book Statements",            :reports_book_statements_root
         menu.item :loan_status,           "Loan Status",                :reports_loan_status do |menu1|
           menu1.item :active,             "Active",                     :active_reports_loan_status
           menu1.item :closed,             "Closed",                     :closed_reports_loan_status

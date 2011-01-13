@@ -78,10 +78,6 @@ class Loan < ActiveRecord::Base
       transition :new => :active
     end
 
-    event :repay do
-      transition :disbursed => :repaid
-    end
-
     event :close do
       transition all => :closed
     end
@@ -107,5 +103,15 @@ class Loan < ActiveRecord::Base
   def outstanding_principal date = Date.today
     paid = payments.where("date <= ?", date).sum(:principal)
     amount - paid
+  end
+
+  # TODO: Need to check this method
+  # Days
+  def overdue
+    if active? && payments.size < no_of_terms
+      (Date.today - payments.last.date).to_i
+    else
+      false
+    end
   end
 end

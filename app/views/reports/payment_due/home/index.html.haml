@@ -12,3 +12,26 @@
     = submit_tag "Create Report"
 
 
+%h2 Calendar View
+= form_for @reports_params, :url => :reports_payment_due_calendar_view, :html => { :method => :get } do |form|
+  %p
+    = form.label :date_start, "Start date"
+    = form.date_select :date_start
+  %p
+    = form.label :date_end, "End date"
+    = form.date_select :date_end
+  %p
+    = submit_tag "Create Report"
+
+%h2 Aging Report
+= form_for @reports_params, :url => :reports_payment_due_aging, :html => { :method => :get } do |form|
+  %p
+    -#= form.label :date_start, "Start date"
+    -#= form.date_select :date_start
+  %p
+    -#= form.label :date_end, "End date"
+    -#= form.date_select :date_end
+  %p
+    = submit_tag "Create Report"
+
+

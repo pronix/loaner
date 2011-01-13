@@ -20,7 +20,7 @@
       %td Opening Balance
       %td
       %td
-      %td= m @reports_params.book.balance_at @reports_params.date_start
+      %td= c @reports_params.book.balance_at @reports_params.date_start
 
     - no = 0
     - payments_total = 0.0
@@ -40,7 +40,7 @@
           - if t.payment?
             - payments_total += t.amount
             = m t.amount
-        %td= @reports_params.book.balance_at t.date
+        %td= c @reports_params.book.balance_at t.date
 
     %tr
       %td
@@ -49,8 +49,8 @@
       %td
       %td
         %strong Total
-      %td= m receipts_total
-      %td= m payments_total
+      %td= c receipts_total
+      %td= c payments_total
       %td
     %tr
       %td

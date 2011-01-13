@@ -73,6 +73,8 @@ Loaner::Application.routes.draw do
     end
     namespace :payment_due do
       resource :daily, :controller => :daily, :only => [:create,:show]
+      resource :calendar_view, :controller => :calendar_view, :only => [:show]
+      resource :aging, :controller => :aging, :only => [:show]
       root :to => "home#index"
     end
 

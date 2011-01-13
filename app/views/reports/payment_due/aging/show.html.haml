@@ -1,0 +1,37 @@
+- title "Aging Report"
+
+.report_header
+  %h2 Aging Statement as on #{d Date.today}
+
+
+.report
+  %table
+    %tr
+      %th Borrower(s) Name(s)
+      %th Loan Account No
+      %th Loan Date
+      %th Total
+      %th 3 Days
+      %th 7 Days
+      %th 14 Days
+      %th 21 Days
+      %th 30 Days
+      %th 60 Days
+      %th 90 Days
+      %th= "> 90 Days"
+    - @loans.each do |loan|
+      - next unless loan.overdue
+      %tr
+        %td= loan.borrowers.map(&:name).join(", ")
+        %td= loan.account_no
+        %td= loan.application
+        %td= loan.overdue
+        %td= "x" if loan.overdue >= 3  && loan.overdue < 7
+        %td= "x" if loan.overdue >= 7  && loan.overdue < 14
+        %td= "x" if loan.overdue >= 14 && loan.overdue < 21
+        %td= "x" if loan.overdue >= 21 && loan.overdue < 30
+        %td= "x" if loan.overdue >= 30 && loan.overdue < 60
+        %td= "x" if loan.overdue >= 60 && loan.overdue < 90
+        %td= "x" if loan.overdue == 90
+        %td= "x" if loan.overdue > 90
+

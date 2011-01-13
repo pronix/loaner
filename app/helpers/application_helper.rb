@@ -13,7 +13,7 @@ module ApplicationHelper
   end
   # Money default formatting
   def m amount
-    c
+    c amount
   end
 
   def quarter_months start

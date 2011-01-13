@@ -15,6 +15,12 @@ class Reports::Params
     @borrower = current_user.borrowers.find(params[:borrower_id]) if @borrower_id = params[:borrower_id]
   end
 
+  def to_quarter!
+    @date_start = Time.local(@date_start.year)
+    @date_start += quarter2months
+    @date_end = @date_start + 3.months
+  end
+
   def quarter2months
     map = {1 => 0, 2 => 4, 3 => 7, 4 => 10}
     map[quarter].months

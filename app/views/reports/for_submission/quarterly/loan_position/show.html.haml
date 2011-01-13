@@ -4,16 +4,24 @@
   %table
     %tr
       %td.strong Part B: Loan Position 
-      %td.strong Date: #{d Time.now}
+      %td
+      %td.strong Date:
+      %td= d Time.now
     %tr
       %td.strong Reference No.:
+      %td= current_user.company_profile.rom_reference
       %td.strong Name of Contact person:
+      %td= current_user.name
     %tr
       %td.strong Business Name:
+      %td= current_user.company_profile.contact_person
       %td.strong Designation:
+      %td
     %tr
       %td.strong Business Address:
+      %td
       %td.strong Telephone No.:
+      %td= current_user.company_profile.contact_person_office_phone
 
 
 .report

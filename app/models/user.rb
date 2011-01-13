@@ -2,15 +2,16 @@
 #
 # Table name: users
 #
-#  id                :integer         not null, primary key
-#  username          :string(255)
-#  email             :string(255)
-#  crypted_password  :string(255)
-#  password_salt     :string(255)
-#  persistence_token :string(255)
-#  name              :string(255)
-#  created_at        :datetime
-#  updated_at        :datetime
+#  id                 :integer         not null, primary key
+#  company_profile_id :integer
+#  username           :string(255)
+#  email              :string(255)
+#  crypted_password   :string(255)
+#  password_salt      :string(255)
+#  persistence_token  :string(255)
+#  name               :string(255)
+#  created_at         :datetime
+#  updated_at         :datetime
 #
 
 class User < ActiveRecord::Base

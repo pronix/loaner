@@ -16,6 +16,7 @@
 #  email              :string(255)
 #  identification_no  :string(255)
 #  annual_income      :integer
+#  black_listed       :boolean         default(FALSE)
 #  photo_file_name    :string(255)
 #  photo_content_type :string(255)
 #  photo_file_size    :integer

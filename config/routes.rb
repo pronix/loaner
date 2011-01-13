@@ -75,6 +75,19 @@ Loaner::Application.routes.draw do
       resource :daily, :controller => :daily, :only => [:create,:show]
       root :to => "home#index"
     end
+
+    namespace :book_statements do
+      root :to => "home#index"
+    end
+
+    namespace :loan do
+      resource :status, :controller => :status, :only => [:show] do
+        member do
+          get 'active'
+          get 'closed'
+        end
+      end
+    end
     root :to => "home#index"
   end
 

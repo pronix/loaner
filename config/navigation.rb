@@ -88,7 +88,10 @@ SimpleNavigation::Configuration.run do |navigation|
           menu1.item :borrower_list,       "Daily",                     :reports_payment_due_root
         end
         menu.item :book_statements,       "Book Statements",            ""
-        menu.item :loan_status,           "Loan Status",                ""
+        menu.item :loan_status,           "Loan Status",                :reports_loan_status do |menu1|
+          menu1.item :active,             "Active",                     :active_reports_loan_status
+          menu1.item :closed,             "Closed",                     :closed_reports_loan_status
+        end
         menu.item :payment_schedule,      "Payment Schedule",           reports_payment_schedules_path
       end
 

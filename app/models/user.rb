@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
   has_many :transactions, :through => :books
   belongs_to :company_profile
 
+  include DefaultPeriod
+
   def transactions
     Transaction.where :loan_id => loans
   end
@@ -35,19 +37,28 @@ class User < ActiveRecord::Base
     Person.where(:id => sl.map(&:surety_id))
   end
 
-  def balance_at date = Date.today
+  def balance_at date = default_to
     books.map{|b| b.balance_at date}.sum
   end
 
-  def payments_sum from = Date.parse("1970-01-01"), to = Time.now
-    books.map{|b| b.payments(from, to).sum(:amount)}.sum
+  def payments_sum options = {}
+    books.map{|b| b.payments(options).sum(:amount)}.sum
   end
 
-  def disbursements_sum from = Date.parse("1970-01-01"), to = Time.now
-    books.map{|b| b.disbursements(from, to).sum(:amount)}.sum
+  def disbursements_sum options = {}
+    books.map{|b| b.disbursements(options).sum(:amount)}.sum
+  end
+
+  def principal_sum options = {}
+    books.map{|b| b.principal_sum(options)}.sum
+  end
+
+  def interest_sum options = {}
+    books.map{|b| b.interest_sum(options)}.sum
   end
 
   def admin?
     false
   end
+
 end

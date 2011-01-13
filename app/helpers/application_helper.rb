@@ -16,6 +16,16 @@ module ApplicationHelper
     c
   end
 
+  def quarter_months start
+    [start, start + 1.month, start + 2.month]
+  end
+
+  def quarter_periods start, options = {:total => false}
+    result = quarter_months(start).map{|date| {:from => date, :to => date + 1.month}}
+    result << {:from => start, :to => start + 3.months} if options[:total]
+    #logger.debug "result: #{result.inspect}"
+    result
+  end
 
   # Date default formatting
   def d date

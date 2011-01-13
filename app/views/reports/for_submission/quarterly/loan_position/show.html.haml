@@ -49,62 +49,33 @@
     - start = @reports_params.date_start
     %tr
       %th Unsecured
-      %td= c current_user.balance_at start
-      %td= c current_user.balance_at start
+      - quarter_periods(start, :total => true).each do |period|
+        %td= c current_user.balance_at period[:from]
+        %td= c current_user.balance_at period[:from]
 
-      %td= c current_user.balance_at start + 1.month
-      %td= c current_user.balance_at start + 1.month
-
-      %td= c current_user.balance_at start + 2.month
-      %td= c current_user.balance_at start + 2.month
-
-      %td= c current_user.balance_at start + 3.month
-      %td= c current_user.balance_at start + 3.month
     %tr
       %th
         %u Add
     %tr
       %th Loans granted
-      %td= c current_user.disbursements_sum start, start + 1.month
-      %td= c current_user.disbursements_sum start, start + 1.month
+      - quarter_periods(start, :total => true).each do |period|
+        %td= c current_user.disbursements_sum period
+        %td= c current_user.disbursements_sum period
 
-      %td= c current_user.disbursements_sum start + 1.month, start + 2.month
-      %td= c current_user.disbursements_sum start + 1.month, start + 2.month
-
-      %td= c current_user.disbursements_sum start + 2.month, start + 3.month
-      %td= c current_user.disbursements_sum start + 2.month, start + 3.month
-
-      %td= c current_user.disbursements_sum start, start + 3.month
-      %td= c current_user.disbursements_sum start, start + 3.month
     %tr
       %th
         %u Deduct
     %tr
       %th Loans repayments
-      %td= c current_user.payments_sum start, start + 1.month
-      %td= c current_user.payments_sum start, start + 1.month
+      - quarter_periods(start, :total => true).each do |period|
+        %td= c current_user.payments_sum period
+        %td= c current_user.payments_sum period
 
-      %td= c current_user.payments_sum start + 1.month, start + 2.month
-      %td= c current_user.payments_sum start + 1.month, start + 2.month
-
-      %td= c current_user.payments_sum start + 2.month, start + 3.month
-      %td= c current_user.payments_sum start + 2.month, start + 3.month
-
-      %td= c current_user.payments_sum start, start + 3.month
-      %td= c current_user.payments_sum start, start + 3.month
     %tr
       %th
         %u Closing loan balance
     %tr
       %th Unsecured
-      %td= c current_user.balance_at start + 1.month
-      %td= c current_user.balance_at start + 1.month
-
-      %td= c current_user.balance_at start + 2.month
-      %td= c current_user.balance_at start + 2.month
-
-      %td= c current_user.balance_at start + 3.month
-      %td= c current_user.balance_at start + 3.month
-
-      %td= c current_user.balance_at start + 4.month
-      %td= c current_user.balance_at start + 4.month
+      - quarter_periods(start, :total => true).each do |period|
+        %td= c current_user.balance_at period[:to]
+        %td= c current_user.balance_at period[:to]

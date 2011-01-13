@@ -14,6 +14,7 @@ class Book < ActiveRecord::Base
   belongs_to :lender, :class_name => "User"
   has_many  :loans
   has_many :transactions, :through => :loans
+  include DefaultPeriod
 
   def balance
     initial_balance + transactions.sum(:amount)
@@ -23,11 +24,24 @@ class Book < ActiveRecord::Base
     initial_balance + transactions.where(["date <= ?", date]).sum(:amount)
   end
 
-  def payments from = Date.parse("1970-01-01"), to = Time.now
-    transactions.payments.where(["date >= ? AND date < ?", from, to])
+  def payments options
+    options = default_period options
+    transactions.payments.where(["date >= ? AND date < ?", options[:from], options[:to]])
   end
 
-  def disbursements from = Date.parse("1970-01-01"), to = Time.now
-    transactions.disbursements.where(["date >= ? AND date < ?", from, to])
+  def disbursements options
+    options = default_period options
+    transactions.disbursements.where(["date >= ? AND date < ?", options[:from], options[:to]])
   end
+
+  def principal_sum options
+    options = default_period options
+    payments(options).sum :principal
+  end
+
+  def interest_sum options
+    options = default_period options
+    payments(options).sum :interest
+  end
+
 end

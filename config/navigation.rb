@@ -77,7 +77,10 @@ SimpleNavigation::Configuration.run do |navigation|
         menu.item :for_records,           "For Records",                reports_for_records_root_path,  :highlights_on => %r(/reports/for_records) do |menu1|
         end
         menu.item :borrower_reports,      "Borrower Reports",           reports_borrowers_root_path do |menu1|
-          menu1.item :borrower_list,      "Borrowers List",             :reports_borrowers_lists
+          menu1.item :borrower_list,      "Borrowers List",             :reports_borrowers_lists do |menu2|
+            menu2.item :alpabet_borrower_list,      "Alphabet Borrowers List",    :alphabet_reports_borrowers_lists
+            menu2.item :blacklisted_borrower_list,  "Blacklisted Borrowers List", :blacklisted_reports_borrowers_lists
+          end
           menu1.item :borrower_statements, "Borrower Statements",       :reports_borrowers_root
           menu1.item :borrower_history,   "Borrower History",           :reports_borrowers_borrower_history
         end

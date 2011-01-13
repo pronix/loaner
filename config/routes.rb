@@ -41,7 +41,12 @@ Loaner::Application.routes.draw do
 
   namespace :reports do
     resources :payment_schedules
-    resources :borrowers_lists, :only => [:index]
+    resources :borrowers_lists, :only => [:index] do
+      collection do
+        get 'blacklisted'
+        get 'alphabet'
+      end
+    end
     namespace :borrowers do
       resource :borrower_statements, :only => [:create,:show]
       resource :borrower_history, :controller => :borrower_history, :only => [:create,:show]

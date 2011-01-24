@@ -20,7 +20,7 @@ gem 'has_scope'
 gem 'responders'
 gem 'paperclip',                '~> 2.3.5'
 gem 'jquery-rails'
-gem 'simple-navigation'
+gem 'simple-navigation',        '3.0.2'
 gem 'pdfkit'
 gem 'quarter_time'
 

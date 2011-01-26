@@ -125,3 +125,16 @@ table.cash_account_book td, table.cash_account_book th {
 .report table.fullpx{
     border-bottom: 0px;
 }
+.a-left-cell{
+    text-align:left !important;
+}
+table.borrower-st{
+    border-bottom: 0px;
+}
+table.borrower-st td{
+    border-bottom: 2px solid #000;
+    border-right: 2px solid #000;
+}
+.report table tr.total td{
+    font-weight:bold;
+}

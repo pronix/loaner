@@ -38,25 +38,25 @@
       %th.dd
 
 .report
-  %table
+  %table.borrower-st
     %tr
-      %th{:rowspan => 2} Date
-      %th{:colspan => 2} PAYABLE
-      %th{:colspan => 4} PAID
+      %th.date.center{:rowspan => 2} Date
+      %th.date.center{:colspan => 2} PAYABLE
+      %th.date.center{:colspan => 4} PAID
     %tr
-      %th Type
-      %th Amount
-      %th Total Amount Paid
-      %th Amount paid towards principal
-      %th Amount paid towards interest (including late interest)
-      %th Amount paid towards permitted fees (including late fees)
+      %th.date.center Type
+      %th.date.center Amount
+      %th.date.center Total Amount Paid
+      %th.date.center Amount paid towards principal
+      %th.date.center Amount paid towards interest (including late interest)
+      %th.date.center Amount paid towards permitted fees (including late fees)
     - total_amount = 0.0
     - total_principal = 0.0
     - total_total_interest = 0.0
     - total_total_fees = 0.0
     - @loan.payments.each do |p|
       %tr
-        %td= p.date
+        %td.a-left-cell= p.date
         %td= p.transaction_type
         %td= p.amount
         %td= p.amount
@@ -71,6 +71,7 @@
       %td
       %td
       %td= total_amount
+      %td
       %td
       %td
       %td

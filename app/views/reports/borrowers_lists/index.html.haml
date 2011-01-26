@@ -4,15 +4,15 @@
 
   %table.borrowers_list
     %tr
-      %th Borrower Name
-      %th Borrower Type
-      %th Personal Identification, incorporation or registration number:
-      %th Loan Account No.
-      %th Date of Loan
-      %th Loan Amount
+      %th.date Borrower Name
+      %th.date.center Borrower Type
+      %th.date.center Personal Identification, incorporation or registration number:
+      %th.date.center Loan Account No.
+      %th.date.center Date of Loan
+      %th.date.center Loan Amount
     - @borrower_loans.each do |borrower_loan|
       %tr{:class => cycle("c", "n")}
-        %td
+        %td.a-left-cell
           = borrower_loan.borrower.name
           %p.small
             Hand Phone: #{borrower_loan.borrower.hand_phone}
@@ -20,9 +20,9 @@
             Business Phone: #{borrower_loan.borrower.business_phone}
           %p.small
             Home Phone: #{borrower_loan.borrower.home_phone}
-        %td= borrower_loan.borrower.annual_income
-        %td= borrower_loan.borrower.mail_address
-        %td= borrower_loan.loan.account_no
-        %td= borrower_loan.loan.application
-        %td= c borrower_loan.loan.amount
+        %td.center= borrower_loan.borrower.annual_income
+        %td.center= borrower_loan.borrower.mail_address
+        %td.center= borrower_loan.loan.account_no
+        %td.center= borrower_loan.loan.application
+        %td.center= c borrower_loan.loan.amount
 

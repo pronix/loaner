@@ -1,17 +1,17 @@
 - title "Loan status"
 
 .report
-  %table
+  %table.borrower-st
     %tr
-      %th Account No
-      %th State
-      %th Amount
-      %th Interest
-      %th No of Terms
+      %th.date.center Account No
+      %th.date.center State
+      %th.date.center Amount
+      %th.date.center Interest
+      %th.date.center No of Terms
     - @loans.each do |loan|
       %tr
-        %td= loan.account_no
-        %td= loan.state
-        %td= loan.amount
-        %td= loan.interest
-        %td= loan.no_of_terms
+        %td.center= loan.account_no
+        %td.center= loan.state
+        %td.center= loan.amount
+        %td.center= loan.interest
+        %td.center= loan.no_of_terms

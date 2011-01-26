@@ -31,7 +31,7 @@ table tr.n {
 .report table th {
   background: #cccccc;
   border: 1px solid black; }
-.report table th, .report table td {
+.report table th, .report table td.right-border {
   padding: 2px 8px 2px 8px;
   border-bottom: 1px solid black; }
 .report hr {
@@ -41,3 +41,6 @@ table tr.n {
   font-size: 10px; }
 .report tr.n {
   background: #dddddd; }
+.report .clear-tr td {
+    border-bottom: 0px !important;
+}

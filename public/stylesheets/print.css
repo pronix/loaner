@@ -6,3 +6,99 @@ body {
 
 .nonprint {
   display: none; }
+table td, table td {
+  padding: 2px 5px 2px 5px; }
+  table td a, table td a {
+    font-size: 12px; }
+table th {
+  background: #ffffff;
+  padding: 4px 5px 4px 5px; }
+table tr.n {
+  background: #ffffff; }
+
+.report_header table {
+  width: 100%; }
+  .report_header table th {
+    background: white; }
+.report_header .strong {
+  font-weight: bold; }
+.report_header .dt {
+  font-weight: normal; }
+.report_header .dl {
+  font-weight: bold; }
+
+.report h3 {
+  border-bottom: 1px solid #cccccc; }
+.report dl {
+  margin: 2px 2px 2px 2px; }
+  .report dl dt {
+    font-weight: bold;
+    display: inline; }
+  .report dl dd {
+    display: inline; }
+.report table th {
+  background: #ffffff;}
+.report table th, .report table td {
+  padding: 2px 8px 2px 8px;}
+.report hr {
+  height: 1px; }
+.report p.small {
+  font-size: 10px; }
+.report tr.n {
+  background: #ffffff; }
+.report table{
+border: 2px solid #000;
+border-right: 0px;
+border-spacing: 0px 0px;
+width:100%;
+border-collapse: separate;
+}
+.report tbody{
+border: 0px;
+}
+.report th, .report td, .report tr {
+border: 0px;
+background: #FFF;
+height:15px;
+text-align:right;
+
+}
+.report th{
+text-align:left;
+width:70px;
+border-right: 2px solid #000;
+}
+.report u {
+padding:2px 5px;
+}
+th.mark{
+text-align: center;
+}
+.report .right-border, .report .date {
+border-right:2px solid #000;
+}
+th.right {
+text-align:right;
+}
+.report .date, .report .date-last{
+border-bottom:2px solid #000;
+}
+.report .u{
+  border-bottom: 1px solid #000000;
+}
+.report td span{
+    width:100%;
+    border-bottom: 1px solid #000;
+}
+.report tr.last-tr, .report tr.last-tr td{
+    height:2px;
+}
+th.first{
+    width:20%;
+}
+th.not-border{
+    border-right: 0px;
+}
+.report .center{
+    text-align: center;
+}

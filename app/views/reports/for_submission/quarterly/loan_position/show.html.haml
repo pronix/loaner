@@ -27,55 +27,89 @@
 .report
   %table
     %tr
-      %th Particulars
+      %th.date.first Particulars
       %th.date{:colspan => 2}= l @reports_params.date_start, :format => "%B"
       %th.date{:colspan => 2}= l @reports_params.date_start + 1.month, :format => "%B"
       %th.date{:colspan => 2}= l @reports_params.date_start + 2.months, :format => "%B"
-      %th{:colspan => 2} Quarterly Total
+      %th.date{:colspan => 2} Quarterly Total
     %tr
       %th
         %u Opening loan balance
-      %th $
-      %th $
+      %th.mark.not-border $
+      %th.mark $
 
-      %th $
-      %th $
+      %th.mark.not-border $
+      %th.mark $
 
-      %th $
-      %th $
+      %th.mark.not-border $
+      %th.mark $
 
-      %th $
-      %th $
+      %th.mark.not-border $
+      %th.mark $
     - start = @reports_params.date_start
     %tr
       %th Unsecured
       - quarter_periods(start, :total => true).each do |period|
         %td= c current_user.balance_at period[:from]
-        %td= c current_user.balance_at period[:from]
+        %td.u.right-border= c current_user.balance_at period[:from]
 
-    %tr
+    %tr.clear-tr
       %th
         %u Add
+      %td
+      %td.right-border
+      %td
+      %td.right-border
+      %td
+      %td.right-border
+      %td
+      %td.right-border
     %tr
       %th Loans granted
       - quarter_periods(start, :total => true).each do |period|
         %td= c current_user.disbursements_sum period
-        %td= c current_user.disbursements_sum period
+        %td.u.right-border= c current_user.disbursements_sum period
 
-    %tr
+    %tr.clear-tr
       %th
         %u Deduct
+      %td
+      %td.right-border
+      %td
+      %td.right-border
+      %td
+      %td.right-border
+      %td
+      %td.right-border
     %tr
       %th Loans repayments
       - quarter_periods(start, :total => true).each do |period|
         %td= c current_user.payments_sum period
-        %td= c current_user.payments_sum period
+        %td.u.right-border= c current_user.payments_sum period
 
-    %tr
+    %tr.clear-tr
       %th
         %u Closing loan balance
+      %td
+      %td.right-border
+      %td
+      %td.right-border
+      %td
+      %td.right-border
+      %td
+      %td.right-border
     %tr
       %th Unsecured
       - quarter_periods(start, :total => true).each do |period|
         %td= c current_user.balance_at period[:to]
-        %td= c current_user.balance_at period[:to]
+        %td.u.right-border= c current_user.balance_at period[:to]
+    %tr.clear-tr.last-tr
+      %td.right-border
+      %td
+      %td.right-border
+      %td
+      %td.right-border
+      %td
+      %td.right-border
+      %td
+      %td.right-border

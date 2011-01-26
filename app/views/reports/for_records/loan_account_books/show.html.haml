@@ -102,46 +102,46 @@
 %h3 Repayment history
 
 .report
-  %table
+  %table.fullpx
     %tr
-      %th.date Date
-      %th Mode of payment, e.g. cash, cheque, interbank GIRO
-      %th Total amount paid ($) (D) = (A)+(B)+(C)
-      %th Amount paid towards principal ($) (A)
-      %th Amount paid towards interest (including late interest) ($) (B)
-      %th Amount paid towards permitted fees (including late fees) ($)
-      %th Overdue and Outstanding principal ($)
-      %th Cash Account Book Entry No.
-      %th Receipt No.
+      %th.center.date Date
+      %th.center.date Mode of payment, e.g. cash, cheque, interbank GIRO
+      %th.center.date Total amount paid ($) (D) = (A)+(B)+(C)
+      %th.center.date Amount paid towards principal ($) (A)
+      %th.center.date Amount paid towards interest (including late interest) ($) (B)
+      %th.center.date Amount paid towards permitted fees (including late fees) ($)
+      %th.center.date Overdue and Outstanding principal ($)
+      %th.center.date Cash Account Book Entry No.
+      %th.center.date Receipt No.
     - total_amount = 0.0
     - total_principal = 0.0
     - total_total_interest = 0.0
     - total_total_fees = 0.0
     - @transactions.each do |t|
       %tr
-        %td.date= t.date
-        %td= t.payment_type.titleize
-        %td= c t.amount
-        %td= c t.principal
-        %td= c t.total_interest
-        %td= c t.total_fees
-        %td= c @loan.outstanding_principal t.date
-        %td= t.id
-        %td= t.receipt_no
+        %td.center.date= t.date
+        %td.center= t.payment_type.titleize
+        %td.center= c t.amount
+        %td.center= c t.principal
+        %td.center= c t.total_interest
+        %td.center= c t.total_fees
+        %td.center= c @loan.outstanding_principal t.date
+        %td.center= t.id
+        %td.center= t.receipt_no
       - total_amount += t.amount
       - total_principal += t.principal
       - total_total_interest += t.total_interest
       - total_total_fees += t.total_fees
     %tr.total
-      %td
+      %td.center
       %td Total
-      %td= c total_amount
-      %td= c total_principal
-      %td= c total_total_interest
-      %td= c total_total_fees
-      %td
-      %td
-      %td
+      %td.center= c total_amount
+      %td.center= c total_principal
+      %td.center= c total_total_interest
+      %td.center= c total_total_fees
+      %td.center
+      %td.center
+      %td.center
 
 
 

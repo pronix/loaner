@@ -77,7 +77,7 @@ text-align: center;
 .report .right-border, .report .date {
 border-right:2px solid #000;
 }
-th.right {
+th.right, td.right, table.cash_account_book strong {
 text-align:right;
 }
 .report .date, .report .date-last{
@@ -101,4 +101,27 @@ th.not-border{
 }
 .report .center{
     text-align: center;
+}
+table.cash_account_book{
+    border: 0px;
+    border-top: 1px solid #000;   
+}
+
+table.cash_account_book td, table.cash_account_book th {
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    text-align: center;
+}
+.report .left-border {
+    border-left: 1px solid #000;
+}
+.report .empty-cell{
+ border: 0px;
+}
+.report table.fullpx td{
+    border-right: 2px solid #000;
+    border-bottom: 2px solid #000;
+}
+.report table.fullpx{
+    border-bottom: 0px;
 }

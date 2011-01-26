@@ -4,7 +4,7 @@
   
   %table.cash_account_book
     %tr
-      %th Date
+      %th.left-border Date
       %th Entry no
       %th Loan Account no
       %th Description of Transaction
@@ -13,7 +13,7 @@
       %th Payment ($)
       %th Balance ($)
     %tr
-      %td
+      %td.left-border
       %td
       %td
       %td
@@ -27,7 +27,7 @@
     - receipts_total = 0.0
     - @transactions.each do |t|
       %tr
-        %td= d t.date
+        %td.left-border= d t.date
         %td= no += 1
         %td= t.loan.try(:account_no)
         %td= t.description
@@ -43,21 +43,21 @@
         %td= c @reports_params.book.balance_at t.date
 
     %tr
-      %td
-      %td
-      %td
-      %td
-      %td
+      %td.empty-cell
+      %td.empty-cell
+      %td.empty-cell
+      %td.empty-cell
+      %td.left-border.right
         %strong Total
       %td= c receipts_total
       %td= c payments_total
       %td
     %tr
-      %td
-      %td
-      %td
-      %td
-      %td Closing Balance
+      %td.empty-cell
+      %td.empty-cell
+      %td.empty-cell
+      %td.empty-cell
+      %td.left-border Closing Balance
       %td
       %td
       %td= m @reports_params.book.balance_at @reports_params.date_end

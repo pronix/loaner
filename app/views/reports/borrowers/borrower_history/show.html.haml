@@ -6,35 +6,35 @@
     %span.dl= @borrower.name
 
 .report
-  %table
+  %table.borrower-st
     %tr
-      %th{:rowspan => 2} Loan Account No.
-      %th{:rowspan => 2} Date of Loan
-      %th{:rowspan => 2} Status
-      %th{:rowspan => 2} Loan Amount
-      %th{:rowspan => 2} Interest Rate
-      %th{:rowspan => 2} Date of Maturity
-      %th{:colspan => 4} Paid
-      %th{:rowspan => 2} No. of late payments 
-      %th{:rowspan => 2} Avg Days of Late payments
-      %th{:rowspan => 2} No of Cheque Dishonours
+      %th.date.center{:rowspan => 2} Loan Account No.
+      %th.date.center{:rowspan => 2} Date of Loan
+      %th.date.center{:rowspan => 2} Status
+      %th.date.center{:rowspan => 2} Loan Amount
+      %th.date.center{:rowspan => 2} Interest Rate
+      %th.date.center{:rowspan => 2} Date of Maturity
+      %th.date.center{:colspan => 4} Paid
+      %th.date.center{:rowspan => 2} No. of late payments
+      %th.date.center{:rowspan => 2} Avg Days of Late payments
+      %th.date.center{:rowspan => 2} No of Cheque Dishonours
     %tr
-      %th Principal
-      %th Interest
-      %th Permitted Fees
-      %th Late Interest
+      %th.date.center Principal
+      %th.date.center Interest
+      %th.date.center Permitted Fees
+      %th.date.center Late Interest
     - @transactions.each do |t|
       %tr
-        %td= t.loan.account_no
-        %td= t.loan.application
-        %td= t.loan.state.titleize
-        %td= t.loan.amount
-        %td= t.loan.interest
-        %td= d t.loan.maturity_at
-        %td= c t.principal
-        %td= c t.interest
-        %td= c t.permitted_fee
-        %td= c t.late_interest
-        %td
-        %td
-        %td
+        %td.a-left-cell= t.loan.account_no
+        %td.center= t.loan.application
+        %td.center= t.loan.state.titleize
+        %td.a-right-cell= t.loan.amount
+        %td.a-right-cell= t.loan.interest
+        %td.center= d t.loan.maturity_at
+        %td.a-right-cell= c t.principal
+        %td.a-right-cell= c t.interest
+        %td.a-right-cell= c t.permitted_fee
+        %td.a-right-cell= c t.late_interest
+        %td.center
+        %td.center
+        %td.center

@@ -138,3 +138,6 @@ table.borrower-st td{
 .report table tr.total td{
     font-weight:bold;
 }
+.a-right-cell{
+    text-align:right !important;
+}

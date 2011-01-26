@@ -3,30 +3,25 @@
 .report
   %table.payment_due
     %tr
-      %th Due Date
-      %th Loan Account no
-      %th Borrower Name
-      %th Loan amount
-      %th{:colspan => 2} Amount paid to Date
-      %th Due Amount
-      %th Contact No
+      %th.date{:rowspan => 2} Due Date
+      %th.date.center{:rowspan => 2}  Loan Account no
+      %th.date{:rowspan => 2}  Borrower Name
+      %th.date.center{:rowspan => 2}  Loan amount
+      %th.date{:colspan => 2} Amount paid to Date
+      %th.date{:rowspan => 2}  Due Amount
+      %th.date{:rowspan => 2}  Contact No
     %tr
-      %th
-      %th
-      %th
-      %th
-      %th Principal
-      %th Interest
-      %th
-      %th
+     
+      %th.date Principal
+      %th.date Interest
     - @transactions.each do |t|
       %tr
-        %td= d t.date
-        %td= t.loan.try(:account_no)
-        %td= t.loan.borrowers.map(&:name).join(", ")
-        %td= t.loan.amount
-        %td= t.principal
-        %td= t.interest
-        %td= t.amount
-        %td= t.loan.borrowers.map(&:home_phone).join(", ")
+        %td.a-left-cell= d t.date
+        %td.center= t.loan.try(:account_no)
+        %td.a-left-cell= t.loan.borrowers.map(&:name).join(", ")
+        %td.center= t.loan.amount
+        %td.center= t.principal
+        %td.center= t.interest
+        %td.center= t.amount
+        %td.a-left-cell= t.loan.borrowers.map(&:home_phone).join(", ")
 

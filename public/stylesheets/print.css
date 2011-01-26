@@ -128,10 +128,10 @@ table.cash_account_book td, table.cash_account_book th {
 .a-left-cell{
     text-align:left !important;
 }
-table.borrower-st, table.borrowers_list{
+table.borrower-st, table.borrowers_list, table.payment_due {
     border-bottom: 0px;
 }
-table.borrower-st td, table.borrowers_list td{
+table.borrower-st td, table.borrowers_list td, table.payment_due td {
     border-bottom: 2px solid #000;
     border-right: 2px solid #000;
 }

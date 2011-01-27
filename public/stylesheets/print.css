@@ -90,8 +90,11 @@ border-bottom:2px solid #000;
     width:100%;
     border-bottom: 1px solid #000;
 }
-.report tr.last-tr, .report tr.last-tr td{
+.report tr.last-tr, .report tr.last-tr td, .report_header tr.last-tr td{
     height:2px;
+}
+.report_header tr.last-tr td{
+    height:10px;
 }
 th.first{
     width:20%;
@@ -131,7 +134,7 @@ table.cash_account_book td, table.cash_account_book th {
 table.borrower-st, table.borrowers_list, table.payment_due {
     border-bottom: 0px;
 }
-table.borrower-st td, table.borrowers_list td, table.payment_due td {
+table.borrower-st td, table.borrowers_list td, table.payment_due td, .payment_schedule td {
     border-bottom: 2px solid #000;
     border-right: 2px solid #000;
 }
@@ -141,3 +144,13 @@ table.borrower-st td, table.borrowers_list td, table.payment_due td {
 .a-right-cell{
     text-align:right !important;
 }
+.report .total {
+  font-weight: bold; }
+.report .payment_schedule .left-border {
+  border-left: 2px solid #000 !import;
+}
+.report .payment_schedule {
+  border-left: 0px solid #000;
+  border-bottom: 0px solid #000;
+}
+

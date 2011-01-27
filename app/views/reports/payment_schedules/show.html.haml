@@ -1,73 +1,58 @@
 - title "Payment Schedule"
 
+.report_header
+  %table
+    %tr
+      %td.strong Loan Account No:
+      %td= @loan.account_no
+      %td.strong Loan Date:
+      %td= l @loan.application
+      - @loan.borrowers.each do |borrower|
+        %tr
+          %td.strong Borrower Name:
+          %td= borrower.name
+          %td.strong Home Phone
+          %td= borrower.home_phone
+        %tr
+          %td.strong Borrower Address:
+          %td= borrower.mail_address
+          %td.strong Business Phone
+          %td= borrower.business_phone
+        %tr
+          %td
+          %td
+          %td.strong Hand Phone
+          %td= borrower.hand_phone
+        %tr.last-tr
+          %td
+          %td
+          %td
+          %td
 .report
-
-  %dl
-    %dt Loan Account No:
-    %dd= @loan.account_no
-  %dl
-    %dt Loan Date:
-    %dd= l @loan.application
-  %h3 Borrowers
-  - @loan.borrowers.each do |borrower|
-    %dl
-      %dt Name:
-      %dd= borrower.name
-    %dl
-      %dt Address:
-      %dd= borrower.mail_address
-    %dl
-      %dt Home Phone:
-      %dd= borrower.home_phone
-    %dl
-      %dt Hand Phone:
-      %dd= borrower.hand_phone
-    %dl
-      %dt Business Phone:
-      %dd= borrower.business_phone
-    %hr
-  %h3 Sureties
-  - @loan.sureties.each do |surety|
-    %dl
-      %dt Name:
-      %dd= surety.name
-    %dl
-      %dt Address:
-      %dd= surety.mail_address
-    %dl
-      %dt Home Phone:
-      %dd= surety.home_phone
-    %dl
-      %dt Hand Phone:
-      %dd= surety.hand_phone
-    %dl
-      %dt Business Phone:
-      %dd= surety.business_phone
-    %hr
 
   %table.payment_schedule
     %tr
-      %th Payment No
-      %th Date of Payment
-      %th Amount
-      %th Principal
-      %th Interest
+      %th.date.center.left-border Payment No
+      %th.date.center Date of Payment
+      %th.date.center Amount
+      %th.date.center Principal
+      %th.date.center Interest
     - total_amount    = 0.0
     - total_principal = 0.0
     - total_interest  = 0.0
     -@loan.payments.each_with_index do |payment, num|
       %tr{:class => cycle("c", "n")}
-        %td= num+1
-        %td= l payment.date
-        %td= c payment.amount
-        %td= c payment.loan.principal_fee
-        %td= c payment.loan.interest_fee
+        %td.center.left-border= num+1
+        %td.center= l payment.date
+        %td.a-right-cell= c payment.amount
+        %td.a-right-cell= c payment.loan.principal_fee
+        %td.a-right-cell= c payment.loan.interest_fee
         - total_amount    += payment.amount
         - total_principal += payment.loan.principal_fee
         - total_interest  += payment.loan.interest_fee
     %tr.total
-      %td Total
-      %td
-      %td= c total_amount
+      %td.empty-cell
+      %td.empty-cell
+      %td.left-border= c total_amount
       %td= c total_principal
       %td= c total_interest

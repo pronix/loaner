@@ -31,7 +31,7 @@
     = form.label :rate_interest, "Rate of Interest"
     = form.text_field :rate_interest
     = form.label :percent_per, "% Per"
-    = form.select :percent_per, options_for_select(["Annually"])
+    = form.select :percent_per, options_for_select(["Annually", "Monthly", "Weekly", "Fortnightly"])
 
   %p
     = form.label :no_of_terms, "No of Terms"

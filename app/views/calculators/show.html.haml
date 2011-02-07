@@ -11,34 +11,14 @@
       per Monthly for
       = @result[:no_of_terms]
       monthly
-= form_for @calculator, :url => calculate_calculators_path, :html => {:method => :put} do |form|
-  %h3 Loan type
-  %p
-    = form.radio_button :loan_type, :simple
-    = form.label :loan_type_simple, "Simple"
-  %p
-    = form.radio_button :loan_type, :monthly_cum_daily
-    = form.label :loan_type_monthly_cum_daily, "Monthly cum Daily Interest (Monthly)"
-  %p
-    = form.radio_button :loan_type, :daily
-    = form.label :loan_type_daily, "Daily (Monthly)"
+= semantic_form_for @calculator, :url => calculate_calculators_path, :html => {:method => :put} do |form|
+  = form.inputs do
+    = form.input :loan_type, :as => :radio, :collection => [["Simple", :simple]], :include_blank => false
+    = form.input :amount
+    = form.input :rate_interest
+    = form.input :percent_per, :as => :select, :collection => ["Annually", "Monthly", "Weekly", "Fortnightly"], :include_blank => false
+    = form.input :no_of_terms
+    = form.input :terms_units, :as => :select, :collection => ["Months"], :include_blank => false
 
-  %p
-    = form.label :amount, "Loan Amount"
-    = form.text_field :amount
-
-  %p
-    = form.label :rate_interest, "Rate of Interest"
-    = form.text_field :rate_interest
-    = form.label :percent_per, "% Per"
-    = form.select :percent_per, options_for_select(["Annually", "Monthly", "Weekly", "Fortnightly"])
-
-  %p
-    = form.label :no_of_terms, "No of Terms"
-    = form.text_field :no_of_terms
-
-    = form.label :terms_units, "Terms Units"
-    = form.select :terms_units, options_for_select(["Months"])
-
-  %p
+  = form.buttons do
     = submit_tag "Calculate"

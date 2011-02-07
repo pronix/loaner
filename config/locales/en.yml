@@ -43,5 +43,11 @@ en:
         dst_book: Destination Book
         src_account: Source Account
         dst_account: Destination Account
+      calculator:
+        amount: Loan amount
+        rate_interest: Rate of Interest
+        percent_per: % Per
+        no_of_terms: No of Terms
+        terms_units: Terms Units
 
 

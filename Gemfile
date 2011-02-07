@@ -21,7 +21,7 @@ gem 'responders'
 gem 'paperclip',                '~> 2.3.5'
 gem 'jquery-rails'
 gem 'simple-navigation',        '3.0.2'
-gem 'pdfkit'
+gem 'pdfkit',                   '0.4.6'
 gem 'quarter_time'
 
 

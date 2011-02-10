@@ -96,14 +96,16 @@ form.formtastic {
           padding: 0;
           border: none;
           display: list-item; }
+      form.formtastic fieldset > ol > li.date_picker input {
+        max-width: 240px; }
       form.formtastic fieldset > ol > li.string input {
-        max-width: 74%; }
+        max-width: 240px; }
       form.formtastic fieldset > ol > li.password input {
         max-width: 13em; }
       form.formtastic fieldset > ol > li.numeric input {
-        max-width: 74%; }
+        max-width: 240px; }
       form.formtastic fieldset > ol > li.text textarea {
-        width: 74%; }
+        max-width: 240px; }
     form.formtastic fieldset ol li.hidden {
       display: none; }
     form.formtastic fieldset > ol > li.boolean label {

@@ -2,7 +2,7 @@
   = form.inputs do
     = form.error_messages
     = form.input :name
-    = form.input :birth_at,     :start_year => 1920
+    = form.input :birth_at, :as => :date_picker
     = form.input :citizenship
     = form.input :identification_no
     = form.input :designation

@@ -1,8 +1,155 @@
 body
-  font-size: 8px
-#menu
+  font-size: 6px
+  font-family: times new roman
+
+#menu, .nonprint
   display: none
 
-.nonprint
-  display: none
+table
+  td
+    padding: 2px 5px 2px 5px
+    a
+      font-size: 8px
+  th
+    background: #ffffff
+    padding: 4px 5px 4px 5px
+  tr.n
+    background: #ffffff
 
+.report_header
+  table
+    width: 100%
+    th
+      background: white
+  .strong
+    font-weight: bold
+  .dt
+    font-weight: normal
+  .dl
+    font-weight: bold
+
+.report
+  h3
+    border-bottom: 1px solid #cccccc
+  dl
+    margin: 2px 2px 2px 2px
+    dt
+      font-weight: bold
+      display: inline
+    dd
+      display: inline
+  table
+    th
+      background: #ffffff
+      padding: 2px 8px 2px 8px
+    td
+      padding: 2px 8px 2px 8px
+  hr
+    height: 1px
+  p.small
+    font-size: 8px
+  tr.n
+    background: #ffffff
+  table
+    border: 2px solid #000
+    border-right: 0px
+    border-spacing: 0px 0px
+    width: 100%
+    border-collapse: separate
+  tbody
+    border: 0px
+  th, td, tr
+    border: 0px
+    background: #FFF
+    height: 15px
+    text-align: right
+  th
+    text-align: left
+    width: 70px
+    border-right: 2px solid #000
+  u
+    padding: 2px 5px
+
+th.mark
+  text-align: center
+
+.report
+  .right-border, .date
+    border-right: 2px solid #000
+
+th.right, td.right, table.cash_account_book strong
+  text-align: right
+
+.report
+  .date, .date-last
+    border-bottom: 2px solid #000
+  .u
+    border-bottom: 1px solid #000000
+  td span
+    width: 100%
+    border-bottom: 1px solid #000
+  tr.last-tr
+    height: 2px
+    td
+      height: 2px
+
+.report_header tr.last-tr td
+  height: 2px
+  height: 10px
+
+th
+  &.first
+    width: 20%
+  &.not-border
+    border-right: 0px
+
+.report .center
+  text-align: center
+
+table.cash_account_book
+  border: 0px
+  border-top: 1px solid #000
+  td, th
+    border-right: 1px solid #000
+    border-bottom: 1px solid #000
+    text-align: center
+
+.report
+  .left-border
+    border-left: 1px solid #000
+  .empty-cell
+    border: 0px
+  table.fullpx
+    td
+      border-right: 2px solid #000
+      border-bottom: 2px solid #000
+    border-bottom: 0px
+
+.a-left-cell
+  text-align: left !important
+
+table
+  &.borrower-st, &.borrowers_list, &.payment_due
+    border-bottom: 0px
+  &.borrower-st td, &.borrowers_list td, &.payment_due td
+    border-bottom: 2px solid #000
+    border-right: 2px solid #000
+
+.payment_schedule td
+  border-bottom: 2px solid #000
+  border-right: 2px solid #000
+
+.report table tr.total td
+  font-weight: bold
+
+.a-right-cell
+  text-align: right !important
+
+.report
+  .total
+    font-weight: bold
+  .payment_schedule
+    .left-border
+      border-left: 2px solid #000 !important
+    border-left: 0px solid #000
+    border-bottom: 0px solid #000

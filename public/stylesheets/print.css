@@ -1,20 +1,19 @@
 body {
-  font-size: 8px; }
+  font-size: 6px;
+  font-family: times new roman; }
 
-#menu {
+#menu, .nonprint {
   display: none; }
 
-.nonprint {
-  display: none; }
-table td, table td {
+table td {
   padding: 2px 5px 2px 5px; }
-  table td a, table td a {
-    font-size: 12px; }
+  table td a {
+    font-size: 8px; }
 table th {
-  background: #ffffff;
+  background: white;
   padding: 4px 5px 4px 5px; }
 table tr.n {
-  background: #ffffff; }
+  background: white; }
 
 .report_header table {
   width: 100%; }
@@ -37,120 +36,110 @@ table tr.n {
   .report dl dd {
     display: inline; }
 .report table th {
-  background: #ffffff;}
-.report table th, .report table td {
-  padding: 2px 8px 2px 8px;}
+  background: white;
+  padding: 2px 8px 2px 8px; }
+.report table td {
+  padding: 2px 8px 2px 8px; }
 .report hr {
   height: 1px; }
 .report p.small {
-  font-size: 10px; }
+  font-size: 8px; }
 .report tr.n {
-  background: #ffffff; }
-.report table{
-border: 2px solid #000;
-border-right: 0px;
-border-spacing: 0px 0px;
-width:100%;
-border-collapse: separate;
-}
-.report tbody{
-border: 0px;
-}
+  background: white; }
+.report table {
+  border: 2px solid black;
+  border-right: 0px;
+  border-spacing: 0px 0px;
+  width: 100%;
+  border-collapse: separate; }
+.report tbody {
+  border: 0px; }
 .report th, .report td, .report tr {
-border: 0px;
-background: #FFF;
-height:15px;
-text-align:right;
-
-}
-.report th{
-text-align:left;
-width:70px;
-border-right: 2px solid #000;
-}
+  border: 0px;
+  background: white;
+  height: 15px;
+  text-align: right; }
+.report th {
+  text-align: left;
+  width: 70px;
+  border-right: 2px solid black; }
 .report u {
-padding:2px 5px;
-}
-th.mark{
-text-align: center;
-}
-.report .right-border, .report .date {
-border-right:2px solid #000;
-}
-th.right, td.right, table.cash_account_book strong {
-text-align:right;
-}
-.report .date, .report .date-last{
-border-bottom:2px solid #000;
-}
-.report .u{
-  border-bottom: 1px solid #000000;
-}
-.report td span{
-    width:100%;
-    border-bottom: 1px solid #000;
-}
-.report tr.last-tr, .report tr.last-tr td, .report_header tr.last-tr td{
-    height:2px;
-}
-.report_header tr.last-tr td{
-    height:10px;
-}
-th.first{
-    width:20%;
-}
-th.not-border{
-    border-right: 0px;
-}
-.report .center{
-    text-align: center;
-}
-table.cash_account_book{
-    border: 0px;
-    border-top: 1px solid #000;   
-}
+  padding: 2px 5px; }
 
-table.cash_account_book td, table.cash_account_book th {
-    border-right: 1px solid #000;
-    border-bottom: 1px solid #000;
-    text-align: center;
-}
+th.mark {
+  text-align: center; }
+
+.report .right-border, .report .date {
+  border-right: 2px solid black; }
+
+th.right, td.right, table.cash_account_book strong {
+  text-align: right; }
+
+.report .date, .report .date-last {
+  border-bottom: 2px solid black; }
+.report .u {
+  border-bottom: 1px solid black; }
+.report td span {
+  width: 100%;
+  border-bottom: 1px solid black; }
+.report tr.last-tr {
+  height: 2px; }
+  .report tr.last-tr td {
+    height: 2px; }
+
+.report_header tr.last-tr td {
+  height: 2px;
+  height: 10px; }
+
+th.first {
+  width: 20%; }
+th.not-border {
+  border-right: 0px; }
+
+.report .center {
+  text-align: center; }
+
+table.cash_account_book {
+  border: 0px;
+  border-top: 1px solid black; }
+  table.cash_account_book td, table.cash_account_book th {
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    text-align: center; }
+
 .report .left-border {
-    border-left: 1px solid #000;
-}
-.report .empty-cell{
- border: 0px;
-}
-.report table.fullpx td{
-    border-right: 2px solid #000;
-    border-bottom: 2px solid #000;
-}
-.report table.fullpx{
-    border-bottom: 0px;
-}
-.a-left-cell{
-    text-align:left !important;
-}
+  border-left: 1px solid black; }
+.report .empty-cell {
+  border: 0px; }
+.report table.fullpx {
+  border-bottom: 0px; }
+  .report table.fullpx td {
+    border-right: 2px solid black;
+    border-bottom: 2px solid black; }
+
+.a-left-cell {
+  text-align: left !important; }
+
 table.borrower-st, table.borrowers_list, table.payment_due {
-    border-bottom: 0px;
-}
-table.borrower-st td, table.borrowers_list td, table.payment_due td, .payment_schedule td {
-    border-bottom: 2px solid #000;
-    border-right: 2px solid #000;
-}
-.report table tr.total td{
-    font-weight:bold;
-}
-.a-right-cell{
-    text-align:right !important;
-}
+  border-bottom: 0px; }
+table.borrower-st td, table.borrowers_list td, table.payment_due td {
+  border-bottom: 2px solid black;
+  border-right: 2px solid black; }
+
+.payment_schedule td {
+  border-bottom: 2px solid black;
+  border-right: 2px solid black; }
+
+.report table tr.total td {
+  font-weight: bold; }
+
+.a-right-cell {
+  text-align: right !important; }
+
 .report .total {
   font-weight: bold; }
-.report .payment_schedule .left-border {
-  border-left: 2px solid #000 !import;
-}
 .report .payment_schedule {
-  border-left: 0px solid #000;
-  border-bottom: 0px solid #000;
-}
-
+  border-left: 0px solid black;
+  border-bottom: 0px solid black; }
+  .report .payment_schedule .left-border {
+    border-left: 2px solid black !important; }

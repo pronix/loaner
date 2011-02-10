@@ -27,7 +27,7 @@
     = form.inputs  :id => "interest" do
       = form.input :interest
       = form.input :no_of_terms
-      = form.input :interest_type, :as => :radio, :collection => [["Simple", "simple"], ["Monthly cum Daily Interest (Monthly)", "monthly_cum_daily"], ["Daily Interest (Monthly)", "daily"], ["Late Interest (Monthly)", "late"]]
+      = form.input :interest_type, :as => :radio, :collection => [["Simple", "simple"]] #, ["Monthly cum Daily Interest (Monthly)", "monthly_cum_daily"], ["Daily Interest (Monthly)", "daily"], ["Late Interest (Monthly)", "late"]]
       = form.input :simple_interest_method, :as => :select, :collection => Loan::SIMPLE_INTEREST_METHODS, :include_blank => false
       
     = form.inputs  :id => "permitted_fees" do
@@ -68,7 +68,7 @@
                 = link_to "Destroy", loan_transaction_path(resource, transaction), :confirm => 'Are you sure?', :method => :delete
 
     = form.inputs  :id => "misc" do
-      = form.input :bankruptcy_declaration
+      -#= form.input :bankruptcy_declaration
       = form.input :remarks
       = form.input :terms
       = form.input :language

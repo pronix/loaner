@@ -2,22 +2,29 @@
 #
 # Table name: transactions
 #
-#  id               :integer         not null, primary key
-#  book_id          :integer         not null
-#  loan_id          :integer
-#  receipt_no       :integer
-#  date             :date            not null
-#  transaction_type :string(255)     not null
-#  payment_type     :string(255)     not null
-#  amount           :float           default(0.0), not null
-#  regular          :float           default(0.0), not null
-#  principal        :float           default(0.0), not null
-#  interest         :float           default(0.0), not null
-#  late_interest    :float           default(0.0), not null
-#  permitted_fee    :float           default(0.0), not null
-#  description      :string(255)
-#  created_at       :datetime
-#  updated_at       :datetime
+#  id                          :integer         not null, primary key
+#  book_id                     :integer         not null
+#  loan_id                     :integer
+#  receipt_no                  :integer
+#  date                        :date            not null
+#  transaction_type            :string(255)     not null
+#  payment_type                :string(255)     not null
+#  amount                      :float           default(0.0), not null
+#  regular                     :float           default(0.0), not null
+#  principal                   :float           default(0.0), not null
+#  interest                    :float           default(0.0), not null
+#  late_interest               :float           default(0.0), not null
+#  permitted_fee               :float           default(0.0), not null
+#  description                 :string(255)
+#  created_at                  :datetime
+#  updated_at                  :datetime
+#  acceptance_fees             :float           default(0.0)
+#  revolving_renewal_fees      :float           default(0.0)
+#  late_repayment              :float           default(0.0)
+#  terms_of_contract_variation :float           default(0.0)
+#  cheque_dishonour            :float           default(0.0)
+#  preclosure_termination_fees :float           default(0.0)
+#  legal_fees                  :float           default(0.0)
 #
 
 class Transaction < ActiveRecord::Base

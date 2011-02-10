@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101104092356) do
+ActiveRecord::Schema.define(:version => 20110210160152) do
 
   create_table "books", :force => true do |t|
     t.integer  "lender_id",                        :null => false
@@ -128,21 +128,28 @@ ActiveRecord::Schema.define(:version => 20101104092356) do
   end
 
   create_table "transactions", :force => true do |t|
-    t.integer  "book_id",                           :null => false
+    t.integer  "book_id",                                      :null => false
     t.integer  "loan_id"
     t.integer  "receipt_no"
-    t.date     "date",                              :null => false
-    t.string   "transaction_type",                  :null => false
-    t.string   "payment_type",                      :null => false
-    t.float    "amount",           :default => 0.0, :null => false
-    t.float    "regular",          :default => 0.0, :null => false
-    t.float    "principal",        :default => 0.0, :null => false
-    t.float    "interest",         :default => 0.0, :null => false
-    t.float    "late_interest",    :default => 0.0, :null => false
-    t.float    "permitted_fee",    :default => 0.0, :null => false
+    t.date     "date",                                         :null => false
+    t.string   "transaction_type",                             :null => false
+    t.string   "payment_type",                                 :null => false
+    t.float    "amount",                      :default => 0.0, :null => false
+    t.float    "regular",                     :default => 0.0, :null => false
+    t.float    "principal",                   :default => 0.0, :null => false
+    t.float    "interest",                    :default => 0.0, :null => false
+    t.float    "late_interest",               :default => 0.0, :null => false
+    t.float    "permitted_fee",               :default => 0.0, :null => false
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "acceptance_fees",             :default => 0.0
+    t.float    "revolving_renewal_fees",      :default => 0.0
+    t.float    "late_repayment",              :default => 0.0
+    t.float    "terms_of_contract_variation", :default => 0.0
+    t.float    "cheque_dishonour",            :default => 0.0
+    t.float    "preclosure_termination_fees", :default => 0.0
+    t.float    "legal_fees",                  :default => 0.0
   end
 
   create_table "users", :force => true do |t|

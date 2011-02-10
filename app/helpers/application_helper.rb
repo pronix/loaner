@@ -9,7 +9,7 @@ module ApplicationHelper
 
   # currency
   def c number
-    number_to_currency number.abs
+    number_to_currency number.abs, :unit => ""
   end
   # Money default formatting
   def m amount

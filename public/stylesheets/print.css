@@ -1,5 +1,5 @@
 body {
-  font-size: 6px;
+  font-size: 8px;
   font-family: times new roman; }
 
 #menu, .nonprint {
@@ -38,6 +38,10 @@ table tr.n {
 .report table th {
   background: white;
   padding: 2px 8px 2px 8px; }
+  .report table th.normal {
+    font-weight: normal; }
+  .report table th.sub_total {
+    text-align: right; }
 .report table td {
   padding: 2px 8px 2px 8px; }
 .report hr {
@@ -79,6 +83,9 @@ th.right, td.right, table.cash_account_book strong {
   border-bottom: 2px solid black; }
 .report .u {
   border-bottom: 1px solid black; }
+.report .u2 {
+  border-bottom: 1px solid black;
+  border-top: 1px solid black; }
 .report td span {
   width: 100%;
   border-bottom: 1px solid black; }

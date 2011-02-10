@@ -1,2 +1,4 @@
 - if @company_profile
-  %h2 Welcome to #{@company_profile.name}
+  - title "Welcome to #{@company_profile.name}"
+- else
+  - title "Welcome"

@@ -53,7 +53,7 @@ class Transaction < ActiveRecord::Base
   validates_presence_of :amount
   validates_presence_of :transaction_type
   validates_presence_of :payment_type
-  validate :validate_amount
+  validate :validate_amount, :validate_permitted_fee
   validates_uniqueness_of :receipt_no
 
 
@@ -68,12 +68,19 @@ class Transaction < ActiveRecord::Base
   after_initialize do |record|
     record.date ||= Date.today
     record.payment_type ||= PAYMENT_CASH
-    record.amount         ||= 0.0
-    record.interest       ||= 0.0
-    record.principal      ||= 0.0
-    record.late_interest  ||= 0.0
-    record.permitted_fee  ||= 0.0
-    record.receipt_no     ||= Transaction.next_receipt_no
+    record.amount                       ||= 0.0
+    record.interest                     ||= 0.0
+    record.principal                    ||= 0.0
+    record.late_interest                ||= 0.0
+    record.permitted_fee                ||= 0.0
+    record.acceptance_fees              ||= 0.0
+    record.revolving_renewal_fees       ||= 0.0
+    record.late_repayment               ||= 0.0
+    record.terms_of_contract_variation  ||= 0.0
+    record.cheque_dishonour             ||= 0.0
+    record.preclosure_termination_fees  ||= 0.0
+    record.legal_fees                   ||= 0.0
+    record.receipt_no                   ||= Transaction.next_receipt_no
   end
 
   # principal = amount if all other amounts eq zero
@@ -88,6 +95,12 @@ class Transaction < ActiveRecord::Base
   def validate_amount
     unless amount == (regular + principal + interest + late_interest + permitted_fee)
       errors.add :amount, "#{amount} != #{regular} (regular) + #{principal} (principal) + #{interest} (interest) + #{late_interest} (late_interest) + #{permitted_fee} (permitted_fee)"
+    end
+  end
+
+  def validate_permitted_fee
+    unless permitted_fee == (acceptance_fees + revolving_renewal_fees + late_repayment + terms_of_contract_variation + cheque_dishonour + preclosure_termination_fees + legal_fees)
+      errors.add :permitted_fee, "#{permitted_fee} != #{acceptance_fees + revolving_renewal_fees + late_repayment + terms_of_contract_variation + cheque_dishonour + preclosure_termination_fees + legal_fees}"
     end
   end
 

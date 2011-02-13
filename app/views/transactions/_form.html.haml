@@ -8,7 +8,16 @@
     = form.input :principal
     = form.input :interest
     = form.input :late_interest
-    = form.input :permitted_fee
+    = form.input :permitted_fee, :input_html => { :readonly => true }
+    %a#show_permitted_fees{:href => "#"} Show Permitted Fees
+    = form.inputs :id => :permitted_fees, :style => "display:none;" do
+      = form.input :acceptance_fees
+      = form.input :revolving_renewal_fees
+      = form.input :late_repayment
+      = form.input :terms_of_contract_variation
+      = form.input :cheque_dishonour
+      = form.input :preclosure_termination_fees
+      = form.input :legal_fees
     = form.input :transaction_type, :as => :select, :collection => humanize(Transaction::TRANSACTION_TYPES), :include_blank => false
     = form.input :payment_type, :as => :select, :collection => humanize(Transaction::PAYMENT_TYPES), :include_blank => false
     = form.inputs  :name => "Loan", :id => "loan_group" do
@@ -25,7 +34,10 @@
 
 :javascript
   var amounts = ["regular", "principal", "interest", "late_interest", "permitted_fee"];
+  var permitted_fees = ["acceptance_fees", "revolving_renewal_fees", "late_repayment", "terms_of_contract_variation", "cheque_dishonour", "preclosure_termination_fees", "legal_fees"];
+  $("#show_permitted_fees").click(function() {$("#permitted_fees").toggle()});
   function onTransactionTypeChange() {
+    $("#permitted_fees, #show_permitted_fees").hide();
     for(i in amounts)
       $('#transaction_'+amounts[i]).val("0.0");
     $('#loan_group').hide();
@@ -34,6 +46,7 @@
     $('#book_transfer_group').hide();
     $('#account_transfer_group').hide();
     if ($('#transaction_transaction_type').val() == 'payment') {
+      $("#show_permitted_fees").show();
       for(i in amounts)
         $('#transaction_' + amounts[i] + '_input').show();
     } else {
@@ -49,6 +62,9 @@
         $('#loan_group').show();
     }
   }
+  //
+  // Amount
+  //
   function onAmountsChange() {
     if ($('#transaction_transaction_type').val() == 'payment') {
       var amount = 0.0;
@@ -62,3 +78,19 @@
   onTransactionTypeChange();
   for(i in amounts)
     $('#transaction_'+amounts[i]).keyup(onAmountsChange);
+  //
+  // Permitted Fees
+  //
+  function onPermittedFeesChange() {
+    var amount = 0.0;
+    for(i in permitted_fees)
+      amount += parseFloat($('#transaction_' + permitted_fees[i]).val());
+    console.debug("permitted_fees: ", amount);
+    $('#transaction_permitted_fee').val(amount);
+    onAmountsChange();
+  }
+  for(i in permitted_fees)
+    $('#transaction_'+permitted_fees[i]).keyup(onPermittedFeesChange);
+  onPermittedFeesChange();
+  //
+

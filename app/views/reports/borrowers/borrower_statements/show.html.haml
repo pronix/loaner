@@ -54,7 +54,7 @@
     - total_principal = 0.0
     - total_total_interest = 0.0
     - total_total_fees = 0.0
-    - @loan.payments.each do |p|
+    - @loan.repayments.each do |p|
       %tr
         %td.a-left-cell= p.date
         %td= p.transaction_type

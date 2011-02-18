@@ -3,12 +3,20 @@ class CompanyTransactionsController < ApplicationController
     @transactions = current_user.transactions
   end
 
+  def receipts
+    @transactions = current_user.transactions.receipts
+  end
+
   def payments
     @transactions = current_user.transactions.payments
   end
 
-  def receipts
+  def disbursements
     @transactions = current_user.transactions.disbursements
+  end
+
+  def repayments
+    @transactions = current_user.transactions.repayments
   end
 
 end

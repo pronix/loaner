@@ -42,8 +42,8 @@ class User < ActiveRecord::Base
     books.map{|b| b.balance_at date}.sum
   end
 
-  def payments_sum options = {}
-    books.map{|b| b.payments(options).sum(:amount)}.sum
+  def repayments_sum options = {}
+    books.map{|b| b.repayments(options).sum(:amount)}.sum
   end
 
   def disbursements_sum options = {}

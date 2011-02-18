@@ -24,6 +24,11 @@ class Book < ActiveRecord::Base
     initial_balance + transactions.where(["date <= ?", date]).sum(:amount)
   end
 
+  def repayments options
+    options = default_period options
+    transactions.repayments.where(["date >= ? AND date < ?", options[:from], options[:to]])
+  end
+
   def payments options
     options = default_period options
     transactions.payments.where(["date >= ? AND date < ?", options[:from], options[:to]])
@@ -36,12 +41,12 @@ class Book < ActiveRecord::Base
 
   def principal_sum options
     options = default_period options
-    payments(options).sum :principal
+    repayments(options).sum :principal
   end
 
   def interest_sum options
     options = default_period options
-    payments(options).sum :interest
+    repayments(options).sum :interest
   end
 
 end

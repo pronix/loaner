@@ -47,7 +47,7 @@
     %tr
       %th
       - quarter_periods(start, :total => true).each do |period|
-        %td.right-border= c current_user.payments_sum period
+        %td.right-border= c current_user.repayments_sum period
     %tr
       %td.right-border.center NIL
       %td.right-border.center NIL

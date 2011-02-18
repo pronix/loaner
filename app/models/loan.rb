@@ -46,8 +46,8 @@ class Loan < ActiveRecord::Base
       Transaction.disbursement!(options.merge(:loan => proxy_owner,
                                               :book => proxy_owner.book))
     end
-    def payment! options
-      Transaction.payment!(options.merge(:loan => proxy_owner,
+    def repayment! options
+      Transaction.repayment!(options.merge(:loan => proxy_owner,
                                          :book => proxy_owner.book))
     end
   end
@@ -85,8 +85,8 @@ class Loan < ActiveRecord::Base
 
 
   delegate :lender, :to => :book
-  delegate :payments, :to => :transactions
-  delegate :payment!, :to => :transactions
+  delegate :repayments, :to => :transactions
+  delegate :repayment!, :to => :transactions
 
   def to_label
     "Account No: #{account_no}"
@@ -101,15 +101,15 @@ class Loan < ActiveRecord::Base
   end
 
   def outstanding_principal date = Date.today
-    paid = payments.where("date <= ?", date).sum(:principal)
+    paid = repayments.where("date <= ?", date).sum(:principal)
     amount - paid
   end
 
   # TODO: Need to check this method
   # Days
   def overdue
-    if active? && payments.size < no_of_terms
-      (Date.today - payments.last.date).to_i
+    if active? && repayments.size < no_of_terms
+      (Date.today - repayments.last.date).to_i
     else
       false
     end

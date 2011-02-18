@@ -32,11 +32,13 @@ class Transaction < ActiveRecord::Base
   attr_accessor :src_account, :dst_account
   attr_accessor :target_loan
 
-  TRANSACTION_TYPES = ["payment", "disbursement", "book_transfer", "account_transfer"]
-  TRANSACTION_PAYMENT           = TRANSACTION_TYPES[0]
-  TRANSACTION_DISBURSEMENT      = TRANSACTION_TYPES[1]
-  TRANSACTION_BOOK_TRANSFER     = TRANSACTION_TYPES[2]
-  TRANSACTION_ACCOUNT_TRANSFER  = TRANSACTION_TYPES[3]
+  TRANSACTION_TYPES = ["disbursement", "repayment", "payment", "receipt", "book_transfer", "account_transfer"]
+  TRANSACTION_DISBURSEMENT      = TRANSACTION_TYPES[0]
+  TRANSACTION_REPAYMENT         = TRANSACTION_TYPES[1]
+  TRANSACTION_PAYMENT           = TRANSACTION_TYPES[2]
+  TRANSACTION_RECEIPT           = TRANSACTION_TYPES[3]
+  TRANSACTION_BOOK_TRANSFER     = TRANSACTION_TYPES[4]
+  TRANSACTION_ACCOUNT_TRANSFER  = TRANSACTION_TYPES[5]
 
   PAYMENT_TYPES = ["cash", "cheque", "interbank", "postal_order"]
   PAYMENT_CASH          = PAYMENT_TYPES[0]
@@ -59,15 +61,19 @@ class Transaction < ActiveRecord::Base
 
   # Scopes
   default_scope :order => "date"
-  scope :payments, :conditions => {:transaction_type => "payment"}
-  scope :disbursements, :conditions => {:transaction_type => "disbursement"}
+  scope :disbursements,     :conditions => {:transaction_type => TRANSACTION_DISBURSEMENT}
+  scope :repayments,        :conditions => {:transaction_type => TRANSACTION_REPAYMENT}
+  scope :payments,          :conditions => {:transaction_type => TRANSACTION_PAYMENT}
+  scope :receipts,          :conditions => {:transaction_type => TRANSACTION_RECEIPT}
+  scope :book_transfers,    :conditions => {:transaction_type => TRANSACTION_BOOK_TRANSFER}
+  scope :account_transfers, :conditions => {:transaction_type => TRANSACTION_ACCOUNT_TRANSFER}
   scope :cash, :conditions => {:payment_type => PAYMENT_CASH}
   scope :bank, :conditions => {:payment_type => [PAYMENT_CHEQUE, PAYMENT_INTERBANK]}
 
   # Callbacks
   after_initialize do |record|
-    record.date ||= Date.today
-    record.payment_type ||= PAYMENT_CASH
+    record.date                         ||= Date.today
+    record.payment_type                 ||= PAYMENT_CASH
     record.amount                       ||= 0.0
     record.interest                     ||= 0.0
     record.principal                    ||= 0.0
@@ -104,14 +110,21 @@ class Transaction < ActiveRecord::Base
     end
   end
 
+  def disbursement?
+    transaction_type == TRANSACTION_DISBURSEMENT
+  end
+
+  def repayment?
+    transaction_type == TRANSACTION_REPAYMENT
+  end
+
   def payment?
     transaction_type == TRANSACTION_PAYMENT
   end
 
   def receipt?
-    transaction_type == TRANSACTION_DISBURSEMENT
+    transaction_type == TRANSACTION_RECEIPT
   end
-  def disbursement?; receipt?; end
 
   def total_interest
     interest + late_interest
@@ -136,8 +149,8 @@ class Transaction < ActiveRecord::Base
   def self.disbursement! options
     self.debit! options.merge(:transaction_type => TRANSACTION_DISBURSEMENT)
   end
-  def self.payment! options
-    self.credit! options.merge(:transaction_type => TRANSACTION_PAYMENT)
+  def self.repayment! options
+    self.credit! options.merge(:transaction_type => TRANSACTION_REPAYMENT)
   end
 
   def self.next_receipt_no

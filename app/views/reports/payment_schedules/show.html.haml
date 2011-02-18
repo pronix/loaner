@@ -40,16 +40,16 @@
     - total_amount    = 0.0
     - total_principal = 0.0
     - total_interest  = 0.0
-    -@loan.payments.each_with_index do |payment, num|
+    -@loan.repayments.each_with_index do |repayment, num|
       %tr{:class => cycle("c", "n")}
         %td.center.left-border= num+1
-        %td.center= l payment.date
-        %td.a-right-cell= c payment.amount
-        %td.a-right-cell= c payment.loan.principal_fee
-        %td.a-right-cell= c payment.loan.interest_fee
-        - total_amount    += payment.amount
-        - total_principal += payment.loan.principal_fee
-        - total_interest  += payment.loan.interest_fee
+        %td.center= l repayment.date
+        %td.a-right-cell= c repayment.amount
+        %td.a-right-cell= c repayment.loan.principal_fee
+        %td.a-right-cell= c repayment.loan.interest_fee
+        - total_amount    += repayment.amount
+        - total_principal += repayment.loan.principal_fee
+        - total_interest  += repayment.loan.interest_fee
     %tr.total
       %td.empty-cell
       %td.empty-cell

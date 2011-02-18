@@ -28,8 +28,10 @@
       - if request.env["PATH_INFO"] =~ /transaction/
         %ul
           %li= link_to "New Transaction", new_transaction_path
-          %li= link_to "Receipts", receipts_company_transactions_path
-          %li= link_to "Payments", payments_company_transactions_path
+          %li= link_to "Receipts",      receipts_company_transactions_path
+          %li= link_to "Payments",      payments_company_transactions_path
+          %li= link_to "Repayments",    repayments_company_transactions_path
+          %li= link_to "Disbursements", disbursements_company_transactions_path
           %li
             %span= "Book Transfer"
           %li

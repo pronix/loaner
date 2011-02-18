@@ -14,6 +14,8 @@ Loaner::Application.routes.draw do
     collection do
       get 'receipts'
       get 'payments'
+      get 'repayments'
+      get 'disbursements'
     end
   end
   resources :backups do
@@ -26,7 +28,7 @@ Loaner::Application.routes.draw do
   resources :company_configurations
   resources :company_profiles
 
-  resources :transactions
+  #resources :transactions
   resources :loans do
     resources :transactions
   end

@@ -12,15 +12,15 @@ class TransactionsController < InheritedResources::Base
   end
 
 
-  # GET /transactions/receipts
-  def receipts
-    @receipts = Transaction.disbursements
-  end
-
-  # GET /transactions/payments
-  def payments
-    @payments = Transaction.payments
-  end
+#  # GET /transactions/receipts
+#  def receipts
+#    @receipts = Transaction.disbursements
+#  end
+# 
+#  # GET /transactions/payments
+#  def payments
+#    @payments = Transaction.payments
+#  end
 
   private
 

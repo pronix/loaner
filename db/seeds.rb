@@ -79,7 +79,7 @@ end
     :first_payment_at => (application + 1.month)
 
   (rand(loan.no_of_terms)+5).times do |i|
-    loan.payment! :amount => loan.principal_fee + loan.interest_fee,
+    loan.repayment! :amount => loan.principal_fee + loan.interest_fee,
                   :principal => loan.principal_fee,
                   :interest => loan.interest_fee,
                   :date => (loan.first_payment_at + i.months)

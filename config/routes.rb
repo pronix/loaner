@@ -30,6 +30,9 @@ Loaner::Application.routes.draw do
 
   #resources :transactions
   resources :loans do
+    collection do
+      get "calculate_payment_schedule"
+    end
     resources :transactions
   end
 

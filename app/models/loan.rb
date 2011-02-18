@@ -114,4 +114,12 @@ class Loan < ActiveRecord::Base
       false
     end
   end
+
+  def calculate_payment_schedule
+    result = []
+    no_of_terms.downto(1) do |num|
+      result << {:date => Date.today - num.months, :amount => 100}
+    end
+    result
+  end
 end

@@ -22,6 +22,8 @@
       %li
         %a{:href => "#payment_schedule"} Payment Schedule
       %li
+        %a{:href => "#transactions"} Loan Transactions
+      %li
         %a{:href => "#misc"} Misc
               
     = form.inputs  :id => "interest" do
@@ -44,7 +46,10 @@
       = form.input :grace_period
       = form.input :first_payment_at, :as => :date_picker
       = form.input :maturity_at, :as => :date_picker
+      %h3 Payment Schedule
+      #schedule_container
 
+    = form.inputs  :id => "transactions" do
       - if resource.id
         %h2 Loan Transactions
         = link_to "New Payment", new_loan_transaction_path(resource)
@@ -78,5 +83,17 @@
 
 :javascript
   $("#loan_tabs").tabs();
-    
+
+:javascript
+  function updatePaymentSchedule() {
+    $("#schedule_container").html("Loading...");
+    amount = $("#loan_amount").val();
+    interest = $("#loan_interest").val();
+    terms = $("#loan_no_of_terms").val();
+    $.get("/loans/calculate_payment_schedule", {"amount": amount, "interest": interest, "terms": terms}, function (data) {
+      $("#schedule_container").html(data);
+    });
+  }
+  $("#loan_no_of_terms, #loan_amount, #loan_interest").keyup(updatePaymentSchedule);
+  updatePaymentSchedule();
 

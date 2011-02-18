@@ -1,0 +1,8 @@
+%table.payment_schedule
+  %tr
+    %th Date
+    %th Amount
+  - @schedule.each do |line|
+    %tr
+      %td= d line[:date]
+      %td= c line[:amount]

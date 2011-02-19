@@ -31,6 +31,7 @@ class Transaction < ActiveRecord::Base
   attr_accessor :src_book, :dst_book
   attr_accessor :src_account, :dst_account
   attr_accessor :target_loan
+  attr_accessor :shadow
 
   TRANSACTION_TYPES = ["disbursement", "repayment", "payment", "receipt", "book_transfer", "account_transfer"]
   TRANSACTION_DISBURSEMENT      = TRANSACTION_TYPES[0]
@@ -39,6 +40,8 @@ class Transaction < ActiveRecord::Base
   TRANSACTION_RECEIPT           = TRANSACTION_TYPES[3]
   TRANSACTION_BOOK_TRANSFER     = TRANSACTION_TYPES[4]
   TRANSACTION_ACCOUNT_TRANSFER  = TRANSACTION_TYPES[5]
+  LOAN_TRANSACTIONS = [TRANSACTION_DISBURSEMENT, TRANSACTION_REPAYMENT]
+  COMPANY_TRANSACTIONS = [TRANSACTION_RECEIPT, TRANSACTION_PAYMENT, TRANSACTION_BOOK_TRANSFER, TRANSACTION_ACCOUNT_TRANSFER]
 
   PAYMENT_TYPES = ["cash", "cheque", "interbank", "postal_order"]
   PAYMENT_CASH          = PAYMENT_TYPES[0]
@@ -56,7 +59,7 @@ class Transaction < ActiveRecord::Base
   validates_presence_of :transaction_type
   validates_presence_of :payment_type
   validate :validate_amount, :validate_permitted_fee
-  validates_uniqueness_of :receipt_no
+  validates_uniqueness_of :receipt_no, :allow_nil => true
 
 
   # Scopes
@@ -72,21 +75,30 @@ class Transaction < ActiveRecord::Base
 
   # Callbacks
   after_initialize do |record|
-    record.date                         ||= Date.today
-    record.payment_type                 ||= PAYMENT_CASH
-    record.amount                       ||= 0.0
-    record.interest                     ||= 0.0
-    record.principal                    ||= 0.0
-    record.late_interest                ||= 0.0
-    record.permitted_fee                ||= 0.0
-    record.acceptance_fees              ||= 0.0
-    record.revolving_renewal_fees       ||= 0.0
-    record.late_repayment               ||= 0.0
-    record.terms_of_contract_variation  ||= 0.0
-    record.cheque_dishonour             ||= 0.0
-    record.preclosure_termination_fees  ||= 0.0
-    record.legal_fees                   ||= 0.0
-    record.receipt_no                   ||= Transaction.next_receipt_no
+    unless record[:id]
+      record.date                         ||= Date.today
+      record.payment_type                 ||= PAYMENT_CASH
+      record.amount                       ||= 0.0
+      record.interest                     ||= 0.0
+      record.principal                    ||= 0.0
+      record.late_interest                ||= 0.0
+      record.permitted_fee                ||= 0.0
+      record.acceptance_fees              ||= 0.0
+      record.revolving_renewal_fees       ||= 0.0
+      record.late_repayment               ||= 0.0
+      record.terms_of_contract_variation  ||= 0.0
+      record.cheque_dishonour             ||= 0.0
+      record.preclosure_termination_fees  ||= 0.0
+      record.legal_fees                   ||= 0.0
+      record.receipt_no                   ||= Transaction.next_receipt_no
+    end
+  end
+
+  # on book/account transfers we should create "shadow" of transaction on another book/account with inverse sign
+  after_create do |record|
+    if [TRANSACTION_ACCOUNT_TRANSFER, TRANSACTION_BOOK_TRANSFER].include?(record.transaction_type) && !record.shadow
+      Transaction.create_transfer_shadow!(record)
+    end
   end
 
   # principal = amount if all other amounts eq zero
@@ -157,4 +169,24 @@ class Transaction < ActiveRecord::Base
     self.maximum(:receipt_no).to_i + 1
   end
 
+  def self.create_transfer_shadow! transaction
+    #logger.debug "transaction: #{transaction.inspect}"
+    #logger.debug "dst_book: #{transaction.dst_book}"
+
+    shadow = transaction.clone
+    if transaction.transaction_type == TRANSACTION_BOOK_TRANSFER
+      shadow.book_id = transaction.dst_book
+    elsif transaction.transaction_type == TRANSACTION_ACCOUNT_TRANSFER
+      # TODO ask about this logic
+      shadow.book_id = User.find(transaction.dst_account).books.first
+    end
+
+    shadow.amount = -transaction.amount
+    shadow.principal = -transaction.principal
+    shadow.shadow = true
+    shadow.receipt_no = nil
+    shadow.description = "Shadow of ##{transaction.id} transaction"
+    #logger.debug "shadow: #{shadow.inspect}"
+    shadow.save!
+  end
 end

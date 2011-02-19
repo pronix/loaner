@@ -1,0 +1,36 @@
+= semantic_form_for @transaction, :url => (@transaction.id ? company_transaction_path(@transaction) : company_transactions_path) do |form|
+  = form.inputs do
+    = form.error_messages
+    = form.input :date, :as => :date_picker
+    = form.input :receipt_no
+    = form.input :amount
+    -#= form.input :regular
+    -#= form.input :principal
+    -#= form.input :interest
+    -#= form.input :late_interest
+    -#= form.input :permitted_fee, :input_html => { :readonly => true }
+    -#%a#show_permitted_fees{:href => "#"} Show Permitted Fees
+    -#= form.inputs :id => :permitted_fees, :style => "display:none;" do
+      = form.input :acceptance_fees
+      = form.input :revolving_renewal_fees
+      = form.input :late_repayment
+      = form.input :terms_of_contract_variation
+      = form.input :cheque_dishonour
+      = form.input :preclosure_termination_fees
+      = form.input :legal_fees
+    = form.input :transaction_type, :as => :select, :collection => humanize(Transaction::COMPANY_TRANSACTIONS), :include_blank => false
+    = form.input :payment_type, :as => :select, :collection => humanize(Transaction::PAYMENT_TYPES), :include_blank => false
+    -#= form.inputs  :name => "Loan", :id => "loan_group" do
+      = form.input :target_loan, :as => :select, :collection => Loan.all, :include_blank => false
+    = form.input :book, :as => :select, :collection => current_user.books, :include_blank => false
+    = form.inputs  :name => "Book Transfer", :id => "book_transfer_group" do
+      -#= form.input :src_book, :as => :select, :collection => current_user.books, :include_blank => false
+      = form.input :dst_book, :as => :select, :collection => current_user.books, :include_blank => false
+    = form.inputs  :name => "Account Transfer", :id => "account_transfer_group" do
+      -#= form.input :src_account, :as => :select, :collection => User.all, :include_blank => false
+      = form.input :dst_account, :as => :select, :collection => User.all, :include_blank => false
+    = form.input :description, :as => :text
+  = form.buttons do
+    = form.commit_button
+
+= javascript_include_tag "transactions"

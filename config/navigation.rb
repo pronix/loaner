@@ -49,6 +49,7 @@ SimpleNavigation::Configuration.run do |navigation|
       end
 
       primary.item :company_transcactions_menu, "Company Transactions", company_transactions_path do |menu|
+        menu.item :new, "New", new_company_transaction_path
         menu.item :receipts, "Receipts", receipts_company_transactions_path
         menu.item :payments, "Payments", payments_company_transactions_path
         menu.item :repayments, "Repayments", repayments_company_transactions_path

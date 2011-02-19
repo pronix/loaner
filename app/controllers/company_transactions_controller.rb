@@ -1,4 +1,8 @@
-class CompanyTransactionsController < ApplicationController
+class CompanyTransactionsController < InheritedResources::Base
+  respond_to :html, :xml, :json
+
+  defaults :resource_class => Transaction, :collection_name => 'transactions', :instance_name => 'transaction'
+
   def index
     @transactions = current_user.transactions
   end
@@ -18,5 +22,4 @@ class CompanyTransactionsController < ApplicationController
   def repayments
     @transactions = current_user.transactions.repayments
   end
-
 end

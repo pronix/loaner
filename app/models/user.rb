@@ -24,9 +24,9 @@ class User < ActiveRecord::Base
 
   include DefaultPeriod
 
-  def transactions
-    Transaction.where :loan_id => loans
-  end
+  #def transactions
+  #  Transaction.where :loan_id => loans
+  #end
 
   def borrowers
     bl = BorrowerLoan.where(:loan_id => loans)

@@ -310,7 +310,7 @@ end
 
 When /^(?:|I )fill in date field "([^\"]*)" with "([^\"]*)"(?: within "([^\"]*)")?$/ do |field, value, selector|
   date = Date.parse(value)
-  
+
   with_scope(selector) do
     select(date.year.to_s,      :from => field + "_1i")
     select(date.strftime("%B"), :from => field + "_2i")

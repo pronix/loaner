@@ -36,9 +36,7 @@ Feature: Company Transactions
       | Date                | date          |                   |
       | Amount              | text          |                   |
       | Transaction Type    | select        |                   |
-      | Source Book         | select        |                   |
       | Destination Book    | select        |                   |
-      | Source Account      | select        |                   |
       | Destination Account | select        |                   |
 
 
@@ -47,10 +45,9 @@ Feature: Company Transactions
     When I follow "Company Transactions"
     Then I should see "Company Transactions"
     And I follow "New Transaction"
-    And I fill in date field "transaction_date" with "2010-01-01"
+    And fill in "Date" with "2010-01-01"
     And fill in "Amount" with "100.00"
-    And select "Disbursement" from "Transaction Type"
-    And select "Account No: 1" from "Target loan"
+    And select "Receipt" from "Transaction Type"
     And I press "Create Transaction"
     Then I should see "Transaction was successfully created"
 
@@ -59,10 +56,9 @@ Feature: Company Transactions
     When I follow "Company Transactions"
     Then I should see "Company Transactions"
     And I follow "New Transaction"
-    And I fill in date field "transaction_date" with "2010-01-01"
+    And fill in "Date" with "2010-01-01"
     And fill in "Amount" with "100.00"
     And select "Payment" from "Transaction Type"
-    And select "Account No: 1" from "Target loan"
     And I press "Create Transaction"
     Then I should see "Transaction was successfully created"
 
@@ -71,10 +67,10 @@ Feature: Company Transactions
     When I follow "Company Transactions"
     Then I should see "Company Transactions"
     And I follow "New Transaction"
-    And I fill in date field "transaction_date" with "2010-01-01"
+    And fill in "Date" with "2010-01-01"
     And fill in "Amount" with "100.00"
     And select "Book Transfer" from "Transaction Type"
-    And select "MainBook" from "Source Book"
+    #And select "MainBook" from "Source Book"
     And select "SlaveBook" from "Destination Book"
     And I press "Create Transaction"
     Then I should see "Transaction was successfully created"
@@ -84,10 +80,10 @@ Feature: Company Transactions
     When I follow "Company Transactions"
     Then I should see "Company Transactions"
     And I follow "New Transaction"
-    And I fill in date field "transaction_date" with "2010-01-01"
+    And fill in "Date" with "2010-01-01"
     And fill in "Amount" with "100.00"
     And select "Book Transfer" from "Transaction Type"
-    And select "John Doe" from "Source Account"
+    #And select "John Doe" from "Source Account"
     And select "Steve Jobs" from "Destination Account"
     And I press "Create Transaction"
     Then I should see "Transaction was successfully created"

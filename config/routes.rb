@@ -16,6 +16,8 @@ Loaner::Application.routes.draw do
       get 'payments'
       get 'repayments'
       get 'disbursements'
+      get 'book_transfers'
+      get 'account_transfers'
     end
   end
   resources :backups do

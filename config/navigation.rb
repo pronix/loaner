@@ -54,8 +54,8 @@ SimpleNavigation::Configuration.run do |navigation|
         menu.item :payments, "Payments", payments_company_transactions_path
         menu.item :repayments, "Repayments", repayments_company_transactions_path
         menu.item :disbursements, "Disbursements", disbursements_company_transactions_path
-        menu.item :book_transfer, "Book Transfer", ""
-        menu.item :accounts, "Accounts", ""
+        menu.item :book_transfers, "Book Transfer", book_transfers_company_transactions_path
+        menu.item :account_transfers, "Account Transfer", account_transfers_company_transactions_path
       end
 
       primary.item :backup_restore_menu, "Backup & Restore", backups_path do |menu|

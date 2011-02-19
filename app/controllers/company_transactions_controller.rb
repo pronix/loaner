@@ -22,4 +22,12 @@ class CompanyTransactionsController < InheritedResources::Base
   def repayments
     @transactions = current_user.transactions.repayments
   end
+
+  def book_transfers
+    @transactions = current_user.transactions.book_transfers
+  end
+
+  def account_transfers
+    @transactions = current_user.transactions.account_transfers
+  end
 end

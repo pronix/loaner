@@ -28,7 +28,7 @@ Loaner::Application.routes.draw do
   resources :company_configurations
   resources :company_profiles
 
-  #resources :transactions
+  resources :transactions
   resources :loans do
     collection do
       get "calculate_payment_schedule"

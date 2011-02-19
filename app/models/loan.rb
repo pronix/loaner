@@ -60,7 +60,10 @@ class Loan < ActiveRecord::Base
       loan.disburse!
     end
   end
-  after_initialize {|loan| loan.application ||= Date.today }
+  after_initialize do |loan|
+    loan.application ||= Date.today
+    loan.first_payment_at ||= Date.today + loan.schedule_period
+  end
 
   validates_presence_of :book
   validates_presence_of :borrowers
@@ -72,6 +75,12 @@ class Loan < ActiveRecord::Base
 
   SIMPLE_INTEREST_METHODS = ["Monthly", "Weekly", "Forntightly", "Annually"]
   SCHEDULE_TYPE = ["Monthly", "Weekly", "Annually", "Fortnightly", "Custom Configuration"]
+  SCHEDULE_TYPE_PERIODS = {
+                            "Monthly" => 1.month,
+                            "Weekly" => 1.week,
+                            "Annually" => 1.year,
+                            "Fortnightly" => 2.weeks,
+                          }
 
   state_machine :state, :initial => :new do
     event :disburse do
@@ -115,10 +124,24 @@ class Loan < ActiveRecord::Base
     end
   end
 
+  def schedule_period
+    unless period = SCHEDULE_TYPE_PERIODS[schedule_type]
+      # TODO: Custom Configuration
+      period = 1.month
+    end
+    period
+  end
+
+  def schedule_repayment
+    interest_fee + principal_fee
+  end
+
   def calculate_payment_schedule
     result = []
-    no_of_terms.downto(1) do |num|
-      result << {:date => Date.today - num.months, :amount => 100}
+    next_date = first_payment_at
+    no_of_terms.times do |num|
+      result << {:date => next_date, :amount => schedule_repayment}
+      next_date = next_date + schedule_period
     end
     result
   end

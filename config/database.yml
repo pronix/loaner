@@ -13,8 +13,9 @@ development:
 # Do not set this db to the same as development or production.
 test: &test
   adapter: postgresql
+  hostname: localhost
   database: loaner_test
-  username: vlad2
+  username: vlad
   encoding: utf-8
   port: 5432
 

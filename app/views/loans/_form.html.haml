@@ -42,11 +42,11 @@
       = form.input :legal_fees
 
     = form.inputs  :id => "payment_schedule" do
-      = form.input :schedule_type, :as => :radio, :collection => Loan::SCHEDULE_TYPE, :include_blank => false
+      = form.input :schedule_type, :as => :select, :collection => Loan::SCHEDULE_TYPE, :include_blank => false
       = form.input :grace_period
       = form.input :first_payment_at, :as => :date_picker
       = form.input :maturity_at, :as => :date_picker
-      %h3 Payment Schedule
+      %h2 Payment Schedule
       #schedule_container
 
     = form.inputs  :id => "transactions" do
@@ -87,13 +87,15 @@
 :javascript
   function updatePaymentSchedule() {
     $("#schedule_container").html("Loading...");
-    amount = $("#loan_amount").val();
-    interest = $("#loan_interest").val();
-    terms = $("#loan_no_of_terms").val();
-    $.get("/loans/calculate_payment_schedule", {"amount": amount, "interest": interest, "terms": terms}, function (data) {
+    $.get("/loans/calculate_payment_schedule", $("form.loan").serialize(), function (data) {
       $("#schedule_container").html(data);
     });
   }
-  $("#loan_no_of_terms, #loan_amount, #loan_interest").keyup(updatePaymentSchedule);
+  // Update payment_schedule on input changes
+  $("#loan_no_of_terms, #loan_amount, #loan_interest").
+    keyup(updatePaymentSchedule);
+  $("#loan_first_payment_at").
+    datepicker({onClose: updatePaymentSchedule});
+  $("#loan_schedule_type").change(updatePaymentSchedule);
   updatePaymentSchedule();
 

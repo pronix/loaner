@@ -10,10 +10,8 @@ class LoansController < ApplicationController
   end
 
   def calculate_payment_schedule
-    amount = params[:amount]
-    interest = params[:interest]
-    terms = params[:terms]
-    @schedule = Loan.calculate_payment_schedule amount.to_i, interest.to_i, terms.to_i
+    @loan = Loan.new params[:loan]
+    @schedule = @loan.calculate_payment_schedule
     render :layout => false
   end
 

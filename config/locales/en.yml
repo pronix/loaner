@@ -21,11 +21,13 @@ en:
         terms: Terms & Conditions
       person:
         mail_address: Mail Address
-        business_address: Business Address
-        business_phone: Business Phone
+        business_address: Office Address
+        business_phone: Office Phone
         home_phone: Home Phone
         hand_phone: Hand Phone
         annual_income: Annual Income
+        birth_at: Date of Birth
+        citizenship: Identification type
       company_profile:
         name: Company Name
         logo: Company Logo

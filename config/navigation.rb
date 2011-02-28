@@ -45,7 +45,7 @@ SimpleNavigation::Configuration.run do |navigation|
       primary.item :loans_menu, "Loans", calculators_path do |menu|
         menu.item :calculator, "Loan Calculator", calculators_path
         menu.item :loans, "Loan Disbursement", new_loan_path
-        menu.item :collection, "Collection", loans_path
+        menu.item :Collection, "Collection", repayments_company_transactions_path
       end
 
       primary.item :company_transcactions_menu, "Company Transactions", company_transactions_path do |menu|
@@ -69,6 +69,17 @@ SimpleNavigation::Configuration.run do |navigation|
         menu.item :company_configuration, "Company Configuration",        company_configurations_path
         menu.item :client_details,        "Client Details Modification",  people_path do |sub2|
           sub2.item :new_person,            "New Person", new_person_path
+        end
+
+        if current_user.admin?
+          menu.item :admin,              "Admin",                      admin_root_path, :highlights_on => %r(/admin) do |menu1|
+            menu1.item :company_profiles,   "Companies",                  admin_company_profiles_path, :highlights_on => %r(/admin/company_profiles) do |menu2|
+              menu2.item :new,              "New",                        new_admin_company_profile_path
+            end
+            menu1.item :users,              "Users",                      admin_users_path, :highlights_on => %r(/admin/users) do |menu2|
+              menu2.item :new,              "New",                        new_admin_user_path
+            end
+          end
         end
       end
 
@@ -100,16 +111,6 @@ SimpleNavigation::Configuration.run do |navigation|
         menu.item :payment_schedule,      "Payment Schedule",           reports_payment_schedules_path
       end
 
-      if current_user.admin?
-        primary.item :admin,              "Admin",                      admin_root_path, :highlights_on => %r(/admin) do |menu1|
-          menu1.item :company_profiles,   "Companies",                  admin_company_profiles_path, :highlights_on => %r(/admin/company_profiles) do |menu2|
-            menu2.item :new,              "New",                        new_admin_company_profile_path
-          end
-          menu1.item :users,              "Users",                      admin_users_path, :highlights_on => %r(/admin/users) do |menu2|
-            menu2.item :new,              "New",                        new_admin_user_path
-          end
-        end
-      end
 
       primary.item :logout, "Logout", :logout
     else

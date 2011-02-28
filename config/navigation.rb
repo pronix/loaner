@@ -105,6 +105,9 @@ SimpleNavigation::Configuration.run do |navigation|
           menu1.item :company_profiles,   "Companies",                  admin_company_profiles_path, :highlights_on => %r(/admin/company_profiles) do |menu2|
             menu2.item :new,              "New",                        new_admin_company_profile_path
           end
+          menu1.item :users,              "Users",                      admin_users_path, :highlights_on => %r(/admin/users) do |menu2|
+            menu2.item :new,              "New",                        new_admin_user_path
+          end
         end
       end
 

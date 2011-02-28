@@ -102,6 +102,7 @@ Loaner::Application.routes.draw do
 
   namespace :admin do
     resources :company_profiles
+    resources :users
     root :to => "home#index"
   end
 

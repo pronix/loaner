@@ -23,4 +23,8 @@
 class CompanyProfile < ActiveRecord::Base
   has_many :users
   has_attached_file :logo, :styles => { :icon => "32x32#", :thumb => "100x100>" }
+
+  def to_label
+    name
+  end
 end

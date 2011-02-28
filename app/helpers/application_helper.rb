@@ -37,4 +37,20 @@ module ApplicationHelper
   #  current = ""
   #  select(object_name, method, options_for_select(.flatten))
   #end
+
+  def create_link path
+    link_to "New", path
+  end
+
+  def show_link path
+    link_to "Show", path
+  end
+
+  def edit_link path
+    link_to "Edit", path
+  end
+
+  def destroy_link path
+    link_to "Destroy", path, :method => :delete, :confirm => "Confirm"
+  end
 end

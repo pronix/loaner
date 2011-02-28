@@ -1,0 +1,10 @@
+= semantic_form_for [:admin, @user] do |form|
+  = form.inputs do
+    = form.input :name
+    = form.input :username
+    = form.input :password
+    = form.input :password_confirmation
+    = form.input :company_profile, :as => :select, :collection => CompanyProfile.all, :label => "Company"
+  = form.buttons do
+    = form.commit_button
+

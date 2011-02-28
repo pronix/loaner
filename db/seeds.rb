@@ -40,6 +40,21 @@ company.contact_person_mobile_phone = Faker::PhoneNumber.phone_number
 company.contact_person_fax_number = Faker::PhoneNumber.phone_number
 company.save!
 
+5.times do
+  company = CompanyProfile.new
+  company.name = "Company of #{Faker::Name.name}"
+  company.address = Faker::Address.street_name
+  company.license_number = rand(111111).to_s
+  company.rom_reference = rand(222222).to_s
+  company.contact_person = Faker::Name.name
+  company.contact_person_email = Faker::Internet.email
+  company.contact_person_office_phone = Faker::PhoneNumber.phone_number
+  company.contact_person_mobile_phone = Faker::PhoneNumber.phone_number
+  company.contact_person_fax_number = Faker::PhoneNumber.phone_number
+  company.save!
+end
+
+
 
 admin = User.create!  :username => "admin",
                       :name => "Admin",
@@ -54,7 +69,7 @@ admin.has_role! "admin"
                 :password => "secret",
                 :password_confirmation => "secret",
                 :email => Faker::Internet.email,
-                :company_profile => company
+                :company_profile => CompanyProfile.all.shuffle.first
 
   user.books.create :name => "Cash Book"
   user.books.create :name => "Bank Book"

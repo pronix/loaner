@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-    false
+    self.has_role? :admin
   end
 
 end

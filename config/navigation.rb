@@ -100,6 +100,14 @@ SimpleNavigation::Configuration.run do |navigation|
         menu.item :payment_schedule,      "Payment Schedule",           reports_payment_schedules_path
       end
 
+      if current_user.admin?
+        primary.item :admin,              "Admin",                      admin_root_path, :highlights_on => %r(/admin) do |menu1|
+          menu1.item :company_profiles,   "Companies",                  admin_company_profiles_path, :highlights_on => %r(/admin/company_profiles) do |menu2|
+            menu2.item :new,              "New",                        new_admin_company_profile_path
+          end
+        end
+      end
+
       primary.item :logout, "Logout", :logout
     else
       primary.item :login, "Login", :login

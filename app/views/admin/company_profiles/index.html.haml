@@ -1,0 +1,17 @@
+- title "Companies"
+
+%table.companies
+  %tr
+    %th Logo
+    %th Name
+    %th ROM Reference
+    %th License number
+    %th.actions Actions
+  - @company_profiles.each do |company|
+    %tr{:class => cycle("n", "c")}
+      %td= image_tag company.logo.url(:icon) if company.logo.exists?
+      %td= company.name
+      %td= company.rom_reference
+      %td= company.license_number
+      %td
+        = link_to "Edit", edit_admin_company_profile_path(company)

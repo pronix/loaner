@@ -49,7 +49,7 @@
       %h2 Payment Schedule
       #schedule_container
 
-    = form.inputs  :id => "transactions" do
+    -# form.inputs  :id => "transactions" do
       - if resource.id
         %h2 Loan Transactions
         = link_to "New Payment", new_loan_transaction_path(resource)

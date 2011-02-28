@@ -29,7 +29,7 @@ module ApplicationHelper
 
   # Date default formatting
   def d date
-    l date, :format => "%d-%m-%Y" if date
+    l date, :format => "%Y-%m-%d" if date
   end
 
   #def quarter_select object_name, method

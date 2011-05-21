@@ -1,6 +1,6 @@
 class Reports::Params
   include ActiveModel::Validations
-  attr_accessor :date_start, :date_end, :book, :loan, :book_id, :loan_id, :borrower, :borrower_id
+  attr_accessor :date_start, :date_end, :book, :loan, :book_id, :loan_id, :borrower, :borrower_id, :year
   attr_accessor :quarter
 
   def initialize params, current_user

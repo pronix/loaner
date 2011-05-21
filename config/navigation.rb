@@ -90,6 +90,9 @@ SimpleNavigation::Configuration.run do |navigation|
         end
         menu.item :for_records,           "For Records",                reports_for_records_root_path,  :highlights_on => %r(/reports/for_records) do |menu1|
         end
+        menu.item :for_governments,       "For Government",             reports_for_governments_root_path,  :highlights_on => %r(/reports/for_governments) do |menu1|
+          menu1.item :statements,         "Statements",                 reports_for_governments_statements_path, :highlights_on => %r(/reports/for_governments/statements)
+        end
         menu.item :borrower_reports,      "Borrower Reports",           reports_borrowers_root_path do |menu1|
           menu1.item :borrower_list,      "Borrowers List",             :reports_borrowers_lists do |menu2|
             menu2.item :alpabet_borrower_list,      "Alphabet Borrowers List",    :alphabet_reports_borrowers_lists

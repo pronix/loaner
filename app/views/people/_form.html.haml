@@ -4,6 +4,7 @@
     = form.input :name
     = form.input :birth_at, :as => :date_picker
     = form.input :citizenship
+    = form.input :identification_type, :as => :select, :collection => Person::IDENTIFICATION_TYPES, :include_blank => false
     = form.input :identification_no
     = form.input :designation
     = form.input :mail_address

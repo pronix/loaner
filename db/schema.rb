@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110210160152) do
+ActiveRecord::Schema.define(:version => 20110520235806) do
 
   create_table "books", :force => true do |t|
     t.integer  "lender_id",                        :null => false
@@ -96,13 +96,14 @@ ActiveRecord::Schema.define(:version => 20110210160152) do
     t.string   "email"
     t.string   "identification_no"
     t.integer  "annual_income"
-    t.boolean  "black_listed",       :default => false
+    t.boolean  "black_listed",        :default => false
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "identification_type"
   end
 
   create_table "roles", :force => true do |t|

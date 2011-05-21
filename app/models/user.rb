@@ -17,7 +17,14 @@
 class User < ActiveRecord::Base
   acts_as_authentic
   acts_as_authorization_subject  :association_name => :roles
-  has_many :books, :foreign_key => :lender_id
+  has_many :books, :foreign_key => :lender_id do
+    def bank
+      all.detect{|b| b.name =~ /bank/i}
+    end
+    def cash
+      all.detect{|b| b.name =~ /cash/i}
+    end
+  end
   has_many :loans, :through => :books
   has_many :transactions, :through => :books
   belongs_to :company_profile

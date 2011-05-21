@@ -34,6 +34,8 @@ class Person < ActiveRecord::Base
 
   validates_presence_of :name
 
+  IDENTIFICATION_TYPES = ["Singapore NRIC No", "Singapore PR No", "Foreign Identification Number", "Unknown", "Others", "Foreign Person"]
+
   has_attached_file :photo, :styles => { :icon => "32x32#", :thumb => "200x200>" }
 
   before_destroy do |record|
@@ -42,5 +44,9 @@ class Person < ActiveRecord::Base
       logger.debug "person has relations"
       false
     end
+  end
+
+  def identification_type
+    self[:identification_type] || IDENTIFICATION_TYPES.first
   end
 end

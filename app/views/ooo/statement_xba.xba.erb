@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="Statements" script:language="StarBasic">REM  *****  BASIC  *****
+
+
+Function MakePropertyValue( Optional cName As String, Optional uValue ) As com.sun.star.beans.PropertyValue 
+  oPropertyValue = createUnoStruct( "com.sun.star.beans.PropertyValue" ) 
+  If Not IsMissing( cName ) Then 
+    oPropertyValue.Name = cName 
+  EndIf 
+  If Not IsMissing( uValue ) Then 
+    oPropertyValue.Value = uValue 
+  EndIf 
+  MakePropertyValue() = oPropertyValue 
+End Function 
+
+
+
+sub Main
+
+rem ----------------------------------------------------------------------
+
+document   = ThisComponent.CurrentController.Frame
+dispatcher = createUnoService("com.sun.star.frame.DispatchHelper")
+
+
+oSheets = ThisComponent.getSheets()
+
+rem oSheets = ThisComponent.getSheets()
+  <% 3.times do |sheet| %>
+      Sheet = thisComponent.Sheets(<%= sheet %>)
+
+      Sheet.getCellRangeByName("B4").String = "<%= @month_names[@date.month - 1] %>"
+      Sheet.getCellRangeByName("B5").String = "<%= Time.now.strftime "%Y" %>"
+      Sheet.getCellRangeByName("B6").String = "<%= @company.name %>"
+      Sheet.getCellRangeByName("B7").String = "<%= @company.address %>"
+
+      Sheet.getCellRangeByName("B11").String = "<%= @company.contact_person %>"
+      Sheet.getCellRangeByName("B13").String = "<%= @company.contact_person_office_phone %>"
+      Sheet.getCellRangeByName("B14").String = "<%= Time.now.strftime("%d/%m/%Y") %>"
+
+      <% row = 19 %>
+      <% @loans.each do |loan|%>
+          <% borrower = loan.borrowers.first %>
+          Sheet.getCellRangeByName("B<%= row %>").String = "<%= loan.account_no %>"
+          Sheet.getCellRangeByName("C<%= row %>").String = "<%= loan.application.strftime("%d/%m/%Y") %>"
+          Sheet.getCellRangeByName("D<%= row %>").String = "<%= borrower.name %>"
+          Sheet.getCellRangeByName("E<%= row %>").String = "<%= borrower.identification_type %>"
+          Sheet.getCellRangeByName("F<%= row %>").String = "<%= borrower.identification_no %>"
+          Sheet.getCellRangeByName("N<%= row %>").String = "<%= borrower.mail_address %>"
+          Sheet.getCellRangeByName("O<%= row %>").Value  =  <%= borrower.annual_income.to_f %>
+          Sheet.getCellRangeByName("P<%= row %>").String = "<%= "Others" %>"
+          Sheet.getCellRangeByName("Q<%= row %>").String = "<%= "None" %>"
+          Sheet.getCellRangeByName("R<%= row %>").Value  =  <%= loan.amount.to_f %>
+          Sheet.getCellRangeByName("S<%= row %>").String = "<%= "Unsecured" %>"
+          Sheet.getCellRangeByName("T<%= row %>").Value  =  <%= loan.interest %>
+
+          <% row += 1 %>
+      <% end %>
+  <% end %>
+
+
+
+  <% 3.times do |sheet| %>
+      Sheet = thisComponent.Sheets(<%= 3 + sheet %>)
+
+      Sheet.getCellRangeByName("B4").String = "<%= @month_names[@date.month - 1] %>"
+      Sheet.getCellRangeByName("B5").String = "<%= Time.now.strftime "%Y" %>"
+      Sheet.getCellRangeByName("B6").String = "<%= @company.name %>"
+      Sheet.getCellRangeByName("B7").String = "<%= @company.address %>"
+
+      Sheet.getCellRangeByName("B11").String = "<%= @company.contact_person %>"
+      Sheet.getCellRangeByName("B13").String = "<%= @company.contact_person_office_phone %>"
+      Sheet.getCellRangeByName("B14").String = "<%= Time.now.strftime("%d/%m/%Y") %>"
+
+      <% row = 19 %>
+      <% @loans.each do |loan|%>
+          <% borrower = loan.borrowers.first %>
+          Sheet.getCellRangeByName("B<%= row %>").String = "<%= loan.account_no %>"
+          Sheet.getCellRangeByName("C<%= row %>").String = "<%= borrower.name %>"
+          Sheet.getCellRangeByName("D<%= row %>").String = "<%= borrower.identification_type %>"
+          Sheet.getCellRangeByName("E<%= row %>").String = "<%= borrower.identification_no %>"
+          Sheet.getCellRangeByName("K<%= row %>").String = "<%= borrower.mail_address %>"
+          Sheet.getCellRangeByName("N<%= row %>").Value  =  <%= borrower.annual_income.to_f %>
+          Sheet.getCellRangeByName("O<%= row %>").String = "<%= "Others" %>"
+          Sheet.getCellRangeByName("P<%= row %>").String = "<%= "None" %>"
+          Sheet.getCellRangeByName("Q<%= row %>").String =  "<%= loan.application.strftime("%d/%m/%Y") %>"
+          Sheet.getCellRangeByName("V<%= row %>").String = "<%= "Unsecured" %>"
+          Sheet.getCellRangeByName("W<%= row %>").Value  =  <%= loan.interest %>
+
+          <% row += 1 %>
+      <% end %>
+  <% end %>
+
+
+  Sheet = thisComponent.Sheets(6)
+
+  Sheet.getCellRangeByName("B4").String = "<%= @quarter_names[@quarter - 1] %>"
+  Sheet.getCellRangeByName("B5").String = "<%= Time.now.strftime "%Y" %>"
+  Sheet.getCellRangeByName("B6").String = "<%= @company.name %>"
+  Sheet.getCellRangeByName("B7").String = "<%= @company.address %>"
+  Sheet.getCellRangeByName("B11").String = "<%= @company.contact_person %>"
+  Sheet.getCellRangeByName("B13").String = "<%= @company.contact_person_office_phone %>"
+  Sheet.getCellRangeByName("B14").String = "<%= Time.now.strftime("%d/%m/%Y") %>"
+
+  Sheet.getCellRangeByName("B20").Value = <%= @books.cash.balance_at @date %>
+
+  rem date: <%= @date %>
+
+
+  cFile = "<%= @save_to %>"
+  cURL = ConvertToURL( cFile )
+  thisComponent.storeToUrl(cURL, Array(MakePropertyValue("FilterName", "MS Excel 97")))
+  rem document.storeToURL( cURL, Array(MakePropertyValue( "FilterName", "writer_pdf_Export" ),)
+
+
+
+
+ThisComponent.store()
+document.close(true)
+
+
+end sub
+</script:module>

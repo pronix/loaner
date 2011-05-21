@@ -36,10 +36,10 @@ class Loan < ActiveRecord::Base
   belongs_to :book
 
   has_many :surety_loans
-  has_many :sureties, :through => :surety_loans
+  has_many :sureties, :through => :surety_loans, :order => "surety_loans.id"
 
   has_many :borrower_loans
-  has_many :borrowers, :through => :borrower_loans
+  has_many :borrowers, :through => :borrower_loans, :order => "borrower_loans.id"
 
   has_many :transactions, :order => "created_at" do
     def disbursement! options

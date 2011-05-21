@@ -23,6 +23,7 @@ gem 'jquery-rails'
 gem 'simple-navigation',        '3.0.2'
 gem 'pdfkit',                   '0.4.6'
 gem 'quarter_time'
+gem 'erubis'
 
 
 # Use unicorn as the web server
@@ -54,6 +55,7 @@ group :development do
   gem 'duration'
   gem 'annotate'
   gem 'faker'
+  gem 'looksee'
 end
 # To use debugger
 # gem 'ruby-debug'

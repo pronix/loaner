@@ -7,7 +7,10 @@ class Reports::ForGovernments::StatementsController < Reports::BaseController
 
     @template = "#{Rails.root}/data/reports/Moneylender_Statement_Template.xls"
     FileUtils.mkdir_p "#{Rails.root}/tmp/xls"
-    @xls_result = "#{Rails.root}/tmp/xls/statement_#{current_user.id}-#{Time.now.strftime '%Y%m%d%H%M%S'}.xls"
+    @xls_result = "#{Rails.root}/tmp/xls/statement_#{current_user.id}" +
+                  "_#{@reports_params.date_start.strftime('%Y-%m-%d')}" +
+                  "_Q#{@reports_params.quarter}" +
+                  "_#{Time.now.strftime '%Y%m%d%H%M%S'}.xls"
 
     @result = Ooo::StatementsXba.new.generate(:user => current_user,
                                     :date => @reports_params.date_start,

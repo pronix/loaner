@@ -13,6 +13,7 @@ module Ooo
       result["month_names"]     = %w( January	February	March	April	May	June	July	August	September	October	November December)
       result["quarter_names"]   = ["1ST QUARTER", "2ND QUARTER", "3RD QUARTER", "14TH QUARTER"]
       result["date"]            = params[:date]
+      result["user"]            = params[:user]
       result["loans"]           = params[:user].loans
       result["company"]         = params[:user].company_profile
       result["quarter"]         = params[:quarter]

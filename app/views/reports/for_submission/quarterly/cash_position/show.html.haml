@@ -97,8 +97,8 @@
     %tr
       %th Unsecured
       - quarter_periods(start, :total => true).each do |period|
-        %td= c current_user.principal_sum period
-        %td.u.right-border= c current_user.principal_sum period
+        %td= c current_user.principals_sum period
+        %td.u.right-border= c current_user.principals_sum period
 
     %tr.clear-tr
       %th Interest Received:
@@ -113,8 +113,8 @@
     %tr
       %th Unsecured
       - quarter_periods(start, :total => true).each do |period|
-        %td= c current_user.interest_sum period
-        %td.u.right-border= c current_user.interest_sum period
+        %td= c current_user.interests_sum period
+        %td.u.right-border= c current_user.interests_sum period
 
     %tr
       %th *Other receipts:

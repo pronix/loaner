@@ -93,6 +93,11 @@ rem oSheets = ThisComponent.getSheets()
   <% end %>
 
 
+  rem ===================================================
+  rem               
+  rem              APPENDIX B CP 
+  rem 
+  rem ===================================================
   Sheet = thisComponent.Sheets(6)
 
   Sheet.getCellRangeByName("B4").String = "<%= @quarter_names[@quarter - 1] %>"
@@ -103,21 +108,94 @@ rem oSheets = ThisComponent.getSheets()
   Sheet.getCellRangeByName("B13").String = "<%= @company.contact_person_office_phone %>"
   Sheet.getCellRangeByName("B14").String = "<%= Time.now.strftime("%d/%m/%Y") %>"
 
-  Sheet.getCellRangeByName("B20").Value = <%= @books.cash.balance_at @date %>
+  rem ------ OPENING CASH BALANCE -------
+  Sheet.getCellRangeByName("B20").Value = <%= @books.cash.balance_at @date + 0.months %>
+  Sheet.getCellRangeByName("B21").Value = <%= @books.bank.balance_at @date + 0.months %>
+
+  Sheet.getCellRangeByName("C20").Value = <%= @books.cash.balance_at @date + 1.months %>
+  Sheet.getCellRangeByName("C21").Value = <%= @books.bank.balance_at @date + 1.months %>
+
+  Sheet.getCellRangeByName("D20").Value = <%= @books.cash.balance_at @date + 2.months %>
+  Sheet.getCellRangeByName("D21").Value = <%= @books.bank.balance_at @date + 2.months %>
+
+  rem ------ LOAN REPAYMENTS -------
+  Sheet.getCellRangeByName("B27").Value = <%= @user.repayments_sum :from => @date + 0.months, :to => @date + 1.months %>
+  Sheet.getCellRangeByName("C27").Value = <%= @user.repayments_sum :from => @date + 1.months, :to => @date + 2.months %>
+  Sheet.getCellRangeByName("D27").Value = <%= @user.repayments_sum :from => @date + 2.months, :to => @date + 3.months %>
+
+  rem ------ INTERESTS RECEIVED -------
+  Sheet.getCellRangeByName("B31").Value = <%= @user.interests_sum :from => @date + 0.months, :to => @date + 1.months %>
+  Sheet.getCellRangeByName("C31").Value = <%= @user.interests_sum :from => @date + 1.months, :to => @date + 2.months %>
+  Sheet.getCellRangeByName("D31").Value = <%= @user.interests_sum :from => @date + 2.months, :to => @date + 3.months %>
+
+  rem ------ OTHER RECEIPTS RECEIVED -------
+  Sheet.getCellRangeByName("B33").Value = <%= @user.receipts_sum :from => @date + 0.months, :to => @date + 1.months %>
+  Sheet.getCellRangeByName("C33").Value = <%= @user.receipts_sum :from => @date + 1.months, :to => @date + 2.months %>
+  Sheet.getCellRangeByName("D33").Value = <%= @user.receipts_sum :from => @date + 2.months, :to => @date + 3.months %>
+
+  rem ------ LOANS GRANTED -------
+  Sheet.getCellRangeByName("B40").Value = <%= @user.disbursements_sum :from => @date + 0.months, :to => @date + 1.months %>
+  Sheet.getCellRangeByName("C40").Value = <%= @user.disbursements_sum :from => @date + 1.months, :to => @date + 2.months %>
+  Sheet.getCellRangeByName("D40").Value = <%= @user.disbursements_sum :from => @date + 2.months, :to => @date + 3.months %>
+
+  rem ------ OTHER PAYMENTS -------
+  Sheet.getCellRangeByName("B42").Value = <%= @user.payments_sum :from => @date + 0.months, :to => @date + 1.months %>
+  Sheet.getCellRangeByName("C42").Value = <%= @user.payments_sum :from => @date + 1.months, :to => @date + 2.months %>
+  Sheet.getCellRangeByName("D42").Value = <%= @user.payments_sum :from => @date + 2.months, :to => @date + 3.months %>
+
+  rem ------ CLOSING CASH BALANCE -------
+  Sheet.getCellRangeByName("B46").Value = <%= @books.cash.balance_at @date + 1.months %>
+  Sheet.getCellRangeByName("B47").Value = <%= @books.bank.balance_at @date + 1.months %>
+
+  Sheet.getCellRangeByName("C46").Value = <%= @books.cash.balance_at @date + 2.months %>
+  Sheet.getCellRangeByName("C47").Value = <%= @books.bank.balance_at @date + 2.months %>
+
+  Sheet.getCellRangeByName("D46").Value = <%= @books.cash.balance_at @date + 3.months %>
+  Sheet.getCellRangeByName("D47").Value = <%= @books.bank.balance_at @date + 3.months %>
+
+
+
+
+  rem ===================================================
+  rem               
+  rem              APPENDIX B LP
+  rem 
+  rem ===================================================
+  Sheet = thisComponent.Sheets(7)
+
+  Sheet.getCellRangeByName("B4").String = "<%= @quarter_names[@quarter - 1] %>"
+  Sheet.getCellRangeByName("B5").String = "<%= Time.now.strftime "%Y" %>"
+  Sheet.getCellRangeByName("B6").String = "<%= @company.name %>"
+  Sheet.getCellRangeByName("B7").String = "<%= @company.address %>"
+  Sheet.getCellRangeByName("B11").String = "<%= @company.contact_person %>"
+  Sheet.getCellRangeByName("B13").String = "<%= @company.contact_person_office_phone %>"
+  Sheet.getCellRangeByName("B14").String = "<%= Time.now.strftime("%d/%m/%Y") %>"
+
+  rem ------ OPENING CASH BALANCE -------
+  Sheet.getCellRangeByName("B21").Value = <%= @user.balance_at @date + 0.months %>
+  Sheet.getCellRangeByName("C21").Value = <%= @user.balance_at @date + 1.months %>
+  Sheet.getCellRangeByName("D21").Value = <%= @user.balance_at @date + 2.months %>
+
+  rem ------ LOAN REPAYMENTS -------
+  Sheet.getCellRangeByName("B32").Value = <%= @user.repayments_sum :from => @date + 0.months, :to => @date + 1.months %>
+  Sheet.getCellRangeByName("C32").Value = <%= @user.repayments_sum :from => @date + 1.months, :to => @date + 2.months %>
+  Sheet.getCellRangeByName("D32").Value = <%= @user.repayments_sum :from => @date + 2.months, :to => @date + 3.months %>
+
+  rem ------ CLOSING LOAN BALANCE -------
+  Sheet.getCellRangeByName("B37").Value = <%= @user.balance_at @date + 1.months %>
+  Sheet.getCellRangeByName("C37").Value = <%= @user.balance_at @date + 2.months %>
+  Sheet.getCellRangeByName("D37").Value = <%= @user.balance_at @date + 3.months %>
 
   rem date: <%= @date %>
 
 
+  rem ThisComponent.store()
+
   cFile = "<%= @save_to %>"
   cURL = ConvertToURL( cFile )
   thisComponent.storeToUrl(cURL, Array(MakePropertyValue("FilterName", "MS Excel 97")))
-  rem document.storeToURL( cURL, Array(MakePropertyValue( "FilterName", "writer_pdf_Export" ),)
 
-
-
-
-ThisComponent.store()
-document.close(true)
+  document.close(true)
 
 
 end sub

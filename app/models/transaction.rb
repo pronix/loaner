@@ -66,8 +66,8 @@ class Transaction < ActiveRecord::Base
   default_scope :order => "date"
   scope :disbursements,     :conditions => {:transaction_type => TRANSACTION_DISBURSEMENT}
   scope :repayments,        :conditions => {:transaction_type => TRANSACTION_REPAYMENT}
-  scope :payments,          :conditions => {:transaction_type => TRANSACTION_PAYMENT}
-  scope :receipts,          :conditions => {:transaction_type => TRANSACTION_RECEIPT}
+  scope :payments,          :conditions => {:transaction_type => TRANSACTION_PAYMENT}           # company spends money for other things (NOT LOANS)
+  scope :receipts,          :conditions => {:transaction_type => TRANSACTION_RECEIPT}           # means company gets money through other means (NOT RELATED TO LOANS)
   scope :book_transfers,    :conditions => {:transaction_type => TRANSACTION_BOOK_TRANSFER}
   scope :account_transfers, :conditions => {:transaction_type => TRANSACTION_ACCOUNT_TRANSFER}
   scope :cash, :conditions => {:payment_type => PAYMENT_CASH}

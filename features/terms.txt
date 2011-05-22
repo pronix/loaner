@@ -135,3 +135,11 @@ Submission
     передача
     предъявление
     утверждение
+
+
+
+
+1) Receipt - means company gets money through other means (NOT RELATED TO LOANS). Company can create new account heads
+2) Payment - company spends money for other things (NOT LOANS) Company can create new accounts like Salary, Office rental, etc.
+3) Book transfer - is for the company to transfer money from its cash book to bank book or bank book to cash book.
+

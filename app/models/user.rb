@@ -57,12 +57,20 @@ class User < ActiveRecord::Base
     books.map{|b| b.disbursements(options).sum(:amount)}.sum
   end
 
-  def principal_sum options = {}
-    books.map{|b| b.principal_sum(options)}.sum
+  def principals_sum options = {}
+    books.map{|b| b.principals_sum(options)}.sum
   end
 
-  def interest_sum options = {}
-    books.map{|b| b.interest_sum(options)}.sum
+  def interests_sum options = {}
+    books.map{|b| b.interests_sum(options)}.sum
+  end
+
+  def receipts_sum options = {}
+    books.map{|b| b.receipts_sum(options)}.sum
+  end
+
+  def payments_sum options = {}
+    books.map{|b| b.payments_sum(options)}.sum
   end
 
   def admin?

@@ -10,6 +10,6 @@ module DefaultPeriod
   end
 
   def default_to
-    Date.today
+    Date.tomorrow
   end
 end

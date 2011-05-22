@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="Statements" script:language="StarBasic">REM  *****  BASIC  *****
+
+
+Function MakePropertyValue( Optional cName As String, Optional uValue ) As com.sun.star.beans.PropertyValue 
+  oPropertyValue = createUnoStruct( "com.sun.star.beans.PropertyValue" ) 
+  If Not IsMissing( cName ) Then 
+    oPropertyValue.Name = cName 
+  EndIf 
+  If Not IsMissing( uValue ) Then 
+    oPropertyValue.Value = uValue 
+  EndIf 
+  MakePropertyValue() = oPropertyValue 
+End Function 
+
+
+
+sub Main
+
+rem ----------------------------------------------------------------------
+
+document   = ThisComponent.CurrentController.Frame
+dispatcher = createUnoService("com.sun.star.frame.DispatchHelper")
+
+
+oSheets = ThisComponent.getSheets()
+
+rem oSheets = ThisComponent.getSheets()
+      Sheet = thisComponent.Sheets(0)
+
+      Sheet.getCellRangeByName("B4").String = "January"
+      Sheet.getCellRangeByName("B5").String = "2011"
+      Sheet.getCellRangeByName("B6").String = "PR VEERAPPA CHETTIAR"
+      Sheet.getCellRangeByName("B7").String = "77 High Street #09-15 High Street Plaza Singapore"
+
+      Sheet.getCellRangeByName("B11").String = "Miss Alberta Glover"
+      Sheet.getCellRangeByName("B13").String = "954.252.7163 x4965"
+      Sheet.getCellRangeByName("B14").String = "22/05/2011"
+
+          Sheet.getCellRangeByName("B19").String = "817"
+          Sheet.getCellRangeByName("C19").String = "10/03/2009"
+          Sheet.getCellRangeByName("D19").String = "Franco Fahey"
+          Sheet.getCellRangeByName("E19").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("F19").String = "db07142a913e"
+          Sheet.getCellRangeByName("N19").String = "667 Christop Manor"
+          Sheet.getCellRangeByName("O19").Value  =  19000.0
+          Sheet.getCellRangeByName("P19").String = "Others"
+          Sheet.getCellRangeByName("Q19").String = "None"
+          Sheet.getCellRangeByName("R19").Value  =  2000.0
+          Sheet.getCellRangeByName("S19").String = "Unsecured"
+          Sheet.getCellRangeByName("T19").Value  =  20.0
+
+          Sheet.getCellRangeByName("B20").String = "1967"
+          Sheet.getCellRangeByName("C20").String = "17/01/2008"
+          Sheet.getCellRangeByName("D20").String = "Ms. Aliyah King"
+          Sheet.getCellRangeByName("E20").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("F20").String = "7176e7aeaf6d"
+          Sheet.getCellRangeByName("N20").String = "1438 Cristian Course"
+          Sheet.getCellRangeByName("O20").Value  =  42000.0
+          Sheet.getCellRangeByName("P20").String = "Others"
+          Sheet.getCellRangeByName("Q20").String = "None"
+          Sheet.getCellRangeByName("R20").Value  =  1000.0
+          Sheet.getCellRangeByName("S20").String = "Unsecured"
+          Sheet.getCellRangeByName("T20").Value  =  25.0
+
+          Sheet.getCellRangeByName("B21").String = "4442"
+          Sheet.getCellRangeByName("C21").String = "29/07/2008"
+          Sheet.getCellRangeByName("D21").String = "Joannie Rohan"
+          Sheet.getCellRangeByName("E21").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("F21").String = "2bd6c174fc92"
+          Sheet.getCellRangeByName("N21").String = "503 Dale Ferry"
+          Sheet.getCellRangeByName("O21").Value  =  10000.0
+          Sheet.getCellRangeByName("P21").String = "Others"
+          Sheet.getCellRangeByName("Q21").String = "None"
+          Sheet.getCellRangeByName("R21").Value  =  4000.0
+          Sheet.getCellRangeByName("S21").String = "Unsecured"
+          Sheet.getCellRangeByName("T21").Value  =  10.0
+
+          Sheet.getCellRangeByName("B22").String = "9956"
+          Sheet.getCellRangeByName("C22").String = "02/01/2010"
+          Sheet.getCellRangeByName("D22").String = "Ardith Gaylord"
+          Sheet.getCellRangeByName("E22").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("F22").String = "35de19ecf0ec"
+          Sheet.getCellRangeByName("N22").String = "7479 Shawna Mills"
+          Sheet.getCellRangeByName("O22").Value  =  29000.0
+          Sheet.getCellRangeByName("P22").String = "Others"
+          Sheet.getCellRangeByName("Q22").String = "None"
+          Sheet.getCellRangeByName("R22").Value  =  6000.0
+          Sheet.getCellRangeByName("S22").String = "Unsecured"
+          Sheet.getCellRangeByName("T22").Value  =  20.0
+
+          Sheet.getCellRangeByName("B23").String = "2573"
+          Sheet.getCellRangeByName("C23").String = "29/04/2009"
+          Sheet.getCellRangeByName("D23").String = "Newton Wolff"
+          Sheet.getCellRangeByName("E23").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("F23").String = "673098bb6f43"
+          Sheet.getCellRangeByName("N23").String = "38139 Beahan Summit"
+          Sheet.getCellRangeByName("O23").Value  =  30000.0
+          Sheet.getCellRangeByName("P23").String = "Others"
+          Sheet.getCellRangeByName("Q23").String = "None"
+          Sheet.getCellRangeByName("R23").Value  =  14000.0
+          Sheet.getCellRangeByName("S23").String = "Unsecured"
+          Sheet.getCellRangeByName("T23").Value  =  30.0
+
+          Sheet.getCellRangeByName("B24").String = "111"
+          Sheet.getCellRangeByName("C24").String = "19/02/2011"
+          Sheet.getCellRangeByName("D24").String = "Anissa Hessel"
+          Sheet.getCellRangeByName("E24").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("F24").String = "04b9ee120616"
+          Sheet.getCellRangeByName("N24").String = "40923 Uriel Port"
+          Sheet.getCellRangeByName("O24").Value  =  21000.0
+          Sheet.getCellRangeByName("P24").String = "Others"
+          Sheet.getCellRangeByName("Q24").String = "None"
+          Sheet.getCellRangeByName("R24").Value  =  1000.0
+          Sheet.getCellRangeByName("S24").String = "Unsecured"
+          Sheet.getCellRangeByName("T24").Value  =  10.0
+
+      Sheet = thisComponent.Sheets(1)
+
+      Sheet.getCellRangeByName("B4").String = "January"
+      Sheet.getCellRangeByName("B5").String = "2011"
+      Sheet.getCellRangeByName("B6").String = "PR VEERAPPA CHETTIAR"
+      Sheet.getCellRangeByName("B7").String = "77 High Street #09-15 High Street Plaza Singapore"
+
+      Sheet.getCellRangeByName("B11").String = "Miss Alberta Glover"
+      Sheet.getCellRangeByName("B13").String = "954.252.7163 x4965"
+      Sheet.getCellRangeByName("B14").String = "22/05/2011"
+
+          Sheet.getCellRangeByName("B19").String = "817"
+          Sheet.getCellRangeByName("C19").String = "10/03/2009"
+          Sheet.getCellRangeByName("D19").String = "Franco Fahey"
+          Sheet.getCellRangeByName("E19").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("F19").String = "db07142a913e"
+          Sheet.getCellRangeByName("N19").String = "667 Christop Manor"
+          Sheet.getCellRangeByName("O19").Value  =  19000.0
+          Sheet.getCellRangeByName("P19").String = "Others"
+          Sheet.getCellRangeByName("Q19").String = "None"
+          Sheet.getCellRangeByName("R19").Value  =  2000.0
+          Sheet.getCellRangeByName("S19").String = "Unsecured"
+          Sheet.getCellRangeByName("T19").Value  =  20.0
+
+          Sheet.getCellRangeByName("B20").String = "1967"
+          Sheet.getCellRangeByName("C20").String = "17/01/2008"
+          Sheet.getCellRangeByName("D20").String = "Ms. Aliyah King"
+          Sheet.getCellRangeByName("E20").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("F20").String = "7176e7aeaf6d"
+          Sheet.getCellRangeByName("N20").String = "1438 Cristian Course"
+          Sheet.getCellRangeByName("O20").Value  =  42000.0
+          Sheet.getCellRangeByName("P20").String = "Others"
+          Sheet.getCellRangeByName("Q20").String = "None"
+          Sheet.getCellRangeByName("R20").Value  =  1000.0
+          Sheet.getCellRangeByName("S20").String = "Unsecured"
+          Sheet.getCellRangeByName("T20").Value  =  25.0
+
+          Sheet.getCellRangeByName("B21").String = "4442"
+          Sheet.getCellRangeByName("C21").String = "29/07/2008"
+          Sheet.getCellRangeByName("D21").String = "Joannie Rohan"
+          Sheet.getCellRangeByName("E21").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("F21").String = "2bd6c174fc92"
+          Sheet.getCellRangeByName("N21").String = "503 Dale Ferry"
+          Sheet.getCellRangeByName("O21").Value  =  10000.0
+          Sheet.getCellRangeByName("P21").String = "Others"
+          Sheet.getCellRangeByName("Q21").String = "None"
+          Sheet.getCellRangeByName("R21").Value  =  4000.0
+          Sheet.getCellRangeByName("S21").String = "Unsecured"
+          Sheet.getCellRangeByName("T21").Value  =  10.0
+
+          Sheet.getCellRangeByName("B22").String = "9956"
+          Sheet.getCellRangeByName("C22").String = "02/01/2010"
+          Sheet.getCellRangeByName("D22").String = "Ardith Gaylord"
+          Sheet.getCellRangeByName("E22").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("F22").String = "35de19ecf0ec"
+          Sheet.getCellRangeByName("N22").String = "7479 Shawna Mills"
+          Sheet.getCellRangeByName("O22").Value  =  29000.0
+          Sheet.getCellRangeByName("P22").String = "Others"
+          Sheet.getCellRangeByName("Q22").String = "None"
+          Sheet.getCellRangeByName("R22").Value  =  6000.0
+          Sheet.getCellRangeByName("S22").String = "Unsecured"
+          Sheet.getCellRangeByName("T22").Value  =  20.0
+
+          Sheet.getCellRangeByName("B23").String = "2573"
+          Sheet.getCellRangeByName("C23").String = "29/04/2009"
+          Sheet.getCellRangeByName("D23").String = "Newton Wolff"
+          Sheet.getCellRangeByName("E23").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("F23").String = "673098bb6f43"
+          Sheet.getCellRangeByName("N23").String = "38139 Beahan Summit"
+          Sheet.getCellRangeByName("O23").Value  =  30000.0
+          Sheet.getCellRangeByName("P23").String = "Others"
+          Sheet.getCellRangeByName("Q23").String = "None"
+          Sheet.getCellRangeByName("R23").Value  =  14000.0
+          Sheet.getCellRangeByName("S23").String = "Unsecured"
+          Sheet.getCellRangeByName("T23").Value  =  30.0
+
+          Sheet.getCellRangeByName("B24").String = "111"
+          Sheet.getCellRangeByName("C24").String = "19/02/2011"
+          Sheet.getCellRangeByName("D24").String = "Anissa Hessel"
+          Sheet.getCellRangeByName("E24").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("F24").String = "04b9ee120616"
+          Sheet.getCellRangeByName("N24").String = "40923 Uriel Port"
+          Sheet.getCellRangeByName("O24").Value  =  21000.0
+          Sheet.getCellRangeByName("P24").String = "Others"
+          Sheet.getCellRangeByName("Q24").String = "None"
+          Sheet.getCellRangeByName("R24").Value  =  1000.0
+          Sheet.getCellRangeByName("S24").String = "Unsecured"
+          Sheet.getCellRangeByName("T24").Value  =  10.0
+
+      Sheet = thisComponent.Sheets(2)
+
+      Sheet.getCellRangeByName("B4").String = "January"
+      Sheet.getCellRangeByName("B5").String = "2011"
+      Sheet.getCellRangeByName("B6").String = "PR VEERAPPA CHETTIAR"
+      Sheet.getCellRangeByName("B7").String = "77 High Street #09-15 High Street Plaza Singapore"
+
+      Sheet.getCellRangeByName("B11").String = "Miss Alberta Glover"
+      Sheet.getCellRangeByName("B13").String = "954.252.7163 x4965"
+      Sheet.getCellRangeByName("B14").String = "22/05/2011"
+
+          Sheet.getCellRangeByName("B19").String = "817"
+          Sheet.getCellRangeByName("C19").String = "10/03/2009"
+          Sheet.getCellRangeByName("D19").String = "Franco Fahey"
+          Sheet.getCellRangeByName("E19").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("F19").String = "db07142a913e"
+          Sheet.getCellRangeByName("N19").String = "667 Christop Manor"
+          Sheet.getCellRangeByName("O19").Value  =  19000.0
+          Sheet.getCellRangeByName("P19").String = "Others"
+          Sheet.getCellRangeByName("Q19").String = "None"
+          Sheet.getCellRangeByName("R19").Value  =  2000.0
+          Sheet.getCellRangeByName("S19").String = "Unsecured"
+          Sheet.getCellRangeByName("T19").Value  =  20.0
+
+          Sheet.getCellRangeByName("B20").String = "1967"
+          Sheet.getCellRangeByName("C20").String = "17/01/2008"
+          Sheet.getCellRangeByName("D20").String = "Ms. Aliyah King"
+          Sheet.getCellRangeByName("E20").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("F20").String = "7176e7aeaf6d"
+          Sheet.getCellRangeByName("N20").String = "1438 Cristian Course"
+          Sheet.getCellRangeByName("O20").Value  =  42000.0
+          Sheet.getCellRangeByName("P20").String = "Others"
+          Sheet.getCellRangeByName("Q20").String = "None"
+          Sheet.getCellRangeByName("R20").Value  =  1000.0
+          Sheet.getCellRangeByName("S20").String = "Unsecured"
+          Sheet.getCellRangeByName("T20").Value  =  25.0
+
+          Sheet.getCellRangeByName("B21").String = "4442"
+          Sheet.getCellRangeByName("C21").String = "29/07/2008"
+          Sheet.getCellRangeByName("D21").String = "Joannie Rohan"
+          Sheet.getCellRangeByName("E21").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("F21").String = "2bd6c174fc92"
+          Sheet.getCellRangeByName("N21").String = "503 Dale Ferry"
+          Sheet.getCellRangeByName("O21").Value  =  10000.0
+          Sheet.getCellRangeByName("P21").String = "Others"
+          Sheet.getCellRangeByName("Q21").String = "None"
+          Sheet.getCellRangeByName("R21").Value  =  4000.0
+          Sheet.getCellRangeByName("S21").String = "Unsecured"
+          Sheet.getCellRangeByName("T21").Value  =  10.0
+
+          Sheet.getCellRangeByName("B22").String = "9956"
+          Sheet.getCellRangeByName("C22").String = "02/01/2010"
+          Sheet.getCellRangeByName("D22").String = "Ardith Gaylord"
+          Sheet.getCellRangeByName("E22").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("F22").String = "35de19ecf0ec"
+          Sheet.getCellRangeByName("N22").String = "7479 Shawna Mills"
+          Sheet.getCellRangeByName("O22").Value  =  29000.0
+          Sheet.getCellRangeByName("P22").String = "Others"
+          Sheet.getCellRangeByName("Q22").String = "None"
+          Sheet.getCellRangeByName("R22").Value  =  6000.0
+          Sheet.getCellRangeByName("S22").String = "Unsecured"
+          Sheet.getCellRangeByName("T22").Value  =  20.0
+
+          Sheet.getCellRangeByName("B23").String = "2573"
+          Sheet.getCellRangeByName("C23").String = "29/04/2009"
+          Sheet.getCellRangeByName("D23").String = "Newton Wolff"
+          Sheet.getCellRangeByName("E23").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("F23").String = "673098bb6f43"
+          Sheet.getCellRangeByName("N23").String = "38139 Beahan Summit"
+          Sheet.getCellRangeByName("O23").Value  =  30000.0
+          Sheet.getCellRangeByName("P23").String = "Others"
+          Sheet.getCellRangeByName("Q23").String = "None"
+          Sheet.getCellRangeByName("R23").Value  =  14000.0
+          Sheet.getCellRangeByName("S23").String = "Unsecured"
+          Sheet.getCellRangeByName("T23").Value  =  30.0
+
+          Sheet.getCellRangeByName("B24").String = "111"
+          Sheet.getCellRangeByName("C24").String = "19/02/2011"
+          Sheet.getCellRangeByName("D24").String = "Anissa Hessel"
+          Sheet.getCellRangeByName("E24").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("F24").String = "04b9ee120616"
+          Sheet.getCellRangeByName("N24").String = "40923 Uriel Port"
+          Sheet.getCellRangeByName("O24").Value  =  21000.0
+          Sheet.getCellRangeByName("P24").String = "Others"
+          Sheet.getCellRangeByName("Q24").String = "None"
+          Sheet.getCellRangeByName("R24").Value  =  1000.0
+          Sheet.getCellRangeByName("S24").String = "Unsecured"
+          Sheet.getCellRangeByName("T24").Value  =  10.0
+
+
+
+
+      Sheet = thisComponent.Sheets(3)
+
+      Sheet.getCellRangeByName("B4").String = "January"
+      Sheet.getCellRangeByName("B5").String = "2011"
+      Sheet.getCellRangeByName("B6").String = "PR VEERAPPA CHETTIAR"
+      Sheet.getCellRangeByName("B7").String = "77 High Street #09-15 High Street Plaza Singapore"
+
+      Sheet.getCellRangeByName("B11").String = "Miss Alberta Glover"
+      Sheet.getCellRangeByName("B13").String = "954.252.7163 x4965"
+      Sheet.getCellRangeByName("B14").String = "22/05/2011"
+
+          Sheet.getCellRangeByName("B19").String = "817"
+          Sheet.getCellRangeByName("C19").String = "Franco Fahey"
+          Sheet.getCellRangeByName("D19").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("E19").String = "db07142a913e"
+          Sheet.getCellRangeByName("K19").String = "667 Christop Manor"
+          Sheet.getCellRangeByName("N19").Value  =  19000.0
+          Sheet.getCellRangeByName("O19").String = "Others"
+          Sheet.getCellRangeByName("P19").String = "None"
+          Sheet.getCellRangeByName("Q19").String =  "10/03/2009"
+          Sheet.getCellRangeByName("V19").String = "Unsecured"
+          Sheet.getCellRangeByName("W19").Value  =  20.0
+
+          Sheet.getCellRangeByName("B20").String = "1967"
+          Sheet.getCellRangeByName("C20").String = "Ms. Aliyah King"
+          Sheet.getCellRangeByName("D20").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("E20").String = "7176e7aeaf6d"
+          Sheet.getCellRangeByName("K20").String = "1438 Cristian Course"
+          Sheet.getCellRangeByName("N20").Value  =  42000.0
+          Sheet.getCellRangeByName("O20").String = "Others"
+          Sheet.getCellRangeByName("P20").String = "None"
+          Sheet.getCellRangeByName("Q20").String =  "17/01/2008"
+          Sheet.getCellRangeByName("V20").String = "Unsecured"
+          Sheet.getCellRangeByName("W20").Value  =  25.0
+
+          Sheet.getCellRangeByName("B21").String = "4442"
+          Sheet.getCellRangeByName("C21").String = "Joannie Rohan"
+          Sheet.getCellRangeByName("D21").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("E21").String = "2bd6c174fc92"
+          Sheet.getCellRangeByName("K21").String = "503 Dale Ferry"
+          Sheet.getCellRangeByName("N21").Value  =  10000.0
+          Sheet.getCellRangeByName("O21").String = "Others"
+          Sheet.getCellRangeByName("P21").String = "None"
+          Sheet.getCellRangeByName("Q21").String =  "29/07/2008"
+          Sheet.getCellRangeByName("V21").String = "Unsecured"
+          Sheet.getCellRangeByName("W21").Value  =  10.0
+
+          Sheet.getCellRangeByName("B22").String = "9956"
+          Sheet.getCellRangeByName("C22").String = "Ardith Gaylord"
+          Sheet.getCellRangeByName("D22").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("E22").String = "35de19ecf0ec"
+          Sheet.getCellRangeByName("K22").String = "7479 Shawna Mills"
+          Sheet.getCellRangeByName("N22").Value  =  29000.0
+          Sheet.getCellRangeByName("O22").String = "Others"
+          Sheet.getCellRangeByName("P22").String = "None"
+          Sheet.getCellRangeByName("Q22").String =  "02/01/2010"
+          Sheet.getCellRangeByName("V22").String = "Unsecured"
+          Sheet.getCellRangeByName("W22").Value  =  20.0
+
+          Sheet.getCellRangeByName("B23").String = "2573"
+          Sheet.getCellRangeByName("C23").String = "Newton Wolff"
+          Sheet.getCellRangeByName("D23").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("E23").String = "673098bb6f43"
+          Sheet.getCellRangeByName("K23").String = "38139 Beahan Summit"
+          Sheet.getCellRangeByName("N23").Value  =  30000.0
+          Sheet.getCellRangeByName("O23").String = "Others"
+          Sheet.getCellRangeByName("P23").String = "None"
+          Sheet.getCellRangeByName("Q23").String =  "29/04/2009"
+          Sheet.getCellRangeByName("V23").String = "Unsecured"
+          Sheet.getCellRangeByName("W23").Value  =  30.0
+
+          Sheet.getCellRangeByName("B24").String = "111"
+          Sheet.getCellRangeByName("C24").String = "Anissa Hessel"
+          Sheet.getCellRangeByName("D24").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("E24").String = "04b9ee120616"
+          Sheet.getCellRangeByName("K24").String = "40923 Uriel Port"
+          Sheet.getCellRangeByName("N24").Value  =  21000.0
+          Sheet.getCellRangeByName("O24").String = "Others"
+          Sheet.getCellRangeByName("P24").String = "None"
+          Sheet.getCellRangeByName("Q24").String =  "19/02/2011"
+          Sheet.getCellRangeByName("V24").String = "Unsecured"
+          Sheet.getCellRangeByName("W24").Value  =  10.0
+
+      Sheet = thisComponent.Sheets(4)
+
+      Sheet.getCellRangeByName("B4").String = "January"
+      Sheet.getCellRangeByName("B5").String = "2011"
+      Sheet.getCellRangeByName("B6").String = "PR VEERAPPA CHETTIAR"
+      Sheet.getCellRangeByName("B7").String = "77 High Street #09-15 High Street Plaza Singapore"
+
+      Sheet.getCellRangeByName("B11").String = "Miss Alberta Glover"
+      Sheet.getCellRangeByName("B13").String = "954.252.7163 x4965"
+      Sheet.getCellRangeByName("B14").String = "22/05/2011"
+
+          Sheet.getCellRangeByName("B19").String = "817"
+          Sheet.getCellRangeByName("C19").String = "Franco Fahey"
+          Sheet.getCellRangeByName("D19").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("E19").String = "db07142a913e"
+          Sheet.getCellRangeByName("K19").String = "667 Christop Manor"
+          Sheet.getCellRangeByName("N19").Value  =  19000.0
+          Sheet.getCellRangeByName("O19").String = "Others"
+          Sheet.getCellRangeByName("P19").String = "None"
+          Sheet.getCellRangeByName("Q19").String =  "10/03/2009"
+          Sheet.getCellRangeByName("V19").String = "Unsecured"
+          Sheet.getCellRangeByName("W19").Value  =  20.0
+
+          Sheet.getCellRangeByName("B20").String = "1967"
+          Sheet.getCellRangeByName("C20").String = "Ms. Aliyah King"
+          Sheet.getCellRangeByName("D20").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("E20").String = "7176e7aeaf6d"
+          Sheet.getCellRangeByName("K20").String = "1438 Cristian Course"
+          Sheet.getCellRangeByName("N20").Value  =  42000.0
+          Sheet.getCellRangeByName("O20").String = "Others"
+          Sheet.getCellRangeByName("P20").String = "None"
+          Sheet.getCellRangeByName("Q20").String =  "17/01/2008"
+          Sheet.getCellRangeByName("V20").String = "Unsecured"
+          Sheet.getCellRangeByName("W20").Value  =  25.0
+
+          Sheet.getCellRangeByName("B21").String = "4442"
+          Sheet.getCellRangeByName("C21").String = "Joannie Rohan"
+          Sheet.getCellRangeByName("D21").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("E21").String = "2bd6c174fc92"
+          Sheet.getCellRangeByName("K21").String = "503 Dale Ferry"
+          Sheet.getCellRangeByName("N21").Value  =  10000.0
+          Sheet.getCellRangeByName("O21").String = "Others"
+          Sheet.getCellRangeByName("P21").String = "None"
+          Sheet.getCellRangeByName("Q21").String =  "29/07/2008"
+          Sheet.getCellRangeByName("V21").String = "Unsecured"
+          Sheet.getCellRangeByName("W21").Value  =  10.0
+
+          Sheet.getCellRangeByName("B22").String = "9956"
+          Sheet.getCellRangeByName("C22").String = "Ardith Gaylord"
+          Sheet.getCellRangeByName("D22").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("E22").String = "35de19ecf0ec"
+          Sheet.getCellRangeByName("K22").String = "7479 Shawna Mills"
+          Sheet.getCellRangeByName("N22").Value  =  29000.0
+          Sheet.getCellRangeByName("O22").String = "Others"
+          Sheet.getCellRangeByName("P22").String = "None"
+          Sheet.getCellRangeByName("Q22").String =  "02/01/2010"
+          Sheet.getCellRangeByName("V22").String = "Unsecured"
+          Sheet.getCellRangeByName("W22").Value  =  20.0
+
+          Sheet.getCellRangeByName("B23").String = "2573"
+          Sheet.getCellRangeByName("C23").String = "Newton Wolff"
+          Sheet.getCellRangeByName("D23").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("E23").String = "673098bb6f43"
+          Sheet.getCellRangeByName("K23").String = "38139 Beahan Summit"
+          Sheet.getCellRangeByName("N23").Value  =  30000.0
+          Sheet.getCellRangeByName("O23").String = "Others"
+          Sheet.getCellRangeByName("P23").String = "None"
+          Sheet.getCellRangeByName("Q23").String =  "29/04/2009"
+          Sheet.getCellRangeByName("V23").String = "Unsecured"
+          Sheet.getCellRangeByName("W23").Value  =  30.0
+
+          Sheet.getCellRangeByName("B24").String = "111"
+          Sheet.getCellRangeByName("C24").String = "Anissa Hessel"
+          Sheet.getCellRangeByName("D24").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("E24").String = "04b9ee120616"
+          Sheet.getCellRangeByName("K24").String = "40923 Uriel Port"
+          Sheet.getCellRangeByName("N24").Value  =  21000.0
+          Sheet.getCellRangeByName("O24").String = "Others"
+          Sheet.getCellRangeByName("P24").String = "None"
+          Sheet.getCellRangeByName("Q24").String =  "19/02/2011"
+          Sheet.getCellRangeByName("V24").String = "Unsecured"
+          Sheet.getCellRangeByName("W24").Value  =  10.0
+
+      Sheet = thisComponent.Sheets(5)
+
+      Sheet.getCellRangeByName("B4").String = "January"
+      Sheet.getCellRangeByName("B5").String = "2011"
+      Sheet.getCellRangeByName("B6").String = "PR VEERAPPA CHETTIAR"
+      Sheet.getCellRangeByName("B7").String = "77 High Street #09-15 High Street Plaza Singapore"
+
+      Sheet.getCellRangeByName("B11").String = "Miss Alberta Glover"
+      Sheet.getCellRangeByName("B13").String = "954.252.7163 x4965"
+      Sheet.getCellRangeByName("B14").String = "22/05/2011"
+
+          Sheet.getCellRangeByName("B19").String = "817"
+          Sheet.getCellRangeByName("C19").String = "Franco Fahey"
+          Sheet.getCellRangeByName("D19").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("E19").String = "db07142a913e"
+          Sheet.getCellRangeByName("K19").String = "667 Christop Manor"
+          Sheet.getCellRangeByName("N19").Value  =  19000.0
+          Sheet.getCellRangeByName("O19").String = "Others"
+          Sheet.getCellRangeByName("P19").String = "None"
+          Sheet.getCellRangeByName("Q19").String =  "10/03/2009"
+          Sheet.getCellRangeByName("V19").String = "Unsecured"
+          Sheet.getCellRangeByName("W19").Value  =  20.0
+
+          Sheet.getCellRangeByName("B20").String = "1967"
+          Sheet.getCellRangeByName("C20").String = "Ms. Aliyah King"
+          Sheet.getCellRangeByName("D20").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("E20").String = "7176e7aeaf6d"
+          Sheet.getCellRangeByName("K20").String = "1438 Cristian Course"
+          Sheet.getCellRangeByName("N20").Value  =  42000.0
+          Sheet.getCellRangeByName("O20").String = "Others"
+          Sheet.getCellRangeByName("P20").String = "None"
+          Sheet.getCellRangeByName("Q20").String =  "17/01/2008"
+          Sheet.getCellRangeByName("V20").String = "Unsecured"
+          Sheet.getCellRangeByName("W20").Value  =  25.0
+
+          Sheet.getCellRangeByName("B21").String = "4442"
+          Sheet.getCellRangeByName("C21").String = "Joannie Rohan"
+          Sheet.getCellRangeByName("D21").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("E21").String = "2bd6c174fc92"
+          Sheet.getCellRangeByName("K21").String = "503 Dale Ferry"
+          Sheet.getCellRangeByName("N21").Value  =  10000.0
+          Sheet.getCellRangeByName("O21").String = "Others"
+          Sheet.getCellRangeByName("P21").String = "None"
+          Sheet.getCellRangeByName("Q21").String =  "29/07/2008"
+          Sheet.getCellRangeByName("V21").String = "Unsecured"
+          Sheet.getCellRangeByName("W21").Value  =  10.0
+
+          Sheet.getCellRangeByName("B22").String = "9956"
+          Sheet.getCellRangeByName("C22").String = "Ardith Gaylord"
+          Sheet.getCellRangeByName("D22").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("E22").String = "35de19ecf0ec"
+          Sheet.getCellRangeByName("K22").String = "7479 Shawna Mills"
+          Sheet.getCellRangeByName("N22").Value  =  29000.0
+          Sheet.getCellRangeByName("O22").String = "Others"
+          Sheet.getCellRangeByName("P22").String = "None"
+          Sheet.getCellRangeByName("Q22").String =  "02/01/2010"
+          Sheet.getCellRangeByName("V22").String = "Unsecured"
+          Sheet.getCellRangeByName("W22").Value  =  20.0
+
+          Sheet.getCellRangeByName("B23").String = "2573"
+          Sheet.getCellRangeByName("C23").String = "Newton Wolff"
+          Sheet.getCellRangeByName("D23").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("E23").String = "673098bb6f43"
+          Sheet.getCellRangeByName("K23").String = "38139 Beahan Summit"
+          Sheet.getCellRangeByName("N23").Value  =  30000.0
+          Sheet.getCellRangeByName("O23").String = "Others"
+          Sheet.getCellRangeByName("P23").String = "None"
+          Sheet.getCellRangeByName("Q23").String =  "29/04/2009"
+          Sheet.getCellRangeByName("V23").String = "Unsecured"
+          Sheet.getCellRangeByName("W23").Value  =  30.0
+
+          Sheet.getCellRangeByName("B24").String = "111"
+          Sheet.getCellRangeByName("C24").String = "Anissa Hessel"
+          Sheet.getCellRangeByName("D24").String = "Singapore NRIC No"
+          Sheet.getCellRangeByName("E24").String = "04b9ee120616"
+          Sheet.getCellRangeByName("K24").String = "40923 Uriel Port"
+          Sheet.getCellRangeByName("N24").Value  =  21000.0
+          Sheet.getCellRangeByName("O24").String = "Others"
+          Sheet.getCellRangeByName("P24").String = "None"
+          Sheet.getCellRangeByName("Q24").String =  "19/02/2011"
+          Sheet.getCellRangeByName("V24").String = "Unsecured"
+          Sheet.getCellRangeByName("W24").Value  =  10.0
+
+
+
+  Sheet = thisComponent.Sheets(6)
+
+  Sheet.getCellRangeByName("B4").String = "1ST QUARTER"
+  Sheet.getCellRangeByName("B5").String = "2011"
+  Sheet.getCellRangeByName("B6").String = "PR VEERAPPA CHETTIAR"
+  Sheet.getCellRangeByName("B7").String = "77 High Street #09-15 High Street Plaza Singapore"
+  Sheet.getCellRangeByName("B11").String = "Miss Alberta Glover"
+  Sheet.getCellRangeByName("B13").String = "954.252.7163 x4965"
+  Sheet.getCellRangeByName("B14").String = "22/05/2011"
+
+  Sheet.getCellRangeByName("B20").Value = -3183.38
+
+  rem date: Sat Jan 01 00:00:00 +0200 2011
+
+
+  cFile = "/home/vlad/dev/loaner/tmp/xls/statement_2-20110522011223.xls"
+  cURL = ConvertToURL( cFile )
+  thisComponent.storeToUrl(cURL, Array(MakePropertyValue("FilterName", "MS Excel 97")))
+  rem document.storeToURL( cURL, Array(MakePropertyValue( "FilterName", "writer_pdf_Export" ),)
+
+
+
+
+ThisComponent.store()
+document.close(true)
+
+
+end sub
+</script:module>

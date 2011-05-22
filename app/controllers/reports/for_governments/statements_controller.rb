@@ -21,7 +21,7 @@ class Reports::ForGovernments::StatementsController < Reports::BaseController
       @result
     else
       #FileUtils.copy_file @template, @xls_result
-      if system %{ soffice "#{@template}" "#{Ooo::StatementsXba::SCRIPT_URL}" }
+      if system %{ soffice -headless "#{@template}" "#{Ooo::StatementsXba::SCRIPT_URL}" }
         sleep 5
         10.times do
           sleep 1
@@ -34,6 +34,9 @@ class Reports::ForGovernments::StatementsController < Reports::BaseController
       else
         render :text => "fail"
       end
+
+      sleep 1
+      system "killall soffice"
     end
   end
 end
